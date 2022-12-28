@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerMovement : MonoBehaviour
+public class PlayerInputHandling : MonoBehaviour
 {
     private Camera mainCamera;
     private Vector2 movementInput;
