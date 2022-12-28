@@ -7,4 +7,7 @@ public class BoxerConfig : ScriptableObject
     public float jabPower;
     public float hookPower;
     public float uppercutPower;
+    public float temporaryDamageLimit;
+    public float stamina;
+    public float fatigue;
 }

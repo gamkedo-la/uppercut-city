@@ -2,12 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
+    private Camera mainCamera;
     private Vector2 movementInput;
     private Vector3 movementVector;
     private GameObject fighter;
     private Animator fighterAnimator;
     public string corner;
-    private void Awake() {
+    private void Awake(){
+        mainCamera = Camera.main;
         // Assign this player controller to a fighter
         // This is what the 'ChooseSides' menu scripting will do later on
         // ITMT: just grab player A
@@ -24,11 +26,12 @@ public class PlayerMovement : MonoBehaviour
         fighter.transform.position = Vector3.MoveTowards(
             fighter.transform.position, 
             movementVector, 
-            2f
+            0.02f
         );
     }
     private void FixedUpdate() {
         if(movementInput.magnitude > 0.1f){
+            // send signal to character, pass in movement vector
             HandleMovement();
         }
     }
