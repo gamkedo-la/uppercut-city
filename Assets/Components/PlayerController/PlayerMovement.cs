@@ -7,20 +7,25 @@ public class PlayerMovement : MonoBehaviour
     private GameObject fighter;
     private Animator fighterAnimator;
     private void Awake() {
-        fighter = GameObject.FindWithTag("FighterA");
-        // fighterAnimator = fighter.GetComponent<Animator>();
+        // things
     }
     public void InputMovement(InputAction.CallbackContext context){
         movementInput = context.ReadValue<Vector2>();
-        if(movementInput.magnitude > 0.1f){
-            // update state machine to moving
-        }
-        
+        movementVector.x = transform.position.x + movementInput.x;
+        movementVector.y = transform.position.y;
+        movementVector.z = transform.position.z + movementInput.y;
     }
-    public void Punch(InputAction.CallbackContext context){
-        Debug.Log("Punch");
+    private void HandleMovement(){
+        Debug.Log("moving character");
+        transform.position = Vector3.MoveTowards(
+            transform.position, 
+            movementVector, 
+            2f
+        );
     }
     private void FixedUpdate() {
-        
+        if(movementInput.magnitude > 0.1f){
+            HandleMovement();
+        }
     }
 }

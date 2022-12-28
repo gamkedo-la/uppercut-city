@@ -65,7 +65,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7209968130822841501}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Movement
+        m_MethodName: InputMovement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
