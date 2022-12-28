@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         StateLiveFightCam.onStateEnter += HandleFightLive;
+        
     }
     private void HandleFightLive(object sender, System.EventArgs e)
     {

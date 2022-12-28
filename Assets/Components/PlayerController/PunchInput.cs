@@ -8,12 +8,12 @@ public class PunchInput : MonoBehaviour
     private Animator fighterAnimator;
     private void Awake() {
         fighter = GameObject.FindWithTag("FighterB");
-        fighterAnimator = fighter.GetComponent<Animator>();
+        //fighterAnimator = fighter.GetComponent<Animator>();
     }
     public void HandlePunchInput(InputAction.CallbackContext context){
         if(context.performed){
             Debug.Log("Punch");
-            fighterAnimator.SetTrigger("Jab");
+            //fighterAnimator.SetTrigger("Jab");
         }
     }
 }
