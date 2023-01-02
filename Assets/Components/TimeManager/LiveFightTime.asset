@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bfdc408efeefca49962368e0da70613, type: 3}
   m_Name: LiveFightTime
   m_EditorClassIdentifier: 
-  time: 0
-  deltaTime: 0
-  fixedDeltaTime: 0
+  time: 576.8172
+  deltaTime: 0.0129453
+  fixedDeltaTime: 0.02
   timeScale: 1

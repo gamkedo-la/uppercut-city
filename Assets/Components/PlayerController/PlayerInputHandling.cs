@@ -34,5 +34,6 @@ public class PlayerInputHandling : MonoBehaviour
             // send signal to character, pass in movement vector
             HandleMovement();
         }
+        // handle rotation
     }
 }
