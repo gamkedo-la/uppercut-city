@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class FighterBehaviors : MonoBehaviour
 {
+    private GameObject opponent;
     private Vector3 movementVector;
+    private void Awake() {
+        // should initialize sides etc
+        opponent = GameObject.FindWithTag("FighterB");
+    }
     public void SetMovementVector(Vector2 movementInput){
         movementVector.x = transform.position.x + movementInput.x;
         movementVector.y = transform.position.y;
@@ -18,6 +23,8 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleRotation(){
         // rotate towards opponent
+        // TODO: limit the rate of rotation
+        transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);
     }
     private void FixedUpdate() {
         if(movementVector.magnitude > 0.1f){

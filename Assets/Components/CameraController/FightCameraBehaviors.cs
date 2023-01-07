@@ -17,10 +17,10 @@ public class FightCameraBehaviors : MonoBehaviour
         vCamTransposer = vCamLiveFight.GetCinemachineComponent<CinemachineTransposer>();
     }
     private void SetTrackingOffset(){
-        vCamComposer.m_TrackedObjectOffset.x = (fighterA.transform.position - fighterB.transform.position).magnitude /-2;
+        vCamComposer.m_TrackedObjectOffset.z = (fighterA.transform.position - fighterB.transform.position).magnitude /2;
     }
     private void SetFollowOffset(){
-        vCamTransposer.m_FollowOffset.x = (fighterB.transform.position - fighterA.transform.position).magnitude /2;
+        vCamTransposer.m_FollowOffset.x = (fighterB.transform.position - fighterA.transform.position).magnitude / 1.25f;
         vCamTransposer.m_FollowOffset.z = (fighterB.transform.position - fighterA.transform.position).magnitude /2;
     }
     private void FixedUpdate() {
