@@ -20,7 +20,7 @@ public class FightCameraBehaviors : MonoBehaviour
         vCamComposer.m_TrackedObjectOffset.z = (fighterA.transform.position - fighterB.transform.position).magnitude /2;
     }
     private void SetFollowOffset(){
-        vCamTransposer.m_FollowOffset.x = (fighterB.transform.position - fighterA.transform.position).magnitude / 1.25f;
+        vCamTransposer.m_FollowOffset.x = (fighterB.transform.position - fighterA.transform.position).magnitude / 1.75f;
         vCamTransposer.m_FollowOffset.z = (fighterB.transform.position - fighterA.transform.position).magnitude /2;
     }
     private void FixedUpdate() {
