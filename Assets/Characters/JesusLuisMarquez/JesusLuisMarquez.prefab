@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99475ae28b95fea44b1f5203b4a2560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxerConfig: {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}
 --- !u!1001 &1607997541707623431
 PrefabInstance:
   m_ObjectHideFlags: 0

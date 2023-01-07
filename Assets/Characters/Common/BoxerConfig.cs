@@ -4,6 +4,7 @@ public class BoxerConfig : ScriptableObject
 {
     // data that control the character
     public float movementSpeed;
+    public float rotationSpeed;
     public float jabPower;
     public float hookPower;
     public float uppercutPower;

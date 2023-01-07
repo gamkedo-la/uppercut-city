@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FighterBehaviors : MonoBehaviour
 {
+    [SerializeField] BoxerConfig boxerConfig;
     private GameObject opponent;
     private Vector3 movementVector;
     private void Awake() {
@@ -15,6 +16,7 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleMovement(){
         Debug.Log("moving character");
+        // Todo: camera relative movement
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 
