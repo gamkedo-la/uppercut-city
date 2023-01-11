@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bc3fb5402aad84dae973fb26b93357, type: 3}
   m_Name: JesusLuisMarquez
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  rotationSpeed: 0
-  jabPower: 0
-  hookPower: 0
-  uppercutPower: 0
-  temporaryDamageLimit: 0
-  stamina: 0
-  fatigue: 0
+  movementSpeed: 2
+  rotationSpeed: 2
+  jabPower: 5
+  hookPower: 10
+  uppercutPower: 12
+  temporaryDamageLimit: 35
+  stamina: 100
+  fatigue: 100

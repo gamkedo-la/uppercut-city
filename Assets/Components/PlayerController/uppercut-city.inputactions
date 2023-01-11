@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Punch",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "46601fef-d65c-4298-b72f-a9411046a379",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -138,21 +138,10 @@
                 {
                     "name": "",
                     "id": "31e46502-79d6-4400-a0ef-28e227203404",
-                    "path": "<Keyboard>/space",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Punch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2280532c-2a31-4a51-a06c-fe13c9eea601",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
