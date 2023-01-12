@@ -5,9 +5,13 @@ public class FighterBehaviors : MonoBehaviour
     [SerializeField] BoxerConfig boxerConfig;
     private GameObject opponent;
     private Vector3 movementVector;
+    private bool moveStickActive = false;
     private void Awake() {
         // should initialize sides etc
         opponent = GameObject.FindWithTag("FighterB");
+    }
+    public bool IsZeroQuaternion(Quaternion q){
+        return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
     }
     public void SetMovementVector(Vector2 movementInput){
         movementVector.x = transform.position.x + movementInput.x;
@@ -15,23 +19,22 @@ public class FighterBehaviors : MonoBehaviour
         movementVector.z = transform.position.z + movementInput.y;
     }
     private void HandleMovement(){
-        Debug.Log("moving character");
-        // Todo: camera relative movement
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 
             0.02f
         );
+        // Todo: camera relative movement
     }
     private void HandleRotation(){
         // rotate towards opponent
         // TODO: limit the rate of rotation
-        transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);
+        if((opponent.transform.position - transform.position) != Vector3.zero){
+            transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
+        }
     }
     private void FixedUpdate() {
-        if(movementVector.magnitude > 0.1f){
-            HandleMovement();
-        }
+        HandleMovement();
         HandleRotation();
     }
 }

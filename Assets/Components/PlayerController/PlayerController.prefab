@@ -119,8 +119,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 593455195591212313}
-        m_TargetAssemblyTypeName: PunchInput, Assembly-CSharp
+      - m_Target: {fileID: 7209968130822841501}
+        m_TargetAssemblyTypeName: PlayerInputHandling, Assembly-CSharp
         m_MethodName: HandlePunchInput
         m_Mode: 0
         m_Arguments:
