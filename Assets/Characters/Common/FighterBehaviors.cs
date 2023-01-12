@@ -18,6 +18,16 @@ public class FighterBehaviors : MonoBehaviour
         movementVector.y = transform.position.y;
         movementVector.z = transform.position.z + movementInput.y;
     }
+    public void HandlePunch(double inputAngle){
+        if(inputAngle > 0 ){
+            // right hand
+            Debug.Log("right hand punch");
+        } else {
+            Debug.Log("left hand punch");
+        }
+        // see ticket https://trello.com/c/O1J6ZZxf
+        // change animation state to windup
+    }
     private void HandleMovement(){
         transform.position = Vector3.MoveTowards(
             transform.position, 

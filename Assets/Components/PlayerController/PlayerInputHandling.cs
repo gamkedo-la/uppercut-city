@@ -26,12 +26,6 @@ public class PlayerInputHandling : MonoBehaviour
     }
     public void HandlePunchInput(InputAction.CallbackContext context){
         punchInput = context.ReadValue<Vector2>();
-        Debug.Log($"{punchInput}");
-        if(punchInput.magnitude > .5f){
-            // get the analog stick direction
-            // switch (inputDirection)
-            // see ticket https://trello.com/c/O1J6ZZxf
-            // change animation state to windup
-        }
+        fighterBehaviors.HandlePunch(Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
     }
 }
