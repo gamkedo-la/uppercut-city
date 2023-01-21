@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6910472597318632903}
+  - {fileID: 1000632492966239879}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxerConfig: {fileID: 11400000, guid: 49c39c1346fca7940a8fb22c443fa6ab, type: 2}
---- !u!1001 &6371563555535381036
+--- !u!1001 &749933511184103788
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -135,8 +135,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd3a93980278bf49a48c27574dcc8a1, type: 3}
---- !u!4 &6910472597318632903 stripped
+--- !u!4 &1000632492966239879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7cd3a93980278bf49a48c27574dcc8a1, type: 3}
-  m_PrefabInstance: {fileID: 6371563555535381036}
+  m_PrefabInstance: {fileID: 749933511184103788}
   m_PrefabAsset: {fileID: 0}
