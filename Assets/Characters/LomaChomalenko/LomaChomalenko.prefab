@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2499030954761912372}
+  - component: {fileID: 1639686620}
+  - component: {fileID: 1639686621}
   m_Layer: 0
   m_Name: LomaChomalenko
-  m_TagString: Untagged
+  m_TagString: FighterA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1639686620
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668063236943203712}
+  serializedVersion: 2
+  m_Mass: 65
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 2
+--- !u!136 &1639686621
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668063236943203712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.22
+  m_Height: 0.95
+  m_Direction: 1
+  m_Center: {x: 0.03, y: 0.48, z: 0.02}
 --- !u!1001 &216641270546487926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,7 +140,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135122368022308647}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1dc78c6007a96e84dbbb12e6e31ba2cf, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 7cd3a93980278bf49a48c27574dcc8a1, type: 3}
   m_Controller: {fileID: 9100000, guid: 54ac1fd9d8777d446847d1a89e7166f3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
