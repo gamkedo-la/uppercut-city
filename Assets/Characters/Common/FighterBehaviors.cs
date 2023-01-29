@@ -29,6 +29,7 @@ public class FighterBehaviors : MonoBehaviour
         // change animation state to windup
     }
     private void HandleMovement(){
+        if(movementVector.magnitude <= 0.05f){ return; }
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 
