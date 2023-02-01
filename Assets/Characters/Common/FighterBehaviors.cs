@@ -3,27 +3,48 @@ using UnityEngine;
 public class FighterBehaviors : MonoBehaviour
 {
     [SerializeField] BoxerConfig boxerConfig;
+    private Animator animator;
     private GameObject opponent;
     private Vector3 movementVector;
     private bool moveStickActive = false;
     private void Awake() {
         // should initialize sides etc
         opponent = GameObject.FindWithTag("FighterB");
+        // get animator
+        animator = GetComponentInChildren<Animator>();
     }
     public bool IsZeroQuaternion(Quaternion q){
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
+    }
+    private void ResetPunch(){
+        animator.SetBool("JabWindup", false);
+        animator.SetBool("CrossWindup", false);
     }
     public void SetMovementVector(Vector2 movementInput){
         movementVector.x = transform.position.x + movementInput.x;
         movementVector.y = transform.position.y;
         movementVector.z = transform.position.z + movementInput.y;
     }
+    private void HandleGameStart(object sender, System.EventArgs e){
+        animator.SetBool("FightStarted", true);
+        // subscribe for round end event
+    }
     public void HandlePunch(double inputAngle){
+        // input angle: +- 180 left right  |  0 is neutral
+        if (inputAngle == 0){
+            // toggle the punch followthrough
+            Debug.Log("FollowThrough");
+            animator.SetTrigger("PunchFollowThrough");
+            ResetPunch();
+            return;
+        }
         if(inputAngle > 0 ){
             // right hand
-            Debug.Log("right hand punch");
+            Debug.Log("right");
+            if(!animator.GetBool("JabWindup")){ animator.SetBool("JabWindup", true); }
         } else {
-            Debug.Log("left hand punch");
+            Debug.Log("left");
+            if(!animator.GetBool("CrossWindup")){ animator.SetBool("CrossWindup", true); }
         }
         // see ticket https://trello.com/c/O1J6ZZxf
         // change animation state to windup
@@ -43,6 +64,9 @@ public class FighterBehaviors : MonoBehaviour
         if((opponent.transform.position - transform.position) != Vector3.zero){
             transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
         }
+    }
+    private void Start() {
+        StateGameStart.onStateEnter += HandleGameStart;
     }
     private void FixedUpdate() {
         HandleMovement();
