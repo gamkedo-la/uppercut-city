@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour
     }
     private void HandleFightLive(object sender, System.EventArgs e)
     {
-        Debug.Log($"{sender}");
         DisableAllCams();
         vCamLiveFight.gameObject.SetActive(true);
     }

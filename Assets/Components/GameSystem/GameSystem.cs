@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GameSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public Animator masterStateMachine;
+    private void Awake(){
+        masterStateMachine = GetComponent<Animator>();
+        MenuManager.StartGame += HandleStartGame;
     }
-
-    // Update is called once per frame
+    private void HandleStartGame(object sender, System.EventArgs e){
+        masterStateMachine.SetBool("MatchStarted", true);
+    }
     void Update()
     {
         
