@@ -59,7 +59,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MatchStarted
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3090495417079072760}
   m_Solo: 0
@@ -69,8 +72,8 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 2
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -213,7 +216,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: MasterControl
@@ -328,18 +331,18 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2822095461203540117}
-    m_Position: {x: -500, y: -160, z: 0}
+    m_Position: {x: -570, y: -200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3090495417079072760}
-    m_Position: {x: -260, y: -220, z: 0}
+    m_Position: {x: -330, y: -260, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -130, y: -260, z: 0}
-  m_EntryPosition: {x: -480, y: -230, z: 0}
-  m_ExitPosition: {x: -130, y: -90, z: 0}
+  m_AnyStatePosition: {x: -80, y: -180, z: 0}
+  m_EntryPosition: {x: -550, y: -270, z: 0}
+  m_ExitPosition: {x: -280, y: -80, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -2822095461203540117}
 --- !u!1107 &7423961567264555329
