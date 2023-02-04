@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-
 public class GameSystem : MonoBehaviour
 {
     public Animator masterStateMachine;
