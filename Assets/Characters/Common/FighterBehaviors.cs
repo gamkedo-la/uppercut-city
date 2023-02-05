@@ -12,15 +12,20 @@ public class FighterBehaviors : MonoBehaviour
         opponent = GameObject.FindWithTag("FighterB");
         // get animator
         animator = GetComponentInChildren<Animator>();
+        animator.SetFloat("AnimationOffset", UnityEngine.Random.Range(0.1f, 10f));
     }
     public bool IsZeroQuaternion(Quaternion q){
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
     }
-    private void ResetPunch(){
-        animator.SetBool("JabWindup", false);
-        animator.SetBool("CrossWindup", false);
+    public void SetLeanValues(Vector2 movementInput){
+        
+    }
+    public void SetLeanModifier(bool leaning){
+        animator.SetBool("Leaning", leaning);
     }
     public void SetMovementVector(Vector2 movementInput){
+        animator.SetFloat("LStickX", movementInput.x);
+        animator.SetFloat("LStickY", movementInput.y);
         movementVector.x = transform.position.x + movementInput.x;
         movementVector.y = transform.position.y;
         movementVector.z = transform.position.z + movementInput.y;
@@ -33,9 +38,7 @@ public class FighterBehaviors : MonoBehaviour
         // input angle: +- 180 left right  |  0 is neutral
         if (inputAngle == 0){
             // toggle the punch followthrough
-            Debug.Log("FollowThrough");
             animator.SetTrigger("PunchFollowThrough");
-            ResetPunch();
             return;
         }
         if(inputAngle > 0 ){
@@ -50,7 +53,7 @@ public class FighterBehaviors : MonoBehaviour
         // change animation state to windup
     }
     private void HandleMovement(){
-        if(movementVector.magnitude <= 0.05f){ return; }
+        if(movementVector.magnitude <= 0.05f || animator.GetBool("Leaning")){ return; }
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 

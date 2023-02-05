@@ -8,6 +8,7 @@ public class PlayerInputHandling : MonoBehaviour
     private GameObject fighter;
     private FighterBehaviors fighterBehaviors;
     private Animator fighterAnimator;
+    private bool leanModifier = false;
     public string corner;
     // connect this object to a fighter
     // input logic goes in here
@@ -19,6 +20,10 @@ public class PlayerInputHandling : MonoBehaviour
         // ITMT: just grab player A
         fighter = GameObject.FindWithTag("FighterA");
         fighterBehaviors = fighter.GetComponent<FighterBehaviors>();
+    }
+    public void HandleLeanModifier(InputAction.CallbackContext context){
+        Debug.Log($"leaning {context.ReadValue<float>() > 0}");
+        fighterBehaviors.SetLeanModifier(context.ReadValue<float>() > 0);
     }
     public void InputMovement(InputAction.CallbackContext context){
         movementInput = context.ReadValue<Vector2>();

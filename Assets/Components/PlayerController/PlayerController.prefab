@@ -133,6 +133,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 46601fef-d65c-4298-b72f-a9411046a379
     m_ActionName: Player/Punch[/Keyboard/space,/DualShock3GamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7209968130822841501}
+        m_TargetAssemblyTypeName: PlayerInputHandling, Assembly-CSharp
+        m_MethodName: HandleLeanModifier
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 91f61e21-6325-4fb1-96ee-66f2e662684d
+    m_ActionName: Player/LeanMod[/DualShock4GamepadHID/leftShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
