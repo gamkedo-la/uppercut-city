@@ -12,7 +12,6 @@ public class FighterBehaviors : MonoBehaviour
         opponent = GameObject.FindWithTag("FighterB");
         // get animator
         animator = GetComponentInChildren<Animator>();
-        animator.SetFloat("AnimationOffset", UnityEngine.Random.Range(0.1f, 10f));
     }
     public bool IsZeroQuaternion(Quaternion q){
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
