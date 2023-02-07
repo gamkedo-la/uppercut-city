@@ -8,7 +8,7 @@ public class SMB_CH_StareDown : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        onStateEnter?.Invoke(this, EventArgs.Empty);
-       animator.SetFloat("AnimationOffset", UnityEngine.Random.Range(0.2f, .8f));
+       animator.SetFloat("AnimationOffset", UnityEngine.Random.Range(0, .95f));
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

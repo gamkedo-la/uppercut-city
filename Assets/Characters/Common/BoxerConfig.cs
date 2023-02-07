@@ -11,4 +11,7 @@ public class BoxerConfig : ScriptableObject
     public float temporaryDamageLimit;
     public float stamina;
     public float fatigue;
+    // Materials
+    public Material mat_Skin;
+    public Material mat_Head;
 }

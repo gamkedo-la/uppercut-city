@@ -490,7 +490,7 @@ AnimatorController:
     m_Mask: {fileID: 31900000, guid: 78d4297f254db674fa021310729549d0, type: 2}
     m_Motions: []
     m_Behaviours: []
-    m_BlendingMode: 0
+    m_BlendingMode: 1
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 1
     m_IKPass: 0
@@ -801,7 +801,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 9072366852653197538}
-    m_Position: {x: 140, y: -120, z: 0}
+    m_Position: {x: 150, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3016575704873857776}
     m_Position: {x: -130, y: -90, z: 0}
