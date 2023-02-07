@@ -8,8 +8,6 @@ public class PlayerInputHandling : MonoBehaviour
     private GameObject fighter;
     private FighterBehaviors fighterBehaviors;
     private Animator fighterAnimator;
-    private bool leanModifier = false;
-    public string corner;
     // connect this object to a fighter
     // input logic goes in here
     // behaviours are handled in FighterBehaviors
@@ -27,6 +25,9 @@ public class PlayerInputHandling : MonoBehaviour
     }
     public void InputMovement(InputAction.CallbackContext context){
         movementInput = context.ReadValue<Vector2>();
+        // camera relative movement - take movement input and rotate around vertical axis by i
+        // i being the camera's rotation 
+        // mainCamera.transform.rotation.y
         fighterBehaviors.SetMovementVector(movementInput);
     }
     public void HandlePunchInput(InputAction.CallbackContext context){

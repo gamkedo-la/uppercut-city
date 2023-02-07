@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FighterBehaviors : MonoBehaviour
 {
-    [SerializeField] BoxerConfig boxerConfig;
     private Animator animator;
     private GameObject opponent;
     private Vector3 movementVector;
