@@ -77,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99475ae28b95fea44b1f5203b4a2560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxerConfig: {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}
 --- !u!1001 &1607997541707623431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154,11 +153,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914497062219682134}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 639ffeab5f50e9e4d8a6ec0167cc0e7d, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
   m_Controller: {fileID: 9100000, guid: 54ac1fd9d8777d446847d1a89e7166f3, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 1
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
