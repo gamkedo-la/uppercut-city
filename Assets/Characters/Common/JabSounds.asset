@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c53de47a339034bbed0a8e6c9e2efb, type: 3}
+  m_Name: JabSounds
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 68f33624f797870408cac9aa4d83470b, type: 3}
+  - {fileID: 8300000, guid: 51a6436d86b851d4982612311c5e1552, type: 3}
+  - {fileID: 8300000, guid: 3368cf762e0a2584f8d6d7688de331b6, type: 3}
+  - {fileID: 8300000, guid: 35ce16baea42ccc4fbbc03a5ef1e99dc, type: 3}
+  - {fileID: 8300000, guid: 587ce07897beae24da379fa3b01e04d4, type: 3}

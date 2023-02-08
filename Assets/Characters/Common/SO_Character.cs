@@ -1,5 +1,5 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "BoxerConfig", menuName = "ScriptableObjects/BoxerConfig", order = 1)]
+[CreateAssetMenu(fileName = "Character", menuName = "ScriptableObjects/Character", order = 1)]
 public class BoxerConfig : ScriptableObject
 {
     // data that control the character
