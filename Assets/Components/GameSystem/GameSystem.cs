@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameSystem : MonoBehaviour
 {
     public Animator masterStateMachine;
+    public SO_GameSystem[] gameTypes;
     private void Awake(){
         masterStateMachine = GetComponent<Animator>();
         MenuManager.StartGame += HandleStartGame;

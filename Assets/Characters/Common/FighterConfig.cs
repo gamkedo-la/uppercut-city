@@ -8,6 +8,6 @@ public class FighterConfig : MonoBehaviour
     private static readonly string[] cornerOptions = {"red", "blue"};
     public enum Corner {red, blue};
     public Corner corner;
-    public SO_Character character;
+    public SO_Character[] playableCharacters;
 
 }

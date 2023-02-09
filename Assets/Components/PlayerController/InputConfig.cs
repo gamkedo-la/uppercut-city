@@ -3,5 +3,4 @@ using UnityEngine;
 public class InputConfig : ScriptableObject
 {
     // data that control the character
-    public enum Corner { red, blue, neutral };
 }

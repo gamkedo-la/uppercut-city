@@ -20,6 +20,6 @@ public abstract class AbstractAIState
     public abstract void OnExit();
     public virtual void OnUpdate()
     {
-        // universal for all AIs
+        // 
     }
 }

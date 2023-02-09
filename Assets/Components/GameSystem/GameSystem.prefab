@@ -110,3 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43576e6157b3c3240b2cf821f8bb0d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterStateMachine: {fileID: 0}
+  gameTypes:
+  - {fileID: 11400000, guid: fedcd604c18839340baf99a0826f2fe2, type: 2}
+  - {fileID: 11400000, guid: 780fac08946c22444adc0b12c0162604, type: 2}
+  - {fileID: 11400000, guid: 060c3482df22f074c9ef629c8720f0b5, type: 2}
