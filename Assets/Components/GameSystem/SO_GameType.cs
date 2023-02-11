@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameSystem", menuName = "ScriptableObjects/GameSystem", order = 1)]
-public class SO_GameSystem : ScriptableObject
+[CreateAssetMenu(fileName = "GameType", menuName = "ScriptableObjects/GameType", order = 1)]
+public class SO_GameType : ScriptableObject
 {
-    // keeps track of data related to game flow
+    // keeps track of data related to game rules
     // other objects will reference this object for game data
     public int numberOfRounds = 8;
     public int currentRound = 1;

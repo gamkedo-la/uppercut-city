@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 public class UIInputHandling : MonoBehaviour
 {
-    private GameObject fighter;
-    private Animator fighterAnimator;
+    private MultiplayerEventSystem multiplayerEventSystem;
     private void Awake() {
-        fighter = GameObject.FindWithTag("FighterB");
+        multiplayerEventSystem = GetComponent<MultiplayerEventSystem>();
+        // fighter = GameObject.FindWithTag("FighterB");
     }
 }

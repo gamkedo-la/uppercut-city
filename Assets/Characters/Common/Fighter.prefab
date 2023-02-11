@@ -235,7 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corner: 0
-  character: {fileID: 11400000, guid: 49c39c1346fca7940a8fb22c443fa6ab, type: 2}
+  playableCharacters:
+  - {fileID: 11400000, guid: 49c39c1346fca7940a8fb22c443fa6ab, type: 2}
+  - {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}
 --- !u!1001 &3506269599674970171
 PrefabInstance:
   m_ObjectHideFlags: 0

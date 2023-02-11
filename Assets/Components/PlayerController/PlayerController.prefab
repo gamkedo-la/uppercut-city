@@ -151,7 +151,7 @@ MonoBehaviour:
     m_ActionName: Player/LeanMod[/DualShock4GamepadHID/leftShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &7566146067836813756
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
+  m_MoveRepeatRate: 0.15
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: c0516d7b9581a3e41b1fd4bbdede5e93, type: 3}
   m_PointAction: {fileID: 6472627400568883904, guid: c0516d7b9581a3e41b1fd4bbdede5e93, type: 3}
@@ -212,7 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e731c33ac4a55e41bd236e001e5411f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corner: 
 --- !u!114 &593455195591212313
 MonoBehaviour:
   m_ObjectHideFlags: 0
