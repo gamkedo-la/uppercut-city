@@ -183,6 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 31369213118295385}
+  - component: {fileID: 3094960658268138981}
   - component: {fileID: 418122475807119527}
   - component: {fileID: 6739481826187275381}
   - component: {fileID: 7686565954766833839}
@@ -211,6 +212,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3094960658268138981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525871222087910879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdf58b9600b3d24fa928956aba4f5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corner: 0
+  userProfile: {fileID: 11400000, guid: 792c84055370c30489b81d2364258faf, type: 2}
+  fighterMeshRenderer: {fileID: 9103123300316510333}
+  activeCharacter: {fileID: 11400000, guid: 49c39c1346fca7940a8fb22c443fa6ab, type: 2}
 --- !u!114 &418122475807119527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,5 +362,10 @@ PrefabInstance:
 --- !u!4 &3972875134785411024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
+  m_PrefabInstance: {fileID: 3506269599674970171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9103123300316510333 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
   m_PrefabInstance: {fileID: 3506269599674970171}
   m_PrefabAsset: {fileID: 0}

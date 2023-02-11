@@ -12,9 +12,5 @@ public class SO_Character : ScriptableObject
     public float temporaryDamageLimit;
     public Mesh characterMesh;
     // Materials
-    public Material mat_Skin;
-    public Material mat_Head;
-    public Material mat_Shoes;
-    public Material mat_Shorts;
-    public Material mat_Gloves;
+    public Material[] characterMaterials;
 }

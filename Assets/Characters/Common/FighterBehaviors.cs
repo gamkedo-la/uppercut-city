@@ -5,7 +5,6 @@ public class FighterBehaviors : MonoBehaviour
     private Animator animator;
     private GameObject opponent;
     private Vector3 movementVector;
-    private bool moveStickActive = false;
     private void Awake() {
         // should initialize sides etc
         opponent = GameObject.FindWithTag("FighterB");
