@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff425acc1f862bc4da8fd8993172ac49, type: 3}
+  m_Name: DefaultUserProfile
+  m_EditorClassIdentifier: 
+  defaultRedFighter: {fileID: 11400000, guid: 49c39c1346fca7940a8fb22c443fa6ab, type: 2}
+  defaultBlueFighter: {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}

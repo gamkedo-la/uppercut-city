@@ -14,7 +14,9 @@ public class GameSystem : MonoBehaviour
     }
     public void JoinNewPlayer(PlayerInput playerInput){
         Debug.Log($"New Player: {playerInput.currentControlScheme}");
-        //playerInput.GetComponent<MultiplayerEventSystem>().firstSelectedGameObject = mainMenu.GetComponent<MainMenuScript>().currentItem;
+        playerInput.gameObject.GetComponent<PlayerConfig>().allegiance = PlayerConfig.Allegiance.neutral;
+        // playerInput.gameObject.GetComponent<PlayerConfig>().SetFighterInput(fighterAInput);
+        // playerInput.GetComponent<MultiplayerEventSystem>().firstSelectedGameObject = mainMenu.GetComponent<MainMenuScript>().currentItem;
         // configure input
     }
     private void HandleStartGame(object sender, System.EventArgs e){

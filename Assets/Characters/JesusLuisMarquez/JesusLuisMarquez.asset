@@ -15,9 +15,11 @@ MonoBehaviour:
   movementSpeed: 2
   rotationSpeed: 2
   jabPower: 5
+  crossPower: 0
   hookPower: 10
   uppercutPower: 12
   temporaryDamageLimit: 35
+  characterMesh: {fileID: -7377882013840102368, guid: 639ffeab5f50e9e4d8a6ec0167cc0e7d, type: 3}
   mat_Skin: {fileID: 2100000, guid: 058eaf8bed1b6ca42bb903d9661ada2a, type: 2}
   mat_Head: {fileID: 2100000, guid: 1002e909e39a07b438c47009f9bd0dbd, type: 2}
   mat_Shoes: {fileID: 2100000, guid: 2f66db859950ce4488d6924ba2673100, type: 2}

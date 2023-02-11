@@ -4,6 +4,8 @@ public class MenuManager : MonoBehaviour
 {
     [Header("Menu Containers")]
     [SerializeField] public GameObject mainMenu;
+    [SerializeField] public GameObject homeMenu;
+    [SerializeField] public GameObject characterSetupMenu;
     public static EventHandler<EventArgs> StartGame;
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
@@ -11,13 +13,5 @@ public class MenuManager : MonoBehaviour
     public void Btn_StartGame(){
         CloseAllMenus();
         StartGame?.Invoke(this, EventArgs.Empty);
-    }
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
     }
 }

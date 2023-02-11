@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-public class FighterConfig : MonoBehaviour
+[CreateAssetMenu(fileName = "FighterConfig", menuName = "ScriptableObjects/FighterConfig", order = 1)]
+public class SO_FighterConfig : ScriptableObject
 {
     // Establish What Corner the Fighter is in
     // Establish what character is being used
-    private static readonly string[] cornerOptions = {"red", "blue"};
     public enum Corner {red, blue};
-    public Corner corner;
+    public static Corner corner;
     public SO_Character[] playableCharacters;
-
+    public int characterIndex;
 }
