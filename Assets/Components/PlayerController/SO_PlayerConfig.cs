@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerConfig : MonoBehaviour
+// make a new one when a player joins and configure it
+public class SO_PlayerConfig : ScriptableObject
 {
     public SO_InputData fighterInput;
 
     public enum Allegiance {red, neutral, blue};
     public Allegiance allegiance;
-    public void SetFighterInput(SO_InputData input){
-        fighterInput = input;
-    }
 }

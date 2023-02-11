@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99475ae28b95fea44b1f5203b4a2560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputData: {fileID: 11400000, guid: 3225cf282a073ee4da1ef96fa92fdb43, type: 2}
 --- !u!54 &6739481826187275381
 Rigidbody:
   m_ObjectHideFlags: 0

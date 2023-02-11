@@ -20,8 +20,9 @@ MonoBehaviour:
   uppercutPower: 12
   temporaryDamageLimit: 35
   characterMesh: {fileID: -7377882013840102368, guid: 7cd3a93980278bf49a48c27574dcc8a1, type: 3}
-  mat_Skin: {fileID: 2100000, guid: e2a39e071591cd149a23f66b96f64e76, type: 2}
-  mat_Head: {fileID: 2100000, guid: c6a346a7d8193db4388dcf091d4fa524, type: 2}
-  mat_Shoes: {fileID: 2100000, guid: 4fa0427d659fcf741948fa1a9b274909, type: 2}
-  mat_Shorts: {fileID: 2100000, guid: 6f1d12abfb1a314479c66c83c4c6f706, type: 2}
-  mat_Gloves: {fileID: 2100000, guid: cb216466bba6566438d0942553377ddb, type: 2}
+  characterMaterials:
+  - {fileID: 2100000, guid: e2a39e071591cd149a23f66b96f64e76, type: 2}
+  - {fileID: 2100000, guid: 6f1d12abfb1a314479c66c83c4c6f706, type: 2}
+  - {fileID: 2100000, guid: 4fa0427d659fcf741948fa1a9b274909, type: 2}
+  - {fileID: 2100000, guid: cb216466bba6566438d0942553377ddb, type: 2}
+  - {fileID: 2100000, guid: c6a346a7d8193db4388dcf091d4fa524, type: 2}

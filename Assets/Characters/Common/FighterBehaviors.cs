@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FighterBehaviors : MonoBehaviour
 {
+    public SO_InputData inputData;
     private Animator animator;
     private GameObject opponent;
     private Vector3 movementVector;

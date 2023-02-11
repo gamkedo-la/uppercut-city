@@ -7,14 +7,12 @@ public class PlayerInputHandling : MonoBehaviour
     private Vector2 punchInput;
     private GameObject fighter;
     private FighterBehaviors fighterBehaviors;
-    private PlayerConfig playerConfig;
     private Animator fighterAnimator;
     // connect this object to a fighter
     // input logic goes in here
     // behaviours are handled in FighterBehaviors
     private void Awake(){
         mainCamera = Camera.main;
-        playerConfig = GetComponent<PlayerConfig>();
     }
     public void HandleLeanModifier(InputAction.CallbackContext context){
         Debug.Log($"leaning {context.ReadValue<float>() > 0}");
