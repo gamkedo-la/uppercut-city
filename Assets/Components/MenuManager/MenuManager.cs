@@ -10,17 +10,38 @@ public class MenuManager : MonoBehaviour
     [Header("Home Menu Items")]
     [SerializeField] public GameObject btn_MatchSetup;
     [Header("Character Setup Items")]
-    [SerializeField] public GameObject btn_FormatSetup;
+    [SerializeField] public GameObject btn_CharacterAccept;
     public static EventHandler<EventArgs> setupMatch;
+    public static EventHandler<EventArgs> acceptCharacters;
+    private void Awake() {
+        GameSystem.newPlayerJoined += HandleNewPlayer;
+    }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
+        homeMenu.SetActive(false);
         characterSetupMenu.SetActive(false);
     }
     public void Btn_MatchSetup(){
         CloseAllMenus();
+        mainMenu.SetActive(true);
         characterSetupMenu.SetActive(true);
-        FocusControllersOnButton(btn_MatchSetup);
+        FocusControllersOnButton(btn_CharacterAccept);
         setupMatch?.Invoke(this, EventArgs.Empty);
+    }
+    public void Btn_CharacterAccept(){
+        CloseAllMenus();
+        // change player's allegiance flag
+        // Set playercontroller to modify FighterInput SO
+        // trigger state machine
+        acceptCharacters?.Invoke(this, EventArgs.Empty);
+        Debug.Log($"Accept Characters: {acceptCharacters}");
+    }
+    public void SetDefaultMenuFocus()
+    {
+        foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
+        {
+            es.firstSelectedGameObject = btn_MatchSetup;
+        }
     }
     public void FocusControllersOnButton(GameObject focus)
     {
@@ -28,5 +49,9 @@ public class MenuManager : MonoBehaviour
         {
             es.firstSelectedGameObject = focus;
         }
+    }
+    private void HandleNewPlayer(object sender, System.EventArgs e){
+        Debug.Log($"HandleNewPlayer: ");
+        SetDefaultMenuFocus();
     }
 }

@@ -8,21 +8,28 @@ public class GameSystem : MonoBehaviour
     public SO_GameType[] gameTypes;
     public SO_InputData fighterAInput;
     public SO_InputData fighterBInput;
-    private void Awake(){
+    public static EventHandler<EventArgs> newPlayerJoined;
+    private void Awake()
+    {
         masterStateMachine = GetComponent<Animator>();
-        MenuManager.setupMatch += HandleSetupMatch;
+        MenuManager.acceptCharacters += HandleAcceptCharacters;
     }
-    public void JoinNewPlayer(PlayerInput playerInput){
-        Debug.Log($"New Player: {playerInput.currentControlScheme}");
+    public void JoinNewPlayer(PlayerInput playerInput)
+    {
+        InputSystemUIInputModule UiModule = playerInput.GetComponent<InputSystemUIInputModule>();
+        UiModule.actionsAsset = playerInput.actions;
+        playerInput.uiInputModule = UiModule;
+        // MenuManager.SetDefaultMenuFocus();
+        newPlayerJoined?.Invoke(this, EventArgs.Empty);
+        Debug.Log($"New Player: {playerInput.currentControlScheme}, {newPlayerJoined}");
     }
-    private void HandleSetupMatch(object sender, System.EventArgs e){
-        //masterStateMachine.SetBool("MatchStarted", true);
-    }
-    private void HandleStartMatch(object sender, System.EventArgs e){
+    private void HandleAcceptCharacters(object sender, System.EventArgs e)
+    {
+        // later there will be another stage after
         masterStateMachine.SetBool("MatchStarted", true);
     }
-    void Update()
+    private void HandleStartMatch(object sender, System.EventArgs e)
     {
-        
+        masterStateMachine.SetBool("MatchStarted", true);
     }
 }

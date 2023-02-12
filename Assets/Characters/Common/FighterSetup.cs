@@ -29,6 +29,11 @@ public class FighterSetup : MonoBehaviour
             Debug.Log("No Corner Selected");
         }
     }
+    public void ApplyConfigurations(object sender)
+    {
+        // trigger this to read data and apply it to the fighter
+        // models, textures, etc.
+    }
     void Start()
     {
         
