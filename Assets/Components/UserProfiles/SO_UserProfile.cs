@@ -7,4 +7,5 @@ public class SO_UserProfile : ScriptableObject
     // keeps track of default fighter and longterm stats
     public SO_Character defaultRedFighter;
     public SO_Character defaultBlueFighter;
+    public SO_GameType defaultGameType;
 }

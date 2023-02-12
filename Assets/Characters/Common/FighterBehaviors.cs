@@ -4,13 +4,19 @@ public class FighterBehaviors : MonoBehaviour
 {
     public SO_InputData inputData;
     private Animator animator;
+    private FighterSetup fighterSetup;
     private GameObject opponent;
     private Vector3 movementVector;
     private void Awake() {
-        // should initialize sides etc
-        opponent = GameObject.FindWithTag("FighterB");
-        // get animator
         animator = GetComponentInChildren<Animator>();
+        fighterSetup = GetComponent<FighterSetup>();
+        foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
+        {
+            if(fs.corner != fighterSetup.corner)
+            {
+                opponent = fs.gameObject;
+            }
+        }
     }
     public bool IsZeroQuaternion(Quaternion q){
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;

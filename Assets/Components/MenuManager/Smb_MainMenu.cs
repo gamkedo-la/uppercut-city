@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SMB_MN_MainMenu : StateMachineBehaviour
+public class Smb_MainMenu : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

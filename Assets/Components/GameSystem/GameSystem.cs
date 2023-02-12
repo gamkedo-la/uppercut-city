@@ -10,16 +10,15 @@ public class GameSystem : MonoBehaviour
     public SO_InputData fighterBInput;
     private void Awake(){
         masterStateMachine = GetComponent<Animator>();
-        MenuManager.StartGame += HandleStartGame;
+        MenuManager.setupMatch += HandleSetupMatch;
     }
     public void JoinNewPlayer(PlayerInput playerInput){
         Debug.Log($"New Player: {playerInput.currentControlScheme}");
-        // playerInput.gameObject.GetComponent<PlayerConfig>().allegiance = PlayerConfig.Allegiance.neutral;
-        // playerInput.gameObject.GetComponent<PlayerConfig>().SetFighterInput(fighterAInput);
-        //playerInput.GetComponent<MultiplayerEventSystem>().firstSelectedGameObject = mainMenu.GetComponent<MainMenuScript>().currentItem;
-        // configure input
     }
-    private void HandleStartGame(object sender, System.EventArgs e){
+    private void HandleSetupMatch(object sender, System.EventArgs e){
+        //masterStateMachine.SetBool("MatchStarted", true);
+    }
+    private void HandleStartMatch(object sender, System.EventArgs e){
         masterStateMachine.SetBool("MatchStarted", true);
     }
     void Update()
