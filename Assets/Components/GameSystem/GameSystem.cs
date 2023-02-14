@@ -19,6 +19,7 @@ public class GameSystem : MonoBehaviour
         InputSystemUIInputModule UiModule = playerInput.GetComponent<InputSystemUIInputModule>();
         UiModule.actionsAsset = playerInput.actions;
         playerInput.uiInputModule = UiModule;
+        // reference SO for menu navigation
         // MenuManager.SetDefaultMenuFocus();
         newPlayerJoined?.Invoke(this, EventArgs.Empty);
         Debug.Log($"New Player: {playerInput.currentControlScheme}, {newPlayerJoined}");

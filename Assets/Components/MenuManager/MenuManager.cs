@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem.UI;
 public class MenuManager : MonoBehaviour
 {
+    [Header("Menu Systems")]
+    [SerializeField] SO_MenuManagement sm_MainMenu;
     [Header("Menu Containers")]
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject homeMenu;
@@ -15,11 +17,18 @@ public class MenuManager : MonoBehaviour
     public static EventHandler<EventArgs> acceptCharacters;
     private void Awake() {
         GameSystem.newPlayerJoined += HandleNewPlayer;
+        sm_MainMenu.currentlyActiveItem = btn_MatchSetup;
     }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
         homeMenu.SetActive(false);
         characterSetupMenu.SetActive(false);
+    }
+    public void Btn_Home(){
+        CloseAllMenus();
+        mainMenu.SetActive(true);
+        homeMenu.SetActive(true);
+        FocusControllersOnButton(btn_MatchSetup);
     }
     public void Btn_MatchSetup(){
         CloseAllMenus();
@@ -41,17 +50,17 @@ public class MenuManager : MonoBehaviour
         foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
         {
             es.firstSelectedGameObject = btn_MatchSetup;
+            FocusControllersOnButton(btn_MatchSetup);
         }
     }
     public void FocusControllersOnButton(GameObject focus)
     {
         foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
         {
-            es.firstSelectedGameObject = focus;
+            es.SetSelectedGameObject(focus);
         }
     }
     private void HandleNewPlayer(object sender, System.EventArgs e){
-        Debug.Log($"HandleNewPlayer: ");
         SetDefaultMenuFocus();
     }
 }

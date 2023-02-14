@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732fcc127951c324f84139813db117dc, type: 3}
   m_Name: WorldTitleMatch
   m_EditorClassIdentifier: 
-  numberOfRounds: 8
-  currentRound: 1
-  roundTime: 60
+  numberOfRounds: 12
+  currentRound: 0
+  roundTime: 180
   restTime: 30
