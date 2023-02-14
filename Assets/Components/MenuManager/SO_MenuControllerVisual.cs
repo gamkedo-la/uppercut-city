@@ -7,13 +7,12 @@ using UnityEngine;
 public class SO_MenuControllerVisual : ScriptableObject
 {
     // multiple controller icons for the 4 possible players
-    public Sprite[] controllerIcons = new Sprite[4];
     private GameObject[] inputIcon;
-    private PlayerInput[] playerInputs;
-    public void SetActiveInputIcons(PlayerInput[] inputs)
+    private PlayerController[] playerControllers;
+    public void SetActiveInputIcons(PlayerController[] inputs)
     {
-        playerInputs = inputs;
-        for (int i = 0; i < playerInputs.Length; i++)
+        playerControllers = inputs;
+        for (int i = 0; i < playerControllers.Length; i++)
         {
             // map the active players to input icons
         }
