@@ -5,14 +5,23 @@ using UnityEngine;
 public class MenuIconRenderer : MonoBehaviour
 {
     public SO_MenuControllerVisual chooseSidesVisual;
-    // get active inputs and set them in th SO_MenuControllerVisual
+    private void Awake() {
+        GameSystem.newPlayerJoined += InitializeMenuIcons;
+        MenuManager.setupMatch += InitializeMenuIcons;
+    }
     private void MapInputsToIcons()
     {
-        chooseSidesVisual.SetActiveInputIcons(FindObjectsOfType<PlayerController>());
+        chooseSidesVisual.SetupInputIcons(FindObjectsOfType<PlayerController>());
+    }
+    private void InitializeMenuIcons(object sender, System.EventArgs e)
+    {
+        MapInputsToIcons();
+        // iterate through Inputs Icons
+        // set the correct menu icon and color
+        // set the icon to 'active'
     }
     private void FixedUpdate() 
     {
-        // Get all controllers
         // trigger the icons to move towards the correct menu spot
         Debug.Log("MenuIconRenderer FU");
     }

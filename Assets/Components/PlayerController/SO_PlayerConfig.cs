@@ -9,4 +9,5 @@ public class SO_PlayerConfig : ScriptableObject
 
     public enum Allegiance {red, neutral, blue};
     public Allegiance allegiance = Allegiance.neutral;
+    public GameObject controllerIcon;
 }
