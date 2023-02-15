@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuIconRenderer : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class MenuIconRenderer : MonoBehaviour
         for (int i=0; i < inputs.Length; i++)
         {
             inputMenuSprites[i].gameObject.SetActive(true);
+            // inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
             // set the icon type
         }
     }

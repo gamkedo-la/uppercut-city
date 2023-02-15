@@ -17,12 +17,25 @@ public class GameSystem : MonoBehaviour
     public void JoinNewPlayer(PlayerInput playerInput)
     {
         InputSystemUIInputModule UiModule = playerInput.GetComponent<InputSystemUIInputModule>();
+        PlayerController playerController = playerInput.GetComponent<PlayerController>();
         UiModule.actionsAsset = playerInput.actions;
         playerInput.uiInputModule = UiModule;
-        // reference SO for menu navigation
-        // MenuManager.SetDefaultMenuFocus();
+        switch (playerInput.currentControlScheme){
+            case "Keyboard&Mouse":
+                playerController.playerConfig.controllerIcon = playerController.inputIcons.keyboardMouse;
+                break;
+            case "PS4":
+                playerController.playerConfig.controllerIcon = playerController.inputIcons.playStation;
+                break;
+            case "XBox":
+                playerController.playerConfig.controllerIcon = playerController.inputIcons.xBox;
+                break;
+            case "Gamepad":
+                playerController.playerConfig.controllerIcon = playerController.inputIcons.genericGamepad;
+                break;
+        }
         newPlayerJoined?.Invoke(this, EventArgs.Empty);
-        Debug.Log($"New Player: {playerInput.currentControlScheme}, {newPlayerJoined}");
+        Debug.Log($"New Player: {playerInput.currentControlScheme}");
     }
     private void HandleAcceptCharacters(object sender, System.EventArgs e)
     {

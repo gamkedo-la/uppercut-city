@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e24edb22d141b4b9f8e477eb518827, type: 3}
   m_Name: ChooseSideIcons
   m_EditorClassIdentifier: 
-  keyboardMouse: {fileID: 0}
-  genericGamepad: {fileID: 0}
-  playStation: {fileID: 0}
-  xBox: {fileID: 0}
+  keyboardMouse: {fileID: 2800000, guid: a4fbb2e79c28ed548b29586b62bcf50b, type: 3}
+  genericGamepad: {fileID: 2800000, guid: 6806b526b2995a244abfad6e43f071be, type: 3}
+  playStation: {fileID: 2800000, guid: dcb1fbe9c24021a48b6c59dd2b7c47aa, type: 3}
+  xBox: {fileID: 2800000, guid: b73b19cf847f44f4bb6a4865f2259e8e, type: 3}

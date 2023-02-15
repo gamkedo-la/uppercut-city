@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mpEventSystem: {fileID: 7566146067836813756}
   mpUiInputModule: {fileID: 2640036913603328191}
+  inputIcons: {fileID: 11400000, guid: d78a3989d6832c2489599c4824cb4e0a, type: 2}
+  playerConfig: {fileID: 0}
 --- !u!114 &3530379395920090535
 MonoBehaviour:
   m_ObjectHideFlags: 0
