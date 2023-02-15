@@ -36,8 +36,10 @@ public class MenuManager : MonoBehaviour
         characterSetupMenu.SetActive(true);
         FocusControllersOnButton(btn_CharacterAccept);
         setupMatch?.Invoke(this, EventArgs.Empty);
+        Debug.Log("Match setup invoked");
     }
-    public void Btn_CharacterAccept(){
+    public void Btn_CharacterAccept()
+    {
         CloseAllMenus();
         // change player's allegiance flag
         // Set playercontroller to modify FighterInput SO
