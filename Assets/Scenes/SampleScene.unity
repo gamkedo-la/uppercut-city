@@ -25154,6 +25154,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1811318849214962922, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: m_Radius
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 8525871222087910879, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_Name
       value: Fighter

@@ -10,6 +10,7 @@ public class PlayerInputHandling : MonoBehaviour
     private Vector2 punchInput;
     private FighterBehaviors fighterBehaviors;
     private Animator fighterAnimator;
+    private FighterSetup[] fighters;
     // connect this object to a fighter
     // input logic goes in here
     // behaviours are handled in FighterBehaviors
@@ -17,27 +18,41 @@ public class PlayerInputHandling : MonoBehaviour
     {
         controller = GetComponent<PlayerController>();
         playerInput = GetComponent<PlayerInput>();
+        fighters = FindObjectsOfType<FighterSetup>();
         mainCamera = Camera.main;
         Smb_MatchLive.onStateEnter += Ev_FightStart;
     }
+    private void GetFighterBehaviors(FighterSetup.Corner corner)
+    {
+        foreach (FighterSetup fs in fighters)
+        {
+            if(fs.corner == corner)
+            {
+                fighterBehaviors = fs.GetComponent<FighterBehaviors>();
+            }
+        }
+    }
     public void Ev_FightStart(object sender, System.EventArgs e){
+        // get fighter behaviours
+        // find the corner flag
+        // 
         if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red){
             so_fighterInput = controller.playerConfig.inputRedFighter;
+            // for each fighter setup check cornerflag
+            GetFighterBehaviors(FighterSetup.Corner.red);
             Debug.Log($"controlling {controller.playerConfig.inputRedFighter}");
             return;
         }
         if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue){
             so_fighterInput = controller.playerConfig.inputRedFighter;
+            GetFighterBehaviors(FighterSetup.Corner.blue);
             Debug.Log($"controlling {so_fighterInput}");
             return;
         }
     }
     public void HandleLeanModifier(InputAction.CallbackContext context){
-        if(context.performed){
-
-        }
         Debug.Log($"leaning {context.ReadValue<float>() > 0}");
-        //fighterBehaviors.SetLeanModifier(context.ReadValue<float>() > 0);
+        fighterBehaviors?.SetLeanModifier(context.ReadValue<float>() > 0);
         // so_fighterInput.leanModifier 
     }
     public void InputMovement(InputAction.CallbackContext context){
@@ -45,11 +60,11 @@ public class PlayerInputHandling : MonoBehaviour
         // camera relative movement - take movement input and rotate around vertical axis by i
         // i being the camera's rotation 
         // mainCamera.transform.rotation.y
-        //fighterBehaviors.SetMovementVector(movementInput);
+        fighterBehaviors?.SetMovementVector(movementInput);
     }
     public void HandlePunchInput(InputAction.CallbackContext context){
         punchInput = context.ReadValue<Vector2>();
-        //fighterBehaviors.HandlePunch(Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
+        fighterBehaviors?.HandlePunch(Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
     }
     private void Start() {
         // Assign this player controller to a fighter
