@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
     public static EventHandler<EventArgs> setupMatch;
     public static EventHandler<EventArgs> acceptCharacters;
     private void Awake() {
-        GameSystem.newPlayerJoined += HandleNewPlayer;
+        PlayerController.newPlayerJoined += HandleNewPlayer;
         sm_MainMenu.currentlyActiveItem = btn_MatchSetup;
     }
     public void CloseAllMenus(){

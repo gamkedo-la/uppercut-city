@@ -9,7 +9,7 @@ public class MenuIconRenderer : MonoBehaviour
     private PlayerController[] inputs;
     private void Awake()
     {
-        GameSystem.newPlayerJoined += InitializeMenuIcons;
+        PlayerController.newPlayerJoined += InitializeMenuIcons;
         MenuManager.setupMatch += InitializeMenuIcons;
     }
     private void HideAllMenuSprites()
@@ -31,7 +31,7 @@ public class MenuIconRenderer : MonoBehaviour
         for (int i=0; i < inputs.Length; i++)
         {
             inputMenuSprites[i].gameObject.SetActive(true);
-            // inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
+            inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
             // set the icon type
         }
     }
