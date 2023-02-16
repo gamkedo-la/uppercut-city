@@ -1940,12 +1940,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e057b75176a883488ed5b283036c822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconSpeed: 300
   inputMenuSprites:
   - {fileID: 2685423871734407291}
   - {fileID: 5664575265657965257}
   - {fileID: 8690322294226645141}
   - {fileID: 1323275695038980556}
-  chooseSidesVisual: {fileID: 11400000, guid: bf7faa171e6f89140971df2d455dae04, type: 2}
+  menuTimeProvider: {fileID: 11400000, guid: c207c92f2b03ea5448396380d6d3b33b, type: 2}
+  neutralSlots:
+  - {fileID: 3579709560627890816}
+  - {fileID: 4043494682401872761}
+  - {fileID: 8280011534738570098}
+  - {fileID: 6538333260547327901}
+  redCornerSlot: {fileID: 1082582137987687228}
+  blueCornerSlot: {fileID: 6576294253529371769}
 --- !u!1 &7077451623637912523
 GameObject:
   m_ObjectHideFlags: 0

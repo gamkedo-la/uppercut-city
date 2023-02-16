@@ -10,4 +10,16 @@ public class SO_PlayerConfig : ScriptableObject
     public enum Allegiance {red, neutral, blue};
     public Allegiance allegiance = Allegiance.neutral;
     public Texture2D controllerIcon;
+    public void IncrementAllegiance()
+    {
+        int a = (int)allegiance + 1;
+        Debug.Log($"Incrementing allegiance: {(Allegiance)a}");
+        if(a <= 2) {allegiance = (Allegiance)a;}
+    }
+    public void DecrementAllegiance()
+    {
+        int a = (int)allegiance - 1;
+        Debug.Log($"Incrementing allegiance: {(Allegiance)a}");
+        if(a >= 0) {allegiance = (Allegiance)a;}
+    }
 }
