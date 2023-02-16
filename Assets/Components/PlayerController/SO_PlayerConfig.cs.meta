@@ -3,7 +3,10 @@ guid: 1776699885672ce4cafc89a6b74cb2e9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inputRedFighter: {fileID: 11400000, guid: 3225cf282a073ee4da1ef96fa92fdb43, type: 2}
+  - inputBlueFighter: {fileID: 11400000, guid: a36883cb055540f49a7abbff1ff37caf, type: 2}
+  - controllerIcon: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
