@@ -7,7 +7,7 @@ public class FighterBehaviors : MonoBehaviour
     private FighterSetup fighterSetup;
     private GameObject opponent;
     private Vector3 movementVector;
-    private void Awake() {
+    private void Awake(){
         animator = GetComponentInChildren<Animator>();
         fighterSetup = GetComponent<FighterSetup>();
         foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
