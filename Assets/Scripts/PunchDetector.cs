@@ -8,7 +8,9 @@ using UnityEngine;
 
 public class PunchDetector : MonoBehaviour
 {
-    AudioSource audioSource;
+    public Transform hitPrefab;
+
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,10 @@ public class PunchDetector : MonoBehaviour
         // no effect? I can't see it - FIXME
         Debug.DrawLine(transform.position,other.transform.position,Color.red,1.5f,false);
 
+        // spawn some particles
+        if (hitPrefab) Instantiate(hitPrefab,other.transform.position,transform.rotation);
+
+        // and an optional (unity native: not wwise) sound
         if (audioSource) audioSource.Play();
     }
 
