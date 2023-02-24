@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class FighterBehaviors : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class FighterBehaviors : MonoBehaviour
     private FighterSetup fighterSetup;
     private GameObject opponent;
     private Vector3 movementVector;
+    public static EventHandler OnPunchThrown;
+    
     private void Awake() {
         animator = GetComponentInChildren<Animator>();
         fighterSetup = GetComponent<FighterSetup>();
@@ -55,6 +58,8 @@ public class FighterBehaviors : MonoBehaviour
         }
         // see ticket https://trello.com/c/O1J6ZZxf
         // change animation state to windup
+
+        OnPunchThrown?.Invoke(this, EventArgs.Empty);
     }
     private void HandleMovement(){
         if(movementVector.magnitude <= 0.05f || animator.GetBool("Leaning")){ return; }

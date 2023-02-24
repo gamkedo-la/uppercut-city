@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class PunchDetector : MonoBehaviour
 {
+
+    public static EventHandler OnPunchConnected;
     public Transform hitPrefab;
 
     public AudioSource audioSource;
@@ -49,6 +51,8 @@ public class PunchDetector : MonoBehaviour
 
         // and an optional (unity native: not wwise) sound
         if (audioSource) audioSource.Play();
+
+        OnPunchConnected?.Invoke(this, EventArgs.Empty);
     }
 
     /*
