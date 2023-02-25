@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerInputHandling : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerInputHandling : MonoBehaviour
     private FighterBehaviors fighterBehaviors;
     private Animator fighterAnimator;
     private FighterSetup[] fighters;
+    public static EventHandler onMenuPressed;
     // connect this object to a fighter
     // input logic goes in here
     // behaviours are handled in FighterBehaviors
@@ -43,7 +45,7 @@ public class PlayerInputHandling : MonoBehaviour
         }
         if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue)
         {
-            so_fighterInput = controller.playerConfig.inputRedFighter;
+            so_fighterInput = controller.playerConfig.inputBlueFighter;
             GetFighterBehaviors(FighterSetup.Corner.blue);
             Debug.Log($"controlling {so_fighterInput}");
             return;
@@ -53,12 +55,19 @@ public class PlayerInputHandling : MonoBehaviour
     {
         LinkToFighter();
     }
-    public void HandleLeanModifier(InputAction.CallbackContext context){
+    public void HandleLeanModifier(InputAction.CallbackContext context)
+    {
         Debug.Log($"leaning {context.ReadValue<float>() > 0}");
         fighterBehaviors?.SetLeanModifier(context.ReadValue<float>() > 0);
         // so_fighterInput.leanModifier 
     }
-    public void InputMovement(InputAction.CallbackContext context){
+    public void HandleMenu(InputAction.CallbackContext context)
+    {
+        // so_fighterInput.leanModifier
+        onMenuPressed?.Invoke(this, EventArgs.Empty);
+    }
+    public void InputMovement(InputAction.CallbackContext context)
+    {
         movementInput = context.ReadValue<Vector2>();
         // camera relative movement - take movement input and rotate around vertical axis by i
         // i being the camera's rotation 

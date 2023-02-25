@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "a886cb34-acd1-4810-aa4a-ca8a03918eb5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -233,59 +242,48 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Keyboard Punching",
-                    "id": "391cac1e-a912-4bea-a298-e4961c704910",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Punch",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Up",
-                    "id": "e38db1a7-50f5-4a02-a45b-4fcab5fa7ed0",
-                    "path": "<Keyboard>/i",
+                    "name": "",
+                    "id": "33d6ce04-bfb3-43f7-8f69-84fc1b254a7f",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Punch",
+                    "action": "Menu",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "Down",
-                    "id": "658e01d2-3502-4e64-9227-0222e5724a39",
-                    "path": "<Keyboard>/k",
+                    "name": "",
+                    "id": "9620c0d2-d931-4880-9348-bf0f4929f6b1",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Punch",
+                    "groups": "Gamepad",
+                    "action": "Menu",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "Left",
-                    "id": "87e17ca0-17ed-49aa-9c9a-cf4141c91290",
-                    "path": "<Keyboard>/j",
+                    "name": "",
+                    "id": "62a5919f-4042-45c5-8303-06c710fa0890",
+                    "path": "<DualShockGamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Punch",
+                    "groups": "PS4",
+                    "action": "Menu",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "Right",
-                    "id": "5067814b-0106-4e5f-900b-7bef4abf6d7d",
-                    "path": "<Keyboard>/l",
+                    "name": "",
+                    "id": "2af5bb0a-9ccd-4731-8517-655b5769d8cf",
+                    "path": "<XInputController>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Punch",
+                    "groups": "XBox",
+                    "action": "Menu",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -391,6 +389,15 @@
                     "processors": "AxisDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Return",
+                    "type": "Button",
+                    "id": "cc36115d-a9fa-438f-b331-a6fd1956defa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -745,6 +752,50 @@
                     "action": "ChooseSides",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "39bb4615-002f-47a5-841a-735a86bfcf10",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5198223c-2bc0-4137-b2b9-fb9d2d51565e",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e523107-d403-4609-abb5-bfaea2aad527",
+                    "path": "<DualShockGamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "449d8741-0402-4d92-97d6-adf21b8069bd",
+                    "path": "<XInputController>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBox",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

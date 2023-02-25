@@ -7,6 +7,7 @@ public class UIInputHandling : MonoBehaviour
 {
     private PlayerController playerController;
     public static EventHandler<EventArgs> sideSelection;
+    public static EventHandler onReturnPressed;
     private float sideSelectionAxis;
     private bool sideSelectionCooldown = false;
     private void Awake() {
@@ -34,5 +35,9 @@ public class UIInputHandling : MonoBehaviour
         // cooldown selection, move once cooldown
         // Set the controller to 
         sideSelection?.Invoke(this, EventArgs.Empty);
+    }
+    public void HandleReturn(InputAction.CallbackContext context)
+    {
+        onReturnPressed?.Invoke(this, EventArgs.Empty);
     }
 }

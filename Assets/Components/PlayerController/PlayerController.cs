@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public SO_PlayerConfig playerConfig;
     private void Awake()
     {
-        Debug.Log($"PlayerController Awake");
         playerConfig = ScriptableObject.CreateInstance<SO_PlayerConfig>();
         playerConfig.playerInput = GetComponent<PlayerInput>();
         playerConfig.playerInputHandling = GetComponent<PlayerInputHandling>();
@@ -30,6 +29,8 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         Smb_MatchLive.onStateEnter += Ev_FightStart;
+        PlayerInputHandling.onMenuPressed += Ev_MenuPressed;
+        UIInputHandling.onReturnPressed += Ev_ReturnPressed;
     }
     public void Ev_FightStart(object sender, System.EventArgs e)
     {
@@ -41,6 +42,14 @@ public class PlayerController : MonoBehaviour
         } else {
             playerConfig.playerInput.SwitchCurrentActionMap("Player");
         }
+    }
+    public void Ev_MenuPressed(object sender, System.EventArgs e)
+    {
+        playerConfig.playerInput.SwitchCurrentActionMap("UI");
+    }
+    public void Ev_ReturnPressed(object sender, System.EventArgs e)
+    {
+        playerConfig.playerInput.SwitchCurrentActionMap("Player");
     }
     private void Start() {
         PlayerInput[] localInputs = FindObjectsOfType<PlayerInput>();
