@@ -3,8 +3,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandling : MonoBehaviour
 {
     private PlayerController controller;
-    private PlayerInput playerInput;
-    private SO_InputData so_fighterInput;
+    private SO_FighterControlData so_fighterInput;
     private Camera mainCamera;
     private Vector2 movementInput;
     private Vector2 punchInput;
@@ -17,10 +16,10 @@ public class PlayerInputHandling : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
-        playerInput = GetComponent<PlayerInput>();
         fighters = FindObjectsOfType<FighterSetup>();
         mainCamera = Camera.main;
         Smb_MatchLive.onStateEnter += Ev_FightStart;
+        PlayerController.newPlayerJoined += Ev_FightStart;
     }
     private void GetFighterBehaviors(FighterSetup.Corner corner)
     {
@@ -32,23 +31,27 @@ public class PlayerInputHandling : MonoBehaviour
             }
         }
     }
-    public void Ev_FightStart(object sender, System.EventArgs e){
-        // get fighter behaviours
-        // find the corner flag
-        // 
-        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red){
+    public void LinkToFighter()
+    {
+        controller.playerConfig.playerInput.SwitchCurrentActionMap("Player");
+        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red)
+        {
             so_fighterInput = controller.playerConfig.inputRedFighter;
-            // for each fighter setup check cornerflag
             GetFighterBehaviors(FighterSetup.Corner.red);
             Debug.Log($"controlling {controller.playerConfig.inputRedFighter}");
             return;
         }
-        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue){
+        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue)
+        {
             so_fighterInput = controller.playerConfig.inputRedFighter;
             GetFighterBehaviors(FighterSetup.Corner.blue);
             Debug.Log($"controlling {so_fighterInput}");
             return;
         }
+    }
+    public void Ev_FightStart(object sender, System.EventArgs e)
+    {
+        LinkToFighter();
     }
     public void HandleLeanModifier(InputAction.CallbackContext context){
         Debug.Log($"leaning {context.ReadValue<float>() > 0}");
@@ -70,5 +73,6 @@ public class PlayerInputHandling : MonoBehaviour
         // Assign this player controller to a fighter
         // This is what the 'ChooseSides' menu scripting will do later on
         // ITMT: just grab player A
+        LinkToFighter();
     }
 }

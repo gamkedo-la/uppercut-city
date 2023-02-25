@@ -49,8 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6fbbb5bf6b02a42a79dda6bd8c1bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mpEventSystem: {fileID: 7566146067836813756}
-  mpUiInputModule: {fileID: 2640036913603328191}
   inputIcons: {fileID: 11400000, guid: d78a3989d6832c2489599c4824cb4e0a, type: 2}
   playerConfig: {fileID: 0}
 --- !u!114 &3530379395920090535
@@ -194,9 +192,13 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3331a061-1418-4332-9d16-ea601924b13c
     m_ActionName: UI/ChooseSides[/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID/rightStick/right,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/rightStick/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5d6f9016-9ed4-465f-a68f-01a7c454ced9
+    m_ActionName: Neutral/Navigate[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/rightStick/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/rightStick/down,/DualShock4GamepadHID/dpad/down,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &7566146067836813756

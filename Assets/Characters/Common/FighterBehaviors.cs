@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FighterBehaviors : MonoBehaviour
 {
-    public SO_InputData inputData;
+    public SO_FighterControlData inputData;
     private Animator animator;
     private FighterSetup fighterSetup;
     private GameObject opponent;
@@ -39,7 +39,7 @@ public class FighterBehaviors : MonoBehaviour
         // subscribe for round end event
     }
     public void HandlePunch(double inputAngle){
-        // input angle: +- 180 left right  |  0 is neutral
+        // input angle: +180 right -180 left  |  0 is neutral
         if (inputAngle == 0){
             // toggle the punch followthrough
             animator.SetTrigger("PunchFollowThrough");
@@ -66,16 +66,16 @@ public class FighterBehaviors : MonoBehaviour
         // Todo: camera relative movement
     }
     private void HandleRotation(){
-        // rotate towards opponent
-        // TODO: limit the rate of rotation
-        if((opponent.transform.position - transform.position) != Vector3.zero){
+        if(opponent && (opponent.transform.position - transform.position) != Vector3.zero){
+            // rotate towards opponent
+            // TODO: limit the rate of rotation
             transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
         }
     }
-    private void Start() {
+    private void Start(){
         StateGameStart.onStateEnter += HandleGameStart;
     }
-    private void FixedUpdate() {
+    private void FixedUpdate(){
         HandleMovement();
         HandleRotation();
     }

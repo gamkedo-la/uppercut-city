@@ -72,7 +72,19 @@ MonoBehaviour:
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7209181449942759755}
+        m_TargetAssemblyTypeName: GameSystem, Assembly-CSharp
+        m_MethodName: JoinNewPlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -110,9 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43576e6157b3c3240b2cf821f8bb0d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSession: {fileID: 11400000, guid: 9408923dfe26cc84f9ee07614ea561af, type: 2}
   masterStateMachine: {fileID: 4210294326123632100}
   gameTypes:
-  - {fileID: 11400000, guid: fedcd604c18839340baf99a0826f2fe2, type: 2}
+  - {fileID: 11400000, guid: cfc6c5b45917f8447bab3f9528ada3a0, type: 2}
   - {fileID: 11400000, guid: 780fac08946c22444adc0b12c0162604, type: 2}
   - {fileID: 11400000, guid: 060c3482df22f074c9ef629c8720f0b5, type: 2}
   fighterAInput: {fileID: 11400000, guid: 3225cf282a073ee4da1ef96fa92fdb43, type: 2}
