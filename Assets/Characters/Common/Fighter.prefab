@@ -278,10 +278,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.002
-  m_Height: 0.01
+  m_Radius: 0.001925306
+  m_Height: 0.0040675728
   m_Direction: 1
-  m_Center: {x: 0, y: -0.0055, z: -0.0006}
+  m_Center: {x: -0.0000538955, y: -0.0036144408, z: -0.00058206293}
 --- !u!54 &7730856787313802594
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &6753855957589651121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,10 +706,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 0.9
+  m_Radius: 0.19317424
+  m_Height: 0.83154774
   m_Direction: 1
-  m_Center: {x: 0, y: 0.4, z: 0}
+  m_Center: {x: -0.006825626, y: 0.41866887, z: -0.000000089398526}
 --- !u!1001 &3506269599674970171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -792,7 +792,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 54ac1fd9d8777d446847d1a89e7166f3, type: 2}
+      objectReference: {fileID: 9100000, guid: 37bb7466e0dabc345a1e627c94ad3209, type: 2}
     - target: {fileID: 5866666021909216657, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_UpdateMode
       value: 1
