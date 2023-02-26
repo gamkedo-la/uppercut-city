@@ -5,6 +5,7 @@ using UnityEngine;
 public class FighterSetup : MonoBehaviour
 {
     public enum Corner {red, blue};
+    public SO_FighterStatus fighterStatus;
     public Corner corner;
     public SO_UserProfile userProfile;
     public SkinnedMeshRenderer fighterMeshRenderer;
@@ -28,14 +29,11 @@ public class FighterSetup : MonoBehaviour
         {
             Debug.Log("No Corner Selected");
         }
+        StateGameSetup.onStateEnter += ResetFighterStatus;
+        StateGameStart.onStateEnter += ResetFighterStatus;
     }
-    public void ApplyConfigurations(object sender)
+    public void ResetFighterStatus(object sender, EventArgs e)
     {
-        // trigger this to read data and apply it to the fighter
-        // models, textures, etc.
-    }
-    void Start()
-    {
-        
+        fighterStatus.ResetFight();
     }
 }

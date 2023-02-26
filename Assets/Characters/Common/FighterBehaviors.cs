@@ -8,6 +8,7 @@ public class FighterBehaviors : MonoBehaviour
     private FighterSetup fighterSetup;
     private GameObject opponent;
     private Vector3 movementVector;
+    public GameObject[] handColliders;
     public static EventHandler OnPunchThrown;
     private void Awake() {
         animator = GetComponentInChildren<Animator>();
@@ -26,6 +27,20 @@ public class FighterBehaviors : MonoBehaviour
     public void SetLeanValues(Vector2 movementInput){
         
     }
+    public void DisablePunches()
+    {
+        foreach (GameObject glove in handColliders)
+        {
+            glove.SetActive(false);
+        }
+    }
+    public void EnablePunches()
+    {
+        foreach (GameObject glove in handColliders)
+        {
+            glove.SetActive(true);
+        }
+    }
     public void SetLeanModifier(bool leaning){
         animator.SetBool("Leaning", leaning);
     }
@@ -43,21 +58,19 @@ public class FighterBehaviors : MonoBehaviour
     public void HandlePunch(double inputAngle){
         // input angle: +180 right -180 left  |  0 is neutral
         if (inputAngle == 0){
-            // toggle the punch followthrough
             animator.SetTrigger("PunchFollowThrough");
             return;
         }
         if(inputAngle > 0 ){
             // right hand
             Debug.Log("right");
-            if(!animator.GetBool("JabWindup")){ animator.SetBool("JabWindup", true); }
+            animator.SetBool("JabWindup", true);
         } else {
             Debug.Log("left");
-            if(!animator.GetBool("CrossWindup")){ animator.SetBool("CrossWindup", true); }
+            animator.SetBool("CrossWindup", true);
         }
         // see ticket https://trello.com/c/O1J6ZZxf
         // change animation state to windup
-
         OnPunchThrown?.Invoke(this, EventArgs.Empty);
     }
     private void HandleMovement()

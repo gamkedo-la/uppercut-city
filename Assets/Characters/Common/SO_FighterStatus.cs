@@ -6,7 +6,14 @@ using UnityEngine;
 public class SO_FighterStatus : ScriptableObject
 {
     public SO_FighterConfig fighterConfig;
+    private float maxHealth = 100;
+    private float maxStamina = 100;
     public float health;
     public float stamina;
     public float shortTermDamage;
+    public void ResetFight()
+    {
+        health = maxHealth;
+        stamina = maxStamina;
+    }
 }

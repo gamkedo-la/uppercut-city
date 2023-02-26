@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.15695712, g: 0.10857098, b: 0.2516096, a: 1}
+  m_IndirectSpecularColor: {r: 0.15698524, g: 0.10869162, b: 0.2515928, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19820,6 +19820,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterStatus
+      value: 
+      objectReference: {fileID: 11400000, guid: abef01792cfbac5439434cf5d4573556, type: 2}
+    - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: activeCharacter
       value: 
       objectReference: {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}
@@ -24986,6 +24990,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8447663908738654419, guid: f8bdbe946c4f1b84cb37148b28a93de4, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8956616199514660895, guid: f8bdbe946c4f1b84cb37148b28a93de4, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -25201,10 +25209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1811318849214962922, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Radius
-      value: 0.001
-      objectReference: {fileID: 0}
+    - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterStatus
+      value: 
+      objectReference: {fileID: 11400000, guid: 4595e9054e08e554d84e5a7754c965ee, type: 2}
     - target: {fileID: 8525871222087910879, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_Name
       value: Fighter

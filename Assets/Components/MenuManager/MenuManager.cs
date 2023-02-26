@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject homeMenu;
     [SerializeField] public GameObject characterSetupMenu;
+    [SerializeField] public GameObject inGameHud;
     [Header("Home Menu Items")]
     [SerializeField] public GameObject btn_MatchSetup;
     [Header("Character Setup Items")]
@@ -22,6 +23,7 @@ public class MenuManager : MonoBehaviour
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
         homeMenu.SetActive(false);
+        inGameHud.SetActive(false);
         characterSetupMenu.SetActive(false);
     }
     public void Btn_Home(){
@@ -41,6 +43,7 @@ public class MenuManager : MonoBehaviour
     public void Btn_CharacterAccept()
     {
         CloseAllMenus();
+        inGameHud.SetActive(true);
         // change player's allegiance flag
         // Set playercontroller to modify FighterInput SO
         // trigger state machine
