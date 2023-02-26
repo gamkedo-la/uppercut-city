@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
 public class MenuManager : MonoBehaviour
@@ -10,8 +11,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public GameObject homeMenu;
     [SerializeField] public GameObject characterSetupMenu;
     [SerializeField] public GameObject inGameHud;
+    [SerializeField] public GameObject displayMessage;
     [Header("Home Menu Items")]
     [SerializeField] public GameObject btn_MatchSetup;
+    [Header("Display Message Items")]
+    [SerializeField] public TextMeshProUGUI displayMessageText;
     [Header("Character Setup Items")]
     [SerializeField] public GameObject btn_CharacterAccept;
     public static EventHandler<EventArgs> setupMatch;
@@ -19,11 +23,13 @@ public class MenuManager : MonoBehaviour
     private void Awake() {
         PlayerController.newPlayerJoined += HandleNewPlayer;
         sm_MainMenu.currentlyActiveItem = btn_MatchSetup;
+        SO_FighterStatus.onZeroHealth += HandleZeroHealth;
     }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
         homeMenu.SetActive(false);
         inGameHud.SetActive(false);
+        displayMessage.SetActive(false);
         characterSetupMenu.SetActive(false);
     }
     public void Btn_Home(){
@@ -67,5 +73,12 @@ public class MenuManager : MonoBehaviour
     }
     private void HandleNewPlayer(object sender, System.EventArgs e){
         SetDefaultMenuFocus();
+    }
+    private void HandleZeroHealth(object sender, System.EventArgs e)
+    {
+        CloseAllMenus();
+        displayMessageText.text = "knockout!!";
+        inGameHud.SetActive(true);
+        displayMessage.SetActive(true);
     }
 }

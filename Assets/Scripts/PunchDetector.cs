@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class PunchDetector : MonoBehaviour
 {
-
+    public SO_FighterStatus fighterStatus;
     public static EventHandler OnPunchConnected;
     public Transform hitPrefab;
 
@@ -33,10 +33,11 @@ public class PunchDetector : MonoBehaviour
             // Debug.Log("SELF PUNCH DETECTED: "+gameObject.name+" by "+other.gameObject.name);
             return; // ignore it
         }
-
+        fighterStatus.health -= 20;
+        fighterStatus.CheckStanding();
         //example debug log: "Fighter (1) was BODY HIT by Fighter with RIGHT GLOVE"
         Debug.Log(transform.root.gameObject.name + " was "+gameObject.name+" by " + other.transform.root.gameObject.name + " with " +other.gameObject.name);
-        
+        // reduce health
         // TODO FIXME
         // since triggerEnter does not give us any contact points,
         // we can approximate the "point of contact" this way:
