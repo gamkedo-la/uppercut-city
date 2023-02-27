@@ -1928,9 +1928,11 @@ MonoBehaviour:
   homeMenu: {fileID: 2248911576148417971}
   characterSetupMenu: {fileID: 6741499782676589241}
   inGameHud: {fileID: 4814612580654280925}
+  pauseMenu: {fileID: 682050036924669928}
   displayMessage: {fileID: 7602327262808581752}
   btn_MatchSetup: {fileID: 6594439188322381733}
   displayMessageText: {fileID: 9099945607057049407}
+  resumeButton: {fileID: 6196823315045305632}
   btn_CharacterAccept: {fileID: 2189719944048216561}
 --- !u!1 &2990845263718802558
 GameObject:

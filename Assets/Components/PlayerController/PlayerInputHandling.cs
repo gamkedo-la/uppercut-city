@@ -63,7 +63,7 @@ public class PlayerInputHandling : MonoBehaviour
     }
     public void HandleMenu(InputAction.CallbackContext context)
     {
-        // so_fighterInput.leanModifier
+        controller.playerConfig.playerInput.SwitchCurrentActionMap("UI");
         onMenuPressed?.Invoke(this, EventArgs.Empty);
     }
     public void InputMovement(InputAction.CallbackContext context)

@@ -11,11 +11,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public GameObject homeMenu;
     [SerializeField] public GameObject characterSetupMenu;
     [SerializeField] public GameObject inGameHud;
+    [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject displayMessage;
     [Header("Home Menu Items")]
     [SerializeField] public GameObject btn_MatchSetup;
     [Header("Display Message Items")]
     [SerializeField] public TextMeshProUGUI displayMessageText;
+    [Header("Pause Menu Items")]
+    [SerializeField] public GameObject resumeButton;
     [Header("Character Setup Items")]
     [SerializeField] public GameObject btn_CharacterAccept;
     public static EventHandler<EventArgs> setupMatch;
@@ -24,11 +27,13 @@ public class MenuManager : MonoBehaviour
         PlayerController.newPlayerJoined += HandleNewPlayer;
         sm_MainMenu.currentlyActiveItem = btn_MatchSetup;
         SO_FighterStatus.onZeroHealth += HandleZeroHealth;
+        PlayerInputHandling.onMenuPressed += HandleMenuPressed;
     }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
         homeMenu.SetActive(false);
         inGameHud.SetActive(false);
+        pauseMenu.SetActive(false);
         displayMessage.SetActive(false);
         characterSetupMenu.SetActive(false);
     }
@@ -61,8 +66,8 @@ public class MenuManager : MonoBehaviour
         foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
         {
             es.firstSelectedGameObject = btn_MatchSetup;
-            FocusControllersOnButton(btn_MatchSetup);
         }
+        FocusControllersOnButton(btn_MatchSetup);
     }
     public void FocusControllersOnButton(GameObject focus)
     {
@@ -73,6 +78,13 @@ public class MenuManager : MonoBehaviour
     }
     private void HandleNewPlayer(object sender, System.EventArgs e){
         SetDefaultMenuFocus();
+    }
+    private void HandleMenuPressed(object sender, System.EventArgs e)
+    {
+        CloseAllMenus();
+        sm_MainMenu.currentlyActiveItem = resumeButton;
+        FocusControllersOnButton(resumeButton);
+        pauseMenu.SetActive(true);
     }
     private void HandleZeroHealth(object sender, System.EventArgs e)
     {
