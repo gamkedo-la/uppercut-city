@@ -1,13 +1,13 @@
 using Cinemachine;
 using UnityEngine;
-
 public class CameraController : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera vCamOverhead;
+    [SerializeField] CinemachineVirtualCamera vCamStareDown;
     [SerializeField] CinemachineVirtualCamera vCamLiveFight;
-    void Start()
+    private void Awake()
     {
-        StateLiveFightCam.onStateEnter += HandleFightLive;
+        StateLiveFightCam.onStateEnter += HandleFightLive;    
     }
     private void HandleFightLive(object sender, System.EventArgs e)
     {
@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
     private void DisableAllCams()
     {
         vCamOverhead.gameObject.SetActive(false);
+        vCamStareDown.gameObject.SetActive(false);
         vCamLiveFight.gameObject.SetActive(false);
     }
 }

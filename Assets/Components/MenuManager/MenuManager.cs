@@ -18,16 +18,16 @@ public class MenuManager : MonoBehaviour
     [Header("Display Message Items")]
     [SerializeField] public TextMeshProUGUI displayMessageText;
     [Header("Pause Menu Items")]
-    [SerializeField] public GameObject resumeButton;
+    [SerializeField] public GameObject btn_Resume;
     [Header("Character Setup Items")]
     [SerializeField] public GameObject btn_CharacterAccept;
-    public static EventHandler<EventArgs> setupMatch;
-    public static EventHandler<EventArgs> acceptCharacters;
+    public static EventHandler setupMatch;
+    public static EventHandler acceptCharacters;
     private void Awake() {
         PlayerController.newPlayerJoined += HandleNewPlayer;
         sm_MainMenu.currentlyActiveItem = btn_MatchSetup;
         SO_FighterStatus.onZeroHealth += HandleZeroHealth;
-        PlayerInputHandling.onMenuPressed += HandleMenuPressed;
+        Smb_MatchLive.onGamePaused += HandleMenuPressed;
     }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
@@ -82,8 +82,8 @@ public class MenuManager : MonoBehaviour
     private void HandleMenuPressed(object sender, System.EventArgs e)
     {
         CloseAllMenus();
-        sm_MainMenu.currentlyActiveItem = resumeButton;
-        FocusControllersOnButton(resumeButton);
+        sm_MainMenu.currentlyActiveItem = btn_Resume;
+        FocusControllersOnButton(btn_Resume);
         pauseMenu.SetActive(true);
     }
     private void HandleZeroHealth(object sender, System.EventArgs e)
