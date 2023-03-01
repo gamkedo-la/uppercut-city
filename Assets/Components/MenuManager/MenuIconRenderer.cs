@@ -50,25 +50,25 @@ public class MenuIconRenderer : MonoBehaviour
         yield return new WaitForSeconds(menuTimeProvider.fixedDeltaTime * 5);
         sideSelectionCooldown = false;
     }
-    private void HandleSideSelection(object sender, UIInputHandling.InputChooseSides e)
+    private void HandleSideSelection(SO_PlayerConfig config, float sideSelectionAxis)
     {
-        if(e.sideSelectionAxis != 0 && !sideSelectionCooldown){
+        if(sideSelectionAxis != 0 && !sideSelectionCooldown){
             sideSelectionCooldown = true;
             StartCoroutine(ChooseSidesCooldown());
-            // red / blue is there somebody alredy there?
-            if(e.sideSelectionAxis > 0){
-                // can we join next party?
-                // where are we now?
-                switch (e.config.allegiance)
+            // can we join next party?
+            // where are we now?
+            if(sideSelectionAxis > 0){
+                switch (config.allegiance)
                 {
                     case SO_PlayerConfig.Allegiance.red:
                         redHasController = false;
-                        e.config.IncrementAllegiance();
+                        config.IncrementAllegiance();
                         break;
                     case SO_PlayerConfig.Allegiance.neutral:
                         if(!blueHasController)
                         {
-                            e.config.IncrementAllegiance();
+                            blueHasController = true;
+                            config.IncrementAllegiance();
                         }
                         break;
                     case SO_PlayerConfig.Allegiance.blue:
@@ -76,30 +76,27 @@ public class MenuIconRenderer : MonoBehaviour
                     default:
                         break;
                 }
-            } else if(e.sideSelectionAxis < 0) {
-                switch (e.config.allegiance)
+            } else if(sideSelectionAxis < 0) {
+                switch (config.allegiance)
                 {
                     case SO_PlayerConfig.Allegiance.red:
                         break;
                     case SO_PlayerConfig.Allegiance.neutral:
                         if(!redHasController)
                         {
-                            e.config.DecrementAllegiance();
+                            redHasController = true;
+                            config.DecrementAllegiance();
                         }
                         break;
                     case SO_PlayerConfig.Allegiance.blue:
                         blueHasController = false;
-                        e.config.DecrementAllegiance();
+                        config.DecrementAllegiance();
                         break;
                     default:
                         break;
                 }
             }
         }
-    }
-    private void MapInputsToIcons()
-    {
-        // chooseSidesVisual.SetupInputIcons(FindObjectsOfType<PlayerController>());
     }
     private void InitializeMenuIcons(object sender, System.EventArgs e)
     {
@@ -148,7 +145,6 @@ public class MenuIconRenderer : MonoBehaviour
     }
     private void Update() 
     {
-        // move the icons from current transform towards intended
         MoveMenuIcons();
     }
 }
