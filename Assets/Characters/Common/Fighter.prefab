@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7462815860964868351}
   - component: {fileID: 1811318849214962922}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RIGHT GLOVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7670124288029233531}
   - component: {fileID: 3289658019211017400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LEFT GLOVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 7730856787313802594}
   - component: {fileID: 6753855957589651121}
   - component: {fileID: 2972712014270542860}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BODY HIT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd19c3ec9d8728d4a8944abd591864f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterStatus: {fileID: 0}
   hitPrefab: {fileID: 6453615851998867442, guid: 84818f6e0730a8d4199ebaf5f43e85ae, type: 3}
   audioSource: {fileID: 2972712014270542860}
 --- !u!82 &2972712014270542860
@@ -530,7 +531,7 @@ GameObject:
   - component: {fileID: 2105553694473540874}
   - component: {fileID: 3771267058411009581}
   - component: {fileID: 8359620997753414464}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HEAD HIT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd19c3ec9d8728d4a8944abd591864f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterStatus: {fileID: 0}
   hitPrefab: {fileID: 6453615851998867442, guid: 84818f6e0730a8d4199ebaf5f43e85ae, type: 3}
   audioSource: {fileID: 0}
 --- !u!82 &8359620997753414464
@@ -741,6 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdf58b9600b3d24fa928956aba4f5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterStatus: {fileID: 0}
   corner: 0
   userProfile: {fileID: 11400000, guid: 792c84055370c30489b81d2364258faf, type: 2}
   fighterMeshRenderer: {fileID: 9103123300316510333}
