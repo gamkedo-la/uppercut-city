@@ -34,35 +34,42 @@ public class PlayerController : MonoBehaviour
         MenuManager.resumeGame += Ev_GameResumed;
         MenuManager.acceptCharacters += Ev_AcceptCharacter;
     }
+    private void LiveMatchControls()
+    {
+        if(playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
+        {
+            playerConfig.playerInput.SwitchCurrentActionMap("Neutral");
+        } else {
+            playerConfig.playerInput.SwitchCurrentActionMap("Player");
+        }
+    }
+    private void MenuControls()
+    {
+        if(playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
+        {
+            playerConfig.playerInput.SwitchCurrentActionMap("Neutral");
+        } else {
+            playerConfig.playerInput.SwitchCurrentActionMap("UI");
+        }
+    }
     public void Ev_FightStart(object sender, System.EventArgs e)
     {
         // get allegiance
         // set the fighterInput
-        if(playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
-        {
-            playerConfig.playerInput.SwitchCurrentActionMap("Neutral");
-        } else {
-            playerConfig.playerInput.SwitchCurrentActionMap("Player");
-        }
+        LiveMatchControls();
     }
     public void Ev_AcceptCharacter(object sender, System.EventArgs e)
     {
-        // get allegiance
-        // set the fighterInput
-        if(playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
-        {
-            playerConfig.playerInput.SwitchCurrentActionMap("Neutral");
-        } else {
-            playerConfig.playerInput.SwitchCurrentActionMap("Player");
-        }
+        // map the controller to the fighter
+        playerConfig.playerInputHandling.LinkToFighter();
     }
     public void Ev_GamePaused(object sender, System.EventArgs e)
     {
-        playerConfig.playerInput.SwitchCurrentActionMap("UI");
+        MenuControls();
     }
     public void Ev_GameResumed(object sender, System.EventArgs e)
     {
-        playerConfig.playerInput.SwitchCurrentActionMap("Player");
+        LiveMatchControls();
     }
     private void Start()
     {

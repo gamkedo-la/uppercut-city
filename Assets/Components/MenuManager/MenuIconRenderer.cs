@@ -14,15 +14,23 @@ public class MenuIconRenderer : MonoBehaviour
     [SerializeField] GameObject blueCornerSlot;
     private PlayerController[] inputs;
     private int neutralPlayerCount = 0;
+    private bool redHasController, blueHasController;
     private bool sideSelectionCooldown = false;
     private void Awake()
     {
         PlayerController.newPlayerJoined += InitializeMenuIcons;
-        MenuManager.setupMatch += InitializeMenuIcons;
     }
     private void OnEnable()
     {
         Debug.Log("MenuIcons renderer enabled");
+        HideAllMenuSprites();
+        inputs = FindObjectsOfType<PlayerController>();
+        for (int i=0; i < inputs.Length; i++)
+        {
+            inputMenuSprites[i].gameObject.SetActive(true);
+            inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
+            // set the icon type
+        }
         UIInputHandling.onSideSelection += HandleSideSelection; 
     }
     private void OnDisable()
@@ -47,11 +55,45 @@ public class MenuIconRenderer : MonoBehaviour
         if(e.sideSelectionAxis != 0 && !sideSelectionCooldown){
             sideSelectionCooldown = true;
             StartCoroutine(ChooseSidesCooldown());
-            // adjust allegiance flag on the player
+            // red / blue is there somebody alredy there?
             if(e.sideSelectionAxis > 0){
-                e.config.IncrementAllegiance();
-            } else {
-                e.config.DecrementAllegiance();
+                // can we join next party?
+                // where are we now?
+                switch (e.config.allegiance)
+                {
+                    case SO_PlayerConfig.Allegiance.red:
+                        redHasController = false;
+                        e.config.IncrementAllegiance();
+                        break;
+                    case SO_PlayerConfig.Allegiance.neutral:
+                        if(!blueHasController)
+                        {
+                            e.config.IncrementAllegiance();
+                        }
+                        break;
+                    case SO_PlayerConfig.Allegiance.blue:
+                        break;
+                    default:
+                        break;
+                }
+            } else if(e.sideSelectionAxis < 0) {
+                switch (e.config.allegiance)
+                {
+                    case SO_PlayerConfig.Allegiance.red:
+                        break;
+                    case SO_PlayerConfig.Allegiance.neutral:
+                        if(!redHasController)
+                        {
+                            e.config.DecrementAllegiance();
+                        }
+                        break;
+                    case SO_PlayerConfig.Allegiance.blue:
+                        blueHasController = false;
+                        e.config.DecrementAllegiance();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -99,6 +141,7 @@ public class MenuIconRenderer : MonoBehaviour
                         neutralSlots[neutralPlayerCount].transform.position, // target
                         iconSpeed*menuTimeProvider.deltaTime // max displacement
                     );
+                    neutralPlayerCount++;
                     break;
             }
         }

@@ -5232,38 +5232,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_MaxPlayerCount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 779588228}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: JoinNewPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameSystem, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2346063158975032954, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5310,17 +5278,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
---- !u!114 &779588228 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7209181449942759755, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-  m_PrefabInstance: {fileID: 779588227}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43576e6157b3c3240b2cf821f8bb0d7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &834181315
 GameObject:
   m_ObjectHideFlags: 0

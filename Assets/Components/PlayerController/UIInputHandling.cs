@@ -29,6 +29,7 @@ public class UIInputHandling : MonoBehaviour
     }
     public void HandleReturn(InputAction.CallbackContext context)
     {
+        Debug.Log("return pressed");
         onReturnPressed?.Invoke(this, EventArgs.Empty);
     }
 }

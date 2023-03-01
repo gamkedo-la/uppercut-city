@@ -23,7 +23,7 @@ public class PlayerInputHandling : MonoBehaviour
         Smb_MatchLive.onStateEnter += Ev_FightStart;
         PlayerController.newPlayerJoined += Ev_FightStart;
     }
-    private void GetFighterBehaviors(FighterSetup.Corner corner)
+    private void MapToFighter(FighterSetup.Corner corner)
     {
         foreach (FighterSetup fs in fighters)
         {
@@ -35,19 +35,16 @@ public class PlayerInputHandling : MonoBehaviour
     }
     public void LinkToFighter()
     {
-        controller.playerConfig.playerInput.SwitchCurrentActionMap("Player");
         if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red)
         {
-            so_fighterInput = controller.playerConfig.inputRedFighter;
-            GetFighterBehaviors(FighterSetup.Corner.red);
+            MapToFighter(FighterSetup.Corner.red);
             Debug.Log($"controlling {controller.playerConfig.inputRedFighter}");
             return;
         }
         if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue)
         {
-            so_fighterInput = controller.playerConfig.inputBlueFighter;
-            GetFighterBehaviors(FighterSetup.Corner.blue);
-            Debug.Log($"controlling {so_fighterInput}");
+            MapToFighter(FighterSetup.Corner.blue);
+            Debug.Log($"controlling {controller.playerConfig.inputBlueFighter}");
             return;
         }
     }

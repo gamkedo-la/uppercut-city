@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem.UI;
 public class MenuManager : MonoBehaviour
 {
-    [Header("Menu Systems")]
-    [SerializeField] SO_MenuManagement sm_MainMenu;
     [Header("Menu Containers")]
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject homeMenu;
@@ -26,7 +24,6 @@ public class MenuManager : MonoBehaviour
     public static EventHandler resumeGame;
     private void Awake() {
         PlayerController.newPlayerJoined += HandleNewPlayer;
-        sm_MainMenu.currentlyActiveItem = btn_MatchSetup;
         SO_FighterStatus.onZeroHealth += HandleZeroHealth;
         Smb_MatchLive.onGamePaused += HandleGamePaused;
         Smb_MatchLive.onGameResume += HandleGameResume;
@@ -50,8 +47,6 @@ public class MenuManager : MonoBehaviour
         mainMenu.SetActive(true);
         characterSetupMenu.SetActive(true);
         FocusControllersOnButton(btn_CharacterAccept);
-        setupMatch?.Invoke(this, EventArgs.Empty);
-        Debug.Log("Match setup invoked");
     }
     public void Btn_CharacterAccept()
     {
@@ -60,7 +55,6 @@ public class MenuManager : MonoBehaviour
         // change player's allegiance flag
         // Set playercontroller to modify FighterInput SO
         acceptCharacters?.Invoke(this, EventArgs.Empty);
-        Debug.Log($"Accept Characters");
     }
     public void Btn_Resume(){
         CloseAllMenus();
@@ -91,7 +85,6 @@ public class MenuManager : MonoBehaviour
     private void HandleGamePaused(object sender, System.EventArgs e)
     {
         CloseAllMenus();
-        sm_MainMenu.currentlyActiveItem = btn_Resume;
         FocusControllersOnButton(btn_Resume);
         pauseMenu.SetActive(true);
     }
@@ -104,6 +97,7 @@ public class MenuManager : MonoBehaviour
     {
         CloseAllMenus();
         displayMessageText.text = "knockout!!";
+        inGameHud.SetActive(true);
         displayMessage.SetActive(true);
     }
 }
