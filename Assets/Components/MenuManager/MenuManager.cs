@@ -23,11 +23,13 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public GameObject btn_CharacterAccept;
     public static EventHandler setupMatch;
     public static EventHandler acceptCharacters;
+    public static EventHandler resumeGame;
     private void Awake() {
         PlayerController.newPlayerJoined += HandleNewPlayer;
         sm_MainMenu.currentlyActiveItem = btn_MatchSetup;
         SO_FighterStatus.onZeroHealth += HandleZeroHealth;
-        Smb_MatchLive.onGamePaused += HandleMenuPressed;
+        Smb_MatchLive.onGamePaused += HandleGamePaused;
+        Smb_MatchLive.onGameResume += HandleGameResume;
     }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
@@ -57,9 +59,14 @@ public class MenuManager : MonoBehaviour
         inGameHud.SetActive(true);
         // change player's allegiance flag
         // Set playercontroller to modify FighterInput SO
-        // trigger state machine
         acceptCharacters?.Invoke(this, EventArgs.Empty);
-        Debug.Log($"Accept Characters: {acceptCharacters}");
+        Debug.Log($"Accept Characters");
+    }
+    public void Btn_Resume(){
+        CloseAllMenus();
+        inGameHud.SetActive(true);
+        FocusControllersOnButton(btn_Resume);
+        resumeGame?.Invoke(this, EventArgs.Empty);
     }
     public void SetDefaultMenuFocus()
     {
@@ -73,24 +80,30 @@ public class MenuManager : MonoBehaviour
     {
         foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
         {
+            es.firstSelectedGameObject = focus;
             es.SetSelectedGameObject(focus);
         }
     }
-    private void HandleNewPlayer(object sender, System.EventArgs e){
+    private void HandleNewPlayer(object sender, System.EventArgs e)
+    {
         SetDefaultMenuFocus();
     }
-    private void HandleMenuPressed(object sender, System.EventArgs e)
+    private void HandleGamePaused(object sender, System.EventArgs e)
     {
         CloseAllMenus();
         sm_MainMenu.currentlyActiveItem = btn_Resume;
         FocusControllersOnButton(btn_Resume);
         pauseMenu.SetActive(true);
     }
+    private void HandleGameResume(object sender, System.EventArgs e)
+    {
+        CloseAllMenus();
+        inGameHud.SetActive(true);
+    }
     private void HandleZeroHealth(object sender, System.EventArgs e)
     {
         CloseAllMenus();
         displayMessageText.text = "knockout!!";
-        inGameHud.SetActive(true);
         displayMessage.SetActive(true);
     }
 }

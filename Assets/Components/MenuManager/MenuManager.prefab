@@ -446,7 +446,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -663,7 +663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 287.5, y: -230.09999}
+  m_AnchoredPosition: {x: 287.5, y: -230.1}
   m_SizeDelta: {x: 570, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1508613474347744170
@@ -1932,7 +1932,7 @@ MonoBehaviour:
   displayMessage: {fileID: 7602327262808581752}
   btn_MatchSetup: {fileID: 6594439188322381733}
   displayMessageText: {fileID: 9099945607057049407}
-  resumeButton: {fileID: 6196823315045305632}
+  btn_Resume: {fileID: 6196823315045305632}
   btn_CharacterAccept: {fileID: 2189719944048216561}
 --- !u!1 &2990845263718802558
 GameObject:
@@ -4748,7 +4748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1623952347116264111}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: Btn_MatchSetup
+        m_MethodName: Btn_Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5365,7 +5365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e057b75176a883488ed5b283036c822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSpeed: 300
+  iconSpeed: 2000
   inputMenuSprites:
   - {fileID: 2685423871734407291}
   - {fileID: 5664575265657965257}

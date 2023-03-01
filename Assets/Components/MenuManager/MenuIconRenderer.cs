@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuIconRenderer : MonoBehaviour
 {
-    [SerializeField] [Range(600f, 1800f)] float iconSpeed;
+    [SerializeField] [Range(1800f, 5000f)] float iconSpeed;
     [SerializeField] List<GameObject> inputMenuSprites;
     [SerializeField] TimeProvider menuTimeProvider;
     [SerializeField] List<GameObject> neutralSlots;
@@ -14,16 +14,45 @@ public class MenuIconRenderer : MonoBehaviour
     [SerializeField] GameObject blueCornerSlot;
     private PlayerController[] inputs;
     private int neutralPlayerCount = 0;
+    private bool sideSelectionCooldown = false;
     private void Awake()
     {
         PlayerController.newPlayerJoined += InitializeMenuIcons;
         MenuManager.setupMatch += InitializeMenuIcons;
+    }
+    private void OnEnable()
+    {
+        Debug.Log("MenuIcons renderer enabled");
+        UIInputHandling.onSideSelection += HandleSideSelection; 
+    }
+    private void OnDisable()
+    {
+        Debug.Log("MenuIcons renderer disabled");
+        UIInputHandling.onSideSelection -= HandleSideSelection; 
     }
     private void HideAllMenuSprites()
     {
         foreach (GameObject icon in inputMenuSprites)
         {
             icon.SetActive(false);
+        }
+    }
+    private IEnumerator ChooseSidesCooldown()
+    {
+        yield return new WaitForSeconds(menuTimeProvider.fixedDeltaTime * 5);
+        sideSelectionCooldown = false;
+    }
+    private void HandleSideSelection(object sender, UIInputHandling.InputChooseSides e)
+    {
+        if(e.sideSelectionAxis != 0 && !sideSelectionCooldown){
+            sideSelectionCooldown = true;
+            StartCoroutine(ChooseSidesCooldown());
+            // adjust allegiance flag on the player
+            if(e.sideSelectionAxis > 0){
+                e.config.IncrementAllegiance();
+            } else {
+                e.config.DecrementAllegiance();
+            }
         }
     }
     private void MapInputsToIcons()

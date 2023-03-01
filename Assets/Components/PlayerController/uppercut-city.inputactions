@@ -545,39 +545,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "PS4",
-                    "id": "a516e57a-c579-433d-b7ef-7f4d7755fecf",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Navigate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "5cfeec4b-3d48-455f-ad3e-c8f660cabaf1",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "96725695-4b93-48c3-bc43-ebe81becdc50",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
                     "path": "*/{Submit}",
@@ -710,17 +677,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "negative",
-                    "id": "ccc5139d-5154-4e5d-9820-8f846c709be2",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad;PS4;XBox",
-                    "action": "ChooseSides",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "positive",
                     "id": "2c51e449-3e97-4d02-9749-8602f3d32950",
                     "path": "<Keyboard>/d",
@@ -735,17 +691,6 @@
                     "name": "positive",
                     "id": "f4e0bf51-3da9-469e-a5a9-fa26c4544591",
                     "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad;PS4;XBox",
-                    "action": "ChooseSides",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "456316a0-9c93-4669-b917-dab0e913f883",
-                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;PS4;XBox",

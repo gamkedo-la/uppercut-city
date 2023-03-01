@@ -4,14 +4,22 @@ public class Smb_MatchLive : StateMachineBehaviour
 {
     public static EventHandler<EventArgs> onStateEnter;
     public static EventHandler onGamePaused;
+    public static EventHandler onGameResume;
     private void PauseGame(object sender, EventArgs e)
     {
         Debug.Log("GamePaused");
+        onGamePaused?.Invoke(this, EventArgs.Empty);
+    }
+    private void ResumeGame(object sender, EventArgs e)
+    {
+        Debug.Log("GameResumed");
+        onGameResume?.Invoke(this, EventArgs.Empty);
     }
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         onStateEnter?.Invoke(this, EventArgs.Empty);
         PlayerInputHandling.onMenuPressed += PauseGame;
+        UIInputHandling.onReturnPressed += ResumeGame;
     }
     
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

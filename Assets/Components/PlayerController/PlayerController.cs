@@ -29,8 +29,10 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         Smb_MatchLive.onStateEnter += Ev_FightStart;
-        PlayerInputHandling.onMenuPressed += Ev_MenuPressed;
-        UIInputHandling.onReturnPressed += Ev_ReturnPressed;
+        Smb_MatchLive.onGamePaused += Ev_GamePaused;
+        Smb_MatchLive.onGameResume += Ev_GameResumed;
+        MenuManager.resumeGame += Ev_GameResumed;
+        MenuManager.acceptCharacters += Ev_AcceptCharacter;
     }
     public void Ev_FightStart(object sender, System.EventArgs e)
     {
@@ -43,15 +45,27 @@ public class PlayerController : MonoBehaviour
             playerConfig.playerInput.SwitchCurrentActionMap("Player");
         }
     }
-    public void Ev_MenuPressed(object sender, System.EventArgs e)
+    public void Ev_AcceptCharacter(object sender, System.EventArgs e)
+    {
+        // get allegiance
+        // set the fighterInput
+        if(playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
+        {
+            playerConfig.playerInput.SwitchCurrentActionMap("Neutral");
+        } else {
+            playerConfig.playerInput.SwitchCurrentActionMap("Player");
+        }
+    }
+    public void Ev_GamePaused(object sender, System.EventArgs e)
     {
         playerConfig.playerInput.SwitchCurrentActionMap("UI");
     }
-    public void Ev_ReturnPressed(object sender, System.EventArgs e)
+    public void Ev_GameResumed(object sender, System.EventArgs e)
     {
         playerConfig.playerInput.SwitchCurrentActionMap("Player");
     }
-    private void Start() {
+    private void Start()
+    {
         PlayerInput[] localInputs = FindObjectsOfType<PlayerInput>();
         switch (localInputs.Length)
         {
