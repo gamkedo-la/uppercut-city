@@ -3,23 +3,20 @@ using System;
 
 public class FighterBehaviors : MonoBehaviour
 {
+    public SO_FighterConfig fighterConfig;
     public SO_FighterControlData inputData;
     private Animator animator;
     private FighterSetup fighterSetup;
     private GameObject opponent;
     private Vector3 movementVector;
     public GameObject[] handColliders;
+    public GameObject head;
+    public GameObject body;
+    public GameObject punchTarget;
     public static EventHandler OnPunchThrown;
-    private void Awake() {
-        animator = GetComponentInChildren<Animator>();
-        fighterSetup = GetComponent<FighterSetup>();
-        foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
-        {
-            if(fs.corner != fighterSetup.corner)
-            {
-                opponent = fs.gameObject;
-            }
-        }
+    private void Awake()
+    {
+        // subscribe to events
     }
     public bool IsZeroQuaternion(Quaternion q){
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
@@ -79,7 +76,7 @@ public class FighterBehaviors : MonoBehaviour
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 
-            0.02f
+            0.015f
         );
         // Todo: camera relative movement
     }
@@ -91,10 +88,19 @@ public class FighterBehaviors : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
         }
     }
+    private void HandlePunchTargeting()
+    {
+        if(opponent && (opponent.transform.position - transform.position) != Vector3.zero){
+            // rotate towards opponent
+            // TODO: limit the rate of rotation
+            transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
+        }
+    }
     private void Start(){
         StateGameStart.onStateEnter += HandleGameStart;
     }
     private void FixedUpdate(){
+        HandlePunchTargeting();
         HandleMovement();
         HandleRotation();
     }

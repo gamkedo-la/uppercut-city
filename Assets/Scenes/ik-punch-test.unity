@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.411
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -174,30 +174,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: inputData
-      value: 
-      objectReference: {fileID: 11400000, guid: a36883cb055540f49a7abbff1ff37caf, type: 2}
-    - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: corner
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: fighterStatus
-      value: 
-      objectReference: {fileID: 11400000, guid: abef01792cfbac5439434cf5d4573556, type: 2}
-    - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: activeCharacter
-      value: 
-      objectReference: {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}
-    - target: {fileID: 3771267058411009581, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: fighterStatus
-      value: 
-      objectReference: {fileID: 11400000, guid: abef01792cfbac5439434cf5d4573556, type: 2}
-    - target: {fileID: 6753855957589651121, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: fighterStatus
-      value: 
-      objectReference: {fileID: 11400000, guid: abef01792cfbac5439434cf5d4573556, type: 2}
     - target: {fileID: 8525871222087910879, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_Name
       value: Fighter (1)
@@ -217,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.068
+      value: -0.065
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -225,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.751
+      value: 1.178
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalRotation.w

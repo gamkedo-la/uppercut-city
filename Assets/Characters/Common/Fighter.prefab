@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 1719621022}
   - {fileID: 8646154072584654226}
+  - {fileID: 4817954616360254026}
   m_Father: {fileID: 3972875134785411024}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56,6 +57,14 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
+  - m_Transform: {fileID: 0}
+    m_Style:
+      shape: {fileID: 4300000, guid: 687b70eb9c49243639f9379f6965034f, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.075
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
 --- !u!1 &1719621021
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,6 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1719621022}
   - component: {fileID: 2104944361020535662}
+  - component: {fileID: 2264252450452744130}
   m_Layer: 0
   m_Name: IkLookAt
   m_TagString: Untagged
@@ -142,6 +152,19 @@ MonoBehaviour:
       x: 1
       y: 1
       z: 0
+--- !u!114 &2264252450452744130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719621021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345e241ca452ef34bb5420995fb4c932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighterConfig: {fileID: 0}
 --- !u!1 &427728148438740525
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8646154072584654226}
+  - component: {fileID: 2806248057286525694}
   m_Layer: 0
   m_Name: PunchTarget
   m_TagString: Untagged
@@ -406,6 +430,19 @@ Transform:
   m_Father: {fileID: 1287273644}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2806248057286525694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638305039927782470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd674a8ba62a59498a1ef088b456e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighterConfig: {fileID: 0}
 --- !u!1 &5165971764181080331
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +650,75 @@ Transform:
   m_Father: {fileID: 31369213118295385}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6859198196034813402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4817954616360254026}
+  - component: {fileID: 6010097490342919460}
+  - component: {fileID: 6308577684849473271}
+  m_Layer: 0
+  m_Name: RightPunch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4817954616360254026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859198196034813402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1287273644}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6010097490342919460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859198196034813402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    m_Root: {fileID: 7993710598767360995}
+    m_Tip: {fileID: 8012238896041228472}
+    m_Target: {fileID: 8646154072584654226}
+    m_ChainRotationWeight: 1
+    m_TipRotationWeight: 0
+    m_MaxIterations: 10
+    m_Tolerance: 0.001
+    m_MaintainTargetPositionOffset: 0
+    m_MaintainTargetRotationOffset: 0
+--- !u!114 &6308577684849473271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859198196034813402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c2ea16944de504e9df2006c23fdd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighterConfig: {fileID: 0}
 --- !u!1 &7424455967289687310
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,11 +944,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdf58b9600b3d24fa928956aba4f5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterStatus: {fileID: 11400000, guid: 4595e9054e08e554d84e5a7754c965ee, type: 2}
-  corner: 0
+  fighterConfig: {fileID: 0}
+  fighterStatus: {fileID: 0}
   userProfile: {fileID: 11400000, guid: 792c84055370c30489b81d2364258faf, type: 2}
   fighterMeshRenderer: {fileID: 9103123300316510333}
-  activeCharacter: {fileID: 11400000, guid: 49c39c1346fca7940a8fb22c443fa6ab, type: 2}
 --- !u!114 &418122475807119527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,10 +960,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99475ae28b95fea44b1f5203b4a2560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputData: {fileID: 11400000, guid: 3225cf282a073ee4da1ef96fa92fdb43, type: 2}
+  fighterConfig: {fileID: 0}
+  inputData: {fileID: 0}
   handColliders:
   - {fileID: 1228337925760606422}
   - {fileID: 427728148438740525}
+  head: {fileID: 7424455967289687310}
+  body: {fileID: 5165971764181080331}
+  punchTarget: {fileID: 4638305039927782470}
 --- !u!54 &6739481826187275381
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -947,23 +1056,23 @@ PrefabInstance:
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: 919132149155446097, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Name
       value: fighter

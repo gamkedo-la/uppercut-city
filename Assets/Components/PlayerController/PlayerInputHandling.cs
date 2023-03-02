@@ -3,14 +3,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerInputHandling : MonoBehaviour
 {
+    private SO_FighterConfig fighterConfig;
     private PlayerController controller;
-    private SO_FighterControlData so_fighterInput;
+    private SO_FighterControlData so_fighterInput;       
     private Camera mainCamera;
     private Vector2 movementInput;
     private Vector2 punchInput;
     private FighterBehaviors fighterBehaviors;
-    private Animator fighterAnimator;
-    private FighterSetup[] fighters;
     public static EventHandler onMenuPressed;
     // connect this object to a fighter
     // input logic goes in here
@@ -18,18 +17,22 @@ public class PlayerInputHandling : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
-        fighters = FindObjectsOfType<FighterSetup>();
         mainCamera = Camera.main;
         Smb_MatchLive.onStateEnter += Ev_FightStart;
         PlayerController.newPlayerJoined += Ev_FightStart;
     }
-    private void MapToFighter(FighterSetup.Corner corner)
+    private void GetFighterConfig(SO_FighterConfig.Corner corner)
     {
-        foreach (FighterSetup fs in fighters)
+        // Get a reference to the fighterconfig for that corner
+        foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
         {
-            if(fs.corner == corner)
+            if(fs.fighterConfig.corner == corner)
             {
-                fighterBehaviors = fs.GetComponent<FighterBehaviors>();
+                fighterConfig = fs.fighterConfig;
+            }
+            else
+            {
+                fighterConfig.opponentConfig = fs.fighterConfig;
             }
         }
     }
@@ -37,13 +40,13 @@ public class PlayerInputHandling : MonoBehaviour
     {
         if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red)
         {
-            MapToFighter(FighterSetup.Corner.red);
+            GetFighterConfig(SO_FighterConfig.Corner.red);
             Debug.Log($"controlling {controller.playerConfig.inputRedFighter}");
             return;
         }
         if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue)
         {
-            MapToFighter(FighterSetup.Corner.blue);
+            GetFighterConfig(SO_FighterConfig.Corner.blue);
             Debug.Log($"controlling {controller.playerConfig.inputBlueFighter}");
             return;
         }

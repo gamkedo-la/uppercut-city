@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebd71857f56e79408d1294edb395d62, type: 3}
   m_Name: FighterBlueConfig
   m_EditorClassIdentifier: 
-  playableCharacters: []
-  characterIndex: 0
+  corner: 1
+  activeCharacter: {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}
+  opponentConfig: {fileID: 0}
+  health: 0
+  burstDamage: 0
+  stamina: 0

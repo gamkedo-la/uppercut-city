@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class FighterSetup : MonoBehaviour
 {
-    public enum Corner {red, blue};
+    public SO_FighterConfig fighterConfig;
     public SO_FighterStatus fighterStatus;
-    public Corner corner;
     public SO_UserProfile userProfile;
     public SkinnedMeshRenderer fighterMeshRenderer;
-    public SO_Character activeCharacter;
     private void SetMeshWithTextures(SO_Character character)
     {
-        activeCharacter = character;
-        fighterMeshRenderer.sharedMesh = character.characterMesh;
-        fighterMeshRenderer.materials = character.characterMaterials;
+        fighterConfig.activeCharacter = character;
+        fighterMeshRenderer.sharedMesh = fighterConfig.activeCharacter.characterMesh;
+        fighterMeshRenderer.materials = fighterConfig.activeCharacter.characterMaterials;
     }
-    private void Awake() {
-        if (corner == Corner.red)
+    private void Awake()
+    {
+        if (fighterConfig.corner == SO_FighterConfig.Corner.red)
         {
             SetMeshWithTextures(userProfile.defaultRedFighter);
         }
-        else if (corner == Corner.blue)
+        else if (fighterConfig.corner == SO_FighterConfig.Corner.blue)
         {
             SetMeshWithTextures(userProfile.defaultBlueFighter);
         }
@@ -34,6 +33,6 @@ public class FighterSetup : MonoBehaviour
     }
     public void ResetFighterStatus(object sender, EventArgs e)
     {
-        fighterStatus.ResetFight();
+        fighterConfig.RestoreDefualts();
     }
 }
