@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd19c3ec9d8728d4a8944abd591864f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterStatus: {fileID: 0}
   hitPrefab: {fileID: 6453615851998867442, guid: 84818f6e0730a8d4199ebaf5f43e85ae, type: 3}
   audioSource: {fileID: 2972712014270542860}
 --- !u!82 &2972712014270542860
@@ -593,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd19c3ec9d8728d4a8944abd591864f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterStatus: {fileID: 0}
   hitPrefab: {fileID: 6453615851998867442, guid: 84818f6e0730a8d4199ebaf5f43e85ae, type: 3}
   audioSource: {fileID: 0}
 --- !u!82 &8359620997753414464
@@ -741,6 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdf58b9600b3d24fa928956aba4f5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterStatus: {fileID: 0}
   corner: 0
   userProfile: {fileID: 11400000, guid: 792c84055370c30489b81d2364258faf, type: 2}
   fighterMeshRenderer: {fileID: 9103123300316510333}
@@ -849,23 +852,23 @@ PrefabInstance:
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: -3531930454459234234, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
-      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 981693e48e67c0f40af516314883bf3f, type: 2}
     - target: {fileID: 919132149155446097, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_Name
       value: fighter
