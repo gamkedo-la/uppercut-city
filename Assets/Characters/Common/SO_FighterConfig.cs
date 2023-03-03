@@ -10,25 +10,31 @@ public class SO_FighterConfig : ScriptableObject
     public Corner corner;
     public SO_Character activeCharacter;
     public SO_FighterConfig opponentConfig;
-    public static float maxHealth = 200;
-    public static float maxStamina = 200;
-    public static float maxBurstDamage = 20;
-    public float health;
-    public float burstDamage;
-    public float stamina;
+    public static float health_Start = 200;
+    public static float stamina_Start = 200;
+    public static float BurstDamage_Start = 35;
+    public float health_Max;
+    public float burstDamage_Max;
+    public float stamina_Max;
+    public float health_Current;
+    public float burstDamage_Current;
+    public float stamina_Current;
     public void RestoreDefualts()
     {
-        health = maxHealth;
-        stamina = maxStamina;
-        burstDamage = maxBurstDamage;
+        health_Max = health_Start;
+        stamina_Max = stamina_Start;
+        burstDamage_Max = BurstDamage_Start;
+        health_Current = health_Start;
+        stamina_Current = stamina_Start;
+        burstDamage_Current = BurstDamage_Start;
     }
     public void StatusCheck()
     {
-        if (health <= 0)
+        if (health_Current <= 0)
         {
             // event 
         }
-        if (burstDamage <= 0)
+        if (burstDamage_Current <= 0)
         {
             // event
         }

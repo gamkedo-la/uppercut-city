@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class PunchDetector : MonoBehaviour
 {
-    public SO_FighterStatus fighterStatus;
+    public SO_FighterConfig fighterConfig;
     public static EventHandler OnPunchConnected;
     public Transform hitPrefab;
 
@@ -25,7 +25,6 @@ public class PunchDetector : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter(Collider other)
     {
         // find the parent (top most) and ignore self-punches! 
@@ -33,8 +32,8 @@ public class PunchDetector : MonoBehaviour
             // Debug.Log("SELF PUNCH DETECTED: "+gameObject.name+" by "+other.gameObject.name);
             return; // ignore it
         }
-        fighterStatus.health -= 20;
-        fighterStatus.CheckStanding();
+        fighterConfig.health_Current -= 5;
+        fighterConfig.StatusCheck();
         //example debug log: "Fighter (1) was BODY HIT by Fighter with RIGHT GLOVE"
         Debug.Log(transform.root.gameObject.name + " was "+gameObject.name+" by " + other.transform.root.gameObject.name + " with " +other.gameObject.name);
         // reduce health

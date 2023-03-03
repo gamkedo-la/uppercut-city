@@ -14,7 +14,6 @@ public class UIInputHandling : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
     }
-    
     public void HandleChooseSides(InputAction.CallbackContext context)
     {
         sideSelectionAxis = context.ReadValue<float>();

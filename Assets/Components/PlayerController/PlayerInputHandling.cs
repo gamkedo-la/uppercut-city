@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerInputHandling : MonoBehaviour
 {
-    private SO_FighterConfig fighterConfig;
+    private SO_FighterConfig fighterConfig; // the fighter we are mapped to
     private PlayerController controller;
     private SO_FighterControlData so_fighterInput;       
     private Camera mainCamera;
@@ -21,12 +21,40 @@ public class PlayerInputHandling : MonoBehaviour
         Smb_MatchLive.onStateEnter += Ev_FightStart;
         PlayerController.newPlayerJoined += Ev_FightStart;
     }
-    private void GetFighterConfig(SO_FighterConfig.Corner corner)
+    private void GetFighterBehaviors(SO_FighterConfig.Corner corner)
     {
-        // Get a reference to the fighterconfig for that corner
+        foreach (FighterBehaviors fb in FindObjectsOfType<FighterBehaviors>())
+        {
+            if(fb.fighterConfig.corner == corner)
+            {
+                fighterBehaviors = fb;
+            }
+        }
+    }
+    public void LinkToFighter()
+    {
+        switch (controller.playerConfig.allegiance)
+        {
+            case SO_PlayerConfig.Allegiance.neutral:
+                fighterConfig = null;
+                fighterBehaviors = null;
+                break;
+            case SO_PlayerConfig.Allegiance.red:
+                GetFighterBehaviors(SO_FighterConfig.Corner.red);
+                break;
+            case SO_PlayerConfig.Allegiance.blue:
+                GetFighterBehaviors(SO_FighterConfig.Corner.blue);
+                break;
+            default:
+                break;
+        }
+        if (controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
+        {
+            fighterConfig = null;
+        }
         foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
         {
-            if(fs.fighterConfig.corner == corner)
+            if(fs.fighterConfig.corner == SO_FighterConfig.Corner.red)
             {
                 fighterConfig = fs.fighterConfig;
             }
@@ -35,21 +63,7 @@ public class PlayerInputHandling : MonoBehaviour
                 fighterConfig.opponentConfig = fs.fighterConfig;
             }
         }
-    }
-    public void LinkToFighter()
-    {
-        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red)
-        {
-            GetFighterConfig(SO_FighterConfig.Corner.red);
-            Debug.Log($"controlling {controller.playerConfig.inputRedFighter}");
-            return;
-        }
-        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue)
-        {
-            GetFighterConfig(SO_FighterConfig.Corner.blue);
-            Debug.Log($"controlling {controller.playerConfig.inputBlueFighter}");
-            return;
-        }
+        Debug.Log($"Controlling {fighterConfig}  |  opponent {fighterConfig.opponentConfig}");
     }
     public void Ev_FightStart(object sender, System.EventArgs e)
     {

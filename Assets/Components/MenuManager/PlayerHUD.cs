@@ -6,7 +6,7 @@ using TMPro;
 
 public class PlayerHUD : MonoBehaviour
 {
-    public SO_FighterStatus fighterStatus;
+    public SO_FighterConfig fighterConfig;
     // text component for health
     public TextMeshProUGUI tmp_healthText;
     public TextMeshProUGUI tmp_staminaText;
@@ -19,7 +19,7 @@ public class PlayerHUD : MonoBehaviour
     // map status values to UI elements
     private void FixedUpdate()
     {
-        tmp_healthText.text = ((int)fighterStatus.health).ToString();
-        tmp_staminaText.text = ((int)fighterStatus.stamina).ToString();
+        tmp_healthText.text = ((int)fighterConfig.health_Current).ToString();
+        tmp_staminaText.text = ((int)fighterConfig.stamina_Current).ToString();
     }
 }

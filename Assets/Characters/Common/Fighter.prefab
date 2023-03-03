@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c430f382484144e925c097c2d33cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Data:
     m_ConstrainedObject: {fileID: 2520835821514975440}
     m_SourceObjects:
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Data:
     m_Root: {fileID: 7993710598767360995}
     m_Tip: {fileID: 8012238896041228472}
@@ -962,6 +962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighterConfig: {fileID: 0}
   inputData: {fileID: 0}
+  animator: {fileID: 7044280961304890794}
   handColliders:
   - {fileID: 1228337925760606422}
   - {fileID: 427728148438740525}
@@ -1240,6 +1241,11 @@ Transform:
 --- !u!4 &6619586391619168641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1480070881545233990, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
+  m_PrefabInstance: {fileID: 3506269599674970171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7044280961304890794 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
   m_PrefabInstance: {fileID: 3506269599674970171}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7230285097499159477 stripped

@@ -73,8 +73,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        PlayerInput[] localInputs = FindObjectsOfType<PlayerInput>();
-        switch (localInputs.Length)
+        switch (FindObjectsOfType<PlayerInput>().Length)
         {
             case 1:
                 playerConfig.allegiance = SO_PlayerConfig.Allegiance.red;

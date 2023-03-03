@@ -4,10 +4,11 @@ using System;
 public class FighterBehaviors : MonoBehaviour
 {
     public SO_FighterConfig fighterConfig;
+    public TimeProvider timeProvider;
     public SO_FighterControlData inputData;
-    private Animator animator;
+    public Animator animator;
     private FighterSetup fighterSetup;
-    private GameObject opponent;
+    private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
     public GameObject[] handColliders;
     public GameObject head;
@@ -16,13 +17,21 @@ public class FighterBehaviors : MonoBehaviour
     public static EventHandler OnPunchThrown;
     private void Awake()
     {
+        StateGameStart.onStateEnter += HandleGameStart;
         // subscribe to events
     }
     public bool IsZeroQuaternion(Quaternion q){
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
     }
-    public void SetLeanValues(Vector2 movementInput){
-        
+    private void GetOpponentFighterBehaviors()
+    {
+        foreach (FighterBehaviors fb in FindObjectsOfType<FighterBehaviors>())
+        {
+            if(fb.fighterConfig.corner != fighterConfig.corner)
+            {
+                opponentFighterBehaviors = fb;
+            }
+        }
     }
     public void DisablePunches()
     {
@@ -82,22 +91,20 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleRotation()
     {
-        if(opponent && (opponent.transform.position - transform.position) != Vector3.zero){
+        if(opponentFighterBehaviors && (opponentFighterBehaviors.transform.position - transform.position) != Vector3.zero){
             // rotate towards opponent
             // TODO: limit the rate of rotation
-            transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation, 
+                Quaternion.LookRotation(opponentFighterBehaviors.transform.position - transform.position),
+                timeProvider.fixedDeltaTime * 30f
+            );
         }
     }
     private void HandlePunchTargeting()
     {
-        if(opponent && (opponent.transform.position - transform.position) != Vector3.zero){
-            // rotate towards opponent
-            // TODO: limit the rate of rotation
-            transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
-        }
-    }
-    private void Start(){
-        StateGameStart.onStateEnter += HandleGameStart;
+        // move the punch target towards the target.
+        // 
     }
     private void FixedUpdate(){
         HandlePunchTargeting();
