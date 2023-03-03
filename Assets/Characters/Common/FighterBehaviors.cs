@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
-
+using System.Collections;
+using UnityEngine.Animations.Rigging;
 public class FighterBehaviors : MonoBehaviour
 {
     public SO_FighterConfig fighterConfig;
@@ -10,7 +11,10 @@ public class FighterBehaviors : MonoBehaviour
     private FighterSetup fighterSetup;
     private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
+    [Header("Punch Setup")]
+    [SerializeField] ChainIKConstraint rightArmIk;
     public GameObject[] handColliders;
+    public ChainIKConstraint leftArmChainIk;
     public GameObject head;
     public GameObject body;
     public GameObject punchTarget;
@@ -39,6 +43,26 @@ public class FighterBehaviors : MonoBehaviour
         {
             glove.SetActive(false);
         }
+    }
+    private IEnumerator SetRightArmIk(float w)
+    {
+        yield return new WaitForEndOfFrame();
+        rightArmIk.weight = w;
+        Debug.Log($"set ik {rightArmIk.weight}");
+    }
+    public void SetRightArmIkWeight(float w)
+    {
+        StartCoroutine(SetRightArmIk(w));
+    }
+    private IEnumerator SetLeftArmIk(float w)
+    {
+        yield return new WaitForEndOfFrame();
+        rightArmIk.weight = w;
+        Debug.Log($"set ik {rightArmIk.weight}");
+    }
+    public void SetLeftArmIkWeight(float w)
+    {
+        StartCoroutine(SetLeftArmIk(w));
     }
     public void EnablePunches()
     {
@@ -69,10 +93,8 @@ public class FighterBehaviors : MonoBehaviour
         }
         if(inputAngle > 0 ){
             // right hand
-            Debug.Log("right");
             animator.SetBool("JabWindup", true);
         } else {
-            Debug.Log("left");
             animator.SetBool("CrossWindup", true);
         }
         // see ticket https://trello.com/c/O1J6ZZxf
