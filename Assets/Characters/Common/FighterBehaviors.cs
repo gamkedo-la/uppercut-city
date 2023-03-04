@@ -14,6 +14,7 @@ public class FighterBehaviors : MonoBehaviour
     [Header("Punch Setup")]
     [SerializeField]public Rig rightArmRig;
     [SerializeField]public ChainIKConstraint rightArmIk;
+    [SerializeField]public ChainIKConstraint leftArmIk;
     public GameObject[] handColliders;
     public GameObject head;
     public GameObject body;
@@ -44,13 +45,6 @@ public class FighterBehaviors : MonoBehaviour
         {
             glove.SetActive(false);
         }
-    }
-    public void SetRightArmIkWeight(float w)
-    {
-
-        //StartCoroutine(SetRightArmIk(w));
-        //rightArmRig.weight = w;
-        
     }
     public void EnablePunches()
     {
@@ -115,7 +109,8 @@ public class FighterBehaviors : MonoBehaviour
     private void Update()
     {
         rightArmIk.weight = animator.GetFloat("IkRightWeight");
-        Debug.Log($"set ik {rightArmIk.weight}");
+        leftArmIk.weight = animator.GetFloat("IkLeftWeight");
+        Debug.Log("set ik");
     }
     private void FixedUpdate(){
         HandleMovement();

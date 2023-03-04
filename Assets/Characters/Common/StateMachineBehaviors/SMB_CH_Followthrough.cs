@@ -31,7 +31,8 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         }
         if(punchHand == PunchHand.left)
         {
-            // ease in left hand IK
+            animator.SetFloat("IkLeftWeight", punchIKCurve.Evaluate(stateInfo.normalizedTime));
+            Debug.Log($"State Update {punchIKCurve.Evaluate(stateInfo.normalizedTime)}");
             //fighterBehaviors.SetLeftArmIkWeight(punchIKCurve.Evaluate(stateInfo.normalizedTime));
         }
     }
@@ -39,6 +40,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetFloat("IkRightWeight", 0);
+        animator.SetFloat("IkLeftWeight", 0);
         animator.SetBool("JabWindup", false);
         animator.SetBool("CrossWindup", false);
         // deactivate punch colliders

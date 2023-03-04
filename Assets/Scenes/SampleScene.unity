@@ -25231,34 +25231,6 @@ PrefabInstance:
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
-    - target: {fileID: 2278287072469415071, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Effectors.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278287072469415071, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Effectors.Array.data[0].m_Visible
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278287072469415071, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Effectors.Array.data[0].m_Transform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278287072469415071, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Effectors.Array.data[0].m_Style.size
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278287072469415071, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Effectors.Array.data[0].m_Style.shape
-      value: 
-      objectReference: {fileID: 4300000, guid: e050c2b16fe384bd994474655a4b4968, type: 2}
-    - target: {fileID: 2278287072469415071, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Effectors.Array.data[0].m_Style.color.a
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278287072469415071, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Effectors.Array.data[0].m_Style.color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2806248057286525694, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
       value: 
