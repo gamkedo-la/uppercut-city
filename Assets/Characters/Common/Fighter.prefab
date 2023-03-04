@@ -787,11 +787,11 @@ MonoBehaviour:
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   inputData: {fileID: 0}
   animator: {fileID: 7044280961304890794}
+  rightArmRig: {fileID: 2278287072469415071}
   rightArmIk: {fileID: 6010097490342919460}
   handColliders:
   - {fileID: 1228337925760606422}
   - {fileID: 427728148438740525}
-  leftArmChainIk: {fileID: 0}
   head: {fileID: 7424455967289687310}
   body: {fileID: 5165971764181080331}
   punchTarget: {fileID: 4638305039927782470}
@@ -957,7 +957,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 54ac1fd9d8777d446847d1a89e7166f3, type: 2}
     - target: {fileID: 5866666021909216657, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
       propertyPath: m_UpdateMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
@@ -1054,8 +1054,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RigLayers:
-  - m_Rig: {fileID: 0}
-    m_Active: 1
   - m_Rig: {fileID: 2278287072469415071}
     m_Active: 1
   m_Effectors:

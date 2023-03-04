@@ -11,6 +11,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // activate the punch colliders
+        animator.SetFloat("IkRightWeight", 0);
         fighterBehaviors = animator.GetComponentInParent<FighterBehaviors>();
         fighterBehaviors.EnablePunches();
         //fighterBehaviors.rightArmIk.SetIkWeight(1);
@@ -22,11 +23,11 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // ease in the punch IK
         if(punchHand == PunchHand.right)
         {
             // ease in right hand IK
-            fighterBehaviors.SetRightArmIkWeight(punchIKCurve.Evaluate(stateInfo.normalizedTime));
+            animator.SetFloat("IkRightWeight", punchIKCurve.Evaluate(stateInfo.normalizedTime));
+            Debug.Log($"State Update {punchIKCurve.Evaluate(stateInfo.normalizedTime)}");
         }
         if(punchHand == PunchHand.left)
         {
@@ -37,19 +38,11 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetFloat("IkRightWeight", 0);
         animator.SetBool("JabWindup", false);
         animator.SetBool("CrossWindup", false);
         // deactivate punch colliders
         fighterBehaviors.DisablePunches();
-        if(punchHand == PunchHand.right)
-        {
-            fighterBehaviors.SetRightArmIkWeight(0f);
-        }
-        if(punchHand == PunchHand.left)
-        {
-            // zero left arm ik
-            //fighterBehaviors.SetLeftArmIkWeight(punchIKCurve.Evaluate(stateInfo.normalizedTime));
-        }
     }
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -58,8 +51,9 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     //}
 
     // OnStateIK is called right after Animator.OnAnimatorIK()
-    override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public void OnAnimatorIK(int layerIndex)
     {
-       // Implement code that sets up animation IK (inverse kinematics)
+       // ease in the punch IK
+        
     }
 }

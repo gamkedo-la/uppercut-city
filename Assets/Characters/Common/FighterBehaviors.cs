@@ -12,15 +12,16 @@ public class FighterBehaviors : MonoBehaviour
     private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
     [Header("Punch Setup")]
-    [SerializeField] ChainIKConstraint rightArmIk;
+    [SerializeField]public Rig rightArmRig;
+    [SerializeField]public ChainIKConstraint rightArmIk;
     public GameObject[] handColliders;
-    public ChainIKConstraint leftArmChainIk;
     public GameObject head;
     public GameObject body;
     public GameObject punchTarget;
     public static EventHandler OnPunchThrown;
     private void Awake()
     {
+        GetOpponentFighterBehaviors();
         StateGameStart.onStateEnter += HandleGameStart;
         // subscribe to events
     }
@@ -44,25 +45,12 @@ public class FighterBehaviors : MonoBehaviour
             glove.SetActive(false);
         }
     }
-    private IEnumerator SetRightArmIk(float w)
-    {
-        yield return new WaitForEndOfFrame();
-        rightArmIk.weight = w;
-        Debug.Log($"set ik {rightArmIk.weight}");
-    }
     public void SetRightArmIkWeight(float w)
     {
-        StartCoroutine(SetRightArmIk(w));
-    }
-    private IEnumerator SetLeftArmIk(float w)
-    {
-        yield return new WaitForEndOfFrame();
-        rightArmIk.weight = w;
-        Debug.Log($"set ik {rightArmIk.weight}");
-    }
-    public void SetLeftArmIkWeight(float w)
-    {
-        StartCoroutine(SetLeftArmIk(w));
+
+        //StartCoroutine(SetRightArmIk(w));
+        //rightArmRig.weight = w;
+        
     }
     public void EnablePunches()
     {
@@ -83,6 +71,7 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleGameStart(object sender, System.EventArgs e){
         animator.SetBool("FightStarted", true);
+        GetOpponentFighterBehaviors();
         // subscribe for round end event
     }
     public void HandlePunch(double inputAngle){
@@ -123,13 +112,12 @@ public class FighterBehaviors : MonoBehaviour
             );
         }
     }
-    private void HandlePunchTargeting()
+    private void Update()
     {
-        // move the punch target towards the target.
-        // 
+        rightArmIk.weight = animator.GetFloat("IkRightWeight");
+        Debug.Log($"set ik {rightArmIk.weight}");
     }
     private void FixedUpdate(){
-        HandlePunchTargeting();
         HandleMovement();
         HandleRotation();
     }
