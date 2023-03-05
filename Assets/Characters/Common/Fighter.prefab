@@ -842,7 +842,6 @@ MonoBehaviour:
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   inputData: {fileID: 0}
   animator: {fileID: 7044280961304890794}
-  rightArmRig: {fileID: 2278287072469415071}
   rightArmIk: {fileID: 6010097490342919460}
   leftArmIk: {fileID: 5060177401762147493}
   handColliders:
@@ -1066,10 +1065,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 54ac1fd9d8777d446847d1a89e7166f3, type: 2}
-    - target: {fileID: 5866666021909216657, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
-      propertyPath: m_UpdateMode
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
 --- !u!4 &158294382507828551 stripped

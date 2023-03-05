@@ -20,6 +20,7 @@ public class SO_FighterConfig : ScriptableObject
     public float health_Current;
     public float burstDamage_Current;
     public float stamina_Current;
+    public int comboCurrent;
     public void RestoreDefualts()
     {
         health_Max = health_Start;

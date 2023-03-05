@@ -13,6 +13,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         // activate the punch colliders
         animator.SetFloat("IkRightWeight", 0);
         fighterBehaviors = animator.GetComponentInParent<FighterBehaviors>();
+        fighterBehaviors.fighterConfig.stamina_Current -= 10;
         fighterBehaviors.EnablePunches();
         //fighterBehaviors.rightArmIk.SetIkWeight(1);
         // subscribe to event

@@ -12,7 +12,6 @@ public class FighterBehaviors : MonoBehaviour
     private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
     [Header("Punch Setup")]
-    [SerializeField]public Rig rightArmRig;
     [SerializeField]public ChainIKConstraint rightArmIk;
     [SerializeField]public ChainIKConstraint leftArmIk;
     public GameObject[] handColliders;
