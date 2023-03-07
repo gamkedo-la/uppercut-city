@@ -67,9 +67,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 500, y: 120, z: 0}
+  m_AnyStatePosition: {x: -40, y: -190, z: 0}
   m_EntryPosition: {x: -180, y: -120, z: 0}
-  m_ExitPosition: {x: 300, y: 120, z: 0}
+  m_ExitPosition: {x: 720, y: -160, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 799024349647192663}
 --- !u!1101 &-8290975050978955575
@@ -380,6 +380,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: PunchFollowThrough
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: CrossWindup
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4676733212900675043}
   m_Solo: 0
@@ -406,6 +409,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83604758bf7659845852c72408ff8098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchIKCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.29940194
+      value: 0.29815558
+      inSlope: 2.2198982
+      outSlope: 2.2198982
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.6804391
+    - serializedVersion: 3
+      time: 0.336
+      value: 1
+      inSlope: -0.0063374094
+      outSlope: -0.0063374094
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.5607429
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  punchHand: 1
 --- !u!1102 &-561013675181802804
 AnimatorState:
   serializedVersion: 6
@@ -472,49 +518,61 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: JabWindup
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: CrossWindup
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: PunchFollowThrough
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: AnimationOffset
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: LStickX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: LStickY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Leaning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: IkRightWeight
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: IkLeftWeight
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base
@@ -874,6 +932,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: PunchFollowThrough
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: JabWindup
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4676733212900675043}
   m_Solo: 0
@@ -1021,6 +1082,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83604758bf7659845852c72408ff8098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchIKCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.336
+      value: 1
+      inSlope: -0.0063374094
+      outSlope: -0.0063374094
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.5607429
+    - serializedVersion: 3
+      time: 0.8202363
+      value: 0.2792887
+      inSlope: -4.7376513
+      outSlope: -4.7376513
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.14239271
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  punchHand: 0
 --- !u!1102 &7296861114540906687
 AnimatorState:
   serializedVersion: 6

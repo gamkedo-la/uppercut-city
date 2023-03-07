@@ -1,31 +1,42 @@
 using UnityEngine;
 using System;
-
+using System.Collections;
+using UnityEngine.Animations.Rigging;
 public class FighterBehaviors : MonoBehaviour
 {
+    public SO_FighterConfig fighterConfig;
+    public TimeProvider timeProvider;
     public SO_FighterControlData inputData;
-    private Animator animator;
+    public Animator animator;
     private FighterSetup fighterSetup;
-    private GameObject opponent;
+    private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
+    [Header("Punch Setup")]
+    [SerializeField]public ChainIKConstraint rightArmIk;
+    [SerializeField]public ChainIKConstraint leftArmIk;
     public GameObject[] handColliders;
+    public GameObject head;
+    public GameObject body;
+    public GameObject punchTarget;
     public static EventHandler OnPunchThrown;
-    private void Awake() {
-        animator = GetComponentInChildren<Animator>();
-        fighterSetup = GetComponent<FighterSetup>();
-        foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
-        {
-            if(fs.corner != fighterSetup.corner)
-            {
-                opponent = fs.gameObject;
-            }
-        }
+    private void Awake()
+    {
+        GetOpponentFighterBehaviors();
+        StateGameStart.onStateEnter += HandleGameStart;
+        // subscribe to events
     }
     public bool IsZeroQuaternion(Quaternion q){
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
     }
-    public void SetLeanValues(Vector2 movementInput){
-        
+    private void GetOpponentFighterBehaviors()
+    {
+        foreach (FighterBehaviors fb in FindObjectsOfType<FighterBehaviors>())
+        {
+            if(fb.fighterConfig.corner != fighterConfig.corner)
+            {
+                opponentFighterBehaviors = fb;
+            }
+        }
     }
     public void DisablePunches()
     {
@@ -53,6 +64,7 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleGameStart(object sender, System.EventArgs e){
         animator.SetBool("FightStarted", true);
+        GetOpponentFighterBehaviors();
         // subscribe for round end event
     }
     public void HandlePunch(double inputAngle){
@@ -63,10 +75,8 @@ public class FighterBehaviors : MonoBehaviour
         }
         if(inputAngle > 0 ){
             // right hand
-            Debug.Log("right");
             animator.SetBool("JabWindup", true);
         } else {
-            Debug.Log("left");
             animator.SetBool("CrossWindup", true);
         }
         // see ticket https://trello.com/c/O1J6ZZxf
@@ -79,20 +89,27 @@ public class FighterBehaviors : MonoBehaviour
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 
-            0.02f
+            0.015f
         );
         // Todo: camera relative movement
     }
     private void HandleRotation()
     {
-        if(opponent && (opponent.transform.position - transform.position) != Vector3.zero){
+        if(opponentFighterBehaviors && (opponentFighterBehaviors.transform.position - transform.position) != Vector3.zero){
             // rotate towards opponent
             // TODO: limit the rate of rotation
-            transform.rotation = Quaternion.LookRotation(opponent.transform.position - transform.position);;
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation, 
+                Quaternion.LookRotation(opponentFighterBehaviors.transform.position - transform.position),
+                timeProvider.fixedDeltaTime * 30f
+            );
         }
     }
-    private void Start(){
-        StateGameStart.onStateEnter += HandleGameStart;
+    private void Update()
+    {
+        rightArmIk.weight = animator.GetFloat("IkRightWeight");
+        leftArmIk.weight = animator.GetFloat("IkLeftWeight");
+        Debug.Log("set ik");
     }
     private void FixedUpdate(){
         HandleMovement();

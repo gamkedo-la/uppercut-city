@@ -14,15 +14,23 @@ public class MenuIconRenderer : MonoBehaviour
     [SerializeField] GameObject blueCornerSlot;
     private PlayerController[] inputs;
     private int neutralPlayerCount = 0;
+    private bool redHasController, blueHasController;
     private bool sideSelectionCooldown = false;
     private void Awake()
     {
         PlayerController.newPlayerJoined += InitializeMenuIcons;
-        MenuManager.setupMatch += InitializeMenuIcons;
     }
     private void OnEnable()
     {
         Debug.Log("MenuIcons renderer enabled");
+        HideAllMenuSprites();
+        inputs = FindObjectsOfType<PlayerController>();
+        for (int i=0; i < inputs.Length; i++)
+        {
+            inputMenuSprites[i].gameObject.SetActive(true);
+            inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
+            // set the icon type
+        }
         UIInputHandling.onSideSelection += HandleSideSelection; 
     }
     private void OnDisable()
@@ -42,22 +50,53 @@ public class MenuIconRenderer : MonoBehaviour
         yield return new WaitForSeconds(menuTimeProvider.fixedDeltaTime * 5);
         sideSelectionCooldown = false;
     }
-    private void HandleSideSelection(object sender, UIInputHandling.InputChooseSides e)
+    private void HandleSideSelection(SO_PlayerConfig config, float sideSelectionAxis)
     {
-        if(e.sideSelectionAxis != 0 && !sideSelectionCooldown){
+        if(sideSelectionAxis != 0 && !sideSelectionCooldown){
             sideSelectionCooldown = true;
             StartCoroutine(ChooseSidesCooldown());
-            // adjust allegiance flag on the player
-            if(e.sideSelectionAxis > 0){
-                e.config.IncrementAllegiance();
-            } else {
-                e.config.DecrementAllegiance();
+            // can we join next party?
+            // where are we now?
+            if(sideSelectionAxis > 0){
+                switch (config.allegiance)
+                {
+                    case SO_PlayerConfig.Allegiance.red:
+                        redHasController = false;
+                        config.IncrementAllegiance();
+                        break;
+                    case SO_PlayerConfig.Allegiance.neutral:
+                        if(!blueHasController)
+                        {
+                            blueHasController = true;
+                            config.IncrementAllegiance();
+                        }
+                        break;
+                    case SO_PlayerConfig.Allegiance.blue:
+                        break;
+                    default:
+                        break;
+                }
+            } else if(sideSelectionAxis < 0) {
+                switch (config.allegiance)
+                {
+                    case SO_PlayerConfig.Allegiance.red:
+                        break;
+                    case SO_PlayerConfig.Allegiance.neutral:
+                        if(!redHasController)
+                        {
+                            redHasController = true;
+                            config.DecrementAllegiance();
+                        }
+                        break;
+                    case SO_PlayerConfig.Allegiance.blue:
+                        blueHasController = false;
+                        config.DecrementAllegiance();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
-    }
-    private void MapInputsToIcons()
-    {
-        // chooseSidesVisual.SetupInputIcons(FindObjectsOfType<PlayerController>());
     }
     private void InitializeMenuIcons(object sender, System.EventArgs e)
     {
@@ -99,13 +138,13 @@ public class MenuIconRenderer : MonoBehaviour
                         neutralSlots[neutralPlayerCount].transform.position, // target
                         iconSpeed*menuTimeProvider.deltaTime // max displacement
                     );
+                    neutralPlayerCount++;
                     break;
             }
         }
     }
     private void Update() 
     {
-        // move the icons from current transform towards intended
         MoveMenuIcons();
     }
 }

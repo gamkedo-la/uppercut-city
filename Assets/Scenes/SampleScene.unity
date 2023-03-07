@@ -5253,38 +5253,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_MaxPlayerCount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 779588228}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: JoinNewPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameSystem, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 635945575309297895, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2346063158975032954, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5331,17 +5299,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
---- !u!114 &779588228 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7209181449942759755, guid: 382ede06110a83a40949780d1bca97d4, type: 3}
-  m_PrefabInstance: {fileID: 779588227}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43576e6157b3c3240b2cf821f8bb0d7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &834181315
 GameObject:
   m_ObjectHideFlags: 0
@@ -19836,22 +19793,46 @@ PrefabInstance:
       propertyPath: inputData
       value: 
       objectReference: {fileID: 11400000, guid: a36883cb055540f49a7abbff1ff37caf, type: 2}
+    - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
+    - target: {fileID: 2264252450452744130, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
+    - target: {fileID: 2806248057286525694, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
     - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: corner
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: fighterStatus
+      propertyPath: fighterConfig
       value: 
-      objectReference: {fileID: 11400000, guid: abef01792cfbac5439434cf5d4573556, type: 2}
+      objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
     - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: activeCharacter
       value: 
       objectReference: {fileID: 11400000, guid: e8986550bf9f2bd4b87fdd17f06ac441, type: 2}
     - target: {fileID: 3771267058411009581, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
+    - target: {fileID: 3771267058411009581, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterStatus
       value: 
       objectReference: {fileID: 11400000, guid: abef01792cfbac5439434cf5d4573556, type: 2}
+    - target: {fileID: 6308577684849473271, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
+    - target: {fileID: 6753855957589651121, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
     - target: {fileID: 6753855957589651121, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterStatus
       value: 
@@ -25238,14 +25219,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: fighterStatus
+    - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: inputData
       value: 
-      objectReference: {fileID: 11400000, guid: 4595e9054e08e554d84e5a7754c965ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 3225cf282a073ee4da1ef96fa92fdb43, type: 2}
+    - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+    - target: {fileID: 2264252450452744130, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+    - target: {fileID: 2806248057286525694, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+    - target: {fileID: 3094960658268138981, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+    - target: {fileID: 3771267058411009581, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
     - target: {fileID: 3771267058411009581, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterStatus
       value: 
       objectReference: {fileID: 11400000, guid: 4595e9054e08e554d84e5a7754c965ee, type: 2}
+    - target: {fileID: 6308577684849473271, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+    - target: {fileID: 6753855957589651121, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: fighterConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
     - target: {fileID: 6753855957589651121, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterStatus
       value: 

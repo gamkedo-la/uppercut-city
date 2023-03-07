@@ -3,14 +3,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerInputHandling : MonoBehaviour
 {
+    private SO_FighterConfig fighterConfig; // the fighter we are mapped to
     private PlayerController controller;
-    private SO_FighterControlData so_fighterInput;
+    private SO_FighterControlData so_fighterInput;       
     private Camera mainCamera;
     private Vector2 movementInput;
     private Vector2 punchInput;
     private FighterBehaviors fighterBehaviors;
-    private Animator fighterAnimator;
-    private FighterSetup[] fighters;
     public static EventHandler onMenuPressed;
     // connect this object to a fighter
     // input logic goes in here
@@ -18,38 +17,53 @@ public class PlayerInputHandling : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
-        fighters = FindObjectsOfType<FighterSetup>();
         mainCamera = Camera.main;
         Smb_MatchLive.onStateEnter += Ev_FightStart;
         PlayerController.newPlayerJoined += Ev_FightStart;
     }
-    private void GetFighterBehaviors(FighterSetup.Corner corner)
+    private void GetFighterBehaviors(SO_FighterConfig.Corner corner)
     {
-        foreach (FighterSetup fs in fighters)
+        foreach (FighterBehaviors fb in FindObjectsOfType<FighterBehaviors>())
         {
-            if(fs.corner == corner)
+            if(fb.fighterConfig.corner == corner)
             {
-                fighterBehaviors = fs.GetComponent<FighterBehaviors>();
+                fighterBehaviors = fb;
             }
         }
     }
     public void LinkToFighter()
     {
-        controller.playerConfig.playerInput.SwitchCurrentActionMap("Player");
-        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red)
+        switch (controller.playerConfig.allegiance)
         {
-            so_fighterInput = controller.playerConfig.inputRedFighter;
-            GetFighterBehaviors(FighterSetup.Corner.red);
-            Debug.Log($"controlling {controller.playerConfig.inputRedFighter}");
-            return;
+            case SO_PlayerConfig.Allegiance.neutral:
+                fighterConfig = null;
+                fighterBehaviors = null;
+                break;
+            case SO_PlayerConfig.Allegiance.red:
+                GetFighterBehaviors(SO_FighterConfig.Corner.red);
+                break;
+            case SO_PlayerConfig.Allegiance.blue:
+                GetFighterBehaviors(SO_FighterConfig.Corner.blue);
+                break;
+            default:
+                break;
         }
-        if(controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue)
+        if (controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
         {
-            so_fighterInput = controller.playerConfig.inputBlueFighter;
-            GetFighterBehaviors(FighterSetup.Corner.blue);
-            Debug.Log($"controlling {so_fighterInput}");
-            return;
+            fighterConfig = null;
         }
+        foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
+        {
+            if(fs.fighterConfig.corner == SO_FighterConfig.Corner.red)
+            {
+                fighterConfig = fs.fighterConfig;
+            }
+            else
+            {
+                fighterConfig.opponentConfig = fs.fighterConfig;
+            }
+        }
+        Debug.Log($"Controlling {fighterConfig}  |  opponent {fighterConfig.opponentConfig}");
     }
     public void Ev_FightStart(object sender, System.EventArgs e)
     {

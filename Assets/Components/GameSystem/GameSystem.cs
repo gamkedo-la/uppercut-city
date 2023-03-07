@@ -21,11 +21,9 @@ public class GameSystem : MonoBehaviour
     }
     public void JoinNewPlayer(PlayerInput playerInput)
     {
-        Debug.Log($"GS JoinNewPlayer");
         InputSystemUIInputModule UiModule = playerInput.GetComponent<InputSystemUIInputModule>();
         UiModule.actionsAsset = playerInput.actions;
         playerInput.uiInputModule = UiModule;
-        playerInput.SwitchCurrentActionMap("Player");
     }
     private void HandleNewPlayerJoined(object sender, System.EventArgs e)
     {
