@@ -64,7 +64,6 @@ public class PlayerInputHandling : MonoBehaviour
                 fighterConfig.opponentConfig = fs.fighterConfig;
             }
         }
-        Debug.Log($"Controlling {fighterConfig}  |  opponent {fighterConfig.opponentConfig}");
     }
     public void Ev_FightStart(object sender, System.EventArgs e)
     {
@@ -94,7 +93,6 @@ public class PlayerInputHandling : MonoBehaviour
         fighterBehaviors?.HandlePunch(Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
     }
     public void InputMousePunch(InputAction.CallbackContext context){
-        Debug.Log("mouse punch");
         mousePunchAxis = context.ReadValue<float>();
         fighterBehaviors?.HandlePunch(mousePunchAxis);
     }

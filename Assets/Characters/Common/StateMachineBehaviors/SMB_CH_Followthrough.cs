@@ -11,6 +11,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetFloat("IkRightWeight", 0);
+        animator.SetFloat("IkLeftWeight", 0);
         fighterBehaviors = animator.GetComponentInParent<FighterBehaviors>();
         fighterBehaviors.fighterConfig.stamina_Current -= 10;
         fighterBehaviors.EnablePunches();
@@ -34,6 +35,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         animator.SetFloat("IkLeftWeight", 0);
         animator.SetBool("JabWindup", false);
         animator.SetBool("CrossWindup", false);
+        animator.ResetTrigger("PunchFollowThrough");
         fighterBehaviors.DisablePunches();
     }
 }
