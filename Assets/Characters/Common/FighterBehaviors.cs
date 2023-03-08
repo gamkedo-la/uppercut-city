@@ -109,7 +109,6 @@ public class FighterBehaviors : MonoBehaviour
     {
         rightArmIk.weight = animator.GetFloat("IkRightWeight");
         leftArmIk.weight = animator.GetFloat("IkLeftWeight");
-        Debug.Log("set ik");
     }
     private void FixedUpdate(){
         HandleMovement();

@@ -9,6 +9,7 @@ public class PlayerInputHandling : MonoBehaviour
     private Camera mainCamera;
     private Vector2 movementInput;
     private Vector2 punchInput;
+    private double mousePunchAxis;
     private FighterBehaviors fighterBehaviors;
     public static EventHandler onMenuPressed;
     // connect this object to a fighter
@@ -91,6 +92,11 @@ public class PlayerInputHandling : MonoBehaviour
     public void HandlePunchInput(InputAction.CallbackContext context){
         punchInput = context.ReadValue<Vector2>();
         fighterBehaviors?.HandlePunch(Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
+    }
+    public void InputMousePunch(InputAction.CallbackContext context){
+        Debug.Log("mouse punch");
+        mousePunchAxis = context.ReadValue<float>();
+        fighterBehaviors?.HandlePunch(mousePunchAxis);
     }
     private void Start() {
         // Assign this player controller to a fighter
