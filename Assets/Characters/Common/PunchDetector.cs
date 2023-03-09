@@ -33,9 +33,9 @@ public class PunchDetector : MonoBehaviour
             return; // ignore it
         }
         // reference the animator and 
-        fighterAnimator.SetFloat("HealthCurrent", fighterAnimator.GetFloat("HealthCurrent") - 5);
+        fighterConfig.healthCurrent -= 5;
+        fighterAnimator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         Debug.Log(transform.root.gameObject.name + " was "+gameObject.name+" by " + other.transform.root.gameObject.name + " with " +other.gameObject.name);
-        // reduce health
         // TODO FIXME
         // since triggerEnter does not give us any contact points,
         // we can approximate the "point of contact" this way:

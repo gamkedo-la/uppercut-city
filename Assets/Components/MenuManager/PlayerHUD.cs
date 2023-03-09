@@ -21,9 +21,10 @@ public class PlayerHUD : MonoBehaviour
     // map status values to UI elements
     private void FixedUpdate()
     {
-        tmp_healthCurrent.text = ((int)fighterConfig.health_Current).ToString();
-        tmp_healthMax.text = ((int)fighterConfig.health_Current).ToString();
-        tmp_ComboText.text = fighterConfig.comboCurrent.ToString();
-        tmp_staminaText.text = ((int)fighterConfig.stamina_Current).ToString();
+        tmp_healthCurrent.text = ((int)fighterConfig.healthCurrent).ToString();
+        tmp_healthMax.text = ((int)fighterConfig.healthMax).ToString();
+        tmp_Combo.text = fighterConfig.combo.ToString();
+        tmp_staminaMax.text = ((int)fighterConfig.staminaMax).ToString();
+        tmp_staminaCurrent.text = ((int)fighterConfig.staminaCurrent).ToString();
     }
 }

@@ -13,7 +13,9 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         animator.SetFloat("IkRightWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
         fighterBehaviors = animator.GetComponentInParent<FighterBehaviors>();
-        fighterBehaviors.fighterConfig.stamina_Current -= 10;
+        // TODO: how much stamina should be used?
+        // Punch power should be taken into consideration
+        animator.SetFloat("StaminaCurrent", animator.GetFloat("StaminaCurrent") - 10);
         fighterBehaviors.EnablePunches();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,12 +23,10 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         if(punchHand == PunchHand.right)
         {
             animator.SetFloat("IkRightWeight", punchIKCurve.Evaluate(stateInfo.normalizedTime));
-            Debug.Log($"State Update {punchIKCurve.Evaluate(stateInfo.normalizedTime)}");
         }
         if(punchHand == PunchHand.left)
         {
             animator.SetFloat("IkLeftWeight", punchIKCurve.Evaluate(stateInfo.normalizedTime));
-            Debug.Log($"State Update {punchIKCurve.Evaluate(stateInfo.normalizedTime)}");
         }
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

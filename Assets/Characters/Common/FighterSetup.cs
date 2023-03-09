@@ -5,7 +5,6 @@ using UnityEngine;
 public class FighterSetup : MonoBehaviour
 {
     public SO_FighterConfig fighterConfig;
-    public SO_FighterStatus fighterStatus;
     public SO_UserProfile userProfile;
     public SkinnedMeshRenderer fighterMeshRenderer;
     private void SetMeshWithTextures(SO_Character character)
@@ -26,13 +25,7 @@ public class FighterSetup : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Corner Selected");
+            Debug.Log("BUG: A fighter has to be assigned to a corner");
         }
-        StateGameSetup.onStateEnter += ResetFighterStatus;
-        StateGameStart.onStateEnter += ResetFighterStatus;
-    }
-    public void ResetFighterStatus(object sender, EventArgs e)
-    {
-        fighterConfig.RestoreDefualts();
     }
 }

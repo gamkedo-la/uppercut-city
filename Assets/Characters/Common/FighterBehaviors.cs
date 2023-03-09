@@ -105,12 +105,22 @@ public class FighterBehaviors : MonoBehaviour
             );
         }
     }
+    public void DistributeAnimatorValues()
+    {
+        fighterConfig.staminaMax = animator.GetFloat("StaminaMax");
+        fighterConfig.staminaCurrent = animator.GetFloat("StaminaCurrent");
+        fighterConfig.healthMax = animator.GetFloat("HealthMax");
+        fighterConfig.healthCurrent = animator.GetFloat("HealthCurrent");
+        fighterConfig.combo = (int)animator.GetFloat("Combo");
+    }
     private void Update()
     {
         rightArmIk.weight = animator.GetFloat("IkRightWeight");
         leftArmIk.weight = animator.GetFloat("IkLeftWeight");
     }
-    private void FixedUpdate(){
+    private void FixedUpdate()
+    {
+        DistributeAnimatorValues();
         HandleMovement();
         HandleRotation();
     }
