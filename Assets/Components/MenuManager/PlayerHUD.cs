@@ -7,11 +7,11 @@ using TMPro;
 public class PlayerHUD : MonoBehaviour
 {
     public SO_FighterConfig fighterConfig;
-    // text component for health
-    public TextMeshProUGUI tmp_healthCurrent;
     public TextMeshProUGUI tmp_healthMax;
-    public TextMeshProUGUI tmp_staminaText;
-    public TextMeshProUGUI tmp_ComboText;
+    public TextMeshProUGUI tmp_healthCurrent;
+    public TextMeshProUGUI tmp_staminaMax;
+    public TextMeshProUGUI tmp_staminaCurrent;
+    public TextMeshProUGUI tmp_Combo;
     // text component for stamina
     private void Awake() 
     {

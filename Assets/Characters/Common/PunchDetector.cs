@@ -9,11 +9,11 @@ using UnityEngine;
 public class PunchDetector : MonoBehaviour
 {
     public SO_FighterConfig fighterConfig;
+    public Animator fighterAnimator;
     public static EventHandler OnPunchConnected;
     public Transform hitPrefab;
-
     public AudioSource audioSource;
-
+    public delegate void HitReceivedEvent(SO_FighterConfig fighterConfig, float damage);
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +32,8 @@ public class PunchDetector : MonoBehaviour
             // Debug.Log("SELF PUNCH DETECTED: "+gameObject.name+" by "+other.gameObject.name);
             return; // ignore it
         }
-        fighterConfig.health_Current -= 5;
-        fighterConfig.StatusCheck();
-        //example debug log: "Fighter (1) was BODY HIT by Fighter with RIGHT GLOVE"
+        // reference the animator and 
+        fighterAnimator.SetFloat("HealthCurrent", fighterAnimator.GetFloat("HealthCurrent") - 5);
         Debug.Log(transform.root.gameObject.name + " was "+gameObject.name+" by " + other.transform.root.gameObject.name + " with " +other.gameObject.name);
         // reduce health
         // TODO FIXME
