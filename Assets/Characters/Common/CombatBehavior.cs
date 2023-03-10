@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CombatBehavior : MonoBehaviour
 {
+    public SO_FighterConfig fighterConfig;
     public GameObject rightHand;
     public GameObject leftHand;
     //damage dealer class
@@ -15,6 +16,19 @@ public class CombatBehavior : MonoBehaviour
         animator = GetComponent<Animator>();
         rightHandCollider = rightHand.GetComponent<Collider>();
         leftHandCollider = leftHand.GetComponent<Collider>();
+        StateGameStart.onStateEnter += HandleGameStart;
+        Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
+    }
+    private void HandleGameStart()
+    {
+        DisablePunches();
+        fighterConfig.SetNewMatch();
+        animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
+        animator.SetFloat("HealthMax", fighterConfig.healthMax);
+        animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
+        animator.SetFloat("StaminaMax", fighterConfig.staminaMax);
+        animator.SetFloat("Combo", fighterConfig.combo);
+
     }
     public void DisablePunches()
     {
@@ -33,5 +47,13 @@ public class CombatBehavior : MonoBehaviour
             leftHand.SetActive(true);
             return;
         }
+    }
+    private void MatchLiveUpdate()
+    {
+        fighterConfig.healthCurrent = animator.GetFloat("HealthCurrent");
+        fighterConfig.healthMax = animator.GetFloat("HealthMax");
+        fighterConfig.staminaCurrent = animator.GetFloat("StaminaCurrent");
+        fighterConfig.staminaMax = animator.GetFloat("StaminaMax");
+        fighterConfig.combo = (int)animator.GetFloat("Combo");
     }
 }

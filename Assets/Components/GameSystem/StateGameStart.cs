@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class StateGameStart : StateMachineBehaviour
 {
-    public static EventHandler<EventArgs> onStateEnter;
+    public delegate void StartNewGame();
+    public static event StartNewGame onStateEnter;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        onStateEnter?.Invoke(this, EventArgs.Empty);
+        onStateEnter?.Invoke();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

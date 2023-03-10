@@ -62,7 +62,7 @@ public class FighterBehaviors : MonoBehaviour
         movementVector.y = transform.position.y;
         movementVector.z = transform.position.z + movementInput.y;
     }
-    private void HandleGameStart(object sender, System.EventArgs e){
+    private void HandleGameStart(){
         animator.SetBool("FightStarted", true);
         GetOpponentFighterBehaviors();
         // subscribe for round end event
@@ -105,14 +105,6 @@ public class FighterBehaviors : MonoBehaviour
             );
         }
     }
-    public void DistributeAnimatorValues()
-    {
-        fighterConfig.staminaMax = animator.GetFloat("StaminaMax");
-        fighterConfig.staminaCurrent = animator.GetFloat("StaminaCurrent");
-        fighterConfig.healthMax = animator.GetFloat("HealthMax");
-        fighterConfig.healthCurrent = animator.GetFloat("HealthCurrent");
-        fighterConfig.combo = (int)animator.GetFloat("Combo");
-    }
     private void Update()
     {
         rightArmIk.weight = animator.GetFloat("IkRightWeight");
@@ -120,7 +112,6 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        DistributeAnimatorValues();
         HandleMovement();
         HandleRotation();
     }

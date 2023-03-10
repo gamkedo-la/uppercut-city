@@ -19,13 +19,9 @@ public class FighterSetup : MonoBehaviour
         {
             SetMeshWithTextures(userProfile.defaultRedFighter);
         }
-        else if (fighterConfig.corner == SO_FighterConfig.Corner.blue)
+        if (fighterConfig.corner == SO_FighterConfig.Corner.blue)
         {
             SetMeshWithTextures(userProfile.defaultBlueFighter);
-        }
-        else
-        {
-            Debug.Log("BUG: A fighter has to be assigned to a corner");
         }
     }
 }

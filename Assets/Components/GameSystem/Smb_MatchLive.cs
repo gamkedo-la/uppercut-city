@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 public class Smb_MatchLive : StateMachineBehaviour
 {
+    public delegate void MatchLiveUpdate();
+    public static event MatchLiveUpdate onMatchLiveUpdate;
     public static EventHandler<EventArgs> onStateEnter;
     public static EventHandler onGamePaused;
     public static EventHandler onGameResume;
@@ -22,12 +24,10 @@ public class Smb_MatchLive : StateMachineBehaviour
         UIInputHandling.onReturnPressed += ResumeGame;
     }
     
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        onMatchLiveUpdate?.Invoke();
+    }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        PlayerInputHandling.onMenuPressed -= PauseGame;

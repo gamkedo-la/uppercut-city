@@ -12,9 +12,13 @@ public class PlayerHUD : MonoBehaviour
     public TextMeshProUGUI tmp_staminaMax;
     public TextMeshProUGUI tmp_staminaCurrent;
     public TextMeshProUGUI tmp_Combo;
-
-    // map status values to UI elements
-    private void FixedUpdate()
+    private void Awake()
+    {
+        // subscribe to events that update UI
+        // fewer calls in fixed update
+        Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
+    }
+    private void MatchLiveUpdate()
     {
         tmp_healthCurrent.text = ((int)fighterConfig.healthCurrent).ToString();
         tmp_healthMax.text = ((int)fighterConfig.healthMax).ToString();

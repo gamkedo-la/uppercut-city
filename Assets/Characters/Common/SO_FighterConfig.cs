@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-
 [CreateAssetMenu(fileName = "FighterConfig", menuName = "ScriptableObjects/FighterConfig", order = 1)]
 public class SO_FighterConfig : ScriptableObject
 {
@@ -19,5 +18,12 @@ public class SO_FighterConfig : ScriptableObject
     public float staminaMax;
     public float staminaCurrent;
     public int combo;
-
+    public void SetNewMatch()
+    {
+        healthMax = healthStart;
+        healthCurrent = healthStart;
+        staminaMax = staminaStart;
+        staminaCurrent = staminaStart;
+        combo = 0;
+    }
 }
