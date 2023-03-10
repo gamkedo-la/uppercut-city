@@ -12,11 +12,6 @@ public class PlayerHUD : MonoBehaviour
     public TextMeshProUGUI tmp_staminaMax;
     public TextMeshProUGUI tmp_staminaCurrent;
     public TextMeshProUGUI tmp_Combo;
-    // text component for stamina
-    private void Awake() 
-    {
-        // on collision   
-    }
 
     // map status values to UI elements
     private void FixedUpdate()

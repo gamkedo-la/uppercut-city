@@ -21,13 +21,13 @@ public class Smb_Ch_Guard : StateMachineBehaviour
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log($"{timeProvider}");
-        // stamina = Mathf.Clamp(
-        //     animator.GetFloat("StaminaCurrent") + staminaRegenRate*timeProvider.deltaTime,
-        //     0,
-        //     animator.GetFloat("StaminaMax")
-        // );
-        // animator.SetFloat("StaminaCurrent", stamina);
+        Debug.Log($"Animator {timeProvider}"); //BUG: code that references SO_TimeProvider should be the same for all instances but isn't.
+        stamina = Mathf.Clamp(
+            animator.GetFloat("StaminaCurrent") + staminaRegenRate*.005f,
+            0,
+            animator.GetFloat("StaminaMax")
+        );
+        animator.SetFloat("StaminaCurrent", stamina);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
