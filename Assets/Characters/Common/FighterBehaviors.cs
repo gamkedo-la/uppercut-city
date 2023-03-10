@@ -25,7 +25,8 @@ public class FighterBehaviors : MonoBehaviour
         StateGameStart.onStateEnter += HandleGameStart;
         // subscribe to events
     }
-    public bool IsZeroQuaternion(Quaternion q){
+    public bool IsZeroQuaternion(Quaternion q)
+    {
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
     }
     private void GetOpponentFighterBehaviors()
@@ -73,6 +74,8 @@ public class FighterBehaviors : MonoBehaviour
     {
         // input angle: +180 right -180 left  |  0 is neutral
         animator.SetFloat("RStickAngle", (float)inputAngle);
+        // Should OnPunchThrown be replaced with SMB_CH_Followthrough OnStateEnter?
+        // Any time a fighter commits to throwing a punch it goes through SMB_CH_Followthrough
         OnPunchThrown?.Invoke(this, EventArgs.Empty);
     }
     private void HandleMovement()
