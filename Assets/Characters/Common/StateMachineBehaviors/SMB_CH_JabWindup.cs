@@ -9,6 +9,8 @@ public class SMB_CH_JabWindup : StateMachineBehaviour
     private float punchPower;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetBool("CrossWindup", false);
+        animator.ResetTrigger("PunchFollowThrough");
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
         animator.SetFloat("PunchPowerRight", 0);
     }

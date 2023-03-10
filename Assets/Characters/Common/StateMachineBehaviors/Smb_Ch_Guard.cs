@@ -21,9 +21,8 @@ public class Smb_Ch_Guard : StateMachineBehaviour
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log($"Animator {timeProvider}"); //BUG: code that references SO_TimeProvider should be the same for all instances but isn't.
         stamina = Mathf.Clamp(
-            animator.GetFloat("StaminaCurrent") + staminaRegenRate*.005f,
+            animator.GetFloat("StaminaCurrent") + staminaRegenRate*Time.deltaTime,
             0,
             animator.GetFloat("StaminaMax")
         );

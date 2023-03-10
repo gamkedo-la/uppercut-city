@@ -58,29 +58,21 @@ public class FighterBehaviors : MonoBehaviour
     public void SetMovementVector(Vector2 movementInput){
         animator.SetFloat("LStickX", movementInput.x);
         animator.SetFloat("LStickY", movementInput.y);
+        // camera relative movement here
         movementVector.x = transform.position.x + movementInput.x;
         movementVector.y = transform.position.y;
         movementVector.z = transform.position.z + movementInput.y;
     }
-    private void HandleGameStart(){
+    private void HandleGameStart()
+    {
         animator.SetBool("FightStarted", true);
         GetOpponentFighterBehaviors();
         // subscribe for round end event
     }
-    public void HandlePunch(double inputAngle){
+    public void HandlePunch(double inputAngle)
+    {
         // input angle: +180 right -180 left  |  0 is neutral
-        if (inputAngle == 0){
-            animator.SetTrigger("PunchFollowThrough");
-            return;
-        }
-        if(inputAngle > 0 ){
-            // right hand
-            animator.SetBool("JabWindup", true);
-        } else {
-            animator.SetBool("CrossWindup", true);
-        }
-        // see ticket https://trello.com/c/O1J6ZZxf
-        // change animation state to windup
+        animator.SetFloat("RStickAngle", (float)inputAngle);
         OnPunchThrown?.Invoke(this, EventArgs.Empty);
     }
     private void HandleMovement()

@@ -5,7 +5,7 @@ public class PlayerInputHandling : MonoBehaviour
 {
     private SO_FighterConfig fighterConfig; // the fighter we are mapped to
     private PlayerController controller;
-    private SO_FighterControlData so_fighterInput;       
+    private SO_FighterControlData so_fighterInput;
     private Camera mainCamera;
     private Vector2 movementInput;
     private Vector2 punchInput;
@@ -71,7 +71,6 @@ public class PlayerInputHandling : MonoBehaviour
     }
     public void HandleLeanModifier(InputAction.CallbackContext context)
     {
-        Debug.Log($"leaning {context.ReadValue<float>() > 0}");
         fighterBehaviors?.SetLeanModifier(context.ReadValue<float>() > 0);
         // so_fighterInput.leanModifier 
     }
@@ -83,9 +82,6 @@ public class PlayerInputHandling : MonoBehaviour
     public void InputMovement(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
-        // camera relative movement - take movement input and rotate around vertical axis by i
-        // i being the camera's rotation 
-        // mainCamera.transform.rotation.y
         fighterBehaviors?.SetMovementVector(movementInput);
     }
     public void HandlePunchInput(InputAction.CallbackContext context){
