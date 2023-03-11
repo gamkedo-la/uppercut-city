@@ -12,6 +12,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
         animator.SetFloat("IkRightWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
+        animator.SetBool("FollowThrough", true);
         // TODO: how much stamina should be used?
         // Punch power should be taken into consideration
         animator.SetFloat("StaminaCurrent", animator.GetFloat("StaminaCurrent") - 10);
@@ -32,6 +33,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     {
         animator.SetFloat("IkRightWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
+        animator.SetBool("FollowThrough", false);
         animator.SetBool("JabWindup", false);
         animator.SetBool("CrossWindup", false);
         animator.ResetTrigger("PunchFollowThrough");

@@ -57,7 +57,7 @@ public class MenuIconRenderer : MonoBehaviour
             StartCoroutine(ChooseSidesCooldown());
             // can we join next party?
             // where are we now?
-            if(sideSelectionAxis > 0){
+            if(sideSelectionAxis > 0){ // trying to move right
                 switch (config.allegiance)
                 {
                     case SO_PlayerConfig.Allegiance.red:
