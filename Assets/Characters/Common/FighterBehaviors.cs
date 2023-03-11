@@ -57,6 +57,9 @@ public class FighterBehaviors : MonoBehaviour
         animator.SetBool("Leaning", leaning);
     }
     public void SetMovementVector(Vector2 movementInput){
+        if(fighterConfig.corner == SO_FighterConfig.Corner.blue){
+            movementInput.x *= -1;
+        }
         animator.SetFloat("LStickX", movementInput.x);
         animator.SetFloat("LStickY", movementInput.y);
         // camera relative movement here

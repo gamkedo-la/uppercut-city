@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Smb_Ch_Leaning : StateMachineBehaviour
 {
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+   private CombatBehavior combatBehavior;
+   public delegate void OnLeaningUpdate(SO_FighterConfig.Corner corner, float lStickX);
+   public static event OnLeaningUpdate onLeaningUpdate;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       //animator.SetLayerWeight(1,1);
+      if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+      onLeaningUpdate?.Invoke(combatBehavior.fighterConfig.corner, animator.GetFloat("LStickX"));
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

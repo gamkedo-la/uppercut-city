@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CombatBehavior : MonoBehaviour
 {
+    public enum PunchTarget { head, body }
     public SO_FighterConfig fighterConfig;
     public GameObject rightHand;
     public GameObject leftHand;
@@ -10,7 +11,7 @@ public class CombatBehavior : MonoBehaviour
     private Collider rightHandCollider;
     private Collider leftHandCollider;
     private Animator animator;
-    
+    private PunchTarget punchTarget = PunchTarget.head;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -18,6 +19,7 @@ public class CombatBehavior : MonoBehaviour
         leftHandCollider = leftHand.GetComponent<Collider>();
         StateGameStart.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
+        Smb_Ch_Leaning.onLeaningUpdate += LeaningUpdate;
     }
     private void HandleGameStart()
     {
@@ -47,6 +49,26 @@ public class CombatBehavior : MonoBehaviour
             leftHand.SetActive(true);
             return;
         }
+    }
+    private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
+    {
+        if(fighterConfig.corner != evCorner){ return; }
+        if(lStickX > 0  && punchTarget != PunchTarget.body)
+        {
+            punchTarget = PunchTarget.body;
+            // set the ik target component to the body
+            Debug.Log("Target the body");
+        }
+        if(lStickX <= 0 && punchTarget != PunchTarget.head)
+        {
+            punchTarget = PunchTarget.head;
+            // set the ik target component to the head
+            Debug.Log("Target the Head");
+        }
+    }
+    private void HandleHealthRegen()
+    {
+        // When we take a hit, health regen is temporarily disabled
     }
     private void MatchLiveUpdate()
     {
