@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class MenuIconRenderer : MonoBehaviour
 {
     [SerializeField] [Range(1800f, 5000f)] float iconSpeed;
@@ -76,7 +75,7 @@ public class MenuIconRenderer : MonoBehaviour
                     default:
                         break;
                 }
-            } else if(sideSelectionAxis < 0) {
+            } else if(sideSelectionAxis < 0) { // trying to move left
                 switch (config.allegiance)
                 {
                     case SO_PlayerConfig.Allegiance.red:

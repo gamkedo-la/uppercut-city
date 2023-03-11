@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427728148438740525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.000078, y: -0.000115, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,8 +44,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.001
-  m_Center: {x: 0, y: 0.0006, z: 0}
+  m_Radius: 0.0006
+  m_Center: {x: -0.00003482382, y: 0.0010559607, z: 0.000017024358}
 --- !u!114 &7106022184161068128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,8 +102,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.001
-  m_Center: {x: 0, y: 0.0006, z: 0}
+  m_Radius: 0.0006
+  m_Center: {x: -0.0000000028692462, y: 0.00093739503, z: -0.000000011939762}
 --- !u!114 &5236562275683701962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,8 +670,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0015
-  m_Center: {x: 0, y: 0.0005, z: 0}
+  m_Radius: 0.0010158264
+  m_Center: {x: 1.558439e-10, y: 0.00052850833, z: 0.00034676073}
 --- !u!54 &2105553694473540874
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984d26beb0b4220478e042e1b53bf0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterConfig: {fileID: 0}
   rightHand: {fileID: 427728148438740525}
   leftHand: {fileID: 1228337925760606422}
 --- !u!4 &4799404619877105878 stripped
