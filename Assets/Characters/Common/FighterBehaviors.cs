@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.Animations.Rigging;
 public class FighterBehaviors : MonoBehaviour
 {
+    public enum BlockType { right, left }
     public SO_FighterConfig fighterConfig;
     public TimeProvider timeProvider;
     public SO_FighterControlData inputData;
@@ -103,6 +104,22 @@ public class FighterBehaviors : MonoBehaviour
             );
         }
     }
+
+    public void HandleBlock(BlockType blocktype, bool v)
+    {
+        switch (blocktype)
+        {
+            case BlockType.right:
+                animator.SetFloat("R1", v ? 1.0f : 0.0f);
+                break;
+            case BlockType.left:
+                animator.SetFloat("RB", v ? 1.0f : 0.0f);
+                break;
+            default:
+                break;
+        }
+    }
+
     private void Update()
     {
         rightArmIk.weight = animator.GetFloat("IkRightWeight");

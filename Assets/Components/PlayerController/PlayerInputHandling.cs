@@ -92,6 +92,14 @@ public class PlayerInputHandling : MonoBehaviour
         mousePunchAxis = context.ReadValue<float>();
         fighterBehaviors?.HandlePunch(mousePunchAxis);
     }
+    public void HandleBlockRightInput(InputAction.CallbackContext context)
+    {
+        fighterBehaviors?.HandleBlock(FighterBehaviors.BlockType.right, context.ReadValue<float>() > 0);
+    }
+    public void HandleBlockLeftInput(InputAction.CallbackContext context)
+    {
+        fighterBehaviors?.HandleBlock(FighterBehaviors.BlockType.left, context.ReadValue<float>() > 0);
+    }
     private void Start() {
         // Assign this player controller to a fighter
         // This is what the 'ChooseSides' menu scripting will do later on
