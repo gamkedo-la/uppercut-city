@@ -10,13 +10,19 @@ public class CombatBehavior : MonoBehaviour
     //damage dealer class
     private Collider rightHandCollider;
     private Collider leftHandCollider;
+    [HideInInspector] public AttackProperties leftAttackProperties;
+    [HideInInspector] public AttackProperties rightAttackProperties;
+    public PunchDetector hitBodyDetector;
+    public PunchDetector hitHeadDetector;
     private Animator animator;
     private PunchTarget punchTarget = PunchTarget.head;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rightHandCollider = rightHand.GetComponent<Collider>();
+        rightAttackProperties = rightHand.GetComponent<AttackProperties>();
         leftHandCollider = leftHand.GetComponent<Collider>();
+        leftAttackProperties = leftHand.GetComponent<AttackProperties>();
         StateGameStart.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
         Smb_Ch_Leaning.onLeaningUpdate += LeaningUpdate;
@@ -36,17 +42,23 @@ public class CombatBehavior : MonoBehaviour
     {
         rightHand.SetActive(false);
         leftHand.SetActive(false);
+        rightAttackProperties.punchDamage = 0;
+        leftAttackProperties.punchDamage = 0;
     }
     public void EnablePunch(SMB_CH_Followthrough.PunchHand punchHand)
     {
         if(punchHand == SMB_CH_Followthrough.PunchHand.right)
         {
             rightHand.SetActive(true);
+            rightAttackProperties.punchDamage = animator.GetFloat("PunchPowerRight");
+            animator.SetFloat("StaminaCurrent", animator.GetFloat("StaminaCurrent") - rightAttackProperties.punchDamage);
             return;
         }
         if(punchHand == SMB_CH_Followthrough.PunchHand.left)
         {
             leftHand.SetActive(true);
+            leftAttackProperties.punchDamage = animator.GetFloat("PunchPowerLeft");
+            animator.SetFloat("StaminaCurrent", animator.GetFloat("StaminaCurrent") - leftAttackProperties.punchDamage);
             return;
         }
     }
@@ -65,6 +77,10 @@ public class CombatBehavior : MonoBehaviour
             // set the ik target component to the head
             Debug.Log("Target the Head");
         }
+    }
+    public void PunchFinished()
+    {
+        animator.SetBool("FollowThrough", false);
     }
     private void HandleHealthRegen()
     {

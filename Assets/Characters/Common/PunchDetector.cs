@@ -13,6 +13,7 @@ public class PunchDetector : MonoBehaviour
     public static EventHandler OnPunchConnected;
     public Transform hitPrefab;
     public AudioSource audioSource;
+    private AttackProperties attackProperties;
     public delegate void HitReceivedEvent(SO_FighterConfig fighterConfig, float damage);
     // Start is called before the first frame update
     void Start()
@@ -32,8 +33,9 @@ public class PunchDetector : MonoBehaviour
             // Debug.Log("SELF PUNCH DETECTED: "+gameObject.name+" by "+other.gameObject.name);
             return; // ignore it
         }
-        // reference the animator and 
-        fighterConfig.healthCurrent -= 5;
+        attackProperties = other.GetComponent<AttackProperties>();
+        // how much is the damage
+        fighterConfig.healthCurrent -= attackProperties.punchDamage;
         fighterAnimator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         Debug.Log(transform.root.gameObject.name + " was "+gameObject.name+" by " + other.transform.root.gameObject.name + " with " +other.gameObject.name);
         // TODO FIXME

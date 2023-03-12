@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0e60c0a65e1d94ab4322ccc41be64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchDamage: 0
 --- !u!1 &1228337925760606422
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0e60c0a65e1d94ab4322ccc41be64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchDamage: 0
 --- !u!1 &1235689881449561493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,6 +1261,8 @@ MonoBehaviour:
   fighterConfig: {fileID: 0}
   rightHand: {fileID: 427728148438740525}
   leftHand: {fileID: 1228337925760606422}
+  hitBodyDetector: {fileID: 6753855957589651121}
+  hitHeadDetector: {fileID: 3771267058411009581}
 --- !u!4 &4799404619877105878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -994683581542141715, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}
