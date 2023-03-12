@@ -10,6 +10,9 @@ public class SO_Character : ScriptableObject
     public float hookPower;
     public float uppercutPower;
     public float temporaryDamageLimit;
+    public float healCooldown; // the delay between getting hit and beginning to heal again
+    public float healthRegenRate;
+    public float staminaRegenRate;
     public Mesh characterMesh;
     // Materials
     public Material[] characterMaterials;

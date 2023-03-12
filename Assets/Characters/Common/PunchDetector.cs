@@ -14,7 +14,8 @@ public class PunchDetector : MonoBehaviour
     public Transform hitPrefab;
     public AudioSource audioSource;
     private AttackProperties attackProperties;
-    public delegate void HitReceivedEvent(SO_FighterConfig fighterConfig, float damage);
+    public delegate void HitReceivedEvent(float damage);
+    public event HitReceivedEvent onHitReceived;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +30,13 @@ public class PunchDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // find the parent (top most) and ignore self-punches! 
-        if (other.transform.root == transform.root) {
-            // Debug.Log("SELF PUNCH DETECTED: "+gameObject.name+" by "+other.gameObject.name);
-            return; // ignore it
-        }
+        if(other.transform.root == transform.root) {return;} // ignore it
+
+        // handle the punch that hit us
         attackProperties = other.GetComponent<AttackProperties>();
-        // how much is the damage
-        fighterConfig.healthCurrent -= attackProperties.punchDamage;
-        fighterAnimator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
+        Debug.Log($"Hit for {attackProperties.punchDamage}");
+        onHitReceived?.Invoke(attackProperties.punchDamage);
+        attackProperties.gameObject.SetActive(false);
         Debug.Log(transform.root.gameObject.name + " was "+gameObject.name+" by " + other.transform.root.gameObject.name + " with " +other.gameObject.name);
         // TODO FIXME
         // since triggerEnter does not give us any contact points,

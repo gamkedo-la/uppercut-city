@@ -4,6 +4,7 @@ using UnityEngine;
 public class CombatBehavior : MonoBehaviour
 {
     public enum PunchTarget { head, body }
+    public TimeProvider timeProvider;
     public SO_FighterConfig fighterConfig;
     public GameObject rightHand;
     public GameObject leftHand;
@@ -15,6 +16,7 @@ public class CombatBehavior : MonoBehaviour
     public PunchDetector hitBodyDetector;
     public PunchDetector hitHeadDetector;
     private Animator animator;
+    private float hitTimer;
     private PunchTarget punchTarget = PunchTarget.head;
     private void Awake()
     {
@@ -23,9 +25,12 @@ public class CombatBehavior : MonoBehaviour
         rightAttackProperties = rightHand.GetComponent<AttackProperties>();
         leftHandCollider = leftHand.GetComponent<Collider>();
         leftAttackProperties = leftHand.GetComponent<AttackProperties>();
+        hitBodyDetector.onHitReceived += BodyHitReceived;
+        hitHeadDetector.onHitReceived += HeadHitReceived;
         StateGameStart.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
         Smb_Ch_Leaning.onLeaningUpdate += LeaningUpdate;
+        Smb_Ch_Guard.onGuardUpdate += GuardUpdate;
     }
     private void HandleGameStart()
     {
@@ -62,6 +67,27 @@ public class CombatBehavior : MonoBehaviour
             return;
         }
     }
+    public void BodyHitReceived(float damage)
+    {
+        Debug.Log($"Body: {damage}");
+        fighterConfig.healthCurrent -= damage;
+        fighterConfig.staminaCurrent -= damage / 2;
+        animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
+        animator.SetFloat("StaminaCurrent", fighterConfig.healthCurrent);
+        hitTimer = fighterConfig.activeCharacter.healCooldown;
+    }
+    public void HeadHitReceived(float damage)
+    {
+        Debug.Log($"Head: {damage}");
+        if(damage > 10){
+            // damages max health
+            fighterConfig.healthMax -= damage / 10;
+            animator.SetFloat("HealthMax", fighterConfig.healthMax);
+        }
+        fighterConfig.healthCurrent -= damage;
+        animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
+        hitTimer = fighterConfig.activeCharacter.healCooldown;
+    }
     private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
     {
         if(fighterConfig.corner != evCorner){ return; }
@@ -85,13 +111,40 @@ public class CombatBehavior : MonoBehaviour
     private void HandleHealthRegen()
     {
         // When we take a hit, health regen is temporarily disabled
+        if(hitTimer > 0)
+        {
+            hitTimer = Mathf.Clamp(
+                hitTimer - timeProvider.fixedDeltaTime, 
+                0,
+                fighterConfig.activeCharacter.healCooldown
+            );
+        }
+        else
+        {
+            fighterConfig.healthCurrent = Mathf.Clamp(
+                fighterConfig.healthCurrent + fighterConfig.activeCharacter.healthRegenRate * timeProvider.fixedDeltaTime, 
+                0,
+                fighterConfig.healthMax
+            );
+            animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
+        }
+        
+    }
+    private void GuardUpdate(SO_FighterConfig.Corner evCorner)
+    {
+        // when in the guard we can regen stamina
+        if(fighterConfig.corner != evCorner){ return; }
+        fighterConfig.staminaCurrent = Mathf.Clamp(
+            fighterConfig.staminaCurrent + fighterConfig.activeCharacter.staminaRegenRate*timeProvider.deltaTime,
+            0,
+            fighterConfig.staminaMax
+        );
+        animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
     }
     private void MatchLiveUpdate()
     {
-        fighterConfig.healthCurrent = animator.GetFloat("HealthCurrent");
-        fighterConfig.healthMax = animator.GetFloat("HealthMax");
+        HandleHealthRegen();
         fighterConfig.staminaCurrent = animator.GetFloat("StaminaCurrent");
-        fighterConfig.staminaMax = animator.GetFloat("StaminaMax");
         fighterConfig.combo = (int)animator.GetFloat("Combo");
     }
 }

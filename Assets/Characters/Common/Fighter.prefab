@@ -1258,9 +1258,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984d26beb0b4220478e042e1b53bf0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   fighterConfig: {fileID: 0}
   rightHand: {fileID: 427728148438740525}
   leftHand: {fileID: 1228337925760606422}
+  leftAttackProperties: {fileID: 0}
+  rightAttackProperties: {fileID: 0}
   hitBodyDetector: {fileID: 6753855957589651121}
   hitHeadDetector: {fileID: 3771267058411009581}
 --- !u!4 &4799404619877105878 stripped

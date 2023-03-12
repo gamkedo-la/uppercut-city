@@ -16,8 +16,4 @@ public class SMB_CH_CrossWindup : StateMachineBehaviour
         damage += Time.deltaTime;
         animator.SetFloat("PunchPowerLeft", damage);
     }
-    override public void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
-    {
-        animator.SetFloat("PunchPowerLeft", 0);
-    }
 }
