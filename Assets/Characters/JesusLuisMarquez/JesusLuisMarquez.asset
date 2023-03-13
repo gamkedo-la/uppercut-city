@@ -15,10 +15,14 @@ MonoBehaviour:
   movementSpeed: 2
   rotationSpeed: 2
   jabPower: 5
-  crossPower: 0
-  hookPower: 10
-  uppercutPower: 12
+  crossPower: 8
+  hookPower: 12
+  uppercutPower: 14
   temporaryDamageLimit: 35
+  healCooldown: 2
+  staminaCooldown: 1.5
+  healthRegenRate: 0.5
+  staminaRegenRate: 1
   characterMesh: {fileID: -7377882013840102368, guid: 639ffeab5f50e9e4d8a6ec0167cc0e7d, type: 3}
   characterMaterials:
   - {fileID: 2100000, guid: 058eaf8bed1b6ca42bb903d9661ada2a, type: 2}

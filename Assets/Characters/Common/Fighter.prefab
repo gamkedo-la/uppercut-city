@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd674a8ba62a59498a1ef088b456e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackingSpeed: 0.7
+  trackingSpeed: 0.6
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   fighterConfig: {fileID: 0}
 --- !u!1 &5165971764181080331

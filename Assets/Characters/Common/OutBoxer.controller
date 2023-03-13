@@ -40,33 +40,33 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 799024349647192663}
-    m_Position: {x: -150, y: -10, z: 0}
+    m_Position: {x: -250, y: -150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -561013675181802804}
-    m_Position: {x: 0, y: -90, z: 0}
+    m_Position: {x: -250, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8730625614928830726}
-    m_Position: {x: 260, y: -70, z: 0}
+    m_Position: {x: 100, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6330310503678050211}
-    m_Position: {x: 510, y: -70, z: 0}
+    m_Position: {x: 390, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7025808051495538748}
-    m_Position: {x: 400, y: -10, z: 0}
+    m_Position: {x: 400, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8861683461635010333}
-    m_Position: {x: 390, y: -170, z: 0}
+    m_Position: {x: 210, y: -220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7296861114540906687}
-    m_Position: {x: 160, y: -170, z: 0}
+    m_Position: {x: -40, y: -220, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 10, y: -210, z: 0}
-  m_EntryPosition: {x: -80, y: -150, z: 0}
-  m_ExitPosition: {x: 580, y: -230, z: 0}
+  m_AnyStatePosition: {x: -30, y: -280, z: 0}
+  m_EntryPosition: {x: -250, y: -240, z: 0}
+  m_ExitPosition: {x: 800, y: -230, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 799024349647192663}
 --- !u!1101 &-8290975050978955575
@@ -280,7 +280,7 @@ AnimatorStateTransition:
     m_ConditionEvent: RStickAngle
     m_EventTreshold: -0.1
   - m_ConditionMode: 3
-    m_ConditionEvent: HealthCurrent
+    m_ConditionEvent: RStickAngle
     m_EventTreshold: -180
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7617515700178801237}
@@ -437,102 +437,84 @@ AnimatorController:
   m_Name: OutBoxer
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: HealthCurrent
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: StaminaCurrent
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Combo
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: HealthMax
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: StaminaMax
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: FightStarted
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Leaning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: FollowThrough
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: RStickAngle
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: PunchPowerRight
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: PunchPowerLeft
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IkRightWeight
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IkLeftWeight
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LStickX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LStickY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AnimationOffset
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base
@@ -635,10 +617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c02dbdbe21e4d34298934dd207dfbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaRegenRate: 5
-  healthRegenRate: 5
-  staminaRegenDelay: 2.24
-  timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
 --- !u!1101 &1144670270283049793
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -983,10 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c02dbdbe21e4d34298934dd207dfbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaRegenRate: 0
-  healthRegenRate: 0
-  staminaRegenDelay: 0
-  timeProvider: {fileID: 0}
 --- !u!1102 &7025808051495538748
 AnimatorState:
   serializedVersion: 6
@@ -1222,6 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce2cf987fad9394c9df1e7e8c06a6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatBehavior: {fileID: 0}
 --- !u!1101 &8698563954014633879
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1347,6 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce2cf987fad9394c9df1e7e8c06a6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatBehavior: {fileID: 0}
 --- !u!1102 &9072366852653197538
 AnimatorState:
   serializedVersion: 6

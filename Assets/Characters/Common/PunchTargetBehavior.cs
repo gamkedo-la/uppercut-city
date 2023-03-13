@@ -4,49 +4,41 @@ using UnityEngine;
 
 public class PunchTargetBehavior : MonoBehaviour
 {
-    private enum TrackingSetting { head, body };
+    public enum AttackTarget { head, body };
     [SerializeField] [Range(0, 2f)] float trackingSpeed;
     [SerializeField] TimeProvider timeProvider;
-    private TrackingSetting tracking = TrackingSetting.head;
+    public AttackTarget targeting;
+    private Transform targetTransform;
     public SO_FighterConfig fighterConfig;
-    // Track either the head or the
-    private FighterBehaviors opponent;
+    private CombatBehavior opponentCombat;
     private void Awake()
     {
         // resppond to events
-        // when to switch from head to body    
+        // when to switch from head to body
     }
-    private void Start()
+    public void FindOpponent()
     {
         // Find the opponent
-        foreach (FighterBehaviors fb in FindObjectsOfType<FighterBehaviors>())
+        foreach (CombatBehavior fb in FindObjectsOfType<CombatBehavior>())
         {
             if (fb.fighterConfig.corner != fighterConfig.corner)
             {
-                opponent = fb;
+                opponentCombat = fb;
+                targetTransform = targeting == AttackTarget.head ? opponentCombat.hitHeadDetector.transform : opponentCombat.hitBodyDetector.transform;
             }
         }
     }
+    private void Start()
+    {
+        FindOpponent();
+    }
     private void TrackTarget()
     {
-        if(opponent != null)
-        {
-            switch (tracking)
-            {
-                case TrackingSetting.head:
-                    transform.position = Vector3.MoveTowards(
-                        transform.position, 
-                        opponent.head.transform.position, 
-                        trackingSpeed * timeProvider.fixedDeltaTime
-                    );
-                    break;
-                case TrackingSetting.body:
-                    break;
-                default:
-                    break;
-            }
-            
-        }
+        transform.position = Vector3.MoveTowards(
+            transform.position, 
+            targetTransform.position,
+            trackingSpeed * timeProvider.fixedDeltaTime
+        );
     }
     private void FixedUpdate()
     {

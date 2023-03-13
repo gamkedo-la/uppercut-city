@@ -57,9 +57,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RampNormalMultiplier: 0.02
-    - _ToonRampOffset: 0.024
-    - _ToonRampOffset2: 0.519
-    - _ToonRampSmoothness: 0.209
+    - _ToonRampOffset: 0
+    - _ToonRampOffset2: 1
+    - _ToonRampSmoothness: 0.01
     m_Colors:
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

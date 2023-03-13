@@ -17,6 +17,7 @@ public class CombatBehavior : MonoBehaviour
     public PunchDetector hitHeadDetector;
     private Animator animator;
     private float hitTimer;
+    private float punchThrownTimer;
     private PunchTarget punchTarget = PunchTarget.head;
     private void Awake()
     {
@@ -49,6 +50,7 @@ public class CombatBehavior : MonoBehaviour
         leftHand.SetActive(false);
         rightAttackProperties.punchDamage = 0;
         leftAttackProperties.punchDamage = 0;
+        punchThrownTimer = fighterConfig.activeCharacter.staminaCooldown;
     }
     public void EnablePunch(SMB_CH_Followthrough.PunchHand punchHand)
     {
@@ -56,14 +58,16 @@ public class CombatBehavior : MonoBehaviour
         {
             rightHand.SetActive(true);
             rightAttackProperties.punchDamage = animator.GetFloat("PunchPowerRight");
-            animator.SetFloat("StaminaCurrent", animator.GetFloat("StaminaCurrent") - rightAttackProperties.punchDamage);
+            fighterConfig.staminaCurrent -= rightAttackProperties.punchDamage;
+            animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             return;
         }
         if(punchHand == SMB_CH_Followthrough.PunchHand.left)
         {
             leftHand.SetActive(true);
             leftAttackProperties.punchDamage = animator.GetFloat("PunchPowerLeft");
-            animator.SetFloat("StaminaCurrent", animator.GetFloat("StaminaCurrent") - leftAttackProperties.punchDamage);
+            fighterConfig.staminaCurrent -= leftAttackProperties.punchDamage;
+            animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             return;
         }
     }
@@ -73,7 +77,7 @@ public class CombatBehavior : MonoBehaviour
         fighterConfig.healthCurrent -= damage;
         fighterConfig.staminaCurrent -= damage / 2;
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
-        animator.SetFloat("StaminaCurrent", fighterConfig.healthCurrent);
+        animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         hitTimer = fighterConfig.activeCharacter.healCooldown;
     }
     public void HeadHitReceived(float damage)
@@ -82,7 +86,6 @@ public class CombatBehavior : MonoBehaviour
         if(damage > 10){
             // damages max health
             fighterConfig.healthMax -= damage / 10;
-            animator.SetFloat("HealthMax", fighterConfig.healthMax);
         }
         fighterConfig.healthCurrent -= damage;
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
@@ -134,17 +137,28 @@ public class CombatBehavior : MonoBehaviour
     {
         // when in the guard we can regen stamina
         if(fighterConfig.corner != evCorner){ return; }
-        fighterConfig.staminaCurrent = Mathf.Clamp(
-            fighterConfig.staminaCurrent + fighterConfig.activeCharacter.staminaRegenRate*timeProvider.deltaTime,
-            0,
-            fighterConfig.staminaMax
-        );
-        animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
+        if(punchThrownTimer > 0)
+        {
+            punchThrownTimer = Mathf.Clamp(
+                punchThrownTimer - timeProvider.fixedDeltaTime,
+                0,
+                fighterConfig.activeCharacter.staminaCooldown
+            );
+        }
+        else
+        {
+            fighterConfig.staminaCurrent = Mathf.Clamp(
+                fighterConfig.staminaCurrent + fighterConfig.activeCharacter.staminaRegenRate*timeProvider.deltaTime,
+                0,
+                fighterConfig.staminaMax
+            );
+            animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
+        }
+        
     }
     private void MatchLiveUpdate()
     {
         HandleHealthRegen();
-        fighterConfig.staminaCurrent = animator.GetFloat("StaminaCurrent");
         fighterConfig.combo = (int)animator.GetFloat("Combo");
     }
 }
