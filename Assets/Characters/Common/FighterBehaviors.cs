@@ -58,15 +58,20 @@ public class FighterBehaviors : MonoBehaviour
         animator.SetBool("Leaning", leaning);
     }
     public void SetMovementVector(Vector2 movementInput){
-        if(fighterConfig.corner == SO_FighterConfig.Corner.blue){
-            movementInput.x *= -1;
-        }
-        animator.SetFloat("LStickX", movementInput.x);
-        animator.SetFloat("LStickY", movementInput.y);
-        // camera relative movement here
         movementVector.x = transform.position.x + movementInput.x;
         movementVector.y = transform.position.y;
         movementVector.z = transform.position.z + movementInput.y;
+        if(fighterConfig.corner == SO_FighterConfig.Corner.blue)
+        {
+            animator.SetFloat("LStickX", movementInput.x*-1);
+            animator.SetFloat("LStickY", movementInput.y*-1);
+        }
+        else
+        {
+            animator.SetFloat("LStickX", movementInput.x);
+            animator.SetFloat("LStickY", movementInput.y);
+        }
+        // camera relative movement here
     }
     private void HandleGameStart()
     {
@@ -78,13 +83,10 @@ public class FighterBehaviors : MonoBehaviour
     {
         // input angle: +180 right -180 left  |  0 is neutral
         animator.SetFloat("RStickAngle", (float)inputAngle);
-        // Should OnPunchThrown be replaced with SMB_CH_Followthrough OnStateEnter?
-        // Any time a fighter commits to throwing a punch it goes through SMB_CH_Followthrough
-        OnPunchThrown?.Invoke(this, EventArgs.Empty);
     }
     private void HandleMovement()
     {
-        if(movementVector.magnitude <= 0.05f || animator.GetBool("Leaning")){ return; }
+        if( movementVector.magnitude <= 0.05f || animator.GetBool("Leaning") ){ return; }
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 

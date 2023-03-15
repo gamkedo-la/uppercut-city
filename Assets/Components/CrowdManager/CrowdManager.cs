@@ -40,27 +40,21 @@ public class CrowdManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
     // Start is called before the first frame update
     void Start()
     {
         currentState = CrowdState.Relaxed;
-        FighterBehaviors.OnPunchThrown += FighterBehaviors_OnPunchThrown;
+        SMB_CH_Followthrough.onStateEnter += FighterBehaviors_OnPunchThrown;
         PunchDetector.OnPunchConnected += PunchDetector_OnPunchConnected;
-
     }
-
-    private void FighterBehaviors_OnPunchThrown(object sender, EventArgs e)
+    private void FighterBehaviors_OnPunchThrown()
     {
         currentMomentum += punchThrownAdd;
     }
-
     private void PunchDetector_OnPunchConnected(object sender, EventArgs e)
     {
         currentMomentum += punchConnectedAdd;
     }
-
     // Update is called once per frame
     void Update()
     {

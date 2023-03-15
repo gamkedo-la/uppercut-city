@@ -3,13 +3,16 @@ using System.Collections;
 using UnityEngine;
 public class SMB_CH_Followthrough : StateMachineBehaviour
 {
+    public delegate void FollowThrough();
     public enum PunchHand { right, left }
     public PunchHand punchHand;
     public AnimationCurve punchIKCurve;
     private CombatBehavior combatBehavior;
     private float curveResult;
+    public static event FollowThrough onStateEnter;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        onStateEnter?.Invoke();
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
         animator.SetBool("FollowThrough", true);
         animator.SetFloat("IkRightWeight", 0);
