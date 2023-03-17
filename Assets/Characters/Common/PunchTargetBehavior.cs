@@ -13,27 +13,25 @@ public class PunchTargetBehavior : MonoBehaviour
     private CombatBehavior opponentCombat;
     private void Awake()
     {
-        // resppond to events
-        // when to switch from head to body
+        FindOpponent();
     }
     public void FindOpponent()
     {
         // Find the opponent
-        foreach (CombatBehavior fb in FindObjectsOfType<CombatBehavior>())
+        foreach (CombatBehavior cb in FindObjectsOfType<CombatBehavior>())
         {
-            if (fb.fighterConfig.corner != fighterConfig.corner)
+            if (cb.fighterConfig.corner != fighterConfig.corner)
             {
-                opponentCombat = fb;
-                targetTransform = targeting == AttackTarget.head ? opponentCombat.hitHeadDetector.transform : opponentCombat.hitBodyDetector.transform;
+                opponentCombat = cb;
+                if(targeting == AttackTarget.head){targetTransform = opponentCombat.bodyTransform;}
+                if(targeting == AttackTarget.body){targetTransform = opponentCombat.headTransform;}
+                Debug.Log($"{targeting}  :  {targetTransform}");
             }
         }
     }
-    private void Start()
-    {
-        FindOpponent();
-    }
     private void TrackTarget()
     {
+        Debug.Log($"{targeting}  :  {targetTransform.position}");
         transform.position = Vector3.MoveTowards(
             transform.position, 
             targetTransform.position,

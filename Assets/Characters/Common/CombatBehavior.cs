@@ -15,6 +15,8 @@ public class CombatBehavior : MonoBehaviour
     [HideInInspector] public AttackProperties rightAttackProperties;
     public PunchDetector hitBodyDetector;
     public PunchDetector hitHeadDetector;
+    public Transform bodyTransform;
+    public Transform headTransform;
     private Animator animator;
     private float hitTimer;
     private float punchThrownTimer;
@@ -42,7 +44,6 @@ public class CombatBehavior : MonoBehaviour
         animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         animator.SetFloat("StaminaMax", fighterConfig.staminaMax);
         animator.SetFloat("Combo", fighterConfig.combo);
-
     }
     public void DisablePunches()
     {
@@ -154,7 +155,6 @@ public class CombatBehavior : MonoBehaviour
             );
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         }
-        
     }
     private void MatchLiveUpdate()
     {

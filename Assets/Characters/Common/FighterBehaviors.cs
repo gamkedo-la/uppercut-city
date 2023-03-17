@@ -57,7 +57,8 @@ public class FighterBehaviors : MonoBehaviour
     public void SetLeanModifier(bool leaning){
         animator.SetBool("Leaning", leaning);
     }
-    public void SetMovementVector(Vector2 movementInput){
+    public void SetMovementVector(Vector2 movementInput)
+    {
         movementVector.x = transform.position.x + movementInput.x;
         movementVector.y = transform.position.y;
         movementVector.z = transform.position.z + movementInput.y;
