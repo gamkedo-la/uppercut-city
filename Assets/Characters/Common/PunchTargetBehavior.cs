@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PunchTargetBehavior : MonoBehaviour
 {
     public enum AttackTarget { head, body };
@@ -23,15 +22,13 @@ public class PunchTargetBehavior : MonoBehaviour
             if (cb.fighterConfig.corner != fighterConfig.corner)
             {
                 opponentCombat = cb;
-                if(targeting == AttackTarget.head){targetTransform = opponentCombat.bodyTransform;}
-                if(targeting == AttackTarget.body){targetTransform = opponentCombat.headTransform;}
-                Debug.Log($"{targeting}  :  {targetTransform}");
+                if(targeting == AttackTarget.head){targetTransform = opponentCombat.headTransform;}
+                if(targeting == AttackTarget.body){targetTransform = opponentCombat.bodyTransform;}
             }
         }
     }
     private void TrackTarget()
     {
-        Debug.Log($"{targeting}  :  {targetTransform.position}");
         transform.position = Vector3.MoveTowards(
             transform.position, 
             targetTransform.position,

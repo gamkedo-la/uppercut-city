@@ -309,6 +309,116 @@ MonoBehaviour:
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   targeting: 1
   fighterConfig: {fileID: 0}
+--- !u!1 &2563496207470395515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684769011949725102}
+  - component: {fileID: 5477203724562987111}
+  m_Layer: 0
+  m_Name: BodyPunch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1684769011949725102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563496207470395515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1856194986547083018}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5477203724562987111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563496207470395515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 0
+  m_Data:
+    m_Root: {fileID: 4149628685269418176}
+    m_Tip: {fileID: 647168865163747046}
+    m_Target: {fileID: 4111665703975251038}
+    m_ChainRotationWeight: 1
+    m_TipRotationWeight: 0
+    m_MaxIterations: 15
+    m_Tolerance: 0.0001
+    m_MaintainTargetPositionOffset: 0
+    m_MaintainTargetRotationOffset: 0
+--- !u!1 &2576588141315913355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009489758891982016}
+  - component: {fileID: 9075496505273665336}
+  m_Layer: 0
+  m_Name: BodyPunch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009489758891982016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576588141315913355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5561006352631912222}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9075496505273665336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576588141315913355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    m_Root: {fileID: 7993710598767360995}
+    m_Tip: {fileID: 8012238896041228472}
+    m_Target: {fileID: 4111665703975251038}
+    m_ChainRotationWeight: 1
+    m_TipRotationWeight: 0
+    m_MaxIterations: 15
+    m_Tolerance: 0.0001
+    m_MaintainTargetPositionOffset: 0
+    m_MaintainTargetRotationOffset: 0
 --- !u!1 &4638305039927782470
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +654,7 @@ GameObject:
   - component: {fileID: 5113152980183692964}
   - component: {fileID: 5060177401762147493}
   m_Layer: 0
-  m_Name: LeftPunch
+  m_Name: HeadPunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,7 +740,7 @@ GameObject:
   - component: {fileID: 4817954616360254026}
   - component: {fileID: 6010097490342919460}
   m_Layer: 0
-  m_Name: RightPunch
+  m_Name: HeadPunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,8 +753,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6859198196034813402}
-  m_LocalRotation: {x: -0, y: 0.86602545, z: -0, w: 0.49999994}
-  m_LocalPosition: {x: -0.20499995, y: 0.52, z: 0.73600006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -663,14 +773,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0
+  m_Weight: 1
   m_Data:
     m_Root: {fileID: 7993710598767360995}
     m_Tip: {fileID: 8012238896041228472}
     m_Target: {fileID: 8646154072584654226}
     m_ChainRotationWeight: 1
     m_TipRotationWeight: 0
-    m_MaxIterations: 10
+    m_MaxIterations: 15
     m_Tolerance: 0.001
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
@@ -987,6 +1097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5113152980183692964}
+  - {fileID: 1684769011949725102}
   m_Father: {fileID: 3972875134785411024}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1034,6 +1145,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4817954616360254026}
+  - {fileID: 2009489758891982016}
   m_Father: {fileID: 3972875134785411024}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1316,14 +1428,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   fighterConfig: {fileID: 0}
-  rightHand: {fileID: 427728148438740525}
-  leftHand: {fileID: 1228337925760606422}
-  leftAttackProperties: {fileID: 0}
-  rightAttackProperties: {fileID: 0}
-  hitBodyDetector: {fileID: 6753855957589651121}
-  hitHeadDetector: {fileID: 3771267058411009581}
+  headTarget: {fileID: 2806248057286525694}
+  bodyTarget: {fileID: 6768321985915958843}
   bodyTransform: {fileID: 6619586391619168641}
   headTransform: {fileID: 2520835821514975440}
+  hitBodyDetector: {fileID: 6753855957589651121}
+  hitHeadDetector: {fileID: 3771267058411009581}
+  rightHand: {fileID: 427728148438740525}
+  leftHand: {fileID: 1228337925760606422}
+  rightArmHeadIk: {fileID: 6010097490342919460}
+  leftArmHeadIk: {fileID: 5060177401762147493}
+  rightArmBodyIk: {fileID: 9075496505273665336}
+  leftArmBodyIk: {fileID: 5477203724562987111}
+  leftAttackProperties: {fileID: 0}
+  rightAttackProperties: {fileID: 0}
 --- !u!4 &4799404619877105878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -994683581542141715, guid: 4aca31315df84cb4db314d439e1a747e, type: 3}

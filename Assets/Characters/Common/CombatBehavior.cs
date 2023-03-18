@@ -1,26 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Animations.Rigging;
 using UnityEngine;
 public class CombatBehavior : MonoBehaviour
 {
     public enum PunchTarget { head, body }
     public TimeProvider timeProvider;
     public SO_FighterConfig fighterConfig;
-    public GameObject rightHand;
-    public GameObject leftHand;
-    //damage dealer class
-    private Collider rightHandCollider;
-    private Collider leftHandCollider;
-    [HideInInspector] public AttackProperties leftAttackProperties;
-    [HideInInspector] public AttackProperties rightAttackProperties;
-    public PunchDetector hitBodyDetector;
-    public PunchDetector hitHeadDetector;
+    public PunchTargetBehavior headTarget;
+    public PunchTargetBehavior bodyTarget;
     public Transform bodyTransform;
     public Transform headTransform;
+    public PunchDetector hitBodyDetector;
+    public PunchDetector hitHeadDetector;
+    public GameObject rightHand;
+    public GameObject leftHand;
+    private Collider rightHandCollider;
+    private Collider leftHandCollider;
+    public ChainIKConstraint rightArmHeadIk;
+    public ChainIKConstraint leftArmHeadIk;
+    public ChainIKConstraint rightArmBodyIk;
+    public ChainIKConstraint leftArmBodyIk;
+    [HideInInspector] public AttackProperties leftAttackProperties;
+    [HideInInspector] public AttackProperties rightAttackProperties;
     private Animator animator;
     private float hitTimer;
     private float punchThrownTimer;
     private PunchTarget punchTarget = PunchTarget.head;
+    private bool targetSwitched = false;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -84,7 +91,8 @@ public class CombatBehavior : MonoBehaviour
     public void HeadHitReceived(float damage)
     {
         Debug.Log($"Head: {damage}");
-        if(damage > 10){
+        if(damage > 10)
+        {
             // damages max health
             fighterConfig.healthMax -= damage / 10;
         }
@@ -95,16 +103,14 @@ public class CombatBehavior : MonoBehaviour
     private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
     {
         if(fighterConfig.corner != evCorner){ return; }
-        if(lStickX > 0  && punchTarget != PunchTarget.body)
+        if(lStickX > 0.1  && punchTarget != PunchTarget.body)
         {
             punchTarget = PunchTarget.body;
-            // set the ik target component to the body
             Debug.Log("Target the body");
         }
-        if(lStickX <= 0 && punchTarget != PunchTarget.head)
+        if(lStickX <= 0.1 && punchTarget != PunchTarget.head)
         {
             punchTarget = PunchTarget.head;
-            // set the ik target component to the head
             Debug.Log("Target the Head");
         }
     }
@@ -132,7 +138,23 @@ public class CombatBehavior : MonoBehaviour
             );
             animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         }
-        
+    }
+    private void HandleIk()
+    {
+        if(punchTarget == PunchTarget.head)
+        {
+            rightArmBodyIk.weight = 0;
+            leftArmBodyIk.weight = 0;
+            leftArmHeadIk.weight = animator.GetFloat("IkLeftWeight");
+            rightArmHeadIk.weight = animator.GetFloat("IkRightWeight");
+        }
+        if(punchTarget == PunchTarget.body)
+        {
+            rightArmBodyIk.weight = animator.GetFloat("IkRightWeight");
+            leftArmBodyIk.weight = animator.GetFloat("IkLeftWeight");
+            leftArmHeadIk.weight = 0;
+            rightArmHeadIk.weight = 0;
+        }
     }
     private void GuardUpdate(SO_FighterConfig.Corner evCorner)
     {
@@ -160,5 +182,10 @@ public class CombatBehavior : MonoBehaviour
     {
         HandleHealthRegen();
         fighterConfig.combo = (int)animator.GetFloat("Combo");
+    }
+    private void Update()
+    {
+        // handle punch ik
+        HandleIk();       
     }
 }
