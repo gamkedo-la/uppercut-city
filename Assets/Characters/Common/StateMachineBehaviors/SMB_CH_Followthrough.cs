@@ -18,6 +18,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         animator.SetFloat("IkRightWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
         combatBehavior.EnablePunch(punchHand);
+
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
