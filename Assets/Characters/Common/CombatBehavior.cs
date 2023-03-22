@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
+using System;
+
 public class CombatBehavior : MonoBehaviour
 {
+
+    public event EventHandler onRightPunchThrown;
+    public event EventHandler onLeftPunchThrown;
+
     public enum PunchTarget { head, body }
     public TimeProvider timeProvider;
     public SO_FighterConfig fighterConfig;
@@ -13,10 +19,14 @@ public class CombatBehavior : MonoBehaviour
     public Transform headTransform;
     public PunchDetector hitBodyDetector;
     public PunchDetector hitHeadDetector;
+    public PunchDetector hitRightGloveDetector;
+    public PunchDetector hitLeftGloveDetector;
     public GameObject rightHand;
     public GameObject leftHand;
-    private Collider rightHandCollider;
-    private Collider leftHandCollider;
+    public GameObject rightHandBlock;
+    public GameObject leftHandBlock;
+    [HideInInspector] public Collider rightHandCollider;
+    [HideInInspector] public Collider leftHandCollider;
     public ChainIKConstraint rightArmHeadIk;
     public ChainIKConstraint leftArmHeadIk;
     public ChainIKConstraint rightArmBodyIk;
@@ -37,6 +47,8 @@ public class CombatBehavior : MonoBehaviour
         leftAttackProperties = leftHand.GetComponent<AttackProperties>();
         hitBodyDetector.onHitReceived += BodyHitReceived;
         hitHeadDetector.onHitReceived += HeadHitReceived;
+        hitRightGloveDetector.onHitReceived += HitGloveReceived;
+        hitLeftGloveDetector.onHitReceived += HitGloveReceived;
         StateGameStart.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
         Smb_Ch_Leaning.onLeaningUpdate += LeaningUpdate;
@@ -68,6 +80,7 @@ public class CombatBehavior : MonoBehaviour
             rightAttackProperties.punchDamage = animator.GetFloat("PunchPowerRight");
             fighterConfig.staminaCurrent -= rightAttackProperties.punchDamage;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
+            onRightPunchThrown?.Invoke(this, EventArgs.Empty);
             return;
         }
         if(punchHand == SMB_CH_Followthrough.PunchHand.left)
@@ -76,6 +89,7 @@ public class CombatBehavior : MonoBehaviour
             leftAttackProperties.punchDamage = animator.GetFloat("PunchPowerLeft");
             fighterConfig.staminaCurrent -= leftAttackProperties.punchDamage;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
+            onLeftPunchThrown?.Invoke(this, EventArgs.Empty);
             return;
         }
     }
@@ -99,6 +113,10 @@ public class CombatBehavior : MonoBehaviour
         fighterConfig.healthCurrent -= damage;
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         hitTimer = fighterConfig.activeCharacter.healCooldown;
+    }
+    public void HitGloveReceived(float damage) //Aka block
+    {
+        Debug.Log($"Blocked");
     }
     private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
     {

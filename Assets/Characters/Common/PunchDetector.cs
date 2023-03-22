@@ -54,6 +54,8 @@ public class PunchDetector : MonoBehaviour
         if (audioSource) audioSource.Play();
 
         OnPunchConnected?.Invoke(this, EventArgs.Empty);
+
+        other.gameObject.SetActive(false);
     }
 
     /*
