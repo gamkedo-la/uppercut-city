@@ -7,10 +7,12 @@
 
         _OutlineColor ("Outline Color", Color) = (0, 0, 0, 1)
         _OutlineThickness ("Outline thickness", float) = 1.0
-        _OutlineDensity ("Outline Density", float) = 1.0
 
         _OutlineDepthMultiplier ("Depth Multiplier", float) = 1.0
         _OutlineDepthBias ("Depth Bias", float) = 1.0
+        
+        _OutlineMinDepth ("Minimum depth", Range(0, 1)) = 0.01
+        _OutlineDepthSpan ("Depth span", Range(0, 1)) = 0.01
 
         _OutlineNormalMultiplier ("Normal Multiplier", float) = 1.0
         _OutlineNormalBias ("Normal Bias", float) = 1.0
@@ -55,12 +57,13 @@
             
             float4 _OutlineColor;
 
+            float _OutlineMinDepth;
+            float _OutlineDepthSpan;
             float _OutlineThickness;
             float _OutlineDepthMultiplier;
             float _OutlineDepthBias;
             float _OutlineNormalMultiplier;
             float _OutlineNormalBias;
-            float _OutlineDensity;
 
             float3 DepthNormal(sampler2D t, float2 uv)
             {
@@ -107,9 +110,26 @@
 
             fixed4 frag(v2f i) : SV_Target
             {
-                float3 color = tex2D(_MainTex, i.uv).rgb;
+                float3 scene_color = tex2D(_MainTex, i.uv).rgb;
+                float3 color = scene_color;
+                
                 // Modulate the outline color based on its transparency.
                 float3 outline_color = lerp(color, _OutlineColor.rgb, _OutlineColor.a);
+                
+                // Generate an alpha value based on scene depth.
+                //     >= MinDepth + DepthSpan = No outline
+                //      > MinDepth             = Partial outline
+                //     <= MinDepth             = Full outline
+                float depth01   = Linear01Depth(tex2D(_CameraDepthTexture, i.uv).r);
+                float minDepth  = _OutlineMinDepth;
+                float depthSpan = _OutlineDepthSpan;
+                float alpha     = lerp(1.0, 0.0, (clamp(depth01, minDepth, minDepth + depthSpan) - minDepth) / depthSpan);
+
+                // If object is past outline distance, don't add outline.
+                if (alpha <= 0.0)
+                {
+                    return float4(color, 1.0);
+                }
 
                 // Calculate depth-based outline.
                 float3 offset = float3(
@@ -126,6 +146,8 @@
 
                 // Combine outlines.
                 float sobel_outline = saturate(max(sobel_depth, sobel_normal));
+                sobel_outline = sobel_outline * alpha;
+                
                 // Calculate final outline color.
                 color = lerp(color, outline_color, sobel_outline);
 

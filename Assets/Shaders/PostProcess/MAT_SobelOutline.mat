@@ -37,6 +37,8 @@ Material:
     - _OutlineDensity: 1
     - _OutlineDepthBias: 1
     - _OutlineDepthMultiplier: 1
+    - _OutlineDepthSpan: 0.028
+    - _OutlineMinDepth: 0.014
     - _OutlineNormalBias: 10
     - _OutlineNormalMultiplier: 1.5
     - _OutlineThickness: 1
