@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.15695712, g: 0.10857098, b: 0.2516096, a: 1}
+  m_IndirectSpecularColor: {r: 0.15698524, g: 0.10869162, b: 0.2515928, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4985,7 +4985,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &333303508 stripped
 Transform:
@@ -5255,7 +5255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &745571003
 PrefabInstance:
@@ -19894,7 +19894,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25200,6 +25200,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3942057260422108260, guid: 9d6bcda642bc34b449aa4417283a93ed, type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3942057260422108260, guid: 9d6bcda642bc34b449aa4417283a93ed, type: 3}
+      propertyPath: m_AntialiasingQuality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3942057260422108260, guid: 9d6bcda642bc34b449aa4417283a93ed, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3882662391467581264, guid: 9d6bcda642bc34b449aa4417283a93ed, type: 3}
       propertyPath: m_Enabled
       value: 1

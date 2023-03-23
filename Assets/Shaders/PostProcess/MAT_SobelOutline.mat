@@ -37,9 +37,9 @@ Material:
     - _OutlineDensity: 1
     - _OutlineDepthBias: 1
     - _OutlineDepthMultiplier: 1
-    - _OutlineNormalBias: 1
-    - _OutlineNormalMultiplier: 1
+    - _OutlineNormalBias: 10
+    - _OutlineNormalMultiplier: 1.5
     - _OutlineThickness: 1
     m_Colors:
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.8862745}
   m_BuildTextureStacks: []

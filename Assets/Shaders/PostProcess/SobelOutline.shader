@@ -2,8 +2,8 @@
 {
     Properties
     {
+        [HideInInspector]
         _MainTex ("Main Texture", 2D) = "white" {}
-//        _CameraGBufferTexture2 ("Camera GBuffer Texture 2", 2D) = "white" {}
 
         _OutlineColor ("Outline Color", Color) = (0, 0, 0, 1)
         _OutlineThickness ("Outline thickness", float) = 1.0
@@ -51,7 +51,8 @@
 
             sampler2D _MainTex;
             sampler2D _CameraDepthTexture;
-            // sampler2D _CameraGBufferTexture2;
+            sampler2D _CameraDepthNormalsTexture;
+            
             float4 _OutlineColor;
 
             float _OutlineThickness;
@@ -61,9 +62,27 @@
             float _OutlineNormalBias;
             float _OutlineDensity;
 
-            float SobelSample(sampler2D t, float2 uv, float3 offset)
+            float3 DepthNormal(sampler2D t, float2 uv)
             {
-                return 0.0;
+                float depth;
+                float3 normal;
+                float4 depth_texture = tex2D(_CameraDepthNormalsTexture, uv);
+                DecodeDepthNormal(depth_texture, depth, normal);
+                return normal;
+            }
+
+            float3 SobelSample(sampler2D t, float2 uv, float3 offset)
+            {
+                float3 pixelCenter = DepthNormal(t, uv);
+                float3 pixelLeft = DepthNormal(t, uv - offset.xz);
+                float3 pixelRight = DepthNormal(t, uv + offset.xz);
+                float3 pixelUp = DepthNormal(t, uv + offset.zy);
+                float3 pixelDown = DepthNormal(t, uv - offset.zy);
+
+                return abs(pixelLeft - pixelCenter) +
+                    abs(pixelRight - pixelCenter) +
+                    abs(pixelUp - pixelCenter) +
+                    abs(pixelDown - pixelCenter);
             }
 
             float SobelDepth(float ldc, float ldl, float ldr, float ldu, float ldd)
@@ -88,17 +107,29 @@
 
             fixed4 frag(v2f i) : SV_Target
             {
-                float3 SceneColor = tex2D(_MainTex, i.uv).rgb;
-                float3 color = SceneColor;
+                float3 color = tex2D(_MainTex, i.uv).rgb;
+                // Modulate the outline color based on its transparency.
+                float3 outline_color = lerp(color, _OutlineColor.rgb, _OutlineColor.a);
 
+                // Calculate depth-based outline.
                 float3 offset = float3(
                     1.0 / _ScreenParams.x,
                     1.0 / _ScreenParams.y,
                     0.0) * _OutlineThickness;
+                float sobel_depth = SobelSampleDepth(_CameraDepthTexture, i.uv, offset);
+                sobel_depth = pow(sobel_depth * _OutlineDepthMultiplier, _OutlineDepthBias);
 
-                float sobelDepth = SobelSampleDepth(_CameraDepthTexture, i.uv, offset);
+                // Calculate normal-based outline.
+                float3 sobel_normal_vec = SobelSample(_CameraDepthNormalsTexture, i.uv, offset).rgb;
+                float sobel_normal = sobel_normal_vec.x + sobel_normal_vec.y + sobel_normal_vec.z;
+                sobel_normal = pow(sobel_normal * _OutlineNormalMultiplier, _OutlineNormalBias);
 
-                return fixed4(sobelDepth, sobelDepth, sobelDepth, 1);
+                // Combine outlines.
+                float sobel_outline = saturate(max(sobel_depth, sobel_normal));
+                // Calculate final outline color.
+                color = lerp(color, outline_color, sobel_outline);
+
+                return float4(color, 1.0);
             }
             ENDCG
         }
