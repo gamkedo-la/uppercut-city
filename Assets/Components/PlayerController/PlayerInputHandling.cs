@@ -8,6 +8,7 @@ public class PlayerInputHandling : MonoBehaviour
     private SO_FighterControlData so_fighterInput;
     private Camera mainCamera;
     private Vector2 movementInput;
+    private Vector2 rightAnalogInput;
     private Vector2 punchInput;
     private double mousePunchAxis;
     private FighterBehaviors fighterBehaviors;
@@ -49,10 +50,6 @@ public class PlayerInputHandling : MonoBehaviour
             default:
                 break;
         }
-        if (controller.playerConfig.allegiance == SO_PlayerConfig.Allegiance.neutral)
-        {
-            fighterConfig = null;
-        }
         foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
         {
             if(fs.fighterConfig.corner == SO_FighterConfig.Corner.red)
@@ -73,6 +70,10 @@ public class PlayerInputHandling : MonoBehaviour
     {
         fighterBehaviors?.SetLeanModifier(context.ReadValue<float>() > 0);
         // so_fighterInput.leanModifier 
+    }
+    public void HandleBlockModifier(InputAction.CallbackContext context)
+    {
+        fighterBehaviors?.SetBlockModifier(context.ReadValue<float>() > 0);
     }
     public void HandleMenu(InputAction.CallbackContext context)
     {

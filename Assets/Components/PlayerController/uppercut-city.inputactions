@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "RightAnalog",
+                    "type": "PassThrough",
+                    "id": "1891c976-ea92-43e7-89f0-65d7f2a0aee9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Punch",
                     "type": "Value",
                     "id": "46601fef-d65c-4298-b72f-a9411046a379",
@@ -63,6 +72,15 @@
                     "name": "BlockLeft",
                     "type": "Button",
                     "id": "171357d2-0eb7-4f52-8f22-541e6bc0c90c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Block",
+                    "type": "Button",
+                    "id": "a6bbeeaf-c6cb-4714-8e01-639ef932b7e4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -408,6 +426,83 @@
                     "processors": "",
                     "groups": "XBox",
                     "action": "BlockLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eda056b5-87cb-4106-a842-af1d636bedf2",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0aad7f4-6703-42c6-b5a2-dd1de33ef2c6",
+                    "path": "<DualShockGamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3da29028-98eb-4c83-8795-c1854fa5c5b3",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8509f85b-6c2e-412a-bf45-b6a5c64cd3c4",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBox",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4aa43fc-0031-4957-af27-e8bef13347ea",
+                    "path": "<DualShockGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4",
+                    "action": "RightAnalog",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56fd2718-613b-4414-b98d-e28af8fb0b6e",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "RightAnalog",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7609434-60d7-4de1-96a4-7a7bacd33fe7",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBox",
+                    "action": "RightAnalog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

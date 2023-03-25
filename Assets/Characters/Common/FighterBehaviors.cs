@@ -57,6 +57,9 @@ public class FighterBehaviors : MonoBehaviour
     public void SetLeanModifier(bool leaning){
         animator.SetBool("Leaning", leaning);
     }
+    public void SetBlockModifier(bool blocking){
+        animator.SetBool("Blocking", blocking);
+    }
     public void SetMovementVector(Vector2 movementInput)
     {
         movementVector.x = transform.position.x + movementInput.x;
@@ -72,7 +75,6 @@ public class FighterBehaviors : MonoBehaviour
             animator.SetFloat("LStickX", movementInput.x);
             animator.SetFloat("LStickY", movementInput.y);
         }
-        // camera relative movement here
     }
     private void HandleGameStart()
     {
@@ -93,7 +95,6 @@ public class FighterBehaviors : MonoBehaviour
             movementVector, 
             0.015f
         );
-        // Todo: camera relative movement
     }
     private void HandleRotation()
     {
@@ -107,7 +108,11 @@ public class FighterBehaviors : MonoBehaviour
             );
         }
     }
-
+    public void Blocking(float button) {
+    {
+        animator.SetBool("Blocking", button > 0);
+    }
+    }
     public void HandleBlock(BlockType blocktype, bool v)
     {
         switch (blocktype)

@@ -20032,6 +20032,10 @@ PrefabInstance:
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
+    - target: {fileID: 8157635957768964800, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8525871222087910879, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_Name
       value: Fighter (1)

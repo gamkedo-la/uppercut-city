@@ -715,7 +715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6720567400377444833
 Transform:
   m_ObjectHideFlags: 0
@@ -1039,7 +1039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6344472461897684122
 Transform:
   m_ObjectHideFlags: 0
@@ -1553,9 +1553,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   fighterConfig: {fileID: 0}
+  punchTarget: 0
+  rightArmHeadIk: {fileID: 6010097490342919460}
+  leftArmHeadIk: {fileID: 5060177401762147493}
+  rightArmBodyIk: {fileID: 9075496505273665336}
+  leftArmBodyIk: {fileID: 5477203724562987111}
   headTarget: {fileID: 2806248057286525694}
   bodyTarget: {fileID: 6768321985915958843}
-  bodyTransform: {fileID: 6619586391619168641}
+  bodyTransform: {fileID: 7278325535571638222}
   headTransform: {fileID: 2520835821514975440}
   hitBodyDetector: {fileID: 6753855957589651121}
   hitHeadDetector: {fileID: 3771267058411009581}
@@ -1567,10 +1572,6 @@ MonoBehaviour:
   leftHandBlock: {fileID: 8157635957768964800}
   rightHandCollider: {fileID: 0}
   leftHandCollider: {fileID: 0}
-  rightArmHeadIk: {fileID: 6010097490342919460}
-  leftArmHeadIk: {fileID: 5060177401762147493}
-  rightArmBodyIk: {fileID: 9075496505273665336}
-  leftArmBodyIk: {fileID: 5477203724562987111}
   leftAttackProperties: {fileID: 0}
   rightAttackProperties: {fileID: 0}
 --- !u!4 &4799404619877105878 stripped

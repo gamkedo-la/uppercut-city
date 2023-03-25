@@ -11,10 +11,22 @@ public class CombatBehavior : MonoBehaviour
     public event EventHandler onLeftPunchThrown;
 
     public enum PunchTarget { head, body }
+    [Header("Systems / Behavior")]
     public TimeProvider timeProvider;
     public SO_FighterConfig fighterConfig;
+    private Animator animator;
+    private float hitTimer;
+    private float punchThrownTimer;
+    [HideInInspector] public PunchTarget punchTarget = PunchTarget.head;
+    private bool targetSwitched = false;
+    [Header("IK Components")]
+    public ChainIKConstraint rightArmHeadIk;
+    public ChainIKConstraint leftArmHeadIk;
+    public ChainIKConstraint rightArmBodyIk;
+    public ChainIKConstraint leftArmBodyIk;
     public PunchTargetBehavior headTarget;
     public PunchTargetBehavior bodyTarget;
+    [Header("Combat Components")]
     public Transform bodyTransform;
     public Transform headTransform;
     public PunchDetector hitBodyDetector;
@@ -27,17 +39,9 @@ public class CombatBehavior : MonoBehaviour
     public GameObject leftHandBlock;
     [HideInInspector] public Collider rightHandCollider;
     [HideInInspector] public Collider leftHandCollider;
-    public ChainIKConstraint rightArmHeadIk;
-    public ChainIKConstraint leftArmHeadIk;
-    public ChainIKConstraint rightArmBodyIk;
-    public ChainIKConstraint leftArmBodyIk;
+    
     [HideInInspector] public AttackProperties leftAttackProperties;
     [HideInInspector] public AttackProperties rightAttackProperties;
-    private Animator animator;
-    private float hitTimer;
-    private float punchThrownTimer;
-    private PunchTarget punchTarget = PunchTarget.head;
-    private bool targetSwitched = false;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -118,20 +122,6 @@ public class CombatBehavior : MonoBehaviour
     {
         Debug.Log($"Blocked");
     }
-    private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
-    {
-        if(fighterConfig.corner != evCorner){ return; }
-        if(lStickX > 0.1  && punchTarget != PunchTarget.body)
-        {
-            punchTarget = PunchTarget.body;
-            Debug.Log("Target the body");
-        }
-        if(lStickX <= 0.1 && punchTarget != PunchTarget.head)
-        {
-            punchTarget = PunchTarget.head;
-            Debug.Log("Target the Head");
-        }
-    }
     public void PunchFinished()
     {
         animator.SetBool("FollowThrough", false);
@@ -172,6 +162,20 @@ public class CombatBehavior : MonoBehaviour
             leftArmBodyIk.weight = animator.GetFloat("IkLeftWeight");
             leftArmHeadIk.weight = 0;
             rightArmHeadIk.weight = 0;
+        }
+    }
+    private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
+    {
+        if(fighterConfig.corner != evCorner){ return; }
+        if(lStickX > 0.5  && punchTarget != PunchTarget.body)
+        {
+            punchTarget = PunchTarget.body;
+            Debug.Log("Target the body");
+        }
+        if(lStickX <= 0.5 && punchTarget != PunchTarget.head)
+        {
+            punchTarget = PunchTarget.head;
+            Debug.Log("Target the Head");
         }
     }
     private void GuardUpdate(SO_FighterConfig.Corner evCorner)

@@ -12,13 +12,13 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     public static event FollowThrough onStateEnter;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        onStateEnter?.Invoke();
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
         animator.SetBool("FollowThrough", true);
+        // if we're leaning forward
         animator.SetFloat("IkRightWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
         combatBehavior.EnablePunch(punchHand);
-
+        onStateEnter?.Invoke();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
