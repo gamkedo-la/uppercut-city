@@ -510,7 +510,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5165971764181080331}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0029005816, y: 0.003091462, z: 0.0021412396}
@@ -567,7 +567,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1.3095365
+  MinDistance: 0.9280184
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
