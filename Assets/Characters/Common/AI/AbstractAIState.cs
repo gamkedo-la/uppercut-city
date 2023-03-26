@@ -5,17 +5,10 @@ public abstract class AbstractAIState
 {
     public static string StateName;
     protected float timeSinceLastUpdate;
-    // protected AbstractAIState(AiController aiPlayerController)
-    // {
-    //     // this.aiController = aiController;
-    //     selectedSkater = aiPlayerController.selectedSkater;
-    //     goaltender = aiPlayerController.goaltender;
-    //     opponentSkater = aiPlayerController.opponentSkater;
-    //     opponentGoaltender = aiPlayerController.opponentGoaltender;
-    //     selectedTeamMember = aiPlayerController.selectedTeamMember;
-    //     opponentTeamMember = aiPlayerController.opponentTeamMember;
-    //     timeSinceLastUpdate = aiPlayerController.AIUpdateTime;
-    // }
+    protected AbstractAIState(AIController aiPlayerController)
+    {
+        // Get references to everything we need
+    }
     public abstract void OnEnter();
     public abstract void OnExit();
     public virtual void OnUpdate()
