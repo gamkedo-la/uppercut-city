@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public SO_ControllerIconGroup inputIcons;
-    public static EventHandler<EventArgs> newPlayerJoined;
+    public static event NewPlayerJoin newPlayerJoined;
     public SO_PlayerConfig playerConfig;
+    public delegate void NewPlayerJoin();
     private void Awake()
     {
         playerConfig = ScriptableObject.CreateInstance<SO_PlayerConfig>();
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
             playerConfig.playerInput.SwitchCurrentActionMap("UI");
         }
     }
-    public void Ev_FightStart(object sender, System.EventArgs e)
+    public void Ev_FightStart()
     {
         // get allegiance
         // set the fighterInput
@@ -86,6 +87,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         Debug.Log($"New Player: {playerConfig.playerInput.currentControlScheme}");
-        newPlayerJoined?.Invoke(this, EventArgs.Empty);
+        newPlayerJoined?.Invoke();
     }
 }

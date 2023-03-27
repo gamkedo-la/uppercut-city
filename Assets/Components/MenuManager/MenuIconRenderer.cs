@@ -97,7 +97,7 @@ public class MenuIconRenderer : MonoBehaviour
             }
         }
     }
-    private void InitializeMenuIcons(object sender, System.EventArgs e)
+    private void InitializeMenuIcons()
     {
         Debug.Log("Initializing menu icons");
         HideAllMenuSprites();

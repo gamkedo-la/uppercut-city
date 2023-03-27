@@ -78,7 +78,7 @@ public class MenuManager : MonoBehaviour
             es.SetSelectedGameObject(focus);
         }
     }
-    private void HandleNewPlayer(object sender, System.EventArgs e)
+    private void HandleNewPlayer()
     {
         SetDefaultMenuFocus();
     }

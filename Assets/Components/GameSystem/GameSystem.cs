@@ -25,7 +25,7 @@ public class GameSystem : MonoBehaviour
         UiModule.actionsAsset = playerInput.actions;
         playerInput.uiInputModule = UiModule;
     }
-    private void HandleNewPlayerJoined(object sender, System.EventArgs e)
+    private void HandleNewPlayerJoined()
     {
         gameSession.localInputs = FindObjectsOfType<PlayerInput>();
     }

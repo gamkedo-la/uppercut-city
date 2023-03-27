@@ -62,7 +62,7 @@ public class PlayerInputHandling : MonoBehaviour
             }
         }
     }
-    public void Ev_FightStart(object sender, System.EventArgs e)
+    public void Ev_FightStart()
     {
         LinkToFighter();
     }

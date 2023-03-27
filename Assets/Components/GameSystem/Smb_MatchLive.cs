@@ -4,9 +4,10 @@ public class Smb_MatchLive : StateMachineBehaviour
 {
     public delegate void MatchLiveUpdate();
     public static event MatchLiveUpdate onMatchLiveUpdate;
-    public static EventHandler<EventArgs> onStateEnter;
+    public static event MatchLiveEnter onStateEnter;
     public static EventHandler onGamePaused;
     public static EventHandler onGameResume;
+    public delegate void MatchLiveEnter();
     private void PauseGame(object sender, EventArgs e)
     {
         Debug.Log("GamePaused");
@@ -19,7 +20,7 @@ public class Smb_MatchLive : StateMachineBehaviour
     }
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        onStateEnter?.Invoke(this, EventArgs.Empty);
+        onStateEnter?.Invoke();
         PlayerInputHandling.onMenuPressed += PauseGame;
         UIInputHandling.onReturnPressed += ResumeGame;
     }
