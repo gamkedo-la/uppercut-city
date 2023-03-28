@@ -50,7 +50,7 @@ Material:
     - _ColorIntensity: 0.5
     - _DissolveAmount: 0
     - _DissolveScale: 100
-    - _LineAmount: 0.6
+    - _LineAmount: 0.5
     - _NoiseScale: 80
     - _QueueControl: 0
     - _QueueOffset: 0

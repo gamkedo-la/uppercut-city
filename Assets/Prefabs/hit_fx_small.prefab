@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 97932034590954383}
   - component: {fileID: 184430877629485627}
   m_Layer: 0
-  m_Name: hit_fx_01
+  m_Name: hit_fx_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
