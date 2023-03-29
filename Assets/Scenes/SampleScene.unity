@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.15698524, g: 0.10869162, b: 0.2515928, a: 1}
+  m_IndirectSpecularColor: {r: 0.15695712, g: 0.10857098, b: 0.2516096, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4985,7 +4985,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &333303508 stripped
 Transform:
@@ -5255,7 +5255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &745571003
 PrefabInstance:
@@ -10183,71 +10183,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1001 &843106672
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123836, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123837, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: m_Name
-      value: PunchTrailSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 2600333728831123839, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: origin
-      value: 
-      objectReference: {fileID: 1370288647}
-    - target: {fileID: 2600333728831123839, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1793328750}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
 --- !u!1 &902737787
 GameObject:
   m_ObjectHideFlags: 0
@@ -15060,11 +14995,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!4 &1370288647 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8012238896041228472, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-  m_PrefabInstance: {fileID: 6938387055792034450}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457066809
 GameObject:
   m_ObjectHideFlags: 0
@@ -19894,7 +19824,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19972,6 +19902,10 @@ PrefabInstance:
       propertyPath: rightOrigin
       value: 
       objectReference: {fileID: 285582368}
+    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: punchTrailPrefab
+      value: 
+      objectReference: {fileID: 4662503360663748877, guid: 1c06f2ae8d38a1f4d84b1bead729e3d9, type: 3}
     - target: {fileID: 1860469419760936155, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_Name
       value: PunchTrailSpawner
@@ -25017,6 +24951,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4118342655000446701, guid: d315c50d00adf594181b5858e724760e, type: 3}
+      propertyPath: m_TrackedObjectOffset.z
+      value: 0.4135779
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118342655000446702, guid: d315c50d00adf594181b5858e724760e, type: 3}
+      propertyPath: m_FollowOffset.x
+      value: 0.8271559
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118342655000446702, guid: d315c50d00adf594181b5858e724760e, type: 3}
+      propertyPath: m_FollowOffset.z
+      value: 0.3759799
+      objectReference: {fileID: 0}
     - target: {fileID: 4118342656383207844, guid: d315c50d00adf594181b5858e724760e, type: 3}
       propertyPath: m_Follow
       value: 
@@ -25336,7 +25282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 31369213118295385, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25402,6 +25348,10 @@ PrefabInstance:
       propertyPath: isRight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: punchTrailPrefab
+      value: 
+      objectReference: {fileID: -6917339134563170345, guid: b0744ecb72deaba4ab444f81360ba049, type: 3}
     - target: {fileID: 1860469419760936155, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_Name
       value: PunchTrailSpawner

@@ -13,8 +13,8 @@ public class PunchTrail : MonoBehaviour
 
     private void Awake()
     {
-        Material mat = GetComponent<Renderer>().material;
-        mat.SetFloat("_RandomSeed", UnityEngine.Random.Range(0f,100f));
+        //Material mat = GetComponent<Renderer>().material;
+        //mat.SetFloat("_RandomSeed", UnityEngine.Random.Range(0f,100f));
     }
 
     private void Update()
@@ -37,9 +37,4 @@ public class PunchTrail : MonoBehaviour
         targetPosition = target; //origin + direction * distance;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(targetPosition, 0.1f);
-        Gizmos.DrawLine(startPosition, targetPosition);
-    }
 }

@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785cc0699a522b8458a2cb961046882a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchTrailPrefab: {fileID: -9146514120764921616, guid: 7137c8875013da2418d8113f44550521, type: 3}
+  punchTrailPrefab: {fileID: -6917339134563170345, guid: b0744ecb72deaba4ab444f81360ba049, type: 3}
   target: {fileID: 0}
-  origin: {fileID: 0}
-  speed: 5
-  distance: 0.4
+  rightOrigin: {fileID: 0}
+  leftOrigin: {fileID: 0}
+  rightSpeed: 5
+  rightDistance: 0.4
+  leftSpeed: 5
+  leftDistance: 0.8
