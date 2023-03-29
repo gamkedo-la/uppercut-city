@@ -24953,15 +24953,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4118342655000446701, guid: d315c50d00adf594181b5858e724760e, type: 3}
       propertyPath: m_TrackedObjectOffset.z
-      value: 0.4729072
+      value: 0.4135779
       objectReference: {fileID: 0}
     - target: {fileID: 4118342655000446702, guid: d315c50d00adf594181b5858e724760e, type: 3}
       propertyPath: m_FollowOffset.x
-      value: 0.9458143
+      value: 0.8271559
       objectReference: {fileID: 0}
     - target: {fileID: 4118342655000446702, guid: d315c50d00adf594181b5858e724760e, type: 3}
       propertyPath: m_FollowOffset.z
-      value: 0.4299156
+      value: 0.3759799
       objectReference: {fileID: 0}
     - target: {fileID: 4118342656383207844, guid: d315c50d00adf594181b5858e724760e, type: 3}
       propertyPath: m_Follow

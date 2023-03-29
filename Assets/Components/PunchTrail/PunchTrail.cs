@@ -37,9 +37,4 @@ public class PunchTrail : MonoBehaviour
         targetPosition = target; //origin + direction * distance;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(targetPosition, 0.1f);
-        Gizmos.DrawLine(startPosition, targetPosition);
-    }
 }
