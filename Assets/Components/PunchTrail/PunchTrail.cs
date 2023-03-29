@@ -13,8 +13,8 @@ public class PunchTrail : MonoBehaviour
 
     private void Awake()
     {
-        Material mat = GetComponent<Renderer>().material;
-        mat.SetFloat("_RandomSeed", UnityEngine.Random.Range(0f,100f));
+        //Material mat = GetComponent<Renderer>().material;
+        //mat.SetFloat("_RandomSeed", UnityEngine.Random.Range(0f,100f));
     }
 
     private void Update()
