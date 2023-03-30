@@ -128,15 +128,15 @@ public class CombatBehavior : MonoBehaviour
     }
     private IEnumerator PunchImpact()
     {
+        animator.SetTrigger("PunchImpact");
         while(timeProvider.time - punchCooldownTimer < punchCooldown)
         {
             yield return null;
         }
-        animator.SetTrigger("PunchImpact");
         animator.speed = 1;
         yield break;
     }
-    public void SuccessfulPunch(float damage) // Aka block
+    public void SuccessfulPunch(float damage)
     {
         Debug.Log($"Hit opponent for: {damage}");
         // stop the animation
