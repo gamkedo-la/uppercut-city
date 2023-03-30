@@ -128,11 +128,12 @@ public class CombatBehavior : MonoBehaviour
     }
     private IEnumerator PunchImpact()
     {
-        animator.SetTrigger("PunchImpact");
+        
         while(timeProvider.time - punchCooldownTimer < punchCooldown)
         {
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
+        animator.SetTrigger("PunchLanded");
         animator.speed = 1;
         yield break;
     }
@@ -142,6 +143,8 @@ public class CombatBehavior : MonoBehaviour
         // stop the animation
         animator.speed = 0.01f;
         punchCooldownTimer = timeProvider.time;
+        animator.SetFloat("IkLeftWeight", 0);
+        animator.SetFloat("IkLeftWeight", 0);
         StartCoroutine(PunchImpact());
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);
@@ -190,7 +193,7 @@ public class CombatBehavior : MonoBehaviour
     }
     private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
     {
-        if(fighterConfig.corner != evCorner){ return; }
+        if(fighterConfig.corner != evCorner || animator.GetBool("FollowThrough")){ return; }
         if(lStickX > 0.5  && punchTarget != PunchTarget.body)
         {
             punchTarget = PunchTarget.body;

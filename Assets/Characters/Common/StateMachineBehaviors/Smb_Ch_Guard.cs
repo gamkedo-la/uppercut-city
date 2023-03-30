@@ -14,12 +14,12 @@ public class Smb_Ch_Guard : StateMachineBehaviour
         animator.SetFloat("PunchPowerLeft", 0);
         animator.SetFloat("PunchPowerRight", 0);
         combatBehavior.DisablePunches();
+        combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         onGuardUpdate?.Invoke(combatBehavior.fighterConfig.corner);
     }
-
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

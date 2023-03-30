@@ -12,6 +12,8 @@ public class FighterBehaviors : MonoBehaviour
     private FighterSetup fighterSetup;
     private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
+    private Vector3 cameraForwardVector;
+    private Vector3 cameraRightVector;
     [Header("Punch Setup")]
     [SerializeField]public ChainIKConstraint rightArmIk;
     [SerializeField]public ChainIKConstraint leftArmIk;
@@ -62,9 +64,18 @@ public class FighterBehaviors : MonoBehaviour
     }
     public void SetMovementVector(Vector2 movementInput)
     {
-        movementVector.x = transform.position.x + movementInput.x;
+        if(movementInput.magnitude <= 0.1f){
+            movementVector = Vector3.zero;
+            return;
+        }
+        // y axis multiplied by camera forward
+        // x axis multiplied by camera right
+
+        cameraForwardVector = movementInput.y * Camera.main.transform.forward;
+        cameraRightVector = movementInput.x * Vector3.Cross(Camera.main.transform.forward, -Camera.main.transform.up);
+        movementVector.x = cameraForwardVector.x + cameraRightVector.x;
         movementVector.y = transform.position.y;
-        movementVector.z = transform.position.z + movementInput.y;
+        movementVector.z = cameraForwardVector.z + cameraRightVector.z;
         if(fighterConfig.corner == SO_FighterConfig.Corner.blue)
         {
             animator.SetFloat("LStickX", movementInput.x*-1);

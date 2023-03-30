@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   fighterConfig: {fileID: 0}
-  punchCooldown: 0.3
+  punchCooldown: 0.15
   punchTarget: 0
   rightArmHeadIk: {fileID: 6010097490342919460}
   leftArmHeadIk: {fileID: 5060177401762147493}
