@@ -31,13 +31,12 @@ public class PunchDetector : MonoBehaviour
     {
         // find the parent (top most) and ignore self-punches! 
         if(other.transform.root == transform.root) {return;} // ignore it
-
-        // handle the punch that hit us
         attackProperties = other.GetComponent<AttackProperties>();
-        Debug.Log($"Hit for {attackProperties.punchDamage}");
         onHitReceived?.Invoke(attackProperties.punchDamage);
-        attackProperties.gameObject.SetActive(false);
-        Debug.Log(transform.root.gameObject.name + " was "+gameObject.name+" by " + other.transform.root.gameObject.name + " with " +other.gameObject.name);
+        Debug.Log($"{transform.root.gameObject.name} {gameObject.name} by {other.transform.root.gameObject.name} for {attackProperties.punchDamage}");
+        
+        // reset everything after the hit has been handled
+        // attackProperties.gameObject.SetActive(false);
         // TODO FIXME
         // since triggerEnter does not give us any contact points,
         // we can approximate the "point of contact" this way:

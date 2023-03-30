@@ -15,6 +15,8 @@ public class CombatBehavior : MonoBehaviour
     public TimeProvider timeProvider;
     public SO_FighterConfig fighterConfig;
     private Animator animator;
+    [Range(0,0.5f)] public float punchCooldown;
+    private float punchCooldownTimer;
     private float hitTimer;
     private float punchThrownTimer;
     [HideInInspector] public PunchTarget punchTarget = PunchTarget.head;
@@ -51,6 +53,8 @@ public class CombatBehavior : MonoBehaviour
         leftAttackProperties = leftHand.GetComponent<AttackProperties>();
         hitBodyDetector.onHitReceived += BodyHitReceived;
         hitHeadDetector.onHitReceived += HeadHitReceived;
+        leftAttackProperties.onHitOpponent += SuccessfulPunch;
+        rightAttackProperties.onHitOpponent += SuccessfulPunch;
         hitRightGloveDetector.onHitReceived += HitGloveReceived;
         hitLeftGloveDetector.onHitReceived += HitGloveReceived;
         StateGameStart.onStateEnter += HandleGameStart;
@@ -121,6 +125,26 @@ public class CombatBehavior : MonoBehaviour
     public void HitGloveReceived(float damage) //Aka block
     {
         Debug.Log($"Blocked");
+    }
+    private IEnumerator PunchImpact()
+    {
+        while(timeProvider.time - punchCooldownTimer < punchCooldown)
+        {
+            yield return null;
+        }
+        animator.SetTrigger("PunchImpact");
+        animator.speed = 1;
+        yield break;
+    }
+    public void SuccessfulPunch(float damage) // Aka block
+    {
+        Debug.Log($"Hit opponent for: {damage}");
+        // stop the animation
+        animator.speed = 0.01f;
+        punchCooldownTimer = timeProvider.time;
+        StartCoroutine(PunchImpact());
+        rightAttackProperties.gameObject.SetActive(false);
+        leftAttackProperties.gameObject.SetActive(false);
     }
     public void PunchFinished()
     {
