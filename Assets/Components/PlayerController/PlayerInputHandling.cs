@@ -87,11 +87,12 @@ public class PlayerInputHandling : MonoBehaviour
     }
     public void HandlePunchInput(InputAction.CallbackContext context){
         punchInput = context.ReadValue<Vector2>();
-        fighterBehaviors?.HandlePunch(Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
+        fighterBehaviors?.HandlePunch(punchInput);
     }
     public void InputMousePunch(InputAction.CallbackContext context){
-        mousePunchAxis = context.ReadValue<float>();
-        fighterBehaviors?.HandlePunch(mousePunchAxis);
+        punchInput.x = context.ReadValue<float>();
+        punchInput.y = 0;
+        fighterBehaviors?.HandlePunch(punchInput);
     }
     public void HandleBlockRightInput(InputAction.CallbackContext context)
     {

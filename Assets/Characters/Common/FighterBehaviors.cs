@@ -90,10 +90,13 @@ public class FighterBehaviors : MonoBehaviour
         GetOpponentFighterBehaviors();
         // subscribe for round end event
     }
-    public void HandlePunch(double inputAngle)
+    public void HandlePunch(Vector2 punchInput)
     {
         // input angle: +180 right -180 left  |  0 is neutral
-        animator.SetFloat("RStickAngle", (float)inputAngle);
+        // Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg
+        animator.SetFloat("RStickAngle", Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
+        animator.SetFloat("RStickX", punchInput.x);
+        animator.SetFloat("RStickY", punchInput.y);
     }
     private void HandleMovement()
     {
