@@ -59,7 +59,6 @@ public class CombatBehavior : MonoBehaviour
         hitLeftGloveDetector.onHitReceived += HitGloveReceived;
         StateGameStart.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
-        Smb_Ch_Leaning.onLeaningUpdate += LeaningUpdate;
         Smb_Ch_Guard.onGuardUpdate += GuardUpdate;
     }
     private void HandleGameStart()
@@ -133,7 +132,6 @@ public class CombatBehavior : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
-        animator.SetTrigger("PunchLanded");
         animator.speed = 1;
         yield break;
     }
@@ -141,6 +139,7 @@ public class CombatBehavior : MonoBehaviour
     {
         Debug.Log($"Hit opponent for: {damage}");
         // stop the animation
+        animator.SetTrigger("PunchLanded");
         animator.speed = 0.01f;
         punchCooldownTimer = timeProvider.time;
         animator.SetFloat("IkLeftWeight", 0);
@@ -189,20 +188,6 @@ public class CombatBehavior : MonoBehaviour
             leftArmBodyIk.weight = animator.GetFloat("IkLeftWeight");
             leftArmHeadIk.weight = 0;
             rightArmHeadIk.weight = 0;
-        }
-    }
-    private void LeaningUpdate(SO_FighterConfig.Corner evCorner, float lStickX)
-    {
-        if(fighterConfig.corner != evCorner || animator.GetBool("FollowThrough")){ return; }
-        if(lStickX > 0.5  && punchTarget != PunchTarget.body)
-        {
-            punchTarget = PunchTarget.body;
-            Debug.Log("Target the body");
-        }
-        if(lStickX <= 0.5 && punchTarget != PunchTarget.head)
-        {
-            punchTarget = PunchTarget.head;
-            Debug.Log("Target the Head");
         }
     }
     private void GuardUpdate(SO_FighterConfig.Corner evCorner)

@@ -68,9 +68,6 @@ public class FighterBehaviors : MonoBehaviour
             movementVector = Vector3.zero;
             return;
         }
-        // y axis multiplied by camera forward
-        // x axis multiplied by camera right
-
         cameraForwardVector = movementInput.y * Camera.main.transform.forward;
         cameraRightVector = movementInput.x * Vector3.Cross(Camera.main.transform.forward, -Camera.main.transform.up);
         movementVector.x = cameraForwardVector.x + cameraRightVector.x;

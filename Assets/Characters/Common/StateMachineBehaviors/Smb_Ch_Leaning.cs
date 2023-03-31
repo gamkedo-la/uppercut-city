@@ -15,13 +15,24 @@ public class Smb_Ch_Leaning : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-      onLeaningUpdate?.Invoke(combatBehavior.fighterConfig.corner, animator.GetFloat("LStickX"));
+      //onLeaningUpdate?.Invoke(combatBehavior.fighterConfig.corner, animator.GetFloat("LStickX"));
+      if(animator.GetBool("FollowThrough")){return;}
+      if(animator.GetFloat("LStickX") <= 0.5 && combatBehavior.punchTarget != CombatBehavior.PunchTarget.head)
+      {
+        combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
+        Debug.Log("Target the Head");
+      }
+      else if(animator.GetFloat("LStickX") > 0.5  && combatBehavior.punchTarget != CombatBehavior.PunchTarget.body)
+      {
+        combatBehavior.punchTarget = CombatBehavior.PunchTarget.body;
+        Debug.Log("Target the body");
+      }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       //animator.SetLayerWeight(1,0);
+      //animator.SetLayerWeight(1,0);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

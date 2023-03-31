@@ -7,5 +7,6 @@ public class Smb_Ch_Neutral : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
+        combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
     }
 }

@@ -10,11 +10,10 @@ public class Smb_Ch_Guard : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
-        animator.ResetTrigger("PunchImpact");
+        animator.ResetTrigger("PunchLanded");
         animator.SetFloat("PunchPowerLeft", 0);
         animator.SetFloat("PunchPowerRight", 0);
         combatBehavior.DisablePunches();
-        combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
