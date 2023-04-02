@@ -132,6 +132,7 @@ public class CombatBehavior : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+        animator.SetTrigger("PunchLanded");
         animator.speed = 1;
         yield break;
     }
@@ -139,7 +140,6 @@ public class CombatBehavior : MonoBehaviour
     {
         Debug.Log($"Hit opponent for: {damage}");
         // stop the animation
-        animator.SetTrigger("PunchLanded");
         animator.speed = 0.01f;
         punchCooldownTimer = timeProvider.time;
         animator.SetFloat("IkLeftWeight", 0);
