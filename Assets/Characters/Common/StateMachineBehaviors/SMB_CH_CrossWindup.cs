@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SMB_CH_CrossWindup : StateMachineBehaviour
 {
-    public CombatBehavior combatBehavior;
+    [HideInInspector] public CombatBehavior combatBehavior;
     private float damage;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

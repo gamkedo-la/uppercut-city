@@ -150,7 +150,7 @@ public class CombatBehavior : MonoBehaviour
     }
     public void PunchFinished()
     {
-        animator.SetBool("FollowThrough", false);
+        animator.SetBool("WindUp", false);
     }
     private void HandleHealthRegen()
     {
