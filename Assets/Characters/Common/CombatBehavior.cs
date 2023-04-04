@@ -20,7 +20,6 @@ public class CombatBehavior : MonoBehaviour
     private float hitTimer;
     private float punchThrownTimer;
     [HideInInspector] public PunchTarget punchTarget = PunchTarget.head;
-    private bool targetSwitched = false;
     [Header("IK Components")]
     public ChainIKConstraint rightArmHeadIk;
     public ChainIKConstraint leftArmHeadIk;
@@ -139,7 +138,7 @@ public class CombatBehavior : MonoBehaviour
     public void SuccessfulPunch(float damage)
     {
         Debug.Log($"Hit opponent for: {damage}");
-        // stop the animation
+        // slow-mo sort of
         animator.speed = 0.01f;
         punchCooldownTimer = timeProvider.time;
         animator.SetFloat("IkLeftWeight", 0);

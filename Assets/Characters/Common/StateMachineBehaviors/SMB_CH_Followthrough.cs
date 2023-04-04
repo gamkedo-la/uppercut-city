@@ -17,15 +17,16 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         // if we're leaning forward
         animator.SetFloat("IkRightWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
-        if(animator.GetFloat("LStickX") <= 0.5 && combatBehavior.punchTarget != CombatBehavior.PunchTarget.head)
-        {
-            combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
-            Debug.Log("Target the Head");
-        }
-        else if(animator.GetFloat("LStickX") > 0.5  && combatBehavior.punchTarget != CombatBehavior.PunchTarget.body)
+        // punch the body if we're leaning forward, otherwise always head
+        if( animator.GetBool("Leaning") && animator.GetFloat("LStickX") > 0.5)
         {
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.body;
             Debug.Log("Target the body");
+        }
+        else
+        {
+            combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
+            Debug.Log("Target the Head");
         }
         combatBehavior.EnablePunch(punchHand);
         onStateEnter?.Invoke();
