@@ -15,7 +15,7 @@ public class CombatBehavior : MonoBehaviour
     public TimeProvider timeProvider;
     public SO_FighterConfig fighterConfig;
     private Animator animator;
-    [Range(0,0.5f)] public float punchCooldown;
+    [HideInInspector] public float punchCooldown;
     private float punchCooldownTimer;
     private float hitTimer;
     private float punchThrownTimer;
@@ -131,18 +131,20 @@ public class CombatBehavior : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+        animator.SetBool("PunchLanded", true);
         animator.speed = 1;
         yield break;
     }
     public void SuccessfulPunch(float damage)
     {
         Debug.Log($"Hit opponent for: {damage}");
+        punchCooldown = damage / 20;
         punchCooldownTimer = timeProvider.time;
         // slow-mo sort of
         animator.speed = 0.01f;
+        animator.SetBool("WindUp", false);
         animator.SetFloat("IkLeftWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
-        animator.SetBool("PunchLanded", true);
         StartCoroutine(PunchImpact());
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);

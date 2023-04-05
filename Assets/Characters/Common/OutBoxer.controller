@@ -74,7 +74,7 @@ AnimatorStateMachine:
     m_Position: {x: -60, y: -240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1529201822731283082}
-    m_Position: {x: -40, y: 60, z: 0}
+    m_Position: {x: -380, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6503160885977971447}
     m_Position: {x: 90, y: -190, z: 0}
@@ -1547,10 +1547,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: WindUp
+    m_ConditionEvent: FollowThrough
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: FollowThrough
+    m_ConditionEvent: WindUp
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2067674372526953161}
@@ -1685,7 +1685,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1144670270283049793}
-  - {fileID: 8356804181311369831}
+  - {fileID: 6105546305769107435}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -2335,6 +2335,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &6105546305769107435
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: PunchLanded
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 9072366852653197538}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!206 &6192582792139161450
 BlendTree:
   m_ObjectHideFlags: 1
@@ -2758,31 +2783,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatBehavior: {fileID: 0}
---- !u!1101 &8356804181311369831
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: PunchLanded
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 9072366852653197538}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 1
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 0
-  m_CanTransitionToSelf: 1
 --- !u!1101 &8698563954014633879
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
