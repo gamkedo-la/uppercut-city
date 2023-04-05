@@ -103,7 +103,7 @@ public class CombatBehavior : MonoBehaviour
     {
         Debug.Log($"Body: {damage}");
         fighterConfig.healthCurrent -= damage;
-        fighterConfig.staminaCurrent -= damage / 2;
+        fighterConfig.staminaCurrent -= damage / 1.2f;
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         hitTimer = fighterConfig.activeCharacter.healCooldown;
@@ -114,7 +114,7 @@ public class CombatBehavior : MonoBehaviour
         if(damage > 10)
         {
             // damages max health
-            fighterConfig.healthMax -= damage / 10;
+            fighterConfig.healthMax -= damage / 5;
         }
         fighterConfig.healthCurrent -= damage;
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
@@ -127,22 +127,22 @@ public class CombatBehavior : MonoBehaviour
     private IEnumerator PunchImpact()
     {
         
-        while(timeProvider.time - punchCooldownTimer < punchCooldown)
+        while(timeProvider.time - punchCooldownTimer <= punchCooldown)
         {
             yield return new WaitForFixedUpdate();
         }
-        animator.SetTrigger("PunchLanded");
         animator.speed = 1;
         yield break;
     }
     public void SuccessfulPunch(float damage)
     {
         Debug.Log($"Hit opponent for: {damage}");
+        punchCooldownTimer = timeProvider.time;
         // slow-mo sort of
         animator.speed = 0.01f;
-        punchCooldownTimer = timeProvider.time;
         animator.SetFloat("IkLeftWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
+        animator.SetBool("PunchLanded", true);
         StartCoroutine(PunchImpact());
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);
