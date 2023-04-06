@@ -9,10 +9,10 @@ public class SMB_CH_Block : StateMachineBehaviour
     private float rAnalogAngle;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!combatBehavior) { combatBehavior = animator.GetComponent<CombatBehavior>(); }
+        if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
         
-        combatBehavior.EnablePunch(PunchHand.left);
-        combatBehavior.EnablePunch(PunchHand.right);
+        // combatBehavior.EnablePunch(PunchHand.left);
+        // combatBehavior.EnablePunch(PunchHand.right);
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,23 +21,28 @@ public class SMB_CH_Block : StateMachineBehaviour
         if(rAnalogAngle >= 0 && rAnalogAngle < 90)
         {
             // block top right
+            combatBehavior.ActivateBlocker(0);
         }
         if(rAnalogAngle >= 90 && rAnalogAngle <= 180)
         {
             // block bottom right
+            combatBehavior.ActivateBlocker(1);
         }
         if(rAnalogAngle < 0 && rAnalogAngle > -90)
         {
-            // block bottom right
+            // block top left
+            combatBehavior.ActivateBlocker(2);
         }
         if(rAnalogAngle <= -90 && rAnalogAngle >= -180)
         {
-            // block bottom right
+            // block bottom left
+            combatBehavior.ActivateBlocker(3);
         }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // disable all blockers
         combatBehavior.DisablePunches();
         // using r-stick-angle switch block colliders on and off
     }

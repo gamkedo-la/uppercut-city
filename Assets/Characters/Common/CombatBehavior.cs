@@ -36,6 +36,7 @@ public class CombatBehavior : MonoBehaviour
     public PunchDetector hitLeftGloveDetector;
     public GameObject rightHand;
     public GameObject leftHand;
+    public GameObject[] blockers; // has to be 0 - TR, 1 - BR, 2 - TL, 3 - BL
     public GameObject rightHandBlock;
     public GameObject leftHandBlock;
     [HideInInspector] public Collider rightHandCollider;
@@ -98,6 +99,21 @@ public class CombatBehavior : MonoBehaviour
             onLeftPunchThrown?.Invoke(this, EventArgs.Empty);
             return;
         }
+    }
+    public void ActivateBlocker(int index)
+    {
+        for(int i=0 ; i<blockers.Length ; i++)
+        {
+            if(i == index)
+            {
+                blockers[i].SetActive(true);
+            }
+            else
+            {
+                blockers[i].SetActive(false);
+            }
+        }
+
     }
     public void BodyHitReceived(float damage)
     {
