@@ -27,21 +27,17 @@ public class CombatBehavior : MonoBehaviour
     public ChainIKConstraint leftArmBodyIk;
     public PunchTargetBehavior headTarget;
     public PunchTargetBehavior bodyTarget;
-    [Header("Combat Components")]
+    [Header("Hit Detection")]
+    public GameObject[] blockers; // has to be 0 - TR, 1 - BR, 2 - TL, 3 - BL
     public Transform bodyTransform;
     public Transform headTransform;
     public PunchDetector hitBodyDetector;
     public PunchDetector hitHeadDetector;
-    public PunchDetector hitRightGloveDetector;
-    public PunchDetector hitLeftGloveDetector;
+    [Header("Punches")]
     public GameObject rightHand;
     public GameObject leftHand;
-    public GameObject[] blockers; // has to be 0 - TR, 1 - BR, 2 - TL, 3 - BL
-    public GameObject rightHandBlock;
-    public GameObject leftHandBlock;
     [HideInInspector] public Collider rightHandCollider;
     [HideInInspector] public Collider leftHandCollider;
-    
     [HideInInspector] public AttackProperties leftAttackProperties;
     [HideInInspector] public AttackProperties rightAttackProperties;
     private void Awake()
@@ -55,11 +51,8 @@ public class CombatBehavior : MonoBehaviour
         hitHeadDetector.onHitReceived += HeadHitReceived;
         leftAttackProperties.onHitOpponent += SuccessfulPunch;
         rightAttackProperties.onHitOpponent += SuccessfulPunch;
-        hitRightGloveDetector.onHitReceived += HitGloveReceived;
-        hitLeftGloveDetector.onHitReceived += HitGloveReceived;
         StateGameStart.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
-        Smb_Ch_Guard.onGuardUpdate += GuardUpdate;
     }
     private void HandleGameStart()
     {
@@ -138,7 +131,7 @@ public class CombatBehavior : MonoBehaviour
     }
     public void HitGloveReceived(float damage) //Aka block
     {
-        Debug.Log($"Blocked");
+        Debug.Log($"Block behavior");
     }
     private IEnumerator PunchImpact()
     {
@@ -167,6 +160,8 @@ public class CombatBehavior : MonoBehaviour
     }
     public void PunchFinished()
     {
+        rightAttackProperties.gameObject.SetActive(false);
+        leftAttackProperties.gameObject.SetActive(false);
         animator.SetBool("WindUp", false);
     }
     private void HandleHealthRegen()
@@ -207,10 +202,8 @@ public class CombatBehavior : MonoBehaviour
             rightArmHeadIk.weight = 0;
         }
     }
-    private void GuardUpdate(SO_FighterConfig.Corner evCorner)
+    public void GuardUpdate()
     {
-        // when in the guard we can regen stamina
-        if(fighterConfig.corner != evCorner){ return; }
         if(punchThrownTimer > 0)
         {
             punchThrownTimer = Mathf.Clamp(

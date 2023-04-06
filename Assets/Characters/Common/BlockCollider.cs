@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class BlockCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter(Collision other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log($"Punch Blocked");
+        // trigger opponent's 'PunchBlocked' handler
+        // play the blocked VFX
     }
 }

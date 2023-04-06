@@ -17,7 +17,8 @@ public class Smb_Ch_Guard : StateMachineBehaviour
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        onGuardUpdate?.Invoke(combatBehavior.fighterConfig.corner);
+        //onGuardUpdate?.Invoke(combatBehavior.fighterConfig.corner);
+        combatBehavior.GuardUpdate();
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
