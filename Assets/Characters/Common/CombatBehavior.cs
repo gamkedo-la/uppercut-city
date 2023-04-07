@@ -42,6 +42,7 @@ public class CombatBehavior : MonoBehaviour
     [HideInInspector] public AttackProperties rightAttackProperties;
     [Header("VFX Components")]
     public GameObject leftWristFireEmitter;
+    public GameObject rightWristFireEmitter;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -81,19 +82,30 @@ public class CombatBehavior : MonoBehaviour
         if(punchHand == SMB_CH_Followthrough.PunchHand.right)
         {
             rightHand.SetActive(true);
+            rightAttackProperties.gameObject.SetActive(true);
             rightAttackProperties.punchDamage = animator.GetFloat("PunchPowerRight");
             fighterConfig.staminaCurrent -= rightAttackProperties.punchDamage;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             onRightPunchThrown?.Invoke(this, EventArgs.Empty);
+            if(animator.GetFloat("PunchPowerRight") >= 10)
+            {
+                rightWristFireEmitter.SetActive(true);
+            }
             return;
         }
         if(punchHand == SMB_CH_Followthrough.PunchHand.left)
         {
             leftHand.SetActive(true);
+            leftAttackProperties.gameObject.SetActive(true);
             leftAttackProperties.punchDamage = animator.GetFloat("PunchPowerLeft");
             fighterConfig.staminaCurrent -= leftAttackProperties.punchDamage;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             onLeftPunchThrown?.Invoke(this, EventArgs.Empty);
+            // powerful punches make a fire trail
+            if(animator.GetFloat("PunchPowerLeft") >= 10)
+            {
+                leftWristFireEmitter.SetActive(true);
+            }
             return;
         }
     }
@@ -160,6 +172,7 @@ public class CombatBehavior : MonoBehaviour
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);
         leftWristFireEmitter.SetActive(false);
+        rightWristFireEmitter.SetActive(false);
         // Targets Can Move again
         headTarget.enabled = true;
         bodyTarget.enabled = true;

@@ -25273,6 +25273,10 @@ PrefabInstance:
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: rightWristFireEmitter
+      value: 
+      objectReference: {fileID: 6938387055792034451}
     - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: inputData
       value: 
@@ -25285,10 +25289,6 @@ PrefabInstance:
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
-    - target: {fileID: 1811318849214962922, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: target
       value: 
@@ -25296,14 +25296,6 @@ PrefabInstance:
     - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: isRight
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: punchTrailPrefab
-      value: 
-      objectReference: {fileID: -6917339134563170345, guid: b0744ecb72deaba4ab444f81360ba049, type: 3}
-    - target: {fileID: 1860469419760936155, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Name
-      value: PunchTrailSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 2264252450452744130, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
@@ -25317,10 +25309,6 @@ PrefabInstance:
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
-    - target: {fileID: 3289658019211017400, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3771267058411009581, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
       value: 
@@ -25371,3 +25359,8 @@ PrefabInstance:
       objectReference: {fileID: 1793328750}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+--- !u!1 &6938387055792034451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8595579112231186379, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+  m_PrefabInstance: {fileID: 6938387055792034450}
+  m_PrefabAsset: {fileID: 0}

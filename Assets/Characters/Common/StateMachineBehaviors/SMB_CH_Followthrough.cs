@@ -28,11 +28,6 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
             Debug.Log("Target the Head");
         }
-        // check punch power and add VFX if it's high enough
-        if(punchHand == PunchHand.left && animator.GetFloat("PunchPowerLeft") >= 10)
-        {
-            combatBehavior.leftWristFireEmitter.SetActive(true);
-        }
         combatBehavior.EnablePunch(punchHand);
         onStateEnter?.Invoke();
     }
