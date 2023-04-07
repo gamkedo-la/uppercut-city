@@ -45,17 +45,16 @@ public class CrowdManager : MonoBehaviour
     {
         currentState = CrowdState.Relaxed;
         SMB_CH_Followthrough.onStateEnter += FighterBehaviors_OnPunchThrown;
-        PunchDetector.OnPunchConnected += PunchDetector_OnPunchConnected;
+        PunchDetector.onPunchConnected += PunchDetector_OnPunchConnected;
     }
     private void FighterBehaviors_OnPunchThrown()
     {
         currentMomentum += punchThrownAdd;
     }
-    private void PunchDetector_OnPunchConnected(object sender, EventArgs e)
+    private void PunchDetector_OnPunchConnected(float damage)
     {
         currentMomentum += punchConnectedAdd;
     }
-    // Update is called once per frame
     void Update()
     {
 

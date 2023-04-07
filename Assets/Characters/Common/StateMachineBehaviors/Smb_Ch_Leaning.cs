@@ -16,17 +16,6 @@ public class Smb_Ch_Leaning : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
       //onLeaningUpdate?.Invoke(combatBehavior.fighterConfig.corner, animator.GetFloat("LStickX"));
-      if(animator.GetBool("FollowThrough")){return;}
-      if(animator.GetFloat("LStickX") <= 0.5 && combatBehavior.punchTarget != CombatBehavior.PunchTarget.head)
-      {
-        combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
-        Debug.Log("Target the Head");
-      }
-      else if(animator.GetFloat("LStickX") > 0.5  && combatBehavior.punchTarget != CombatBehavior.PunchTarget.body)
-      {
-        combatBehavior.punchTarget = CombatBehavior.PunchTarget.body;
-        Debug.Log("Target the body");
-      }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -34,16 +23,4 @@ public class Smb_Ch_Leaning : StateMachineBehaviour
     {
       //animator.SetLayerWeight(1,0);
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

@@ -9,6 +9,7 @@ public class FighterBehaviors : MonoBehaviour
     public TimeProvider timeProvider;
     public SO_FighterControlData inputData;
     public Animator animator;
+    private Transform fightCamTransform;
     private FighterSetup fighterSetup;
     private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
@@ -68,11 +69,14 @@ public class FighterBehaviors : MonoBehaviour
             movementVector = Vector3.zero;
             return;
         }
+        //Debug.Log($"");
         cameraForwardVector = movementInput.y * Camera.main.transform.forward;
-        cameraRightVector = movementInput.x * Vector3.Cross(Camera.main.transform.forward, -Camera.main.transform.up);
-        movementVector.x = cameraForwardVector.x + cameraRightVector.x;
-        movementVector.y = transform.position.y;
-        movementVector.z = cameraForwardVector.z + cameraRightVector.z;
+        cameraRightVector = movementInput.x * Camera.main.transform.right;
+        movementVector = new Vector3(
+            (cameraForwardVector.x + cameraRightVector.x), 
+            transform.position.y, 
+            (cameraForwardVector.z + cameraRightVector.z)
+        );
         if(fighterConfig.corner == SO_FighterConfig.Corner.blue)
         {
             animator.SetFloat("LStickX", movementInput.x*-1);

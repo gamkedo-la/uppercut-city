@@ -41,7 +41,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427728148438740525}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0006
@@ -175,7 +175,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228337925760606422}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0006
@@ -2048,12 +2048,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600333728831123837, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
       propertyPath: m_Name
-      value: PunchTrailSpawnerR
+      value: PunchTrailSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 2600333728831123839, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
       propertyPath: origin
       value: 
       objectReference: {fileID: 8012238896041228472}
+    - target: {fileID: 2600333728831123839, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2600333728831123839, guid: ec2efd3e3b402ef429b8f2eee0a7593b, type: 3}
       propertyPath: leftOrigin
       value: 

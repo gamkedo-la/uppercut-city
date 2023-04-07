@@ -76,6 +76,8 @@ public class CombatBehavior : MonoBehaviour
     }
     public void EnablePunch(SMB_CH_Followthrough.PunchHand punchHand)
     {
+        headTarget.enabled = false;
+        bodyTarget.enabled = false;
         if(punchHand == SMB_CH_Followthrough.PunchHand.right)
         {
             rightHand.SetActive(true);
@@ -144,23 +146,23 @@ public class CombatBehavior : MonoBehaviour
     public void SuccessfulPunch(float damage)
     {
         Debug.Log($"Hit opponent for: {damage}");
-        leftWristFireEmitter.SetActive(false);
+        PunchFinished();
         punchCooldown = damage / 20;
         punchCooldownTimer = timeProvider.time;
         // slow-mo sort of
         animator.speed = 0.01f;
-        animator.SetBool("WindUp", false);
         animator.SetFloat("IkLeftWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
         StartCoroutine(PunchImpact());
-        rightAttackProperties.gameObject.SetActive(false);
-        leftAttackProperties.gameObject.SetActive(false);
     }
     public void PunchFinished()
     {
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);
         leftWristFireEmitter.SetActive(false);
+        // Targets Can Move again
+        headTarget.enabled = true;
+        bodyTarget.enabled = true;
         animator.SetBool("WindUp", false);
     }
     private void HandleHealthRegen()

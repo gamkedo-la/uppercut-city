@@ -10,12 +10,12 @@ public class PunchDetector : MonoBehaviour
 {
     public SO_FighterConfig fighterConfig;
     public Animator fighterAnimator;
-    public static EventHandler OnPunchConnected;
     public Transform hitPrefab;
     public AudioSource audioSource;
     private AttackProperties attackProperties;
     public delegate void HitReceivedEvent(float damage);
     public event HitReceivedEvent onHitReceived;
+    public static HitReceivedEvent onPunchConnected;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,7 @@ public class PunchDetector : MonoBehaviour
         if(other.transform.root == transform.root) {return;} // ignore it
         attackProperties = other.GetComponent<AttackProperties>();
         onHitReceived?.Invoke(attackProperties.punchDamage);
+        onPunchConnected?.Invoke(attackProperties.punchDamage);
         Debug.Log($"{transform.root.gameObject.name} {gameObject.name} by {other.transform.root.gameObject.name} for {attackProperties.punchDamage}");
         
         // reset everything after the hit has been handled
@@ -51,8 +52,6 @@ public class PunchDetector : MonoBehaviour
 
         // and an optional (unity native: not wwise) sound
         if (audioSource) audioSource.Play();
-
-        OnPunchConnected?.Invoke(this, EventArgs.Empty);
 
         other.gameObject.SetActive(false);
     }
