@@ -17,6 +17,8 @@ public class CombatBehavior : MonoBehaviour
     private Animator animator;
     [HideInInspector] public float punchCooldown;
     private float punchCooldownTimer;
+    [HideInInspector] public float stunDuration;
+    private float stunTimer;
     private float hitTimer;
     private float punchThrownTimer;
     [HideInInspector] public PunchTarget punchTarget = PunchTarget.head;
@@ -61,6 +63,8 @@ public class CombatBehavior : MonoBehaviour
         blockBottomRight.onBlockedPunch += BlockedPunch;
         leftAttackProperties.onHitOpponent += SuccessfulPunch;
         rightAttackProperties.onHitOpponent += SuccessfulPunch;
+        leftAttackProperties.onGotBlocked += GotBlocked;
+        rightAttackProperties.onGotBlocked += GotBlocked;
         StateGameStart.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
     }
@@ -123,10 +127,6 @@ public class CombatBehavior : MonoBehaviour
             return;
         }
     }
-    public void BlockedPunch()
-    {
-        // blockage
-    }
     public void BodyHitReceived(float damage)
     {
         Debug.Log($"Body: {damage}");
@@ -169,6 +169,34 @@ public class CombatBehavior : MonoBehaviour
         animator.SetFloat("IkLeftWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
         StartCoroutine(PunchImpact());
+    }
+    private IEnumerator Stunned()
+    {
+        Debug.Log($"Stunned at {timeProvider.time}");
+        while(timeProvider.time - stunTimer <= stunDuration)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        animator.SetBool("Stunned", false);
+        Debug.Log($"ReActive at {timeProvider.time}");
+        yield break;
+    }
+    public void GotBlocked(float power)
+    {
+        // punch was blocked
+        animator.SetFloat("IkLeftWeight", 0);
+        animator.SetFloat("IkLeftWeight", 0);
+        // Transition to stun
+        animator.SetBool("Stunned", true);
+        stunDuration = power / 10; // how long it lasts
+        stunTimer = timeProvider.time;
+        StartCoroutine(Stunned());
+
+        // duration is based on on punch power
+    }
+    public void BlockedPunch()
+    {
+        // blockage
     }
     public void PunchFinished()
     {
