@@ -21,12 +21,10 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         if( animator.GetBool("Leaning") && animator.GetFloat("LStickX") > 0.5)
         {
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.body;
-            Debug.Log("Target the body");
         }
         else
         {
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
-            Debug.Log("Target the Head");
         }
         combatBehavior.EnablePunch(punchHand);
         onStateEnter?.Invoke();

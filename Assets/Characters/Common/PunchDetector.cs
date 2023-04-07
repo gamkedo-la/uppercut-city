@@ -13,62 +13,33 @@ public class PunchDetector : MonoBehaviour
     public Transform hitPrefab;
     public AudioSource audioSource;
     private AttackProperties attackProperties;
+    private ContactPoint collisionPoint;
     public delegate void HitReceivedEvent(float damage);
     public event HitReceivedEvent onHitReceived;
     public static HitReceivedEvent onPunchConnected;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         // find the parent (top most) and ignore self-punches! 
-        if(other.transform.root == transform.root) {return;} // ignore it
-        attackProperties = other.GetComponent<AttackProperties>();
+        if(collision.gameObject.transform.root == transform.root) {return;}
+        // get the attack properties of the opponent's glove
+        attackProperties = collision.gameObject.GetComponent<AttackProperties>();
         onHitReceived?.Invoke(attackProperties.punchDamage);
         onPunchConnected?.Invoke(attackProperties.punchDamage);
-        Debug.Log($"{transform.root.gameObject.name} {gameObject.name} by {other.transform.root.gameObject.name} for {attackProperties.punchDamage}");
-        
-        // reset everything after the hit has been handled
-        // attackProperties.gameObject.SetActive(false);
-        // TODO FIXME
-        // since triggerEnter does not give us any contact points,
-        // we can approximate the "point of contact" this way:
-        // var collisionPoint = collider.ClosestPoint(transform.position);
-        // var collisionNormal = transform.position - collisionPoint;
+        Debug.Log($"{transform.root.gameObject.name} got {gameObject.name} for {attackProperties.punchDamage}");
 
-        // red line in scene view debug
-        Debug.DrawLine(transform.position,other.transform.position,Color.red,1.5f,false);
+        collisionPoint = collision.GetContact(0);
 
         // spawn some particles
-        if (hitPrefab) Instantiate(hitPrefab,other.transform.position,transform.rotation);
+        if (hitPrefab) Instantiate(hitPrefab,collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));
 
-        // and an optional (unity native: not wwise) sound
-        if (audioSource) audioSource.Play();
-
-        other.gameObject.SetActive(false);
-    }
-
-    /*
-    // this is not used: 
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("PUNCH COLLISION DETECTED!");
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }
-        //if (collision.relativeVelocity.magnitude > 2)
+        // and an optional (unity native: not wise) sound
         if (audioSource) audioSource.Play();
     }
-    */
 
 }
 

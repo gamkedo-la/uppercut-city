@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BlockCollider : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    public delegate void BlockedPunch();
+    public event BlockedPunch onBlockedPunch;
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"Punch Blocked");
+        Debug.Log($"Punch Blocked {collision.gameObject.name}");
+        onBlockedPunch?.Invoke();
         // trigger opponent's 'PunchBlocked' handler
         // play the blocked VFX
     }

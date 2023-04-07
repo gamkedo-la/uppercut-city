@@ -37,7 +37,7 @@ public class AIController : MonoBehaviour
         }
     }
     private void Start() {
-        currentState.OnEnter();
+        currentState?.OnEnter();
     }
     private void FixedUpdate() {
         currentState.OnUpdate();

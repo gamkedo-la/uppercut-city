@@ -10,9 +10,6 @@ public class SMB_CH_Block : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
-        
-        // combatBehavior.EnablePunch(PunchHand.left);
-        // combatBehavior.EnablePunch(PunchHand.right);
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,29 +18,51 @@ public class SMB_CH_Block : StateMachineBehaviour
         if(rAnalogAngle >= 0 && rAnalogAngle < 90)
         {
             // block top right
-            combatBehavior.ActivateBlocker(0);
+            if(combatBehavior.blockTopRight.gameObject.activeSelf == false)
+            {
+                combatBehavior.DisableBlockers();
+                combatBehavior.blockTopRight.gameObject.SetActive(true);
+                return;
+            }
+            
         }
         if(rAnalogAngle >= 90 && rAnalogAngle <= 180)
         {
             // block bottom right
-            combatBehavior.ActivateBlocker(1);
+            if(combatBehavior.blockBottomRight.gameObject.activeSelf == false)
+            {
+                combatBehavior.DisableBlockers();
+                combatBehavior.blockBottomRight.gameObject.SetActive(true);
+                return;
+            }
         }
         if(rAnalogAngle < 0 && rAnalogAngle > -90)
         {
             // block top left
-            combatBehavior.ActivateBlocker(2);
+            if(combatBehavior.blockTopLeft.gameObject.activeSelf == false)
+            {
+                combatBehavior.DisableBlockers();
+                combatBehavior.blockTopLeft.gameObject.SetActive(true);
+                return;
+            }
         }
         if(rAnalogAngle <= -90 && rAnalogAngle >= -180)
         {
             // block bottom left
-            combatBehavior.ActivateBlocker(3);
+            if(combatBehavior.blockBottomLeft.gameObject.activeSelf == false)
+            {
+                combatBehavior.DisableBlockers();
+                combatBehavior.blockBottomLeft.gameObject.SetActive(true);
+                return;
+            }
+            
         }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // disable all blockers
-        combatBehavior.DisablePunches();
+        combatBehavior.DisableBlockers();
         // using r-stick-angle switch block colliders on and off
     }
 }

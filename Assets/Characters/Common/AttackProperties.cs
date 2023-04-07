@@ -6,10 +6,11 @@ public class AttackProperties : MonoBehaviour
 {
     public float punchDamage;
     public event PunchDetector.HitReceivedEvent onHitOpponent;
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.transform.root == transform.root) {return;}
+        Debug.Log($"Hit Something {collision.gameObject.name}");
+        if(collision.gameObject.transform.root == transform.root) {return;}
         onHitOpponent?.Invoke(punchDamage);
-        // disable punches
+        gameObject.SetActive(false);
     }
 }

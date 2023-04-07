@@ -28,7 +28,10 @@ public class CombatBehavior : MonoBehaviour
     public PunchTargetBehavior headTarget;
     public PunchTargetBehavior bodyTarget;
     [Header("Hit Detection")]
-    public GameObject[] blockers; // has to be 0 - TR, 1 - BR, 2 - TL, 3 - BL
+    public BlockCollider blockTopLeft;
+    public BlockCollider blockBottomLeft;
+    public BlockCollider blockTopRight;
+    public BlockCollider blockBottomRight;
     public Transform bodyTransform;
     public Transform headTransform;
     public PunchDetector hitBodyDetector;
@@ -52,6 +55,10 @@ public class CombatBehavior : MonoBehaviour
         leftAttackProperties = leftHand.GetComponent<AttackProperties>();
         hitBodyDetector.onHitReceived += BodyHitReceived;
         hitHeadDetector.onHitReceived += HeadHitReceived;
+        blockTopLeft.onBlockedPunch += BlockedPunch;
+        blockBottomLeft.onBlockedPunch += BlockedPunch;
+        blockTopRight.onBlockedPunch += BlockedPunch;
+        blockBottomRight.onBlockedPunch += BlockedPunch;
         leftAttackProperties.onHitOpponent += SuccessfulPunch;
         rightAttackProperties.onHitOpponent += SuccessfulPunch;
         StateGameStart.onStateEnter += HandleGameStart;
@@ -66,6 +73,13 @@ public class CombatBehavior : MonoBehaviour
         animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         animator.SetFloat("StaminaMax", fighterConfig.staminaMax);
         animator.SetFloat("Combo", fighterConfig.combo);
+    }
+    public void DisableBlockers()
+    {
+        blockTopLeft.gameObject.SetActive(false);
+        blockBottomLeft.gameObject.SetActive(false);
+        blockTopRight.gameObject.SetActive(false);
+        blockBottomRight.gameObject.SetActive(false);
     }
     public void DisablePunches()
     {
@@ -109,20 +123,9 @@ public class CombatBehavior : MonoBehaviour
             return;
         }
     }
-    public void ActivateBlocker(int index)
+    public void BlockedPunch()
     {
-        for(int i=0 ; i<blockers.Length ; i++)
-        {
-            if(i == index)
-            {
-                blockers[i].SetActive(true);
-            }
-            else
-            {
-                blockers[i].SetActive(false);
-            }
-        }
-
+        // blockage
     }
     public void BodyHitReceived(float damage)
     {
@@ -139,7 +142,7 @@ public class CombatBehavior : MonoBehaviour
         if(damage > 10)
         {
             // damages max health
-            fighterConfig.healthMax -= damage / 5;
+            fighterConfig.healthMax -= damage / 3;
         }
         fighterConfig.healthCurrent -= damage;
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);

@@ -25273,10 +25273,6 @@ PrefabInstance:
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
-    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: rightWristFireEmitter
-      value: 
-      objectReference: {fileID: 6938387055792034451}
     - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: inputData
       value: 
@@ -25296,6 +25292,10 @@ PrefabInstance:
     - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: isRight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021794601320174191, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2264252450452744130, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
@@ -25359,8 +25359,3 @@ PrefabInstance:
       objectReference: {fileID: 1793328750}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
---- !u!1 &6938387055792034451 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8595579112231186379, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-  m_PrefabInstance: {fileID: 6938387055792034450}
-  m_PrefabAsset: {fileID: 0}
