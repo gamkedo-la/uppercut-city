@@ -41,7 +41,7 @@ public class CombatBehavior : MonoBehaviour
     [HideInInspector] public AttackProperties leftAttackProperties;
     [HideInInspector] public AttackProperties rightAttackProperties;
     [Header("VFX Components")]
-    public GameObject leftFlamingWristVfx;
+    public GameObject leftWristFireEmitter;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -149,6 +149,7 @@ public class CombatBehavior : MonoBehaviour
     public void SuccessfulPunch(float damage)
     {
         Debug.Log($"Hit opponent for: {damage}");
+        leftWristFireEmitter.SetActive(false);
         punchCooldown = damage / 20;
         punchCooldownTimer = timeProvider.time;
         // slow-mo sort of
@@ -164,6 +165,7 @@ public class CombatBehavior : MonoBehaviour
     {
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);
+        leftWristFireEmitter.SetActive(false);
         animator.SetBool("WindUp", false);
     }
     private void HandleHealthRegen()
