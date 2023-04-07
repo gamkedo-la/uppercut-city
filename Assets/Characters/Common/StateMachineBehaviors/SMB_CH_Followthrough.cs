@@ -29,7 +29,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
             Debug.Log("Target the Head");
         }
         // check punch power and add VFX if it's high enough
-        if(punchHand == PunchHand.left && animator.GetFloat("PunchPowerLeft") >= 5)
+        if(punchHand == PunchHand.left && animator.GetFloat("PunchPowerLeft") >= 10)
         {
             combatBehavior.leftWristFireEmitter.SetActive(true);
         }

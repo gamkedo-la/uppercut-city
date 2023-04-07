@@ -974,11 +974,11 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -986,20 +986,29 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 4.7988715
+          outSlope: 4.7988715
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.14352725
+        - serializedVersion: 3
+          time: 0.28757006
+          value: 0.75896454
+          inSlope: 1.1062325
+          outSlope: 1.1062325
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.12535542
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 1
-          outSlope: 0
+          inSlope: 0.4299447
+          outSlope: 0.4299447
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.12322352
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -4826,4 +4835,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b5fcedf211f2642b31463b7f58ba9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfDestructTime: 0.33
+  selfDestructTime: 1.5

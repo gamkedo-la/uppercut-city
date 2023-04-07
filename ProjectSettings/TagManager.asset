@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FighterA
   - FighterB
+  - FightCam
   layers:
   - Default
   - TransparentFX

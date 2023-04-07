@@ -100,7 +100,7 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleMovement()
     {
-        if( movementVector.magnitude <= 0.05f || animator.GetBool("Leaning") ){ return; }
+        if( movementVector.magnitude <= 0.05f || animator.GetBool("Leaning") || animator.GetBool("FollowThrough") ){ return; }
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 

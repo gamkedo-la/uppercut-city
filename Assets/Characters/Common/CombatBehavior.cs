@@ -131,13 +131,8 @@ public class CombatBehavior : MonoBehaviour
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         hitTimer = fighterConfig.activeCharacter.healCooldown;
     }
-    public void HitGloveReceived(float damage) //Aka block
-    {
-        Debug.Log($"Block behavior");
-    }
     private IEnumerator PunchImpact()
     {
-        
         while(timeProvider.time - punchCooldownTimer <= punchCooldown)
         {
             yield return new WaitForFixedUpdate();

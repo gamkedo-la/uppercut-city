@@ -5,7 +5,7 @@ using UnityEngine;
 public class WristFireEmitter : MonoBehaviour
 {
     public GameObject flamingWristVfx;
-    private void Update() 
+    private void FixedUpdate() 
     {
         Instantiate(flamingWristVfx, transform.position, transform.rotation);
     }
