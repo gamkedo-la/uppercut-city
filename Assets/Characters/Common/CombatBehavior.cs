@@ -183,6 +183,7 @@ public class CombatBehavior : MonoBehaviour
     }
     public void GotBlocked(float power)
     {
+        PunchFinished();
         // punch was blocked
         animator.SetFloat("IkLeftWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
@@ -191,7 +192,6 @@ public class CombatBehavior : MonoBehaviour
         stunDuration = power / 10; // how long it lasts
         stunTimer = timeProvider.time;
         StartCoroutine(Stunned());
-
         // duration is based on on punch power
     }
     public void BlockedPunch()
@@ -204,7 +204,6 @@ public class CombatBehavior : MonoBehaviour
         leftAttackProperties.gameObject.SetActive(false);
         leftWristFireEmitter.SetActive(false);
         rightWristFireEmitter.SetActive(false);
-        // Targets Can Move again
         headTarget.enabled = true;
         bodyTarget.enabled = true;
         animator.SetBool("WindUp", false);
