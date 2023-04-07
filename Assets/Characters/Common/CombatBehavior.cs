@@ -40,6 +40,8 @@ public class CombatBehavior : MonoBehaviour
     [HideInInspector] public Collider leftHandCollider;
     [HideInInspector] public AttackProperties leftAttackProperties;
     [HideInInspector] public AttackProperties rightAttackProperties;
+    [Header("VFX Components")]
+    public GameObject leftFlamingWristVfx;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -215,7 +217,7 @@ public class CombatBehavior : MonoBehaviour
         else
         {
             fighterConfig.staminaCurrent = Mathf.Clamp(
-                fighterConfig.staminaCurrent + fighterConfig.activeCharacter.staminaRegenRate*timeProvider.deltaTime,
+                fighterConfig.staminaCurrent + fighterConfig.activeCharacter.staminaRegenRate*timeProvider.fixedDeltaTime,
                 0,
                 fighterConfig.staminaMax
             );
