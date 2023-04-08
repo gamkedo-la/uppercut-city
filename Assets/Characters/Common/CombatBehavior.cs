@@ -197,6 +197,7 @@ public class CombatBehavior : MonoBehaviour
     public void BlockedPunch()
     {
         // blockage
+        animator.SetTrigger("SuccessfulBlock");
     }
     public void PunchFinished()
     {
