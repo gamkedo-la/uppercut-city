@@ -36,7 +36,7 @@ public class PunchDetector : MonoBehaviour
 
         if(attackProperties.punchDamage > 10)
         {
-            if (vfxPermanentDamage) Instantiate(vfxPermanentDamage.GetRandomVfx(),collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));
+            if (vfxPermanentDamage) Instantiate(vfxPermanentDamage.GetRandomVfx(),collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal*-1));
             if (audioSource) audioSource.Play();
         }
 
