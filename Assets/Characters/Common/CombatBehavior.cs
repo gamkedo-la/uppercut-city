@@ -21,7 +21,7 @@ public class CombatBehavior : MonoBehaviour
     private float stunTimer;
     private float hitTimer;
     private float punchThrownTimer;
-    [HideInInspector] public PunchTarget punchTarget = PunchTarget.head;
+    [HideInInspector] public PunchTarget punchTarget;
     [Header("IK Components")]
     public ChainIKConstraint rightArmHeadIk;
     public ChainIKConstraint leftArmHeadIk;
