@@ -16,8 +16,6 @@ public class FighterBehaviors : MonoBehaviour
     private Vector3 cameraForwardVector;
     private Vector3 cameraRightVector;
     [Header("Punch Setup")]
-    [SerializeField]public ChainIKConstraint rightArmIk;
-    [SerializeField]public ChainIKConstraint leftArmIk;
     public GameObject[] handColliders;
     public GameObject head;
     public GameObject body;
@@ -115,11 +113,10 @@ public class FighterBehaviors : MonoBehaviour
     {
         if(opponentFighterBehaviors && (opponentFighterBehaviors.transform.position - transform.position) != Vector3.zero){
             // rotate towards opponent
-            // TODO: limit the rate of rotation
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation, 
                 Quaternion.LookRotation(opponentFighterBehaviors.transform.position - transform.position),
-                timeProvider.fixedDeltaTime * 30f
+                timeProvider.fixedDeltaTime * 45f
             );
         }
     }
@@ -141,12 +138,6 @@ public class FighterBehaviors : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void Update()
-    {
-        rightArmIk.weight = animator.GetFloat("IkRightWeight");
-        leftArmIk.weight = animator.GetFloat("IkLeftWeight");
     }
     private void FixedUpdate()
     {

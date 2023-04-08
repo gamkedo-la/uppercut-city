@@ -25318,10 +25318,6 @@ PrefabInstance:
       propertyPath: isRight
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2021794601320174191, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2264252450452744130, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
       value: 

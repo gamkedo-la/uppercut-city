@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class PunchDetector : MonoBehaviour
 {
-    public SO_FighterConfig fighterConfig;
     public Animator fighterAnimator;
+    public SO_VfxGroup vfxPermanentDamage;
     public Transform hitPrefab;
     public AudioSource audioSource;
     private AttackProperties attackProperties;
@@ -33,6 +33,12 @@ public class PunchDetector : MonoBehaviour
         Debug.Log($"{transform.root.gameObject.name} got {gameObject.name} for {attackProperties.punchDamage}");
 
         collisionPoint = collision.GetContact(0);
+
+        if(attackProperties.punchDamage > 10)
+        {
+            if (vfxPermanentDamage) Instantiate(vfxPermanentDamage.GetRandomVfx(),collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));
+            if (audioSource) audioSource.Play();
+        }
 
         // spawn some particles
         if (hitPrefab) Instantiate(hitPrefab,collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));

@@ -20,8 +20,10 @@ public class SMB_CH_Block : StateMachineBehaviour
             // block top right
             if(combatBehavior.blockTopRight.gameObject.activeSelf == false)
             {
+                combatBehavior.EnableAllPunchDetectors();
                 combatBehavior.DisableBlockers();
                 combatBehavior.blockTopRight.gameObject.SetActive(true);
+                combatBehavior.headHitRight.gameObject.SetActive(false);
                 return;
             }
             
@@ -31,8 +33,11 @@ public class SMB_CH_Block : StateMachineBehaviour
             // block bottom right
             if(combatBehavior.blockBottomRight.gameObject.activeSelf == false)
             {
+                combatBehavior.EnableAllPunchDetectors();
                 combatBehavior.DisableBlockers();
+                // enable the blocker, disable the hitbox
                 combatBehavior.blockBottomRight.gameObject.SetActive(true);
+                combatBehavior.bodyHitRight.gameObject.SetActive(false);
                 return;
             }
         }
@@ -41,8 +46,10 @@ public class SMB_CH_Block : StateMachineBehaviour
             // block top left
             if(combatBehavior.blockTopLeft.gameObject.activeSelf == false)
             {
+                combatBehavior.EnableAllPunchDetectors();
                 combatBehavior.DisableBlockers();
                 combatBehavior.blockTopLeft.gameObject.SetActive(true);
+                combatBehavior.headHitLeft.gameObject.SetActive(false);
                 return;
             }
         }
@@ -51,8 +58,10 @@ public class SMB_CH_Block : StateMachineBehaviour
             // block bottom left
             if(combatBehavior.blockBottomLeft.gameObject.activeSelf == false)
             {
+                combatBehavior.EnableAllPunchDetectors();
                 combatBehavior.DisableBlockers();
                 combatBehavior.blockBottomLeft.gameObject.SetActive(true);
+                combatBehavior.bodyHitLeft.gameObject.SetActive(false);
                 return;
             }
             
@@ -61,8 +70,7 @@ public class SMB_CH_Block : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // disable all blockers
         combatBehavior.DisableBlockers();
-        // using r-stick-angle switch block colliders on and off
+        combatBehavior.EnableAllPunchDetectors();
     }
 }

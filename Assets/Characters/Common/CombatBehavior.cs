@@ -21,7 +21,7 @@ public class CombatBehavior : MonoBehaviour
     private float stunTimer;
     private float hitTimer;
     private float punchThrownTimer;
-    [HideInInspector] public PunchTarget punchTarget;
+    public PunchTarget punchTarget;
     [Header("IK Components")]
     public ChainIKConstraint rightArmHeadIk;
     public ChainIKConstraint leftArmHeadIk;
@@ -36,8 +36,10 @@ public class CombatBehavior : MonoBehaviour
     public BlockCollider blockBottomRight;
     public Transform bodyTransform;
     public Transform headTransform;
-    public PunchDetector hitBodyDetector;
-    public PunchDetector hitHeadDetector;
+    public PunchDetector bodyHitLeft;
+    public PunchDetector bodyHitRight;
+    public PunchDetector headHitLeft;
+    public PunchDetector headHitRight;
     [Header("Punches")]
     public GameObject rightHand;
     public GameObject leftHand;
@@ -71,8 +73,10 @@ public class CombatBehavior : MonoBehaviour
         rightAttackProperties = rightHand.GetComponent<AttackProperties>();
         leftHandCollider = leftHand.GetComponent<Collider>();
         leftAttackProperties = leftHand.GetComponent<AttackProperties>();
-        hitBodyDetector.onHitReceived += BodyHitReceived;
-        hitHeadDetector.onHitReceived += HeadHitReceived;
+        bodyHitLeft.onHitReceived += BodyHitReceived;
+        bodyHitRight.onHitReceived += BodyHitReceived;
+        headHitLeft.onHitReceived += HeadHitReceived;
+        headHitRight.onHitReceived += HeadHitReceived;
         blockTopLeft.onBlockedPunch += BlockedPunch;
         blockBottomLeft.onBlockedPunch += BlockedPunch;
         blockTopRight.onBlockedPunch += BlockedPunch;
@@ -108,6 +112,13 @@ public class CombatBehavior : MonoBehaviour
         rightAttackProperties.punchDamage = 0;
         leftAttackProperties.punchDamage = 0;
         punchThrownTimer = fighterConfig.activeCharacter.staminaCooldown;
+    }
+    public void EnableAllPunchDetectors()
+    {
+        bodyHitLeft.gameObject.SetActive(true);
+        bodyHitRight.gameObject.SetActive(true);
+        headHitLeft.gameObject.SetActive(true);
+        headHitRight.gameObject.SetActive(true);
     }
     public void EnablePunch(SMB_CH_Followthrough.PunchHand punchHand)
     {

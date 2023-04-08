@@ -26,6 +26,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         {
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
         }
+        Debug.Log($"followthrough to {combatBehavior.punchTarget}");
         combatBehavior.EnablePunch(punchHand);
         onStateEnter?.Invoke();
     }
