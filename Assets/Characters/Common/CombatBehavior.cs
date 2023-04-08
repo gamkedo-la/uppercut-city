@@ -48,6 +48,17 @@ public class CombatBehavior : MonoBehaviour
     [Header("VFX Components")]
     public GameObject leftWristFireEmitter;
     public GameObject rightWristFireEmitter;
+    
+    [Header("Facial Expressions")]
+    private bool blinking = false;
+    private float blinkDelay = 1f;
+    public float blinkTimespan = 0.5f;
+    public float blinkMinDelay = 1.0f;
+    public float blinkMaxDelay = 3.0f;
+    private float grimaceTimeLeft = 0f;
+    public float hitGrimaceTimespan = 2.0f;
+
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -272,9 +283,32 @@ public class CombatBehavior : MonoBehaviour
         HandleHealthRegen();
         fighterConfig.combo = (int)animator.GetFloat("Combo");
     }
+    
+    private void maybeBlinkEyes() {
+        blinkDelay -= timeProvider.fixedDeltaTime;
+        if (blinkDelay <= 0f) {        
+            if (blinking) {
+
+                Debug.Log("eye un-blink");
+                blinkDelay = UnityEngine.Random.Range(blinkMinDelay,blinkMaxDelay);
+                blinking = false;
+
+            } else {
+
+                Debug.Log("eye blink!");
+                blinkDelay = blinkTimespan;
+                blinking = true;
+
+            }
+        }
+    }
+    
     private void Update()
     {
         // handle punch ik
-        HandleIk();       
+        HandleIk(); 
+
+        // randomly blink eyes
+        maybeBlinkEyes();
     }
 }
