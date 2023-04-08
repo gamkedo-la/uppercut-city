@@ -49,14 +49,19 @@ public class CombatBehavior : MonoBehaviour
     public GameObject leftWristFireEmitter;
     public GameObject rightWristFireEmitter;
     
-    [Header("Facial Expressions")]
-    private bool blinking = false;
-    private float blinkDelay = 1f;
+    [Header("Facial Expression Material Swap")]
+    public SkinnedMeshRenderer changeMyMaterial;
+    public Material faceMaterial;
+    public Material blinkMaterial;
+    public Material grimaceMaterial;
+    public int faceMaterialSlot = 3; // FIXME: hardcoded!!
     public float blinkTimespan = 0.5f;
     public float blinkMinDelay = 1.0f;
     public float blinkMaxDelay = 3.0f;
+    public float grimaceTimespan = 2.0f;
+    private bool blinking = false;
+    private float blinkDelay = 1f;
     private float grimaceTimeLeft = 0f;
-    public float hitGrimaceTimespan = 2.0f;
 
 
     private void Awake()
@@ -293,11 +298,23 @@ public class CombatBehavior : MonoBehaviour
                 blinkDelay = UnityEngine.Random.Range(blinkMinDelay,blinkMaxDelay);
                 blinking = false;
 
+                if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
+                    changeMyMaterial.materials[faceMaterialSlot] = faceMaterial;
+                } else {
+                    Debug.Log("missing head material slot " + faceMaterialSlot);
+                }
+
             } else {
 
                 Debug.Log("eye blink!");
                 blinkDelay = blinkTimespan;
                 blinking = true;
+
+                if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
+                    changeMyMaterial.materials[faceMaterialSlot] = blinkMaterial;
+                } else {
+                    Debug.Log("missing head material slot " + faceMaterialSlot);
+                }
 
             }
         }

@@ -4992,6 +4992,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2520835821514975440, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
   m_PrefabInstance: {fileID: 6938387055792034450}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &558752353 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9103123300316510333, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+  m_PrefabInstance: {fileID: 6938387055792034450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &567306427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 647168865163747046, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
@@ -25270,9 +25275,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: faceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1002e909e39a07b438c47009f9bd0dbd, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: blinkMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5246137246714dc4ba833ead823767f3, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: grimaceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e7279e644ebcab4086055d1458cfc1f, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: changeMyMaterial
+      value: 
+      objectReference: {fileID: 558752353}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: faceMaterialSlotNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: inputData
       value: 
