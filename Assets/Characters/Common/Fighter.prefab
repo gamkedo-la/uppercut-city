@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8711209822307681161
 Transform:
   m_ObjectHideFlags: 0
@@ -137,8 +137,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0025068568, y: 0.003416561, z: 0.002598693}
-  m_Center: {x: 0.0008441962, y: 0.0012703497, z: 0.0007347157}
+  m_Size: {x: 0.0025068568, y: 0.003416561, z: 0.0032979425}
+  m_Center: {x: 0.00084419636, y: 0.0012703498, z: 0.001084339}
 --- !u!114 &17315835698354995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8946949848818632728
 Transform:
   m_ObjectHideFlags: 0
@@ -479,8 +479,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0023685363, y: 0.003416561, z: 0.0025479712}
-  m_Center: {x: -0.00094006327, y: 0.0012703498, z: 0.0007093542}
+  m_Size: {x: 0.0023685368, y: 0.003416561, z: 0.002968579}
+  m_Center: {x: -0.0009400629, y: 0.0012703498, z: 0.00091965357}
 --- !u!114 &8884689196902854485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,8 +648,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.001599596, y: 0.0020129383, z: 0.0014833068}
-  m_Center: {x: -0.0002860997, y: 0.00036206513, z: 0.0011480266}
+  m_Size: {x: 0.0016604749, y: 0.0020129383, z: 0.0017063982}
+  m_Center: {x: -0.00031653937, y: 0.00036206513, z: 0.0012595739}
 --- !u!54 &3245448991864918162
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -723,8 +723,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0015861043, y: 0.0020129383, z: 0.0013451608}
-  m_Center: {x: 0.00018406309, y: 0.0003620651, z: 0.0010789513}
+  m_Size: {x: 0.0020139914, y: 0.0020129383, z: 0.0018360341}
+  m_Center: {x: 0.0003980031, y: 0.00036206513, z: 0.0013243906}
 --- !u!54 &8310449152581564178
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1995,6 +1995,7 @@ MonoBehaviour:
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   fighterConfig: {fileID: 0}
   punchCooldown: 0.2
+  stunDuration: 0
   punchTarget: 0
   rightArmHeadIk: {fileID: 6010097490342919460}
   leftArmHeadIk: {fileID: 5060177401762147493}
