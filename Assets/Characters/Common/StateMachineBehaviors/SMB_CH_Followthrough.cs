@@ -14,10 +14,10 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
     {
         if(!combatBehavior){ combatBehavior = animator.GetComponent<CombatBehavior>(); }
         animator.SetBool("FollowThrough", true);
-        // if we're leaning forward
         animator.SetFloat("IkRightWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
-        // punch the body if we're leaning forward, otherwise always head
+
+        // Target the body or head?
         if( animator.GetBool("Leaning") && animator.GetFloat("LStickX") > 0.5)
         {
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.body;
@@ -27,6 +27,24 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
         }
         Debug.Log($"followthrough to {combatBehavior.punchTarget}");
+        
+        // Stamina check, player is stunned if stamina is 0
+        if(punchHand == PunchHand.right)
+        {
+            if(combatBehavior.fighterConfig.staminaCurrent - animator.GetFloat("PunchPowerRight") <= 0)
+            {
+                combatBehavior.GotBlocked(animator.GetFloat("PunchPowerRight"));
+                return;
+            }
+        }
+        if(punchHand == PunchHand.left)
+        {
+            if(combatBehavior.fighterConfig.staminaCurrent - animator.GetFloat("PunchPowerLeft") <= 0)
+            {
+                combatBehavior.GotBlocked(animator.GetFloat("PunchPowerLeft"));
+                return;
+            }
+        }
         combatBehavior.EnablePunch(punchHand);
         onStateEnter?.Invoke();
     }
