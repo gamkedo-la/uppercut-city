@@ -14943,11 +14943,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &995174327 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8138919208449115606, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-  m_PrefabInstance: {fileID: 1739293537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457066809
 GameObject:
   m_ObjectHideFlags: 0
@@ -19826,7 +19821,7 @@ PrefabInstance:
     - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: leftFlamingWristVfx
       value: 
-      objectReference: {fileID: 995174327}
+      objectReference: {fileID: 0}
     - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: inputData
       value: 

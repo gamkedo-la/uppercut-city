@@ -76,6 +76,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   punchDamage: 0
+--- !u!1 &497823559278760646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615461459357689047}
+  - component: {fileID: 2561695620122048909}
+  m_Layer: 0
+  m_Name: VfxEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1615461459357689047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497823559278760646}
+  m_LocalRotation: {x: -0.00000004470347, y: 0.15530184, z: 0.8012059, w: -0.57788444}
+  m_LocalPosition: {x: 0.006619834, y: -0.00917805, z: 0.0017790275}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8012238896041228472}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2561695620122048909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497823559278760646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8eae6437cb44745a21444c5d1cf69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxGroup: {fileID: 11400000, guid: 0e6c3854ede48d349a1528f159b93a60, type: 2}
 --- !u!1 &1225949426906806830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1316,51 @@ MonoBehaviour:
   vfxPermanentDamage: {fileID: 0}
   hitPrefab: {fileID: 6453615851998867442, guid: 84818f6e0730a8d4199ebaf5f43e85ae, type: 3}
   audioSource: {fileID: 0}
+--- !u!1 &6292179194343440768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2045197598214748787}
+  - component: {fileID: 3082885034080614817}
+  m_Layer: 0
+  m_Name: VfxEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2045197598214748787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292179194343440768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 647168865163747046}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3082885034080614817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292179194343440768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8eae6437cb44745a21444c5d1cf69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxGroup: {fileID: 11400000, guid: 0e6c3854ede48d349a1528f159b93a60, type: 2}
 --- !u!1 &6324151157299941818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,51 +1637,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &8138919208449115606
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 802829670213313376}
-  - component: {fileID: 9089908351002054802}
-  m_Layer: 0
-  m_Name: WristFireEmitter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &802829670213313376
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8138919208449115606}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.001208, z: 0.00018}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1262693361915693492}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &9089908351002054802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8138919208449115606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8eae6437cb44745a21444c5d1cf69f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flamingWristVfx: {fileID: 8783447760596935713, guid: 9cb7d39cad021fd49853c8b6a957d215, type: 3}
 --- !u!1 &8157635957768964800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,51 +1805,6 @@ CapsuleCollider:
   m_Height: 0.83154774
   m_Direction: 1
   m_Center: {x: -0.006825626, y: 0.41866887, z: -0.000000089398526}
---- !u!1 &8595579112231186379
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5392182999235851893}
-  - component: {fileID: 5991148830276852550}
-  m_Layer: 0
-  m_Name: WristFireEmitter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5392182999235851893
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8595579112231186379}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.001208, z: 0.00018}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7230285097499159477}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &5991148830276852550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8595579112231186379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8eae6437cb44745a21444c5d1cf69f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flamingWristVfx: {fileID: 8783447760596935713, guid: 9cb7d39cad021fd49853c8b6a957d215, type: 3}
 --- !u!1 &8774875886429331734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,8 +2371,8 @@ MonoBehaviour:
   leftHandCollider: {fileID: 0}
   leftAttackProperties: {fileID: 0}
   rightAttackProperties: {fileID: 0}
-  leftWristFireEmitter: {fileID: 8138919208449115606}
-  rightWristFireEmitter: {fileID: 8595579112231186379}
+  leftWristFireEmitter: {fileID: 6292179194343440768}
+  rightWristFireEmitter: {fileID: 497823559278760646}
   changeMyMaterial: {fileID: 0}
   faceMaterial: {fileID: 0}
   blinkMaterial: {fileID: 0}
