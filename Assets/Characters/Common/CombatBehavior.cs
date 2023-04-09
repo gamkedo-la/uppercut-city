@@ -129,7 +129,7 @@ public class CombatBehavior : MonoBehaviour
             rightHand.SetActive(true);
             rightAttackProperties.gameObject.SetActive(true);
             rightAttackProperties.punchDamage = animator.GetFloat("PunchPowerRight");
-            fighterConfig.staminaCurrent -= rightAttackProperties.punchDamage;
+            fighterConfig.staminaCurrent -= rightAttackProperties.punchDamage / 2;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             onRightPunchThrown?.Invoke(this, EventArgs.Empty);
             if(animator.GetFloat("PunchPowerRight") >= 10)
@@ -143,7 +143,7 @@ public class CombatBehavior : MonoBehaviour
             leftHand.SetActive(true);
             leftAttackProperties.gameObject.SetActive(true);
             leftAttackProperties.punchDamage = animator.GetFloat("PunchPowerLeft");
-            fighterConfig.staminaCurrent -= leftAttackProperties.punchDamage;
+            fighterConfig.staminaCurrent -= leftAttackProperties.punchDamage / 2;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             onLeftPunchThrown?.Invoke(this, EventArgs.Empty);
             // powerful punches make a fire trail
@@ -157,8 +157,19 @@ public class CombatBehavior : MonoBehaviour
     public void BodyHitReceived(float damage)
     {
         Debug.Log($"Body: {damage}");
-        fighterConfig.healthCurrent -= damage;
-        fighterConfig.staminaCurrent -= damage / 1.2f;
+        if(damage >= SO_FighterConfig.tempDamageLimit)
+        {
+            // rules for taking a power punch
+            fighterConfig.staminaMax -= damage / 3;
+            fighterConfig.healthCurrent -= damage / 3;
+            fighterConfig.staminaCurrent -= damage / 3;
+        }
+        else
+        {
+            fighterConfig.healthCurrent -= damage / 2;
+            fighterConfig.staminaCurrent -= damage / 2;
+        }
+        
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         hitTimer = fighterConfig.activeCharacter.healCooldown;
@@ -166,12 +177,16 @@ public class CombatBehavior : MonoBehaviour
     public void HeadHitReceived(float damage)
     {
         Debug.Log($"Head: {damage}");
-        if(damage > 10)
+        if(damage >= SO_FighterConfig.tempDamageLimit)
         {
-            // damages max health
-            fighterConfig.healthMax -= damage / 3;
+            // rules for taking a power punch
+            fighterConfig.healthMax -= damage * 0.2f;
+            fighterConfig.healthCurrent -= damage * 0.8f;
         }
-        fighterConfig.healthCurrent -= damage;
+        else
+        {
+            fighterConfig.healthCurrent -= damage;
+        }
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         hitTimer = fighterConfig.activeCharacter.healCooldown;
     }
@@ -279,7 +294,7 @@ public class CombatBehavior : MonoBehaviour
         if(punchThrownTimer > 0)
         {
             punchThrownTimer = Mathf.Clamp(
-                punchThrownTimer - timeProvider.fixedDeltaTime,
+                punchThrownTimer - timeProvider.deltaTime,
                 0,
                 fighterConfig.activeCharacter.staminaCooldown
             );
@@ -287,7 +302,7 @@ public class CombatBehavior : MonoBehaviour
         else
         {
             fighterConfig.staminaCurrent = Mathf.Clamp(
-                fighterConfig.staminaCurrent + fighterConfig.activeCharacter.staminaRegenRate*timeProvider.fixedDeltaTime,
+                fighterConfig.staminaCurrent + fighterConfig.activeCharacter.staminaRegenRate*timeProvider.deltaTime,
                 0,
                 fighterConfig.staminaMax
             );

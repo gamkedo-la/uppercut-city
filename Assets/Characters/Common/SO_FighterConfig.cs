@@ -9,9 +9,11 @@ public class SO_FighterConfig : ScriptableObject
     public Corner corner;
     public SO_Character activeCharacter;
     public SO_FighterConfig opponentConfig;
+    public static float comboHoldTime = 2;
     public static float healthStart = 200;
     public static float staminaStart = 200;
     public static float burstDamageLimit = 35;
+    public static float tempDamageLimit = 10;
     [Header("HUD Stats")]
     public float healthMax;
     public float healthCurrent;
