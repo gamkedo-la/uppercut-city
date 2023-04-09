@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f1326c3633cc4bb219b144af49d2f, type: 3}
   m_Name: SfxHeadHitLight
   m_EditorClassIdentifier: 
-  sfx: []
+  sfx:
+  - {fileID: 8300000, guid: 68f33624f797870408cac9aa4d83470b, type: 3}
+  - {fileID: 8300000, guid: 3368cf762e0a2584f8d6d7688de331b6, type: 3}
+  - {fileID: 8300000, guid: 35ce16baea42ccc4fbbc03a5ef1e99dc, type: 3}
+  - {fileID: 8300000, guid: b527eb77bba1df94bb62d6ccf51e67af, type: 3}
+  - {fileID: 8300000, guid: b923489b1b3a2914da736d7a95f00b2c, type: 3}
+  - {fileID: 8300000, guid: af79ebab6bf66b946b7ba32e23db7634, type: 3}
+  - {fileID: 8300000, guid: 656dc2a8d473fbd4a9061d200c5406f4, type: 3}

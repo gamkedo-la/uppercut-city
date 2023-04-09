@@ -9,6 +9,8 @@ using UnityEngine;
 public class PunchDetector : MonoBehaviour
 {
     public Animator fighterAnimator;
+    public SO_SfxGroup sfxHitLight;
+    public SO_SfxGroup sfxHitHard;
     public SO_VfxGroup vfxPermanentDamage;
     public Transform hitPrefab;
     public AudioSource audioSource;
@@ -34,17 +36,17 @@ public class PunchDetector : MonoBehaviour
 
         collisionPoint = collision.GetContact(0);
 
-        if(attackProperties.punchDamage > 10)
+        if(attackProperties.punchDamage >= 10)
         {
             if (vfxPermanentDamage) Instantiate(vfxPermanentDamage.GetRandomVfx(),collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal*-1));
-            if (audioSource) audioSource.Play();
+            if (audioSource && sfxHitHard) audioSource.PlayOneShot(sfxHitHard.GetRandomSfx());
         }
-
-        // spawn some particles
-        if (hitPrefab) Instantiate(hitPrefab,collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));
-
-        // and an optional (unity native: not wise) sound
-        if (audioSource) audioSource.Play();
+        else
+        {
+            // spawn some particles
+            if (hitPrefab) Instantiate(hitPrefab,collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));
+            if (audioSource && sfxHitLight) audioSource.PlayOneShot(sfxHitLight.GetRandomSfx());
+        }
     }
 
 }
