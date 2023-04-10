@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.UI;
 public class MenuManager : MonoBehaviour
 {
+    private GameObject defaultMenuFocus;
     [Header("Menu Containers")]
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject homeMenu;
@@ -23,6 +24,7 @@ public class MenuManager : MonoBehaviour
     public static EventHandler acceptCharacters;
     public static EventHandler resumeGame;
     private void Awake() {
+        defaultMenuFocus = btn_MatchSetup;
         PlayerController.newPlayerJoined += HandleNewPlayer;
         SO_FighterStatus.onZeroHealth += HandleZeroHealth;
         Smb_MatchLive.onGamePaused += HandleGamePaused;
@@ -40,12 +42,14 @@ public class MenuManager : MonoBehaviour
         CloseAllMenus();
         mainMenu.SetActive(true);
         homeMenu.SetActive(true);
+        defaultMenuFocus = btn_MatchSetup;
         FocusControllersOnButton(btn_MatchSetup);
     }
     public void Btn_MatchSetup(){
         CloseAllMenus();
         mainMenu.SetActive(true);
         characterSetupMenu.SetActive(true);
+        defaultMenuFocus = btn_CharacterAccept;
         FocusControllersOnButton(btn_CharacterAccept);
     }
     public void Btn_CharacterAccept()
@@ -66,9 +70,9 @@ public class MenuManager : MonoBehaviour
     {
         foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
         {
-            es.firstSelectedGameObject = btn_MatchSetup;
+            es.firstSelectedGameObject = defaultMenuFocus;
         }
-        FocusControllersOnButton(btn_MatchSetup);
+        FocusControllersOnButton(defaultMenuFocus);
     }
     public void FocusControllersOnButton(GameObject focus)
     {
