@@ -199,13 +199,11 @@ public class CombatBehavior : MonoBehaviour
     }
     private IEnumerator Stunned()
     {
-        Debug.Log($"Stunned at {timeProvider.time}");
         while(timeProvider.time - stunTimer <= stunDuration)
         {
             yield return new WaitForFixedUpdate();
         }
         animator.SetBool("Stunned", false);
-        Debug.Log($"ReActive at {timeProvider.time}");
         yield break;
     }
     public void GotBlocked(float power)

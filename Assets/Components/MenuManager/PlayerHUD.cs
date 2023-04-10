@@ -7,11 +7,11 @@ using TMPro;
 public class PlayerHUD : MonoBehaviour
 {
     public SO_FighterConfig fighterConfig;
-    public TextMeshProUGUI tmp_healthMax;
-    public TextMeshProUGUI tmp_healthCurrent;
-    public TextMeshProUGUI tmp_staminaMax;
-    public TextMeshProUGUI tmp_staminaCurrent;
     public TextMeshProUGUI tmp_Combo;
+    public Slider healthMaxBar;
+    public Slider healthBar;
+    public Slider staminaMaxBar;
+    public Slider staminaBar;
     private void Awake()
     {
         // subscribe to events that update UI
@@ -20,10 +20,10 @@ public class PlayerHUD : MonoBehaviour
     }
     private void MatchLiveUpdate()
     {
-        tmp_healthCurrent.text = ((int)fighterConfig.healthCurrent).ToString();
-        tmp_healthMax.text = ((int)fighterConfig.healthMax).ToString();
+        healthMaxBar.value = fighterConfig.healthMax / SO_FighterConfig.healthStart;
+        healthBar.value = fighterConfig.healthCurrent / SO_FighterConfig.healthStart;
+        staminaMaxBar.value = fighterConfig.staminaMax / SO_FighterConfig.staminaStart;
+        staminaBar.value = fighterConfig.staminaCurrent / SO_FighterConfig.staminaStart;
         tmp_Combo.text = fighterConfig.combo.ToString();
-        tmp_staminaMax.text = ((int)fighterConfig.staminaMax).ToString();
-        tmp_staminaCurrent.text = ((int)fighterConfig.staminaCurrent).ToString();
     }
 }
