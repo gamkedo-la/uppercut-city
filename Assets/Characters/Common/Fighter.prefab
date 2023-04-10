@@ -922,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4507207341995986100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0003, y: 0.00037, z: 0.00067}
+  m_LocalPosition: {x: 0.00045, y: 0.00037, z: 0.000954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -939,8 +939,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.00046831276
-  m_Height: 0.0018137788
+  m_Radius: 0.0002427929
+  m_Height: 0.001590781
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1492117102965340419
@@ -1130,7 +1130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8520513002673141914}
-  - component: {fileID: 447371420836843997}
+  - component: {fileID: 5511028897840727697}
   - component: {fileID: 7730856787313802594}
   - component: {fileID: 6753855957589651121}
   - component: {fileID: 2972712014270542860}
@@ -1149,15 +1149,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5165971764181080331}
   m_LocalRotation: {x: -0.07659924, y: -0.2157723, z: -0.016981633, w: 0.97328645}
-  m_LocalPosition: {x: -0.00082, y: 0.0012, z: 0.00024}
+  m_LocalPosition: {x: -0.000945, y: 0.001222, z: 0.000338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6619586391619168641}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -9, y: -25, z: 0}
---- !u!65 &447371420836843997
-BoxCollider:
+--- !u!136 &5511028897840727697
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1166,8 +1166,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0017003611, y: 0.0026780043, z: 0.0009746461}
+  m_Radius: 0.0005971774
+  m_Height: 0.0027613183
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7730856787313802594
 Rigidbody:
@@ -1590,7 +1591,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7424455967289687310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0004, y: 0.00037, z: 0.00062}
+  m_LocalPosition: {x: -0.000461, y: 0.00037, z: 0.000904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1607,8 +1608,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.00046831276
-  m_Height: 0.0018137788
+  m_Radius: 0.00024279294
+  m_Height: 0.0015907815
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2105553694473540874
@@ -2024,7 +2025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6528793115924452544}
-  - component: {fileID: 623123087770250608}
+  - component: {fileID: 212556194200136097}
   - component: {fileID: 1441442037624362737}
   - component: {fileID: 5679083275010626785}
   - component: {fileID: 6087965306823333264}
@@ -2050,8 +2051,8 @@ Transform:
   m_Father: {fileID: 6619586391619168641}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -9, y: 25, z: 0}
---- !u!65 &623123087770250608
-BoxCollider:
+--- !u!136 &212556194200136097
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2060,8 +2061,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0017003611, y: 0.0026780043, z: 0.0009746461}
+  m_Radius: 0.0005971774
+  m_Height: 0.0027613183
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1441442037624362737
 Rigidbody:
@@ -2483,8 +2485,6 @@ MonoBehaviour:
   blockBottomLeft: {fileID: 8884689196902854485}
   blockTopRight: {fileID: 7832153315873313638}
   blockBottomRight: {fileID: 17315835698354995}
-  bodyTransform: {fileID: 7278325535571638222}
-  headTransform: {fileID: 2520835821514975440}
   bodyHitLeft: {fileID: 6753855957589651121}
   bodyHitRight: {fileID: 5679083275010626785}
   headHitLeft: {fileID: 3771267058411009581}
