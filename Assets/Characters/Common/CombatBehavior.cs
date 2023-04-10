@@ -188,14 +188,13 @@ public class CombatBehavior : MonoBehaviour
     }
     public void SuccessfulPunch(float damage)
     {
-        Debug.Log($"Hit opponent for: {damage}");
+        if(timeProvider.time - timeLastHit < 0.2f){ return;} // multiple hits
         PunchFinished();
+
         // increment the combo count
-        if(timeProvider.time - timeLastHit > 0.2f){
-            fighterConfig.combo++;
-            timeLastHit = timeProvider.time;
-            animator.SetFloat("Combo", fighterConfig.combo);
-        }
+        fighterConfig.combo++;
+        timeLastHit = timeProvider.time;
+        animator.SetFloat("Combo", fighterConfig.combo);
 
         punchCooldown = damage / 20;
         punchCooldownTimer = timeProvider.time;
@@ -216,11 +215,14 @@ public class CombatBehavior : MonoBehaviour
     }
     public void GotBlocked(float power)
     {
+        // reset the combo count
+        fighterConfig.combo = 0;
+        timeLastHit = timeProvider.time;
+        animator.SetFloat("Combo", fighterConfig.combo);
+
         PunchFinished();
-        // punch was blocked
         animator.SetFloat("IkLeftWeight", 0);
         animator.SetFloat("IkLeftWeight", 0);
-        // Transition to stun
         animator.SetBool("Stunned", true);
         stunDuration = power / 8; // how long it lasts
         stunTimer = timeProvider.time;
