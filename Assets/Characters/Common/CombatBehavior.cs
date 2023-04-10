@@ -43,6 +43,7 @@ public class CombatBehavior : MonoBehaviour
     [HideInInspector] public Collider leftHandCollider;
     [HideInInspector] public AttackProperties leftAttackProperties;
     [HideInInspector] public AttackProperties rightAttackProperties;
+    private float timeLastHit;
     [Header("VFX Components")]
     public GameObject leftWristFireEmitter;
     public GameObject rightWristFireEmitter;
@@ -189,6 +190,13 @@ public class CombatBehavior : MonoBehaviour
     {
         Debug.Log($"Hit opponent for: {damage}");
         PunchFinished();
+        // increment the combo count
+        if(timeProvider.time - timeLastHit > 0.2f){
+            fighterConfig.combo++;
+            timeLastHit = timeProvider.time;
+            animator.SetFloat("Combo", fighterConfig.combo);
+        }
+
         punchCooldown = damage / 20;
         punchCooldownTimer = timeProvider.time;
         // slow-mo sort of
@@ -272,6 +280,17 @@ public class CombatBehavior : MonoBehaviour
             rightArmHeadIk.weight = 0;
         }
     }
+    private void HandleCombo()
+    {
+        if(fighterConfig.combo > 0)
+        {
+            if(timeProvider.time - timeLastHit > SO_FighterConfig.comboHoldTime)
+            {
+                fighterConfig.combo = 0;
+                animator.SetFloat("Combo", fighterConfig.combo);
+            }
+        }
+    }
     public void GuardUpdate()
     {
         if(punchThrownTimer > 0)
@@ -332,7 +351,9 @@ public class CombatBehavior : MonoBehaviour
     private void Update()
     {
         // handle punch ik
-        HandleIk(); 
+        HandleIk();
+
+        HandleCombo();
 
         // randomly blink eyes
         maybeBlinkEyes();
