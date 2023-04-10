@@ -3,11 +3,14 @@ using UnityEngine;
 public class Smb_MatchLive : StateMachineBehaviour
 {
     public delegate void MatchLiveUpdate();
+    public delegate void MatchLiveEnter();
+    public delegate void MatchLiveExit();
     public static event MatchLiveUpdate onMatchLiveUpdate;
     public static event MatchLiveEnter onStateEnter;
+    public static event MatchLiveExit onStateExit;
     public static EventHandler onGamePaused;
     public static EventHandler onGameResume;
-    public delegate void MatchLiveEnter();
+    
     private void PauseGame(object sender, EventArgs e)
     {
         Debug.Log("GamePaused");
@@ -32,6 +35,7 @@ public class Smb_MatchLive : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        PlayerInputHandling.onMenuPressed -= PauseGame;
+       onStateExit?.Invoke();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -22,14 +22,7 @@ public class MenuIconRenderer : MonoBehaviour
     private void OnEnable()
     {
         Debug.Log("MenuIcons renderer enabled");
-        HideAllMenuSprites();
-        inputs = FindObjectsOfType<PlayerController>();
-        for (int i=0; i < inputs.Length; i++)
-        {
-            inputMenuSprites[i].gameObject.SetActive(true);
-            inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
-            // set the icon type
-        }
+        InitializeMenuIcons();
         UIInputHandling.onSideSelection += HandleSideSelection; 
     }
     private void OnDisable()
@@ -61,16 +54,14 @@ public class MenuIconRenderer : MonoBehaviour
                 {
                     case SO_PlayerConfig.Allegiance.red:
                         redHasController = false;
-                        config.IncrementAllegiance();
+                        config.allegiance = SO_PlayerConfig.Allegiance.neutral;
                         break;
                     case SO_PlayerConfig.Allegiance.neutral:
                         if(!blueHasController)
                         {
                             blueHasController = true;
-                            config.IncrementAllegiance();
+                            config.allegiance = SO_PlayerConfig.Allegiance.blue;
                         }
-                        break;
-                    case SO_PlayerConfig.Allegiance.blue:
                         break;
                     default:
                         break;
@@ -78,18 +69,16 @@ public class MenuIconRenderer : MonoBehaviour
             } else if(sideSelectionAxis < 0) { // trying to move left
                 switch (config.allegiance)
                 {
-                    case SO_PlayerConfig.Allegiance.red:
-                        break;
                     case SO_PlayerConfig.Allegiance.neutral:
                         if(!redHasController)
                         {
                             redHasController = true;
-                            config.DecrementAllegiance();
+                            config.allegiance = SO_PlayerConfig.Allegiance.red;
                         }
                         break;
                     case SO_PlayerConfig.Allegiance.blue:
                         blueHasController = false;
-                        config.DecrementAllegiance();
+                        config.allegiance = SO_PlayerConfig.Allegiance.neutral;
                         break;
                     default:
                         break;
@@ -101,9 +90,15 @@ public class MenuIconRenderer : MonoBehaviour
     {
         Debug.Log("Initializing menu icons");
         HideAllMenuSprites();
+        redHasController = false;
+        blueHasController = false;
         inputs = FindObjectsOfType<PlayerController>();
         for (int i=0; i < inputs.Length; i++)
         {
+            // determine if either corner has a controller
+            if(inputs[i].playerConfig.allegiance == SO_PlayerConfig.Allegiance.red) {redHasController = true;}
+            if(inputs[i].playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue) {blueHasController = true;}
+                
             inputMenuSprites[i].gameObject.SetActive(true);
             inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
             // set the icon type

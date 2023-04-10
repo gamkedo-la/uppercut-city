@@ -21,9 +21,8 @@ public class GameSystem : MonoBehaviour
     }
     public void JoinNewPlayer(PlayerInput playerInput)
     {
-        InputSystemUIInputModule UiModule = playerInput.GetComponent<InputSystemUIInputModule>();
-        UiModule.actionsAsset = playerInput.actions;
-        playerInput.uiInputModule = UiModule;
+        playerInput.uiInputModule = playerInput.GetComponent<InputSystemUIInputModule>();
+        playerInput.uiInputModule.actionsAsset = playerInput.actions;
     }
     private void HandleNewPlayerJoined()
     {

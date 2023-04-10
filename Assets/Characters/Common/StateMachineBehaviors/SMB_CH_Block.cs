@@ -16,7 +16,6 @@ public class SMB_CH_Block : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rAnalogAngle = animator.GetFloat("RStickAngle");
-        Debug.Log($"rAnalogAngle: {rAnalogAngle}");
         if(animator.GetBool("FollowThrough")){return;}
         if(rAnalogAngle >= 0 && rAnalogAngle < 90)
         {
