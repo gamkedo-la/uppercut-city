@@ -8,18 +8,18 @@ public class Smb_MatchLive : StateMachineBehaviour
     public static event MatchLiveUpdate onMatchLiveUpdate;
     public static event MatchLiveEnter onStateEnter;
     public static event MatchLiveExit onStateExit;
-    public static EventHandler onGamePaused;
-    public static EventHandler onGameResume;
+    public static MatchLiveUpdate onGamePaused;
+    public static MatchLiveUpdate onGameResume;
     
     private void PauseGame(object sender, EventArgs e)
     {
         Debug.Log("GamePaused");
-        onGamePaused?.Invoke(this, EventArgs.Empty);
+        onGamePaused?.Invoke();
     }
     private void ResumeGame(object sender, EventArgs e)
     {
         Debug.Log("GameResumed");
-        onGameResume?.Invoke(this, EventArgs.Empty);
+        onGameResume?.Invoke();
     }
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -37,16 +37,4 @@ public class Smb_MatchLive : StateMachineBehaviour
        PlayerInputHandling.onMenuPressed -= PauseGame;
        onStateExit?.Invoke();
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

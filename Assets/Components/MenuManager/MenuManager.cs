@@ -22,11 +22,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public GameObject btn_CharacterAccept;
     public static EventHandler setupMatch;
     public static EventHandler acceptCharacters;
-    public static EventHandler resumeGame;
+    public static Smb_MatchLive.MatchLiveUpdate resumeGame;
     private void Awake() {
         defaultMenuFocus = btn_MatchSetup;
         PlayerController.newPlayerJoined += HandleNewPlayer;
-        SO_FighterStatus.onZeroHealth += HandleZeroHealth;
         Smb_MatchLive.onGamePaused += HandleGamePaused;
         Smb_MatchLive.onGameResume += HandleGameResume;
     }
@@ -64,7 +63,7 @@ public class MenuManager : MonoBehaviour
         CloseAllMenus();
         inGameHud.SetActive(true);
         FocusControllersOnButton(btn_Resume);
-        resumeGame?.Invoke(this, EventArgs.Empty);
+        resumeGame?.Invoke();
     }
     public void SetDefaultMenuFocus()
     {
@@ -86,13 +85,13 @@ public class MenuManager : MonoBehaviour
     {
         SetDefaultMenuFocus();
     }
-    private void HandleGamePaused(object sender, System.EventArgs e)
+    private void HandleGamePaused()
     {
         CloseAllMenus();
         FocusControllersOnButton(btn_Resume);
         pauseMenu.SetActive(true);
     }
-    private void HandleGameResume(object sender, System.EventArgs e)
+    private void HandleGameResume()
     {
         CloseAllMenus();
         inGameHud.SetActive(true);

@@ -64,11 +64,11 @@ public class PlayerController : MonoBehaviour
         // map the controller to the fighter
         playerConfig.playerInputHandling.LinkToFighter();
     }
-    public void Ev_GamePaused(object sender, System.EventArgs e)
+    public void Ev_GamePaused()
     {
         MenuControls();
     }
-    public void Ev_GameResumed(object sender, System.EventArgs e)
+    public void Ev_GameResumed()
     {
         LiveMatchControls();
     }

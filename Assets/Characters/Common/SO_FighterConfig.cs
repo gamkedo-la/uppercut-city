@@ -4,6 +4,8 @@ using UnityEngine.Animations.Rigging;
 [CreateAssetMenu(fileName = "FighterConfig", menuName = "ScriptableObjects/FighterConfig", order = 1)]
 public class SO_FighterConfig : ScriptableObject
 {
+    public delegate void FighterStatusEvent();
+    public event FighterStatusEvent onHealthZero;
     public enum Corner {red, blue};
     [Header("Set Manually")]
     public Corner corner;
@@ -27,5 +29,11 @@ public class SO_FighterConfig : ScriptableObject
         staminaMax = staminaStart;
         staminaCurrent = staminaStart;
         combo = 0;
+    }
+    public void CheckStatus()
+    {
+        // health > 0
+        if(healthCurrent <= 0){onHealthZero?.Invoke();}
+        // stamina > 0
     }
 }
