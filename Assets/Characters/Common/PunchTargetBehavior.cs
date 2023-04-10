@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PunchTargetBehavior : MonoBehaviour
 {
-    public enum AttackTarget { head, body };
+    public enum AttackTarget { headLeft, headRight, bodyLeft, bodyRight };
     [SerializeField] [Range(0, 2f)] float trackingSpeed;
     [SerializeField] TimeProvider timeProvider;
     public AttackTarget targeting;
@@ -22,8 +22,23 @@ public class PunchTargetBehavior : MonoBehaviour
             if (cb.fighterConfig.corner != fighterConfig.corner)
             {
                 opponentCombat = cb;
-                if(targeting == AttackTarget.head){targetTransform = opponentCombat.headTransform;}
-                if(targeting == AttackTarget.body){targetTransform = opponentCombat.bodyTransform;}
+                switch (targeting)
+                {
+                    case AttackTarget.headLeft:
+                        targetTransform = opponentCombat.headHitLeft.transform;
+                        break;
+                    case AttackTarget.headRight:
+                        targetTransform = opponentCombat.headHitRight.transform;
+                        break;
+                    case AttackTarget.bodyLeft:
+                        targetTransform = opponentCombat.bodyHitLeft.transform;
+                        break;
+                    case AttackTarget.bodyRight:
+                        targetTransform = opponentCombat.bodyHitRight.transform;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

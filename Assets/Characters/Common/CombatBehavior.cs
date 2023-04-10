@@ -34,8 +34,6 @@ public class CombatBehavior : MonoBehaviour
     public BlockCollider blockBottomLeft;
     public BlockCollider blockTopRight;
     public BlockCollider blockBottomRight;
-    public Transform bodyTransform;
-    public Transform headTransform;
     public PunchDetector bodyHitLeft;
     public PunchDetector bodyHitRight;
     public PunchDetector headHitLeft;
@@ -156,7 +154,6 @@ public class CombatBehavior : MonoBehaviour
     }
     public void BodyHitReceived(float damage)
     {
-        Debug.Log($"Body: {damage}");
         if(damage >= SO_FighterConfig.tempDamageLimit)
         {
             // rules for taking a power punch
@@ -176,7 +173,6 @@ public class CombatBehavior : MonoBehaviour
     }
     public void HeadHitReceived(float damage)
     {
-        Debug.Log($"Head: {damage}");
         if(damage >= SO_FighterConfig.tempDamageLimit)
         {
             // rules for taking a power punch

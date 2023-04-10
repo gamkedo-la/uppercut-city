@@ -1681,6 +1681,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c02dbdbe21e4d34298934dd207dfbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1101 &1106923768935036323
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Stunned
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 3881739327035804556}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 0.95
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1144670270283049793
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1992,6 +2017,7 @@ AnimatorState:
   - {fileID: 3058119787557764978}
   - {fileID: -3729704935628026458}
   - {fileID: -6358490025153899291}
+  - {fileID: 1106923768935036323}
   m_StateMachineBehaviours:
   - {fileID: 7999862104851890812}
   m_Position: {x: 50, y: 50, z: 0}
@@ -2341,6 +2367,31 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.99
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &4543377170666852532
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Stunned
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 3881739327035804556}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 0.95
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -3004,6 +3055,7 @@ AnimatorState:
   - {fileID: 8868142029368087381}
   - {fileID: -7808428484555108391}
   - {fileID: 8739677533302481586}
+  - {fileID: 4543377170666852532}
   m_StateMachineBehaviours:
   - {fileID: 8295429134082463975}
   m_Position: {x: 50, y: 50, z: 0}
