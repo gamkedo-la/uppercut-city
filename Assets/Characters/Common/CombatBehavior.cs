@@ -30,10 +30,8 @@ public class CombatBehavior : MonoBehaviour
     public PunchTargetBehavior headTarget;
     public PunchTargetBehavior bodyTarget;
     [Header("Hit Detection")]
-    public BlockCollider blockTopLeft;
-    public BlockCollider blockBottomLeft;
-    public BlockCollider blockTopRight;
-    public BlockCollider blockBottomRight;
+    public BlockCollider blockLeftArm;
+    public BlockCollider blockRightArm;
     public PunchDetector bodyHitLeft;
     public PunchDetector bodyHitRight;
     public PunchDetector headHitLeft;
@@ -75,10 +73,8 @@ public class CombatBehavior : MonoBehaviour
         bodyHitRight.onHitReceived += BodyHitReceived;
         headHitLeft.onHitReceived += HeadHitReceived;
         headHitRight.onHitReceived += HeadHitReceived;
-        blockTopLeft.onBlockedPunch += BlockedPunch;
-        blockBottomLeft.onBlockedPunch += BlockedPunch;
-        blockTopRight.onBlockedPunch += BlockedPunch;
-        blockBottomRight.onBlockedPunch += BlockedPunch;
+        blockLeftArm.onBlockedPunch += BlockedPunch;
+        blockRightArm.onBlockedPunch += BlockedPunch;
         leftAttackProperties.onHitOpponent += SuccessfulPunch;
         rightAttackProperties.onHitOpponent += SuccessfulPunch;
         leftAttackProperties.onGotBlocked += GotBlocked;
@@ -95,13 +91,6 @@ public class CombatBehavior : MonoBehaviour
         animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         animator.SetFloat("StaminaMax", fighterConfig.staminaMax);
         animator.SetFloat("Combo", fighterConfig.combo);
-    }
-    public void DisableBlockers()
-    {
-        blockTopLeft.gameObject.SetActive(false);
-        blockBottomLeft.gameObject.SetActive(false);
-        blockTopRight.gameObject.SetActive(false);
-        blockBottomRight.gameObject.SetActive(false);
     }
     public void DisablePunches()
     {
@@ -227,7 +216,7 @@ public class CombatBehavior : MonoBehaviour
         animator.SetFloat("IkLeftWeight", 0);
         // Transition to stun
         animator.SetBool("Stunned", true);
-        stunDuration = power / 10; // how long it lasts
+        stunDuration = power / 8; // how long it lasts
         stunTimer = timeProvider.time;
         StartCoroutine(Stunned());
         // duration is based on on punch power
