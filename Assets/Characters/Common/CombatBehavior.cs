@@ -45,6 +45,8 @@ public class CombatBehavior : MonoBehaviour
     [HideInInspector] public AttackProperties rightAttackProperties;
     private float timeLastHit;
     [Header("VFX Components")]
+    public TrailRenderer rightTrailSpeedLines;
+    public TrailRenderer leftTrailSpeedLines;
     public GameObject leftWristFireEmitter;
     public GameObject rightWristFireEmitter;
     
@@ -240,6 +242,8 @@ public class CombatBehavior : MonoBehaviour
         leftAttackProperties.gameObject.SetActive(false);
         leftWristFireEmitter.SetActive(false);
         rightWristFireEmitter.SetActive(false);
+        rightTrailSpeedLines.emitting = false;
+        leftTrailSpeedLines.emitting = false;
         headTarget.enabled = true;
         bodyTarget.enabled = true;
         animator.SetBool("WindUp", false);

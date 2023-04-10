@@ -29,6 +29,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         Debug.Log($"followthrough to {combatBehavior.punchTarget}");
         
         // Stamina check, player is stunned if stamina is 0
+        
         if(punchHand == PunchHand.right)
         {
             if(combatBehavior.fighterConfig.staminaCurrent - animator.GetFloat("PunchPowerRight") <= 0)
@@ -36,6 +37,8 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
                 combatBehavior.GotBlocked(animator.GetFloat("PunchPowerRight"));
                 return;
             }
+            combatBehavior.rightTrailSpeedLines.Clear();
+            combatBehavior.rightTrailSpeedLines.emitting = true;
         }
         if(punchHand == PunchHand.left)
         {
@@ -44,6 +47,8 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
                 combatBehavior.GotBlocked(animator.GetFloat("PunchPowerLeft"));
                 return;
             }
+            combatBehavior.leftTrailSpeedLines.Clear();
+            combatBehavior.leftTrailSpeedLines.emitting = true;
         }
         combatBehavior.EnablePunch(punchHand);
         onStateEnter?.Invoke();
