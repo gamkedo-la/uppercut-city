@@ -55,8 +55,8 @@ public class CombatBehavior : MonoBehaviour
     public Material faceMaterial;
     public Material blinkMaterial;
     public Material grimaceMaterial;
-    public int faceMaterialSlot = 3; // FIXME: hardcoded!!
-    public float blinkTimespan = 0.5f;
+    public int faceMaterialSlot = 0; // FIXME: hardcoded!! this must be the "HEAD" material
+    public float blinkTimespan = 0.15f; // very short timespan
     public float blinkMinDelay = 1.0f;
     public float blinkMaxDelay = 3.0f;
     public float grimaceTimespan = 2.0f;
@@ -328,24 +328,33 @@ public class CombatBehavior : MonoBehaviour
         if (blinkDelay <= 0f) {        
             if (blinking) {
 
-                Debug.Log("eye un-blink");
+                Debug.Log(gameObject.name + "'s eyes open");
                 blinkDelay = UnityEngine.Random.Range(blinkMinDelay,blinkMaxDelay);
                 blinking = false;
 
                 if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
+                    Debug.Log("previous face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
                     changeMyMaterial.materials[faceMaterialSlot] = faceMaterial;
+                    Debug.Log("current face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
+                    Debug.Log("it should be: "+faceMaterial.name); 
                 } else {
                     Debug.Log("missing head material slot " + faceMaterialSlot);
                 }
 
             } else {
 
-                Debug.Log("eye blink!");
+                Debug.Log(gameObject.name + "'s eyes close");
                 blinkDelay = blinkTimespan;
                 blinking = true;
 
                 if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
+                    Debug.Log("previous face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
                     changeMyMaterial.materials[faceMaterialSlot] = blinkMaterial;
+                    Debug.Log("current face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
+                    
+                    // FIXME: it appears that changing the material is ignored and has no effect? =(
+                    Debug.Log("it should be: "+blinkMaterial.name);
+
                 } else {
                     Debug.Log("missing head material slot " + faceMaterialSlot);
                 }

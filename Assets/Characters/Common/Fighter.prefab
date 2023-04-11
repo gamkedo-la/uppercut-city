@@ -603,7 +603,7 @@ MonoBehaviour:
   trackingSpeed: 0.7
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   targeting: 2
-  fighterConfig: {fileID: 0}
+  fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
 --- !u!1 &2090480121323766485
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ MonoBehaviour:
   trackingSpeed: 0.8
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   targeting: 0
-  fighterConfig: {fileID: 0}
+  fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
 --- !u!1 &2563496207470395515
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +809,7 @@ MonoBehaviour:
   trackingSpeed: 0.7
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   targeting: 3
-  fighterConfig: {fileID: 0}
+  fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
 --- !u!1 &4507207341995986100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1176,7 @@ MonoBehaviour:
   trackingSpeed: 0.8
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   targeting: 1
-  fighterConfig: {fileID: 0}
+  fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
 --- !u!1 &5165971764181080331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdf58b9600b3d24fa928956aba4f5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterConfig: {fileID: 0}
+  fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
   userProfile: {fileID: 11400000, guid: 792c84055370c30489b81d2364258faf, type: 2}
   fighterMeshRenderer: {fileID: 9103123300316510333}
 --- !u!114 &418122475807119527
@@ -1876,9 +1876,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99475ae28b95fea44b1f5203b4a2560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterConfig: {fileID: 0}
+  fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
-  inputData: {fileID: 0}
+  inputData: {fileID: 11400000, guid: 3225cf282a073ee4da1ef96fa92fdb43, type: 2}
   animator: {fileID: 7044280961304890794}
   handColliders:
   - {fileID: 1228337925760606422}
@@ -2402,7 +2402,15 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
-  - m_Transform: {fileID: 5925083360449425893}
+  - m_Transform: {fileID: 7670124288029233531}
+    m_Style:
+      shape: {fileID: 4300000, guid: c6793350c150f456688e39a81f97364a, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
+  - m_Transform: {fileID: 3816695695874471926}
     m_Style:
       shape: {fileID: 4300000, guid: e050c2b16fe384bd994474655a4b4968, type: 2}
       color: {r: 1, g: 0, b: 0, a: 0.5}
@@ -2410,7 +2418,7 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
-  - m_Transform: {fileID: 3816695695874471926}
+  - m_Transform: {fileID: 5925083360449425893}
     m_Style:
       shape: {fileID: 4300000, guid: e050c2b16fe384bd994474655a4b4968, type: 2}
       color: {r: 1, g: 0, b: 0, a: 0.5}
@@ -2475,7 +2483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
-  fighterConfig: {fileID: 0}
+  fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
   punchCooldown: 0.2
   stunDuration: 0
   punchTarget: 0
@@ -2501,11 +2509,11 @@ MonoBehaviour:
   leftTrailSpeedLines: {fileID: 3686706728589730699}
   leftWristFireEmitter: {fileID: 6292179194343440768}
   rightWristFireEmitter: {fileID: 497823559278760646}
-  changeMyMaterial: {fileID: 0}
-  faceMaterial: {fileID: 0}
-  blinkMaterial: {fileID: 0}
-  grimaceMaterial: {fileID: 0}
-  faceMaterialSlot: 3
+  changeMyMaterial: {fileID: 9103123300316510333}
+  faceMaterial: {fileID: 2100000, guid: 1002e909e39a07b438c47009f9bd0dbd, type: 2}
+  blinkMaterial: {fileID: 2100000, guid: 5246137246714dc4ba833ead823767f3, type: 2}
+  grimaceMaterial: {fileID: 2100000, guid: 4e7279e644ebcab4086055d1458cfc1f, type: 2}
+  faceMaterialSlot: 4
   blinkTimespan: 0.5
   blinkMinDelay: 1
   blinkMaxDelay: 3
