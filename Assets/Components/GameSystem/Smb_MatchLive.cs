@@ -10,6 +10,7 @@ public class Smb_MatchLive : StateMachineBehaviour
     public static event MatchLiveExit onStateExit;
     public static MatchLiveUpdate onGamePaused;
     public static MatchLiveUpdate onGameResume;
+    private GameSystem gameSystem;
     
     private void PauseGame(object sender, EventArgs e)
     {
@@ -23,6 +24,7 @@ public class Smb_MatchLive : StateMachineBehaviour
     }
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
         onStateEnter?.Invoke();
         PlayerInputHandling.onMenuPressed += PauseGame;
         UIInputHandling.onReturnPressed += ResumeGame;
@@ -30,6 +32,8 @@ public class Smb_MatchLive : StateMachineBehaviour
     
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // tick the clock in the game session
+        gameSystem.gameSession.roundTime -= gameSystem.timeProvider.fixedDeltaTime;
         onMatchLiveUpdate?.Invoke();
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

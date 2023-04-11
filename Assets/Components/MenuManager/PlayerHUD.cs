@@ -14,8 +14,6 @@ public class PlayerHUD : MonoBehaviour
     public Slider staminaBar;
     private void Awake()
     {
-        // subscribe to events that update UI
-        // fewer calls in fixed update
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
     }
     private void MatchLiveUpdate()

@@ -9,7 +9,7 @@ public class SO_GameType : ScriptableObject
     // other objects will reference this object for game data
     public int numberOfRounds = 8;
     public int currentRound = 1;
-    public float roundTime = 60f;
+    public float roundTime = 120f;
     public float restTime = 30f;
     public void ResetMatch(){
         currentRound = 1;

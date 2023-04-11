@@ -5,13 +5,12 @@ using UnityEngine.Animations.Rigging;
 public class SO_FighterConfig : ScriptableObject
 {
     public delegate void FighterStatusEvent();
-    public event FighterStatusEvent onHealthZero;
     public enum Corner {red, blue};
     [Header("Set Manually")]
     public Corner corner;
     public SO_Character activeCharacter;
     public SO_FighterConfig opponentConfig;
-    public static float comboHoldTime = 2;
+    public static float comboHoldTime = 3;
     public static float healthStart = 200;
     public static float staminaStart = 200;
     public static float burstDamageLimit = 35;
@@ -29,11 +28,5 @@ public class SO_FighterConfig : ScriptableObject
         staminaMax = staminaStart;
         staminaCurrent = staminaStart;
         combo = 0;
-    }
-    public void CheckStatus()
-    {
-        // health > 0
-        if(healthCurrent <= 0){onHealthZero?.Invoke();}
-        // stamina > 0
     }
 }

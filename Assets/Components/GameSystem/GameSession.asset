@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7812d6d33570743941471fb6576f34, type: 3}
   m_Name: GameSession
   m_EditorClassIdentifier: 
+  localInputs: []
+  totalRounds: 3
+  currentRound: 1
+  roundTime: 150

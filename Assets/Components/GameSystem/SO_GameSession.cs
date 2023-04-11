@@ -6,4 +6,7 @@ using UnityEngine;
 public class SO_GameSession : ScriptableObject
 {
     public PlayerInput[] localInputs;
+    public int totalRounds;
+    public int currentRound;
+    public float roundTime;
 }

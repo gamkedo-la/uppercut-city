@@ -46,7 +46,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ca40bf2cda298f34f81d8154d945dd6f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSession: {fileID: 11400000, guid: 9408923dfe26cc84f9ee07614ea561af, type: 2}
+  timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   masterStateMachine: {fileID: 4210294326123632100}
   gameTypes:
   - {fileID: 11400000, guid: cfc6c5b45917f8447bab3f9528ada3a0, type: 2}

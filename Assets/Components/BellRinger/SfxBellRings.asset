@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f1326c3633cc4bb219b144af49d2f, type: 3}
   m_Name: SfxBellRings
   m_EditorClassIdentifier: 
-  sfx: []
+  sfx:
+  - {fileID: 8300000, guid: fa65b7ceb90bf2f4dbc9b0e0efff67dd, type: 3}
