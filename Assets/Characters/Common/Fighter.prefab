@@ -2509,12 +2509,13 @@ MonoBehaviour:
   leftTrailSpeedLines: {fileID: 3686706728589730699}
   leftWristFireEmitter: {fileID: 6292179194343440768}
   rightWristFireEmitter: {fileID: 497823559278760646}
+  facialExpressionsEnabled: 1
   changeMyMaterial: {fileID: 9103123300316510333}
   faceMaterial: {fileID: 2100000, guid: 1002e909e39a07b438c47009f9bd0dbd, type: 2}
   blinkMaterial: {fileID: 2100000, guid: 5246137246714dc4ba833ead823767f3, type: 2}
   grimaceMaterial: {fileID: 2100000, guid: 4e7279e644ebcab4086055d1458cfc1f, type: 2}
   faceMaterialSlot: 4
-  blinkTimespan: 0.5
+  blinkTimespan: 0.25
   blinkMinDelay: 1
   blinkMaxDelay: 3
   grimaceTimespan: 2

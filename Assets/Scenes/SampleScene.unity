@@ -19947,12 +19947,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: faceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1002e909e39a07b438c47009f9bd0dbd, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: blinkMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5246137246714dc4ba833ead823767f3, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: blinkTimespan
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
       value: 
       objectReference: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
     - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: grimaceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e7279e644ebcab4086055d1458cfc1f, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: leftFlamingWristVfx
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: facialExpressionsEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 418122475807119527, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: inputData
@@ -25401,8 +25421,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: faceMaterialSlot
-      value: 4
+      propertyPath: facialExpressionsEnabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: target

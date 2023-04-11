@@ -51,6 +51,7 @@ public class CombatBehavior : MonoBehaviour
     public GameObject rightWristFireEmitter;
     
     [Header("Facial Expression Material Swap")]
+    public bool facialExpressionsEnabled = true;
     public SkinnedMeshRenderer changeMyMaterial;
     public Material faceMaterial;
     public Material blinkMaterial;
@@ -334,7 +335,16 @@ public class CombatBehavior : MonoBehaviour
 
                 if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
                     Debug.Log("previous face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
-                    changeMyMaterial.materials[faceMaterialSlot] = faceMaterial;
+                    
+                    // this should work but doesn't
+                    // changeMyMaterial.materials[faceMaterialSlot] = faceMaterial;
+
+                    // FIXME: it appears that changing the material is ignored and has no effect? =(
+                    // this is a unity bug, but here's the hack solution workaround to force unity to notice:
+                    Material[] mats = changeMyMaterial.materials;
+                    mats[faceMaterialSlot] = faceMaterial;
+                    changeMyMaterial.materials = mats;
+
                     Debug.Log("current face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
                     Debug.Log("it should be: "+faceMaterial.name); 
                 } else {
@@ -349,10 +359,17 @@ public class CombatBehavior : MonoBehaviour
 
                 if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
                     Debug.Log("previous face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
-                    changeMyMaterial.materials[faceMaterialSlot] = blinkMaterial;
-                    Debug.Log("current face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
+
+                    // this should work but doesn't
+                    // changeMyMaterial.materials[faceMaterialSlot] = blinkMaterial;
                     
                     // FIXME: it appears that changing the material is ignored and has no effect? =(
+                    // this is a unity bug, but here's the hack solution workaround to force unity to notice:
+                    Material[] mats = changeMyMaterial.materials;
+                    mats[faceMaterialSlot] = blinkMaterial;
+                    changeMyMaterial.materials = mats;
+
+                    Debug.Log("current face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
                     Debug.Log("it should be: "+blinkMaterial.name);
 
                 } else {
@@ -371,6 +388,6 @@ public class CombatBehavior : MonoBehaviour
         HandleCombo();
 
         // randomly blink eyes
-        maybeBlinkEyes();
+        if (facialExpressionsEnabled) maybeBlinkEyes();
     }
 }
