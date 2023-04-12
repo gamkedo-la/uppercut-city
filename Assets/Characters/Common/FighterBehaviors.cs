@@ -60,14 +60,10 @@ public class FighterBehaviors : MonoBehaviour
             movementVector = Vector3.zero;
             return;
         }
-        //Debug.Log($"");
-        cameraForwardVector = movementInput.y * Camera.main.transform.forward;
-        cameraRightVector = movementInput.x * Camera.main.transform.right;
-        movementVector = new Vector3(
-            (cameraForwardVector.x + cameraRightVector.x), 
-            transform.position.y, 
-            (cameraForwardVector.z + cameraRightVector.z)
-        );
+        cameraForwardVector = Camera.main.transform.forward*movementInput.y + Camera.main.transform.right*movementInput.x;
+        movementVector.x = transform.position.x + cameraForwardVector.x;
+        movementVector.y = transform.position.y;
+        movementVector.z = transform.position.z + cameraForwardVector.z;
         if(fighterConfig.corner == SO_FighterConfig.Corner.blue)
         {
             animator.SetFloat("LStickX", movementInput.x*-1);
@@ -109,7 +105,7 @@ public class FighterBehaviors : MonoBehaviour
         transform.position = Vector3.MoveTowards(
             transform.position, 
             movementVector, 
-            0.015f
+            fighterConfig.activeCharacter.movementSpeed * timeProvider.fixedDeltaTime
         );
     }
     private void HandleRotation()
