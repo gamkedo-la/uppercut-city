@@ -21,8 +21,9 @@ public class MenuManager : MonoBehaviour
     [Header("Character Setup Items")]
     [SerializeField] public GameObject btn_CharacterAccept;
     public static EventHandler setupMatch;
-    public static EventHandler acceptCharacters;
+    public static GameSystem.GameSystemEvent acceptCharacters;
     public static Smb_MatchLive.MatchLiveUpdate resumeGame;
+    public static GameSystem.GameSystemEvent beginNewGameSession;
     private void Awake() {
         defaultMenuFocus = btn_MatchSetup;
         PlayerController.newPlayerJoined += HandleNewPlayer;
@@ -53,11 +54,13 @@ public class MenuManager : MonoBehaviour
     }
     public void Btn_CharacterAccept()
     {
+        Debug.Log($"MenuManager: Btn_CharacterAccept");
         CloseAllMenus();
         inGameHud.SetActive(true);
         // change player's allegiance flag
         // Set playercontroller to modify FighterInput SO
-        acceptCharacters?.Invoke(this, EventArgs.Empty);
+        acceptCharacters?.Invoke();
+        beginNewGameSession?.Invoke();
     }
     public void Btn_Resume(){
         CloseAllMenus();

@@ -7,6 +7,8 @@ TagManager:
   - FighterA
   - FighterB
   - FightCam
+  - RedCorner
+  - BlueCorner
   layers:
   - Default
   - TransparentFX

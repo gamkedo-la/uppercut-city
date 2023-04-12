@@ -83,7 +83,7 @@ public class CombatBehavior : MonoBehaviour
         rightAttackProperties.onHitOpponent += SuccessfulPunch;
         leftAttackProperties.onGotBlocked += GotBlocked;
         rightAttackProperties.onGotBlocked += GotBlocked;
-        StateGameStart.onStateEnter += HandleGameStart;
+        Smb_Gs_BeginNewMatch.onStateEnter += HandleGameStart;
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
     }
     private void HandleGameStart()

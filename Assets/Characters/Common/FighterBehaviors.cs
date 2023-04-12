@@ -6,30 +6,37 @@ public class FighterBehaviors : MonoBehaviour
 {
     public enum BlockType { right, left }
     public SO_FighterConfig fighterConfig;
+    public Transform corner;
     public TimeProvider timeProvider;
-    public SO_FighterControlData inputData;
     public Animator animator;
-    private Transform fightCamTransform;
     private FighterSetup fighterSetup;
     private FighterBehaviors opponentFighterBehaviors;
     private Vector3 movementVector;
     private Vector3 cameraForwardVector;
     private Vector3 cameraRightVector;
-    [Header("Punch Setup")]
-    public GameObject[] handColliders;
-    public GameObject head;
-    public GameObject body;
-    public GameObject punchTarget;
-    public static EventHandler OnPunchThrown;
+    
     private void Awake()
     {
+        FindMyCorner();
         GetOpponentFighterBehaviors();
-        StateGameStart.onStateEnter += HandleGameStart;
+        Smb_Gs_BeginNewMatch.onStateEnter += HandleGameStart;
+        StateFightersToCorners.onStateEnter += Ev_MoveToCorner;
         // subscribe to events
     }
     public bool IsZeroQuaternion(Quaternion q)
     {
         return q.x == 0 && q.y == 0 && q.z == 0 && q.w == 0;
+    }
+    private void FindMyCorner()
+    {
+        if(fighterConfig.corner == SO_FighterConfig.Corner.red)
+        {
+            corner = GameObject.FindWithTag("RedCorner").transform;
+        }
+        if(fighterConfig.corner == SO_FighterConfig.Corner.blue)
+        {
+            corner = GameObject.FindWithTag("BlueCorner").transform;
+        }
     }
     private void GetOpponentFighterBehaviors()
     {
@@ -39,20 +46,6 @@ public class FighterBehaviors : MonoBehaviour
             {
                 opponentFighterBehaviors = fb;
             }
-        }
-    }
-    public void DisablePunches()
-    {
-        foreach (GameObject glove in handColliders)
-        {
-            glove.SetActive(false);
-        }
-    }
-    public void EnablePunches()
-    {
-        foreach (GameObject glove in handColliders)
-        {
-            glove.SetActive(true);
         }
     }
     public void SetLeanModifier(bool leaning){
@@ -99,6 +92,16 @@ public class FighterBehaviors : MonoBehaviour
         animator.SetFloat("RStickAngle", Mathf.Atan2(punchInput.x, punchInput.y) * Mathf.Rad2Deg);
         animator.SetFloat("RStickX", punchInput.x);
         animator.SetFloat("RStickY", punchInput.y);
+    }
+    public void Ev_MoveToCorner()
+    {
+        if(!corner){FindMyCorner();}
+        transform.position = new Vector3(
+            corner.position.x,
+            transform.position.y,
+            corner.position.z
+        );
+        
     }
     private void HandleMovement()
     {

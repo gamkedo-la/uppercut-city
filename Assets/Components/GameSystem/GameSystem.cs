@@ -5,46 +5,34 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 public class GameSystem : MonoBehaviour
 {
+    public delegate void GameSystemEvent();
     public SO_GameSession gameSession;
     public TimeProvider timeProvider;
-    public Animator masterStateMachine;
-    public SO_GameType[] gameTypes;
-    private int gameTypeIndex = 0;
-    public SO_FighterControlData fighterAInput;
-    public SO_FighterControlData fighterBInput;
+    private Animator masterStateMachine;
+    public SO_GameType gameType; // set a default, can be modified by menu
     
     private void Awake()
     {
         // make new game session SO_GameSession for temp objects
         masterStateMachine = GetComponent<Animator>();
-        gameSession.localInputs = FindObjectsOfType<PlayerInput>();
         MenuManager.acceptCharacters += HandleAcceptCharacters;
-        PlayerController.newPlayerJoined += HandleNewPlayerJoined;
     }
     public void JoinNewPlayer(PlayerInput playerInput)
     {
         playerInput.uiInputModule = playerInput.GetComponent<InputSystemUIInputModule>();
         playerInput.uiInputModule.actionsAsset = playerInput.actions;
     }
-    private void HandleNewPlayerJoined()
-    {
-        gameSession.localInputs = FindObjectsOfType<PlayerInput>();
-    }
     public void ResetGameSession()
     {
         gameSession.currentRound = 1;
-        gameSession.roundTime = gameTypes[gameTypeIndex].roundTime;
-        gameSession.totalRounds = gameTypes[gameTypeIndex].numberOfRounds;
+        gameSession.roundTime = gameType.roundTime;
+        gameSession.totalRounds = gameType.numberOfRounds;
     }
-    private void HandleAcceptCharacters(object sender, System.EventArgs e)
+    private void HandleAcceptCharacters()
     {
-        // later there will be another stage after
+        Debug.Log($"GameSystem: HandleAcceptCharacters");
         ResetGameSession();
-        masterStateMachine.SetBool("MatchStarted", true);
-    }
-    private void HandleStartMatch(object sender, System.EventArgs e)
-    {
-        ResetGameSession();
-        masterStateMachine.SetBool("MatchStarted", true);
+        masterStateMachine.SetBool("GameInSession", true);
+        masterStateMachine.SetBool("MatchLive", true);
     }
 }

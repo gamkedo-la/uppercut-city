@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-public class StateGameStart : StateMachineBehaviour
+public class Smb_Gs_BeginNewMatch : StateMachineBehaviour
 {
-    public delegate void StartNewGame();
-    public static event StartNewGame onStateEnter;
+    public delegate void GameStartEvent();
+    public static event GameStartEvent onStateEnter;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         onStateEnter?.Invoke();

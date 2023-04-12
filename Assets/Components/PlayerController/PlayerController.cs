@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         // set the fighterInput
         LiveMatchControls();
     }
-    public void Ev_AcceptCharacter(object sender, System.EventArgs e)
+    public void Ev_AcceptCharacter()
     {
         // map the controller to the fighter
         playerConfig.playerInputHandling.LinkToFighter();
