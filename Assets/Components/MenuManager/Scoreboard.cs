@@ -16,7 +16,8 @@ public class Scoreboard : MonoBehaviour
     private void Awake()
     {
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
-        Smb_MatchLive.onStateEnter += ScorekeepingActivate;    
+        Smb_MatchLive.onStateEnter += UpdateRounds;
+        StateFightersToCorners.onStateEnter += UpdateRounds;    
     }
     private void MatchLiveUpdate()
     {
@@ -26,7 +27,7 @@ public class Scoreboard : MonoBehaviour
             $"{(int)gameSession.roundTime % 60}";
         tmpRoundTime.text = $"{minutes}:{seconds}";
     }
-    private void ScorekeepingActivate()
+    private void UpdateRounds()
     {
         tmpRoundNumber.text = gameSession.currentRound.ToString();
         tmpTotalRounds.text = gameSession.totalRounds.ToString();

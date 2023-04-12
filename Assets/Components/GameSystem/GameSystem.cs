@@ -24,8 +24,9 @@ public class GameSystem : MonoBehaviour
     }
     public void ResetGameSession()
     {
-        gameSession.currentRound = 1;
+        gameSession.currentRound = 0;
         gameSession.roundTime = gameType.roundTime;
+        gameSession.restTime = gameType.restTime;
         gameSession.totalRounds = gameType.numberOfRounds;
     }
     private void HandleAcceptCharacters()
@@ -33,6 +34,6 @@ public class GameSystem : MonoBehaviour
         Debug.Log($"GameSystem: HandleAcceptCharacters");
         ResetGameSession();
         masterStateMachine.SetBool("GameInSession", true);
-        masterStateMachine.SetBool("MatchLive", true);
+        masterStateMachine.SetBool("FightersToCorner", true);
     }
 }

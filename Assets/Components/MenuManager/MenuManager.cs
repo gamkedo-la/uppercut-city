@@ -6,20 +6,21 @@ public class MenuManager : MonoBehaviour
 {
     private GameObject defaultMenuFocus;
     [Header("Menu Containers")]
-    [SerializeField] public GameObject mainMenu;
-    [SerializeField] public GameObject homeMenu;
-    [SerializeField] public GameObject characterSetupMenu;
-    [SerializeField] public GameObject inGameHud;
-    [SerializeField] public GameObject pauseMenu;
-    [SerializeField] public GameObject displayMessage;
+    public GameObject mainMenu;
+    public GameObject homeMenu;
+    public GameObject characterSetupMenu;
+    public GameObject inGameHud;
+    public GameObject pauseMenu;
+    public GameObject displayMessage;
     [Header("Home Menu Items")]
-    [SerializeField] public GameObject btn_MatchSetup;
+    public GameObject btn_MatchSetup;
     [Header("Display Message Items")]
-    [SerializeField] public TextMeshProUGUI displayMessageText;
+    public GameObject roundBeginPanel;
+    public TextMeshProUGUI displayMessageText;
     [Header("Pause Menu Items")]
-    [SerializeField] public GameObject btn_Resume;
+    public GameObject btn_Resume;
     [Header("Character Setup Items")]
-    [SerializeField] public GameObject btn_CharacterAccept;
+    public GameObject btn_CharacterAccept;
     public static EventHandler setupMatch;
     public static GameSystem.GameSystemEvent acceptCharacters;
     public static Smb_MatchLive.MatchLiveUpdate resumeGame;
@@ -27,6 +28,7 @@ public class MenuManager : MonoBehaviour
     private void Awake() {
         defaultMenuFocus = btn_MatchSetup;
         PlayerController.newPlayerJoined += HandleNewPlayer;
+        StateFightersToCorners.onStateEnter += HandleBetweenRoundEnter;
         Smb_MatchLive.onGamePaused += HandleGamePaused;
         Smb_MatchLive.onGameResume += HandleGameResume;
     }
@@ -87,6 +89,15 @@ public class MenuManager : MonoBehaviour
     private void HandleNewPlayer()
     {
         SetDefaultMenuFocus();
+    }
+    private void HandleBetweenRoundEnter()
+    {
+        CloseAllMenus();
+        inGameHud.SetActive(true);
+        // turn messages panel on
+        displayMessage.SetActive(true);
+        roundBeginPanel.SetActive(true);
+        // show message: Round #, countdown time
     }
     private void HandleGamePaused()
     {
