@@ -12,7 +12,6 @@ public class StateFightersToCorners : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
-        gameSystem.gameSession.currentRound++;
         entryTime = gameSystem.timeProvider.time;
         // Initial: Teleport fighters to corners
         onStateEnter?.Invoke();

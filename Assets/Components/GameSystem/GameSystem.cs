@@ -24,14 +24,17 @@ public class GameSystem : MonoBehaviour
     }
     public void ResetGameSession()
     {
-        gameSession.currentRound = 0;
+        gameSession.currentRound = 1;
+        gameSession.totalRounds = gameType.numberOfRounds;
+        ResetRoundTime();
+    }
+    public void ResetRoundTime()
+    {
         gameSession.roundTime = gameType.roundTime;
         gameSession.restTime = gameType.restTime;
-        gameSession.totalRounds = gameType.numberOfRounds;
     }
     private void HandleAcceptCharacters()
     {
-        Debug.Log($"GameSystem: HandleAcceptCharacters");
         ResetGameSession();
         masterStateMachine.SetBool("GameInSession", true);
         masterStateMachine.SetBool("FightersToCorner", true);

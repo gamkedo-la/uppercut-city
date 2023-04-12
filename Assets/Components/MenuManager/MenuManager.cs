@@ -31,6 +31,7 @@ public class MenuManager : MonoBehaviour
         StateFightersToCorners.onStateEnter += HandleBetweenRoundEnter;
         Smb_MatchLive.onGamePaused += HandleGamePaused;
         Smb_MatchLive.onGameResume += HandleGameResume;
+        Smb_MatchLive.onStateEnter += HandleGameResume;
     }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);

@@ -5,8 +5,11 @@ public class Smb_Gs_BeginNewMatch : StateMachineBehaviour
 {
     public delegate void GameStartEvent();
     public static event GameStartEvent onStateEnter;
+    private GameSystem gameSystem;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
+        gameSystem.ResetGameSession();
         onStateEnter?.Invoke();
     }
 
