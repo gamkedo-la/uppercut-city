@@ -42,6 +42,7 @@ public class MenuManager : MonoBehaviour
         homeMenu.SetActive(false);
         inGameHud.SetActive(false);
         pauseMenu.SetActive(false);
+        matchEnd.SetActive(false);
         displayMessage.SetActive(false);
         characterSetupMenu.SetActive(false);
     }
@@ -49,7 +50,6 @@ public class MenuManager : MonoBehaviour
         CloseAllMenus();
         mainMenu.SetActive(true);
         homeMenu.SetActive(true);
-        defaultMenuFocus = btn_MatchSetup;
         FocusControllersOnButton(btn_MatchSetup);
     }
     public void Btn_MatchSetup()
@@ -57,16 +57,12 @@ public class MenuManager : MonoBehaviour
         CloseAllMenus();
         mainMenu.SetActive(true);
         characterSetupMenu.SetActive(true);
-        defaultMenuFocus = btn_CharacterAccept;
         FocusControllersOnButton(btn_CharacterAccept);
     }
     public void Btn_CharacterAccept()
     {
-        Debug.Log($"MenuManager: Btn_CharacterAccept");
         CloseAllMenus();
         inGameHud.SetActive(true);
-        // change player's allegiance flag
-        // Set playercontroller to modify FighterInput SO
         acceptCharacters?.Invoke();
         beginNewGameSession?.Invoke();
     }
@@ -86,6 +82,7 @@ public class MenuManager : MonoBehaviour
     }
     public void FocusControllersOnButton(GameObject focus)
     {
+        defaultMenuFocus = focus;
         foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
         {
             es.firstSelectedGameObject = focus;
@@ -110,7 +107,6 @@ public class MenuManager : MonoBehaviour
         CloseAllMenus();
         mainMenu.SetActive(true);
         matchEnd.SetActive(true);
-        defaultMenuFocus = btn_Rematch;
         FocusControllersOnButton(btn_Rematch);
     }
     private void HandleGamePaused()

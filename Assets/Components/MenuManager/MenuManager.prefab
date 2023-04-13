@@ -2236,11 +2236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54924b9eca26a4544a98609adae749d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueFighterConfig: {fileID: 0}
-  redFighterConfig: {fileID: 0}
+  blueFighterConfig: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
+  redFighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
   redWin: {fileID: 5442460614644212802}
   blueWin: {fileID: 3836590485011779724}
-  tie: {fileID: 0}
+  tie: {fileID: 1054270413074076640}
 --- !u!1 &1448101387546744404
 GameObject:
   m_ObjectHideFlags: 0
