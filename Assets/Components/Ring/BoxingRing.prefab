@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1215605590659990518}
-  - component: {fileID: 4285085837033793538}
   m_Layer: 0
   m_Name: RedStareDown
-  m_TagString: RedCorner
+  m_TagString: RedStareDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,18 +31,6 @@ Transform:
   m_Father: {fileID: 5091490741498277534}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4285085837033793538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266914006266725844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba51fca5dd7076449bbf7b9465b14f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1517677292514018845
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,10 +164,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4023226785989261150}
-  - component: {fileID: 6447991409164270606}
   m_Layer: 0
   m_Name: BlueStareDown
-  m_TagString: BlueCorner
+  m_TagString: BlueStareDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,18 +186,6 @@ Transform:
   m_Father: {fileID: 5091490741498277534}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6447991409164270606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6279552235579023487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e92ff3e68cd276544941b5d87032819d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5091490743126764680
 PrefabInstance:
   m_ObjectHideFlags: 0

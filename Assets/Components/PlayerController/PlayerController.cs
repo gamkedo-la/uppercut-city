@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         Smb_MatchLive.onStateEnter += LiveMatchControls;
         Smb_MatchLive.onGamePaused += MenuControls;
         Smb_MatchLive.onGameResume += LiveMatchControls;
+        Smb_MatchLive.onStateExit += NeutralControls;
         StateFightersToCorners.onStateEnter += NeutralControls;
         MenuManager.resumeGame += LiveMatchControls;
     }

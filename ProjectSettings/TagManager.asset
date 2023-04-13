@@ -9,6 +9,8 @@ TagManager:
   - FightCam
   - RedCorner
   - BlueCorner
+  - RedStareDown
+  - BlueStareDown
   layers:
   - Default
   - TransparentFX

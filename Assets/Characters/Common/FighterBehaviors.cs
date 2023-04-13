@@ -8,6 +8,7 @@ public class FighterBehaviors : MonoBehaviour
     public enum BlockType { right, left }
     public SO_FighterConfig fighterConfig;
     public Transform corner;
+    public Transform stareDownTransform;
     public TimeProvider timeProvider;
     public Animator animator;
     private FighterSetup fighterSetup;
@@ -15,11 +16,11 @@ public class FighterBehaviors : MonoBehaviour
     private Vector3 movementVector;
     private Vector3 cameraForwardVector;
     private Vector3 cameraRightVector;
-    
     private void Awake()
     {
         FindMyCorner();
         GetOpponentFighterBehaviors();
+        Smb_Gs_MoveToCenter.onStateEnter += MoveToShowdown;
         Smb_Gs_BeginNewMatch.onStateEnter += HandleGameStart;
         StateFightersToCorners.onStateEnter += MoveToCorner;
         Smb_MatchLive.onStateEnter += EnterCombat;
@@ -33,10 +34,12 @@ public class FighterBehaviors : MonoBehaviour
         if(fighterConfig.corner == SO_FighterConfig.Corner.red)
         {
             corner = GameObject.FindWithTag("RedCorner").transform;
+            stareDownTransform = GameObject.FindWithTag("RedStareDown").transform;
         }
         if(fighterConfig.corner == SO_FighterConfig.Corner.blue)
         {
             corner = GameObject.FindWithTag("BlueCorner").transform;
+            stareDownTransform = GameObject.FindWithTag("BlueStareDown").transform;
         }
     }
     private void GetOpponentFighterBehaviors()
@@ -86,9 +89,7 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleGameStart()
     {
-        animator.SetBool("InCombat", true);
         GetOpponentFighterBehaviors();
-        // subscribe for round end event
     }
     public void HandlePunch(Vector2 punchInput)
     {
@@ -107,6 +108,17 @@ public class FighterBehaviors : MonoBehaviour
             transform.position.y,
             corner.position.z
         );
+    }
+    public void MoveToShowdown()
+    {
+        if(!stareDownTransform){FindMyCorner();}
+        OutOfCombat();
+        transform.position = new Vector3(
+            stareDownTransform.position.x,
+            transform.position.y,
+            stareDownTransform.position.z
+        );
+
     }
     public void HandleMovement()
     {

@@ -14,7 +14,7 @@ public class HUDMessage : MonoBehaviour
     }
     private void HandleBetweenRoundUpdate(float countDownTime)
     {
-        roundNumberText.text = $"{gameSession.currentRound}";
+        roundNumberText.text = $"{gameSession.currentRound+1}";
         countDownText.text = $"{(int)Mathf.Clamp(countDownTime, 0, 99)}";
     }
 }
