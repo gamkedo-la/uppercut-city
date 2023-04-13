@@ -25421,8 +25421,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: faceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: c6a346a7d8193db4388dcf091d4fa524, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: blinkMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 06ab4d5c51a662b4dad6fb5966a915b1, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: grimaceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: c9db1b45c954e6348a1a5c3ee9543767, type: 2}
+    - target: {fileID: 307422300676601118, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: facialExpressionsEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: target
