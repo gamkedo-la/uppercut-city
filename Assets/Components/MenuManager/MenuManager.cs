@@ -10,10 +10,13 @@ public class MenuManager : MonoBehaviour
     public GameObject homeMenu;
     public GameObject characterSetupMenu;
     public GameObject inGameHud;
+    public GameObject matchEnd;
     public GameObject pauseMenu;
     public GameObject displayMessage;
     [Header("Home Menu Items")]
     public GameObject btn_MatchSetup;
+    [Header("Matc End Items")]
+    public GameObject btn_Rematch;
     [Header("Display Message Items")]
     public GameObject roundBeginPanel;
     public TextMeshProUGUI displayMessageText;
@@ -32,6 +35,7 @@ public class MenuManager : MonoBehaviour
         Smb_MatchLive.onGamePaused += HandleGamePaused;
         Smb_MatchLive.onGameResume += HandleGameResume;
         Smb_MatchLive.onStateEnter += HandleGameResume;
+        Smb_Gs_EndOfMatch.onStateMachineEnter += EndOfMatchMenu;
     }
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
@@ -48,7 +52,8 @@ public class MenuManager : MonoBehaviour
         defaultMenuFocus = btn_MatchSetup;
         FocusControllersOnButton(btn_MatchSetup);
     }
-    public void Btn_MatchSetup(){
+    public void Btn_MatchSetup()
+    {
         CloseAllMenus();
         mainMenu.SetActive(true);
         characterSetupMenu.SetActive(true);
@@ -99,6 +104,14 @@ public class MenuManager : MonoBehaviour
         displayMessage.SetActive(true);
         roundBeginPanel.SetActive(true);
         // show message: Round #, countdown time
+    }
+    private void EndOfMatchMenu()
+    {
+        CloseAllMenus();
+        mainMenu.SetActive(true);
+        matchEnd.SetActive(true);
+        defaultMenuFocus = btn_Rematch;
+        FocusControllersOnButton(btn_Rematch);
     }
     private void HandleGamePaused()
     {
