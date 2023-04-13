@@ -14,6 +14,7 @@ public class CombatBehavior : MonoBehaviour
     [Header("Systems / Behavior")]
     public TimeProvider timeProvider;
     public SO_FighterConfig fighterConfig;
+    public FighterBehaviors fighterBehaviors;
     private Animator animator;
     [HideInInspector] public float punchCooldown;
     private float punchCooldownTimer;

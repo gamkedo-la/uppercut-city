@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour
                 playerConfig.controllerIcon = inputIcons.genericGamepad;
                 break;
         }
-        Smb_MatchLive.onStateEnter += Ev_FightStart;
-        Smb_MatchLive.onGamePaused += Ev_GamePaused;
-        Smb_MatchLive.onGameResume += Ev_GameResumed;
-        MenuManager.resumeGame += Ev_GameResumed;
-        MenuManager.acceptCharacters += Ev_AcceptCharacter;
+        Smb_MatchLive.onStateEnter += LiveMatchControls;
+        Smb_MatchLive.onGamePaused += MenuControls;
+        Smb_MatchLive.onGameResume += LiveMatchControls;
+        StateFightersToCorners.onStateEnter += NeutralControls;
+        MenuManager.resumeGame += LiveMatchControls;
     }
     private void LiveMatchControls()
     {
@@ -53,24 +53,9 @@ public class PlayerController : MonoBehaviour
             playerConfig.playerInput.SwitchCurrentActionMap("UI");
         }
     }
-    public void Ev_FightStart()
+    private void NeutralControls()
     {
-        // get allegiance
-        // set the fighterInput
-        LiveMatchControls();
-    }
-    public void Ev_AcceptCharacter()
-    {
-        // map the controller to the fighter
-        playerConfig.playerInputHandling.LinkToFighter();
-    }
-    public void Ev_GamePaused()
-    {
-        MenuControls();
-    }
-    public void Ev_GameResumed()
-    {
-        LiveMatchControls();
+        playerConfig.playerInput.SwitchCurrentActionMap("Neutral");
     }
     private void Start()
     {

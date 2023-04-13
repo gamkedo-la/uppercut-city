@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.Animations.Rigging;
 public class FighterBehaviors : MonoBehaviour
 {
+    public delegate void FighterStateEvent();
     public enum BlockType { right, left }
     public SO_FighterConfig fighterConfig;
     public Transform corner;
@@ -21,7 +22,8 @@ public class FighterBehaviors : MonoBehaviour
         GetOpponentFighterBehaviors();
         Smb_Gs_BeginNewMatch.onStateEnter += HandleGameStart;
         StateFightersToCorners.onStateEnter += Ev_MoveToCorner;
-        // subscribe to events
+        StateFightersToCorners.onStateEnter += OutOfCombat;
+        Smb_MatchLive.onStateEnter += EnterCombat;
     }
     public bool IsZeroQuaternion(Quaternion q)
     {
@@ -48,6 +50,14 @@ public class FighterBehaviors : MonoBehaviour
             }
         }
     }
+    private void EnterCombat()
+    {
+        animator.SetBool("InCombat", true);
+    }
+    private void OutOfCombat()
+    {
+        animator.SetBool("InCombat", false);
+    }
     public void SetLeanModifier(bool leaning){
         animator.SetBool("Leaning", leaning);
     }
@@ -56,7 +66,7 @@ public class FighterBehaviors : MonoBehaviour
     }
     public void SetMovementVector(Vector2 movementInput)
     {
-        if(movementInput.magnitude <= 0.1f){
+        if(movementInput.magnitude <= 0.2f){
             movementVector = Vector3.zero;
             return;
         }
@@ -77,7 +87,7 @@ public class FighterBehaviors : MonoBehaviour
     }
     private void HandleGameStart()
     {
-        animator.SetBool("FightStarted", true);
+        animator.SetBool("InCombat", true);
         GetOpponentFighterBehaviors();
         // subscribe for round end event
     }
@@ -97,10 +107,10 @@ public class FighterBehaviors : MonoBehaviour
             transform.position.y,
             corner.position.z
         );
-        
     }
-    private void HandleMovement()
+    public void HandleMovement()
     {
+        // BUGFIX: player is able to move during menus and other times they shouldn't
         if( movementVector.magnitude <= 0.05f || animator.GetBool("Leaning") || animator.GetBool("FollowThrough") ){ return; }
         transform.position = Vector3.MoveTowards(
             transform.position, 
@@ -119,10 +129,9 @@ public class FighterBehaviors : MonoBehaviour
             );
         }
     }
-    public void Blocking(float button) {
+    public void Blocking(float button) 
     {
         animator.SetBool("Blocking", button > 0);
-    }
     }
     public void HandleBlock(BlockType blocktype, bool v)
     {

@@ -7,12 +7,24 @@ public class CameraController : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera vCamLiveFight;
     private void Awake()
     {
-        StateLiveFightCam.onStateEnter += HandleFightLive;    
+        StateGameSetup.onStateEnter += SwitchToStareDown;
+        Smb_MatchLive.onStateEnter += HandleFightLive;
+        StateFightersToCorners.onStateEnter += SwitchToOverheadCam;
     }
-    private void HandleFightLive(object sender, System.EventArgs e)
+    private void SwitchToStareDown()
+    {
+        DisableAllCams();
+        vCamStareDown.gameObject.SetActive(true);
+    }
+    private void HandleFightLive()
     {
         DisableAllCams();
         vCamLiveFight.gameObject.SetActive(true);
+    }
+    private void SwitchToOverheadCam()
+    {
+        DisableAllCams();
+        vCamOverhead.gameObject.SetActive(true);
     }
     private void DisableAllCams()
     {

@@ -1877,15 +1877,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+  corner: {fileID: 0}
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
-  inputData: {fileID: 11400000, guid: 3225cf282a073ee4da1ef96fa92fdb43, type: 2}
   animator: {fileID: 7044280961304890794}
-  handColliders:
-  - {fileID: 1228337925760606422}
-  - {fileID: 427728148438740525}
-  head: {fileID: 7424455967289687310}
-  body: {fileID: 5165971764181080331}
-  punchTarget: {fileID: 4638305039927782470}
 --- !u!54 &6739481826187275381
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1897,8 +1891,8 @@ Rigidbody:
   m_Mass: 65
   m_Drag: 0.2
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 2
@@ -2484,6 +2478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
+  fighterBehaviors: {fileID: 418122475807119527}
   punchCooldown: 0.2
   stunDuration: 0
   punchTarget: 0

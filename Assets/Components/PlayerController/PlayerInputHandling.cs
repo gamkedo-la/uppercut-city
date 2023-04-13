@@ -20,8 +20,10 @@ public class PlayerInputHandling : MonoBehaviour
     {
         controller = GetComponent<PlayerController>();
         mainCamera = Camera.main;
-        Smb_MatchLive.onStateEnter += Ev_FightStart;
-        PlayerController.newPlayerJoined += Ev_FightStart;
+        Smb_MatchLive.onStateEnter += LinkToFighter;
+        PlayerController.newPlayerJoined += LinkToFighter;
+        MenuManager.resumeGame += LinkToFighter;
+        MenuManager.acceptCharacters += LinkToFighter;
     }
     private void GetFighterBehaviors(SO_FighterConfig.Corner corner)
     {
@@ -62,10 +64,6 @@ public class PlayerInputHandling : MonoBehaviour
             }
         }
     }
-    public void Ev_FightStart()
-    {
-        LinkToFighter();
-    }
     public void HandleLeanModifier(InputAction.CallbackContext context)
     {
         fighterBehaviors?.SetLeanModifier(context.ReadValue<float>() > 0);
@@ -103,9 +101,6 @@ public class PlayerInputHandling : MonoBehaviour
         fighterBehaviors?.HandleBlock(FighterBehaviors.BlockType.left, context.ReadValue<float>() > 0);
     }
     private void Start() {
-        // Assign this player controller to a fighter
-        // This is what the 'ChooseSides' menu scripting will do later on
-        // ITMT: just grab player A
         LinkToFighter();
     }
 }
