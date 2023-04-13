@@ -16,8 +16,10 @@ public class Scoreboard : MonoBehaviour
     private void Awake()
     {
         Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
+        Smb_MatchLive.onStateExit += BetweenRoundState;
+        Smb_Gs_BeginNewMatch.onStateEnter += UpdateRounds;
         Smb_MatchLive.onStateEnter += UpdateRounds;
-        StateFightersToCorners.onStateEnter += UpdateRounds;    
+        StateFightersToCorners.onStateEnter += UpdateRounds; 
     }
     private void MatchLiveUpdate()
     {
@@ -26,6 +28,10 @@ public class Scoreboard : MonoBehaviour
             $"0{(int)gameSession.roundTime % 60}" :
             $"{(int)gameSession.roundTime % 60}";
         tmpRoundTime.text = $"{minutes}:{seconds}";
+    }
+    private void BetweenRoundState()
+    {
+        tmpRoundTime.text = "end";
     }
     private void UpdateRounds()
     {

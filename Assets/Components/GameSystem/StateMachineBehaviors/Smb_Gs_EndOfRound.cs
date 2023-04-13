@@ -18,7 +18,6 @@ public class Smb_Gs_EndOfRound : StateMachineBehaviour
         }
         else
         {
-            gameSystem.gameSession.currentRound++;
             gameSystem.gameSession.roundTime = gameSystem.gameType.roundTime;
             animator.SetBool("FightersToCorner", true);
         }

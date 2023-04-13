@@ -26,6 +26,7 @@ public class Smb_MatchLive : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
+        gameSystem.gameSession.currentRound++;
         onStateEnter?.Invoke();
         PlayerInputHandling.onMenuPressed += PauseGame;
         UIInputHandling.onReturnPressed += ResumeGame;

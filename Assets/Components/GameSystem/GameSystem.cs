@@ -24,7 +24,7 @@ public class GameSystem : MonoBehaviour
     }
     public void ResetGameSession()
     {
-        gameSession.currentRound = 1;
+        gameSession.currentRound = 0;
         gameSession.totalRounds = gameType.numberOfRounds;
         ResetRoundTime();
     }

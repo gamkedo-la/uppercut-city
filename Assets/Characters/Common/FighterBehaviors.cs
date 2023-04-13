@@ -21,8 +21,7 @@ public class FighterBehaviors : MonoBehaviour
         FindMyCorner();
         GetOpponentFighterBehaviors();
         Smb_Gs_BeginNewMatch.onStateEnter += HandleGameStart;
-        StateFightersToCorners.onStateEnter += Ev_MoveToCorner;
-        StateFightersToCorners.onStateEnter += OutOfCombat;
+        StateFightersToCorners.onStateEnter += MoveToCorner;
         Smb_MatchLive.onStateEnter += EnterCombat;
     }
     public bool IsZeroQuaternion(Quaternion q)
@@ -99,9 +98,10 @@ public class FighterBehaviors : MonoBehaviour
         animator.SetFloat("RStickX", punchInput.x);
         animator.SetFloat("RStickY", punchInput.y);
     }
-    public void Ev_MoveToCorner()
+    public void MoveToCorner()
     {
         if(!corner){FindMyCorner();}
+        OutOfCombat();
         transform.position = new Vector3(
             corner.position.x,
             transform.position.y,
