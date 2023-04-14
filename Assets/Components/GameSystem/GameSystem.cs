@@ -16,6 +16,7 @@ public class GameSystem : MonoBehaviour
         // make new game session SO_GameSession for temp objects
         masterStateMachine = GetComponent<Animator>();
         MenuManager.acceptCharacters += HandleAcceptCharacters;
+        MenuManager.rematch += ResetGameSession;
     }
     public void JoinNewPlayer(PlayerInput playerInput)
     {
