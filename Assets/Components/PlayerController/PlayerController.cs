@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
                 playerConfig.controllerIcon = inputIcons.genericGamepad;
                 break;
         }
+        StateGameSetup.onStateEnter += MenuControls;
         Smb_MatchLive.onStateEnter += LiveMatchControls;
         Smb_MatchLive.onGamePaused += MenuControls;
         Smb_MatchLive.onGameResume += LiveMatchControls;
