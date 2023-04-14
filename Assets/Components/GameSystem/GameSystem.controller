@@ -96,9 +96,9 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours:
   - {fileID: -7004848412328686978}
-  m_AnyStatePosition: {x: -80, y: 0, z: 0}
+  m_AnyStatePosition: {x: -50, y: 0, z: 0}
   m_EntryPosition: {x: 120, y: -10, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ExitPosition: {x: 460, y: 170, z: 0}
   m_ParentStateMachinePosition: {x: 360, y: -20, z: 0}
   m_DefaultState: {fileID: -4050524617083350323}
 --- !u!114 &-7004848412328686978
@@ -338,30 +338,36 @@ AnimatorController:
   m_Name: GameSystem
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: MatchLive
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: GameInSession
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: FightersToCorner
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: EndOfMatch
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: FightersToCorner
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: GameInSession
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: MatchLive
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Rematch
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: MasterControl
@@ -396,10 +402,10 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours:
   - {fileID: -8733374921638099214}
-  m_AnyStatePosition: {x: 260, y: -50, z: 0}
+  m_AnyStatePosition: {x: 210, y: -70, z: 0}
   m_EntryPosition: {x: 10, y: -70, z: 0}
-  m_ExitPosition: {x: 530, y: 50, z: 0}
-  m_ParentStateMachinePosition: {x: 450, y: -40, z: 0}
+  m_ExitPosition: {x: 140, y: 130, z: 0}
+  m_ParentStateMachinePosition: {x: 100, y: -140, z: 0}
   m_DefaultState: {fileID: 5459196851020257734}
 --- !u!1102 &1653323819681513258
 AnimatorState:
@@ -519,6 +525,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &3417157382914897360
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Rematch
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -4050524617083350323}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &5459196851020257734
 AnimatorState:
   serializedVersion: 6
@@ -625,16 +656,17 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_StateMachine: {fileID: -7031190678768848053}
     m_Position: {x: -580, y: -340, z: 0}
-  m_AnyStateTransitions: []
+  m_AnyStateTransitions:
+  - {fileID: 3417157382914897360}
   m_EntryTransitions: []
   m_StateMachineTransitions:
   - first: {fileID: -7031190678768848053}
     second:
     - {fileID: -9207327602529619396}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -80, y: -250, z: 0}
+  m_AnyStatePosition: {x: -810, y: -120, z: 0}
   m_EntryPosition: {x: -860, y: -350, z: 0}
-  m_ExitPosition: {x: -780, y: -160, z: 0}
+  m_ExitPosition: {x: -810, y: -70, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -2822095461203540117}
 --- !u!114 &7430128036159472206

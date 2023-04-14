@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,29 +16,32 @@ public class GameSystem : MonoBehaviour
     {
         // make new game session SO_GameSession for temp objects
         masterStateMachine = GetComponent<Animator>();
-        MenuManager.acceptCharacters += HandleAcceptCharacters;
-        MenuManager.rematch += ResetGameSession;
+        MenuManager.acceptCharacters += NewGameSession;
+        MenuManager.rematch += Rematch;
+        Smb_Gs_BeginNewMatch.onStateEnter += ResetRounds;
+        Smb_Gs_BeginNewMatch.onStateEnter += ResetRoundTime;
     }
     public void JoinNewPlayer(PlayerInput playerInput)
     {
         playerInput.uiInputModule = playerInput.GetComponent<InputSystemUIInputModule>();
         playerInput.uiInputModule.actionsAsset = playerInput.actions;
     }
-    public void ResetGameSession()
+    public void Rematch()
+    {
+        masterStateMachine.SetTrigger("Rematch");
+    }
+    public void NewGameSession()
+    {
+        masterStateMachine.SetBool("GameInSession", true);
+    }
+    public void ResetRounds()
     {
         gameSession.currentRound = 0;
         gameSession.totalRounds = gameType.numberOfRounds;
-        ResetRoundTime();
     }
     public void ResetRoundTime()
     {
         gameSession.roundTime = gameType.roundTime;
         gameSession.restTime = gameType.restTime;
-    }
-    private void HandleAcceptCharacters()
-    {
-        ResetGameSession();
-        masterStateMachine.SetBool("GameInSession", true);
-        masterStateMachine.SetBool("FightersToCorner", true);
     }
 }

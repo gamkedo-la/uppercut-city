@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class Smb_Gs_GameInSession : StateMachineBehaviour
 {
-    private GameSystem gameSystem;
+    private GameSystem.GameSystemEvent onStateMachineEnter;
     override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
     {
-        if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
-        gameSystem.ResetGameSession();
+        onStateMachineEnter?.Invoke();
     }
-
-    // OnStateMachineExit is called when exiting a state machine via its Exit Node
-    //override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
-    //{
-    //    
-    //}
+    // override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    // {
+    // }
 }

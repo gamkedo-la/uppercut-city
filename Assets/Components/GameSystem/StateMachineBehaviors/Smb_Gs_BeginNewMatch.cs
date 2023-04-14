@@ -8,8 +8,10 @@ public class Smb_Gs_BeginNewMatch : StateMachineBehaviour
     private GameSystem gameSystem;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
-        gameSystem.ResetGameSession();
+        animator.ResetTrigger("Rematch");
+        animator.SetBool("EndOfMatch", false);
+        animator.SetBool("MatchLive", false);
+        animator.SetBool("FightersToCorner", true);
         onStateEnter?.Invoke();
     }
 

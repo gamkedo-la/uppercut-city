@@ -14,9 +14,10 @@ public class PlayerHUD : MonoBehaviour
     public Slider staminaBar;
     private void Awake()
     {
-        Smb_MatchLive.onMatchLiveUpdate += MatchLiveUpdate;
+        StateFightersToCorners.onStateEnter += UpdateHUD;
+        Smb_MatchLive.onMatchLiveUpdate += UpdateHUD;
     }
-    private void MatchLiveUpdate()
+    private void UpdateHUD()
     {
         healthMaxBar.value = fighterConfig.healthMax / SO_FighterConfig.healthStart;
         healthBar.value = fighterConfig.healthCurrent / SO_FighterConfig.healthStart;
