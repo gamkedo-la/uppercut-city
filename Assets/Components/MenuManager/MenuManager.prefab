@@ -9715,7 +9715,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1623952347116264111}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Btn_Home
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

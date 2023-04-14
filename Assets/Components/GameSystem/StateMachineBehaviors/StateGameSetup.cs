@@ -6,7 +6,8 @@ public class StateGameSetup : StateMachineBehaviour
     public static GameSystem.GameSystemEvent onStateEnter;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       onStateEnter?.Invoke();
+        animator.ResetTrigger("EndGameSession");
+        onStateEnter?.Invoke();
     }
     
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

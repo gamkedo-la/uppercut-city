@@ -18,6 +18,7 @@ public class GameSystem : MonoBehaviour
         masterStateMachine = GetComponent<Animator>();
         MenuManager.acceptCharacters += NewGameSession;
         MenuManager.rematch += Rematch;
+        MenuManager.gameSessionEnd += EndGameSession;
         Smb_Gs_BeginNewMatch.onStateEnter += ResetRounds;
         Smb_Gs_BeginNewMatch.onStateEnter += ResetRoundTime;
     }
@@ -33,6 +34,11 @@ public class GameSystem : MonoBehaviour
     public void NewGameSession()
     {
         masterStateMachine.SetBool("GameInSession", true);
+    }
+    public void EndGameSession()
+    {
+        masterStateMachine.SetBool("GameInSession", false);
+        masterStateMachine.SetTrigger("EndGameSession");
     }
     public void ResetRounds()
     {

@@ -28,6 +28,7 @@ public class MenuManager : MonoBehaviour
     public static GameSystem.GameSystemEvent acceptCharacters;
     public static Smb_MatchLive.MatchLiveUpdate resumeGame;
     public static GameSystem.GameSystemEvent rematch;
+    public static GameSystem.GameSystemEvent gameSessionEnd;
     private void Awake() {
         defaultMenuFocus = btn_MatchSetup;
         PlayerController.newPlayerJoined += HandleNewPlayer;
@@ -47,6 +48,7 @@ public class MenuManager : MonoBehaviour
         characterSetupMenu.SetActive(false);
     }
     public void Btn_Home(){
+        gameSessionEnd?.Invoke();
         CloseAllMenus();
         mainMenu.SetActive(true);
         homeMenu.SetActive(true);
