@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732fcc127951c324f84139813db117dc, type: 3}
   m_Name: TestLoop
   m_EditorClassIdentifier: 
-  numberOfRounds: 3
+  numberOfRounds: 2
   currentRound: 0
-  roundTime: 30
-  restTime: 10
+  roundTime: 5
+  restTime: 2

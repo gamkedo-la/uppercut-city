@@ -28,6 +28,7 @@ public class MenuManager : MonoBehaviour
     public static GameSystem.GameSystemEvent acceptCharacters;
     public static Smb_MatchLive.MatchLiveUpdate resumeGame;
     public static GameSystem.GameSystemEvent beginNewGameSession;
+    public static GameSystem.GameSystemEvent rematch;
     private void Awake() {
         defaultMenuFocus = btn_MatchSetup;
         PlayerController.newPlayerJoined += HandleNewPlayer;
@@ -66,11 +67,17 @@ public class MenuManager : MonoBehaviour
         acceptCharacters?.Invoke();
         beginNewGameSession?.Invoke();
     }
-    public void Btn_Resume(){
+    public void Btn_Resume()
+    {
         CloseAllMenus();
         inGameHud.SetActive(true);
         FocusControllersOnButton(btn_Resume);
         resumeGame?.Invoke();
+    }
+    public void Btn_Rematch(){
+        CloseAllMenus();
+        inGameHud.SetActive(true);
+        rematch?.Invoke(); // triggering rematch event
     }
     public void SetDefaultMenuFocus()
     {
@@ -105,7 +112,6 @@ public class MenuManager : MonoBehaviour
     private void EndOfMatchMenu()
     {
         CloseAllMenus();
-        mainMenu.SetActive(true);
         matchEnd.SetActive(true);
         FocusControllersOnButton(btn_Rematch);
     }
