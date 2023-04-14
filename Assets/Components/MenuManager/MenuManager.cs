@@ -31,7 +31,8 @@ public class MenuManager : MonoBehaviour
     public static GameSystem.GameSystemEvent gameSessionEnd;
     private void Awake() {
         defaultMenuFocus = btn_MatchSetup;
-        PlayerController.newPlayerJoined += HandleNewPlayer;
+        PlayerController.newPlayerJoined += SetDefaultMenuFocus;
+        StateGameSetup.onStateEnter += GoToMainMenu;
         StateFightersToCorners.onStateEnter += HandleBetweenRoundEnter;
         Smb_MatchLive.onGamePaused += HandleGamePaused;
         Smb_MatchLive.onGameResume += HandleGameResume;
@@ -49,10 +50,7 @@ public class MenuManager : MonoBehaviour
     }
     public void Btn_Home(){
         gameSessionEnd?.Invoke();
-        CloseAllMenus();
-        mainMenu.SetActive(true);
-        homeMenu.SetActive(true);
-        FocusControllersOnButton(btn_MatchSetup);
+        GoToMainMenu();
     }
     public void Btn_MatchSetup()
     {
@@ -97,9 +95,12 @@ public class MenuManager : MonoBehaviour
             es.SetSelectedGameObject(focus);
         }
     }
-    private void HandleNewPlayer()
+    private void GoToMainMenu()
     {
-        SetDefaultMenuFocus();
+        CloseAllMenus();
+        mainMenu.SetActive(true);
+        homeMenu.SetActive(true);
+        FocusControllersOnButton(btn_MatchSetup);
     }
     private void HandleBetweenRoundEnter()
     {

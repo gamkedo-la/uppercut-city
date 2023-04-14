@@ -319,6 +319,10 @@ public class CombatBehavior : MonoBehaviour
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         }
     }
+    private void StareDownSetup()
+    {
+        // move to stare down position
+    }
     private void MatchLiveUpdate()
     {
         HandleHealthRegen();

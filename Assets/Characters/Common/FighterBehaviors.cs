@@ -20,6 +20,7 @@ public class FighterBehaviors : MonoBehaviour
     {
         FindMyCorner();
         GetOpponentFighterBehaviors();
+        StateGameSetup.onStateEnter += MoveToShowdown;
         Smb_Gs_MoveToCenter.onStateEnter += MoveToShowdown;
         Smb_Gs_BeginNewMatch.onStateEnter += HandleGameStart;
         StateFightersToCorners.onStateEnter += MoveToCorner;
