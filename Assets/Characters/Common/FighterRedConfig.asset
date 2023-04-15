@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corner: 0
   activeCharacter: {fileID: 11400000, guid: 49c39c1346fca7940a8fb22c443fa6ab, type: 2}
-  opponentConfig: {fileID: 0}
-  health: 200
-  burstDamage: 20
-  stamina: 200
+  opponentConfig: {fileID: 11400000, guid: 3175726448a56dd428812d3c5b40a3d2, type: 2}
+  healthMax: 200
+  healthCurrent: 200
+  staminaMax: 200
+  staminaCurrent: 77.51614
+  combo: 0

@@ -90,6 +90,8 @@ public class CombatBehavior : MonoBehaviour
     private void HandleGameStart()
     {
         DisablePunches();
+        animator.enabled = true;
+        animator.speed = 1;
         fighterConfig.SetNewMatch();
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         animator.SetFloat("HealthMax", fighterConfig.healthMax);
@@ -254,14 +256,10 @@ public class CombatBehavior : MonoBehaviour
     }
     private void KnockedOut()
     {
-        animator.speed = 0.5f;
-        animator.SetBool("Stunned", true);
         animator.enabled = false;
-        // max health drops
-        // max stamina drops
         fighterConfig.healthMax -= fighterConfig.healthMax * 0.15f;
         fighterConfig.staminaMax -= fighterConfig.staminaMax * 0.15f;
-        // knockdown sequence, minigame
+        // knockdown sequence, re center model later
     }
     private void HandleHealthRegen()
     {

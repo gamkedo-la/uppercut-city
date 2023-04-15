@@ -9,4 +9,5 @@ public class SO_GameSession : ScriptableObject
     public int currentRound;
     public float roundTime;
     public float restTime;
+    public int knockedDownCount;
 }
