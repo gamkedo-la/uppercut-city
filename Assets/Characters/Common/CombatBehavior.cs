@@ -69,6 +69,7 @@ public class CombatBehavior : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        fighterConfig.onKnockedOut += KnockedOut;
         rightHandCollider = rightHand.GetComponent<Collider>();
         rightAttackProperties = rightHand.GetComponent<AttackProperties>();
         leftHandCollider = leftHand.GetComponent<Collider>();
@@ -162,6 +163,7 @@ public class CombatBehavior : MonoBehaviour
         
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
         animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
+        fighterConfig.CheckStatus();
         hitTimer = fighterConfig.activeCharacter.healCooldown;
     }
     public void HeadHitReceived(float damage)
@@ -177,6 +179,7 @@ public class CombatBehavior : MonoBehaviour
             fighterConfig.healthCurrent -= damage;
         }
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
+        fighterConfig.CheckStatus();
         hitTimer = fighterConfig.activeCharacter.healCooldown;
     }
     private IEnumerator PunchImpact()
@@ -249,6 +252,17 @@ public class CombatBehavior : MonoBehaviour
         bodyTarget.enabled = true;
         animator.SetBool("WindUp", false);
     }
+    private void KnockedOut()
+    {
+        animator.speed = 0.5f;
+        animator.SetBool("Stunned", true);
+        // max health drops
+        // max stamina drops
+        fighterConfig.healthMax -= fighterConfig.healthMax * 0.15f;
+        fighterConfig.staminaMax -= fighterConfig.staminaMax * 0.15f;
+
+        // Should go to stunned state
+    }
     private void HandleHealthRegen()
     {
         // When we take a hit, health regen is temporarily disabled
@@ -317,10 +331,6 @@ public class CombatBehavior : MonoBehaviour
             );
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
         }
-    }
-    private void StareDownSetup()
-    {
-        // move to stare down position
     }
     private void MatchLiveUpdate()
     {

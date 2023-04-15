@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfRounds: 3
   currentRound: 0
-  roundTime: 10
-  restTime: 4
+  roundTime: 60
+  restTime: 15

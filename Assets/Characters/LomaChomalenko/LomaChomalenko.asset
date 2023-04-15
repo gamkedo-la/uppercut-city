@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1.2
   rotationSpeed: 2
-  jabPower: 5
-  crossPower: 8
+  jabPower: 40
+  crossPower: 50
   hookPower: 12
   uppercutPower: 14
   temporaryDamageLimit: 35

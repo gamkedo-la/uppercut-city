@@ -21,6 +21,8 @@ public class SO_FighterConfig : ScriptableObject
     public float staminaMax;
     public float staminaCurrent;
     public int combo;
+    public static event FighterStatusEvent onFighterDown;
+    public event FighterStatusEvent onKnockedOut;
     public void SetNewMatch()
     {
         healthMax = healthStart;
@@ -28,5 +30,14 @@ public class SO_FighterConfig : ScriptableObject
         staminaMax = staminaStart;
         staminaCurrent = staminaStart;
         combo = 0;
+    }
+    public void CheckStatus()
+    {
+        if(healthCurrent <= 0)
+        {
+            onKnockedOut?.Invoke();
+            onFighterDown?.Invoke();
+            Debug.Log($"{corner} Knocked Out");
+        }
     }
 }

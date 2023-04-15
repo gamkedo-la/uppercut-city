@@ -100,8 +100,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497823559278760646}
-  m_LocalRotation: {x: -0.00000004470347, y: 0.15530184, z: 0.8012059, w: -0.57788444}
-  m_LocalPosition: {x: 0.006619834, y: -0.00917805, z: 0.0017790275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1878,6 +1878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighterConfig: {fileID: 11400000, guid: 671078760293bab43a3b4a301653f576, type: 2}
   corner: {fileID: 0}
+  stareDownTransform: {fileID: 0}
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
   animator: {fileID: 7044280961304890794}
 --- !u!54 &6739481826187275381
