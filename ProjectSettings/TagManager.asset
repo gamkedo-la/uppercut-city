@@ -21,8 +21,8 @@ TagManager:
   - AttackCollider
   - HitCollider
   - BlockCollider
-  - 
-  - 
+  - FighterRoot
+  - FighterModel
   - 
   - 
   - 

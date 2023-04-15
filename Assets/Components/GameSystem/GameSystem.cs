@@ -35,7 +35,7 @@ public class GameSystem : MonoBehaviour
     }
     public void FighterDown()
     {
-        masterStateMachine.SetBool("EndOfMatch", true);
+        masterStateMachine.SetTrigger("Knockdown");
     }
     public void EndGameSession()
     {

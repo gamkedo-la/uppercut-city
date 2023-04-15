@@ -22,8 +22,11 @@ public class AttackProperties : MonoBehaviour
                 onGotBlocked?.Invoke(punchDamage);
                 punchDamage = 0;
                 break;
+            case 10:
+                // ignore model layer collisions
+                break;
             default:
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
                 break;
         }
     }

@@ -256,6 +256,7 @@ public class CombatBehavior : MonoBehaviour
     {
         animator.speed = 0.5f;
         animator.SetBool("Stunned", true);
+        animator.enabled = false;
         // max health drops
         // max stamina drops
         fighterConfig.healthMax -= fighterConfig.healthMax * 0.15f;
