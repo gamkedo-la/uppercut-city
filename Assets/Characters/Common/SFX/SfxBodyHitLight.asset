@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SfxBodyHitLight
   m_EditorClassIdentifier: 
   sfx:
-  - {fileID: 8300000, guid: eefb43437a7bdff4195ca588e2444448, type: 3}
-  - {fileID: 8300000, guid: 0b24b8caff2a0fe448032db6158eb349, type: 3}
+  - {fileID: 8300000, guid: 9c7a62d69c2f13043ad46e821e527338, type: 3}
+  - {fileID: 8300000, guid: 2ebadc3d1367e1e4496ac5fe16ac7b35, type: 3}
+  - {fileID: 8300000, guid: 2e31fc576255b9842a97a73442441581, type: 3}

@@ -48,9 +48,10 @@ public class MenuManager : MonoBehaviour
         displayMessage.SetActive(false);
         characterSetupMenu.SetActive(false);
     }
-    public void Btn_Home(){
-        gameSessionEnd?.Invoke();
+    public void Btn_Home()
+    {
         GoToMainMenu();
+        gameSessionEnd?.Invoke();
     }
     public void Btn_MatchSetup()
     {
