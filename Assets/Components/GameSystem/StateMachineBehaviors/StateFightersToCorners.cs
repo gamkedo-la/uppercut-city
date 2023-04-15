@@ -13,10 +13,13 @@ public class StateFightersToCorners : StateMachineBehaviour
     {
         if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
         entryTime = gameSystem.timeProvider.time;
-        // Initial: Teleport fighters to corners
         onStateEnter?.Invoke();
+        InputNeutralHandling.onRequestSkip += SkipCountdown;
         // Longterm: AI takes over, navigates to corner, sits down
-        // player should be able to interupt it
+    }
+    private void SkipCountdown()
+    {
+        entryTime = gameSystem.timeProvider.time - gameSystem.gameSession.restTime;
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -31,8 +34,8 @@ public class StateFightersToCorners : StateMachineBehaviour
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        InputNeutralHandling.onRequestSkip -= SkipCountdown;
+    }
 }

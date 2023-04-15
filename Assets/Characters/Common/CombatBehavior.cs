@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
 using System;

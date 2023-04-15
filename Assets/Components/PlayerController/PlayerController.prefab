@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2640036913603328191}
   - component: {fileID: 7209968130822841501}
   - component: {fileID: 593455195591212313}
+  - component: {fileID: -258861396355296481}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -284,6 +285,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1891c976-ea92-43e7-89f0-65d7f2a0aee9
     m_ActionName: Player/Move1[/DualShock3GamepadHID/leftStick,/DualShock4GamepadHID/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -258861396355296481}
+        m_TargetAssemblyTypeName: InputNeutralHandling, Assembly-CSharp
+        m_MethodName: InputSkip
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 03c44bea-62b4-45da-9baf-b6f10a29a110
+    m_ActionName: Neutral/Skip[/Keyboard/space,/DualShock3GamepadHID/buttonSouth,/DualShock4GamepadHID/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -357,5 +374,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd83944da33986d44890fd9bb01edf95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-258861396355296481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934675569278389151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8727c3e373a73e49b6650a8dda3b88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

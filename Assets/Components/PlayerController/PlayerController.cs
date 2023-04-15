@@ -1,9 +1,8 @@
-using System;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
+    public delegate void PlaterControllerEvent();
     [SerializeField] public SO_ControllerIconGroup inputIcons;
     public static event NewPlayerJoin newPlayerJoined;
     public SO_PlayerConfig playerConfig;
