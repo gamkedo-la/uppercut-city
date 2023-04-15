@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -21,6 +18,7 @@ public class GameSystem : MonoBehaviour
         MenuManager.gameSessionEnd += EndGameSession;
         Smb_Gs_BeginNewMatch.onStateEnter += ResetRounds;
         Smb_Gs_BeginNewMatch.onStateEnter += ResetRoundTime;
+        SO_FighterConfig.onFighterDown += FighterDown;
     }
     public void JoinNewPlayer(PlayerInput playerInput)
     {
@@ -34,6 +32,10 @@ public class GameSystem : MonoBehaviour
     public void NewGameSession()
     {
         masterStateMachine.SetBool("GameInSession", true);
+    }
+    public void FighterDown()
+    {
+        masterStateMachine.SetBool("EndOfMatch", true);
     }
     public void EndGameSession()
     {

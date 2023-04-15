@@ -260,8 +260,7 @@ public class CombatBehavior : MonoBehaviour
         // max stamina drops
         fighterConfig.healthMax -= fighterConfig.healthMax * 0.15f;
         fighterConfig.staminaMax -= fighterConfig.staminaMax * 0.15f;
-
-        // Should go to stunned state
+        // knockdown sequence, minigame
     }
     private void HandleHealthRegen()
     {

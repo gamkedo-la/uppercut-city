@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 [CreateAssetMenu(fileName = "FighterConfig", menuName = "ScriptableObjects/FighterConfig", order = 1)]
 public class SO_FighterConfig : ScriptableObject
 {
