@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5156387174263016875
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,7 +1005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4459031119593793813
 Transform:
   m_ObjectHideFlags: 0
@@ -2964,8 +2964,8 @@ MonoBehaviour:
   rightAttackProperties: {fileID: 0}
   rightTrailSpeedLines: {fileID: 1726047424238049978}
   leftTrailSpeedLines: {fileID: 3686706728589730699}
-  leftWristFireEmitter: {fileID: 6292179194343440768}
-  rightWristFireEmitter: {fileID: 497823559278760646}
+  leftFireEmitter: {fileID: 6292179194343440768}
+  rightFireEmitter: {fileID: 497823559278760646}
   facialExpressionsEnabled: 1
   changeMyMaterial: {fileID: 9103123300316510333}
   faceMaterial: {fileID: 2100000, guid: 1002e909e39a07b438c47009f9bd0dbd, type: 2}

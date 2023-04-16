@@ -47,8 +47,8 @@ public class CombatBehavior : MonoBehaviour
     [Header("VFX Components")]
     public TrailRenderer rightTrailSpeedLines;
     public TrailRenderer leftTrailSpeedLines;
-    public GameObject leftWristFireEmitter;
-    public GameObject rightWristFireEmitter;
+    public GameObject leftFireEmitter;
+    public GameObject rightFireEmitter;
     
     [Header("Facial Expression Material Swap")]
     public bool facialExpressionsEnabled = true;
@@ -128,7 +128,7 @@ public class CombatBehavior : MonoBehaviour
             onRightPunchThrown?.Invoke(this, EventArgs.Empty);
             if(animator.GetFloat("PunchPowerRight") >= 10)
             {
-                rightWristFireEmitter.SetActive(true);
+                rightFireEmitter.SetActive(true);
             }
             return;
         }
@@ -143,7 +143,7 @@ public class CombatBehavior : MonoBehaviour
             // powerful punches make a fire trail
             if(animator.GetFloat("PunchPowerLeft") >= 10)
             {
-                leftWristFireEmitter.SetActive(true);
+                leftFireEmitter.SetActive(true);
             }
             return;
         }
@@ -246,8 +246,8 @@ public class CombatBehavior : MonoBehaviour
     {
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);
-        leftWristFireEmitter.SetActive(false);
-        rightWristFireEmitter.SetActive(false);
+        leftFireEmitter.SetActive(false);
+        rightFireEmitter.SetActive(false);
         rightTrailSpeedLines.emitting = false;
         leftTrailSpeedLines.emitting = false;
         headTarget.enabled = true;
