@@ -81,10 +81,6 @@ public class MenuManager : MonoBehaviour
     }
     public void SetDefaultMenuFocus()
     {
-        foreach (MultiplayerEventSystem es in FindObjectsOfType<MultiplayerEventSystem>())
-        {
-            es.firstSelectedGameObject = defaultMenuFocus;
-        }
         FocusControllersOnButton(defaultMenuFocus);
     }
     public void FocusControllersOnButton(GameObject focus)

@@ -6,9 +6,10 @@ public class Smb_Gs_EndOfRound : StateMachineBehaviour
 {
     private GameSystem gameSystem;
     // is it the last round?
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    public static GameSystem.GameSystemEvent onStateEnter;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        onStateEnter?.Invoke();
         if(!gameSystem){gameSystem = animator.GetComponent<GameSystem>();}
         gameSystem.ResetRoundTime();
         if(gameSystem.gameSession.currentRound >= gameSystem.gameSession.totalRounds)

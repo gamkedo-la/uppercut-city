@@ -39,8 +39,13 @@ public class GameSystem : MonoBehaviour
     }
     public void EndGameSession()
     {
-        masterStateMachine.SetBool("GameInSession", false);
         masterStateMachine.SetTrigger("EndGameSession");
+        masterStateMachine.SetBool("FightersToCorner", false);
+        masterStateMachine.SetBool("GameInSession", false);
+        masterStateMachine.SetBool("MatchLive", false);
+        masterStateMachine.SetBool("EndOfMatch", false);
+        masterStateMachine.ResetTrigger("Rematch");
+        masterStateMachine.ResetTrigger("Knockdown");
     }
     public void ResetRounds()
     {
