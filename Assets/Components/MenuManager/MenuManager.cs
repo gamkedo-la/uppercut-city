@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     [Header("Menu Containers")]
     public GameObject mainMenu;
     public GameObject homeMenu;
+    public GameObject creditsMenu;
     public GameObject characterSetupMenu;
     public GameObject inGameHud;
     public GameObject knockdownUI;
@@ -16,7 +17,9 @@ public class MenuManager : MonoBehaviour
     public GameObject displayMessage;
     [Header("Home Menu Items")]
     public GameObject btn_MatchSetup;
-    [Header("Matc End Items")]
+    [Header("Credits Menu Items")]
+    public GameObject btn_BackToHome;
+    [Header("Match End Items")]
     public GameObject btn_Rematch;
     [Header("Display Message Items")]
     public GameObject roundBeginPanel;
@@ -44,6 +47,7 @@ public class MenuManager : MonoBehaviour
     public void CloseAllMenus(){
         mainMenu.SetActive(false);
         homeMenu.SetActive(false);
+        creditsMenu.SetActive(false);
         inGameHud.SetActive(false);
         pauseMenu.SetActive(false);
         matchEnd.SetActive(false);
@@ -105,6 +109,13 @@ public class MenuManager : MonoBehaviour
         mainMenu.SetActive(true);
         homeMenu.SetActive(true);
         FocusControllersOnButton(btn_MatchSetup);
+    }
+    public void GoToCredits()
+    {
+        CloseAllMenus();
+        mainMenu.SetActive(true);
+        creditsMenu.SetActive(true);
+        FocusControllersOnButton(btn_BackToHome);
     }
     private void HandleBetweenRoundEnter()
     {
