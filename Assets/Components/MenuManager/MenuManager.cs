@@ -92,7 +92,7 @@ public class MenuManager : MonoBehaviour
             es.SetSelectedGameObject(focus);
         }
     }
-    private void GoToMainMenu()
+    public void GoToMainMenu()
     {
         CloseAllMenus();
         mainMenu.SetActive(true);
