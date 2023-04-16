@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6fbbb5bf6b02a42a79dda6bd8c1bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputIcons: {fileID: 11400000, guid: d78a3989d6832c2489599c4824cb4e0a, type: 2}
+  inputIcons: {fileID: 11400000, guid: 092463b46154d8e4ca9bcc54f3de7d1f, type: 2}
   playerConfig: {fileID: 0}
 --- !u!114 &3530379395920090535
 MonoBehaviour:
