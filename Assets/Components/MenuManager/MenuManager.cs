@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject homeMenu;
     public GameObject characterSetupMenu;
     public GameObject inGameHud;
+    public GameObject knockdownUI;
     public GameObject matchEnd;
     public GameObject pauseMenu;
     public GameObject displayMessage;
@@ -37,6 +38,7 @@ public class MenuManager : MonoBehaviour
         Smb_MatchLive.onGamePaused += HandleGamePaused;
         Smb_MatchLive.onGameResume += HandleGameResume;
         Smb_MatchLive.onStateEnter += HandleGameResume;
+        Smb_Gs_Knockdown.onStateEnter += KnockdownUI;
         Smb_Gs_EndOfMatch.onStateMachineEnter += EndOfMatchMenu;
     }
     public void CloseAllMenus(){
@@ -47,6 +49,7 @@ public class MenuManager : MonoBehaviour
         matchEnd.SetActive(false);
         displayMessage.SetActive(false);
         characterSetupMenu.SetActive(false);
+        knockdownUI.SetActive(false);
     }
     public void Btn_Home()
     {
@@ -76,7 +79,6 @@ public class MenuManager : MonoBehaviour
     public void Btn_Rematch(){
         CloseAllMenus();
         inGameHud.SetActive(true);
-        Debug.Log($"Rematch Triggered");
         rematch?.Invoke(); // triggering rematch event
     }
     public void SetDefaultMenuFocus()
@@ -92,6 +94,11 @@ public class MenuManager : MonoBehaviour
             es.SetSelectedGameObject(focus);
         }
     }
+    public void KnockdownUI()
+    {
+        CloseAllMenus();
+        knockdownUI.SetActive(true);
+    }
     public void GoToMainMenu()
     {
         CloseAllMenus();
@@ -103,10 +110,8 @@ public class MenuManager : MonoBehaviour
     {
         CloseAllMenus();
         inGameHud.SetActive(true);
-        // turn messages panel on
         displayMessage.SetActive(true);
         roundBeginPanel.SetActive(true);
-        // show message: Round #, countdown time
     }
     private void EndOfMatchMenu()
     {

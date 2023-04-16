@@ -4,9 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public delegate void PlaterControllerEvent();
     [SerializeField] public SO_ControllerIconGroup inputIcons;
-    public static event NewPlayerJoin newPlayerJoined;
+    public static event PlaterControllerEvent newPlayerJoined;
     public SO_PlayerConfig playerConfig;
-    public delegate void NewPlayerJoin();
     private void Awake()
     {
         playerConfig = ScriptableObject.CreateInstance<SO_PlayerConfig>();
