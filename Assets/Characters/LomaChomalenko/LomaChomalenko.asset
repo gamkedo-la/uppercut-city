@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: LomaChomalenko
   m_EditorClassIdentifier: 
   movementSpeed: 1.2
-  rotationSpeed: 2
-  jabPower: 15
-  crossPower: 20
+  rotationSpeed: 2.5
+  jabPower: 5
+  crossPower: 8
   hookPower: 12
   uppercutPower: 14
   temporaryDamageLimit: 35
-  healCooldown: 2
-  staminaCooldown: 3
-  healthRegenRate: 0.2
-  staminaRegenRate: 1
+  healCooldown: 3
+  staminaCooldown: 1.5
+  healthRegenRate: 0.75
+  staminaRegenRate: 2
   characterMesh: {fileID: -7377882013840102368, guid: 7cd3a93980278bf49a48c27574dcc8a1, type: 3}
   characterMaterials:
   - {fileID: 2100000, guid: e2a39e071591cd149a23f66b96f64e76, type: 2}

@@ -124,4 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSession: {fileID: 11400000, guid: 9408923dfe26cc84f9ee07614ea561af, type: 2}
   timeProvider: {fileID: 11400000, guid: 64e77f6f88c79e847a3fbafcfbcad080, type: 2}
-  gameType: {fileID: 11400000, guid: 074e9d93686875a4e9a907434d24c80b, type: 2}
+  gameType: {fileID: 11400000, guid: 780fac08946c22444adc0b12c0162604, type: 2}

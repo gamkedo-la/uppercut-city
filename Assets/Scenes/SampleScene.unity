@@ -4935,11 +4935,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!4 &285582368 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8012238896041228472, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-  m_PrefabInstance: {fileID: 1739293537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &321590190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4991,11 +4986,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2520835821514975440, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
   m_PrefabInstance: {fileID: 6938387055792034450}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &567306427 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 647168865163747046, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-  m_PrefabInstance: {fileID: 1739293537}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &592635809
 GameObject:
@@ -19960,30 +19950,6 @@ PrefabInstance:
     - target: {fileID: 1856475145444984476, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 333303508}
-    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: isRight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: leftOrigin
-      value: 
-      objectReference: {fileID: 567306427}
-    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: rightOrigin
-      value: 
-      objectReference: {fileID: 285582368}
-    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: punchTrailPrefab
-      value: 
-      objectReference: {fileID: 4662503360663748877, guid: 1c06f2ae8d38a1f4d84b1bead729e3d9, type: 3}
-    - target: {fileID: 1860469419760936155, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: m_Name
-      value: PunchTrailSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 2264252450452744130, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: fighterConfig
