@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
-using System;
 
 public class CombatBehavior : MonoBehaviour
 {
@@ -47,8 +46,8 @@ public class CombatBehavior : MonoBehaviour
     [Header("VFX Components")]
     public TrailRenderer rightTrailSpeedLines;
     public TrailRenderer leftTrailSpeedLines;
-    public GameObject leftFireEmitter;
-    public GameObject rightFireEmitter;
+    public FireTrail leftFireEmitter;
+    public FireTrail rightFireEmitter;
     
     [Header("Facial Expression Material Swap")]
     public bool facialExpressionsEnabled = true;
@@ -123,6 +122,10 @@ public class CombatBehavior : MonoBehaviour
             rightHand.SetActive(true);
             rightAttackProperties.gameObject.SetActive(true);
             rightAttackProperties.punchDamage = animator.GetFloat("PunchPowerRight");
+            if(rightAttackProperties.punchDamage >= SO_FighterConfig.tempDamageLimit)
+            {
+                rightFireEmitter.EmitParticles();
+            }
             fighterConfig.staminaCurrent -= rightAttackProperties.punchDamage / 2;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             onRightPunchThrown?.Invoke();
@@ -133,6 +136,10 @@ public class CombatBehavior : MonoBehaviour
             leftHand.SetActive(true);
             leftAttackProperties.gameObject.SetActive(true);
             leftAttackProperties.punchDamage = animator.GetFloat("PunchPowerLeft");
+            if(leftAttackProperties.punchDamage >= SO_FighterConfig.tempDamageLimit)
+            {
+                leftFireEmitter.EmitParticles();
+            }
             fighterConfig.staminaCurrent -= leftAttackProperties.punchDamage / 2;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
             onLeftPunchThrown?.Invoke();
@@ -237,8 +244,8 @@ public class CombatBehavior : MonoBehaviour
     {
         rightAttackProperties.gameObject.SetActive(false);
         leftAttackProperties.gameObject.SetActive(false);
-        leftFireEmitter.SetActive(false);
-        rightFireEmitter.SetActive(false);
+        leftFireEmitter.StopEmission();
+        rightFireEmitter.StopEmission();
         rightTrailSpeedLines.emitting = false;
         leftTrailSpeedLines.emitting = false;
         headTarget.enabled = true;

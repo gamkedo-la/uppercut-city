@@ -24883,11 +24883,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!4 &1793328750 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2520835821514975440, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-  m_PrefabInstance: {fileID: 1739293537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1942614032
 GameObject:
   m_ObjectHideFlags: 0
@@ -25303,10 +25298,10 @@ PrefabInstance:
       propertyPath: facialExpressionsEnabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1860469419760936153, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1793328750}
+    - target: {fileID: 1860469419760936155, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8525871222087910879, guid: c57d2efaa60b027428f2305c8d527e7c, type: 3}
       propertyPath: m_Name
       value: Fighter

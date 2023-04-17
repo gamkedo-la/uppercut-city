@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 public class SMB_CH_Followthrough : StateMachineBehaviour
 {
@@ -26,7 +24,7 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         {
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
         }
-        
+
         if(punchHand == PunchHand.right)
         {
             if(combatBehavior.fighterConfig.staminaCurrent - animator.GetFloat("PunchPowerRight") <= 0)
