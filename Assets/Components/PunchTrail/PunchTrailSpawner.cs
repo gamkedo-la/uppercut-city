@@ -27,12 +27,12 @@ public class PunchTrailSpawner : MonoBehaviour
 
     }
 
-    private void CombatBehavior_LeftPunchThrown(object sender, EventArgs e)
+    private void CombatBehavior_LeftPunchThrown()
     {
         PunchThrown(leftOrigin.position, leftSpeed, leftDistance);
     }
 
-    private void CombatBehavior_RightPunchThrown(object sender, EventArgs e)
+    private void CombatBehavior_RightPunchThrown()
     {
         PunchThrown(rightOrigin.position, rightSpeed, rightDistance);
     }

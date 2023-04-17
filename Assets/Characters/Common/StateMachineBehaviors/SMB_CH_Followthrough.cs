@@ -26,9 +26,6 @@ public class SMB_CH_Followthrough : StateMachineBehaviour
         {
             combatBehavior.punchTarget = CombatBehavior.PunchTarget.head;
         }
-        Debug.Log($"followthrough to {combatBehavior.punchTarget}");
-        
-        // Stamina check, player is stunned if stamina is 0
         
         if(punchHand == PunchHand.right)
         {

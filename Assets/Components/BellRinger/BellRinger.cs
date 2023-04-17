@@ -10,7 +10,8 @@ public class BellRinger : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         Smb_MatchLive.onStateEnter += Ev_BellRings;  
-        Smb_MatchLive.onStateExit += Ev_BellRings;      
+        Smb_MatchLive.onStateExit += Ev_BellRings;
+        Smb_Gs_EndOfMatch.onStateMachineEnter += Ev_BellRings;
     }
     private void Ev_BellRings()
     {

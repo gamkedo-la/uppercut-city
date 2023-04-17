@@ -9,10 +9,11 @@ public class AttackProperties : MonoBehaviour
     public event PunchDetector.HitReceivedEvent onGotBlocked;
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log($"{gameObject.name} Hit Something {collision.gameObject.name}");
         if(collision.gameObject.transform.root == transform.root) {return;}
 
         // block or hit?
-        Debug.Log($"Hit Something, layer {collision.gameObject.layer}");
+        
         switch (collision.gameObject.layer)
         {
             case 7: // hit

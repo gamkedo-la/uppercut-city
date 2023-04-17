@@ -5,9 +5,9 @@ using System;
 
 public class CombatBehavior : MonoBehaviour
 {
-
-    public event EventHandler onRightPunchThrown;
-    public event EventHandler onLeftPunchThrown;
+    public delegate void CombatEvent();
+    public event CombatEvent onRightPunchThrown;
+    public event CombatEvent onLeftPunchThrown;
 
     public enum PunchTarget { head, body }
     [Header("Systems / Behavior")]
@@ -125,11 +125,7 @@ public class CombatBehavior : MonoBehaviour
             rightAttackProperties.punchDamage = animator.GetFloat("PunchPowerRight");
             fighterConfig.staminaCurrent -= rightAttackProperties.punchDamage / 2;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
-            onRightPunchThrown?.Invoke(this, EventArgs.Empty);
-            if(animator.GetFloat("PunchPowerRight") >= 10)
-            {
-                rightFireEmitter.SetActive(true);
-            }
+            onRightPunchThrown?.Invoke();
             return;
         }
         if(punchHand == SMB_CH_Followthrough.PunchHand.left)
@@ -139,12 +135,7 @@ public class CombatBehavior : MonoBehaviour
             leftAttackProperties.punchDamage = animator.GetFloat("PunchPowerLeft");
             fighterConfig.staminaCurrent -= leftAttackProperties.punchDamage / 2;
             animator.SetFloat("StaminaCurrent", fighterConfig.staminaCurrent);
-            onLeftPunchThrown?.Invoke(this, EventArgs.Empty);
-            // powerful punches make a fire trail
-            if(animator.GetFloat("PunchPowerLeft") >= 10)
-            {
-                leftFireEmitter.SetActive(true);
-            }
+            onLeftPunchThrown?.Invoke();
             return;
         }
     }
