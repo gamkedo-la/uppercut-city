@@ -63,8 +63,6 @@ public class CombatBehavior : MonoBehaviour
     private bool blinking = false;
     private float blinkDelay = 1f;
     private float grimaceTimeLeft = 0f;
-
-
     private void Awake()
     {
         animator = GetComponent<Animator>();

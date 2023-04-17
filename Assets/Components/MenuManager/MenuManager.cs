@@ -55,6 +55,10 @@ public class MenuManager : MonoBehaviour
         characterSetupMenu.SetActive(false);
         knockdownUI.SetActive(false);
     }
+    public void Btn_Quit()
+    {
+        Application.Quit();
+    }
     public void Btn_Home()
     {
         GoToMainMenu();
