@@ -1,24 +1,21 @@
-using System;
 using UnityEngine;
 public class Smb_MatchLive : StateMachineBehaviour
 {
-    public delegate void MatchLiveUpdate();
-    public delegate void MatchLiveEnter();
     public delegate void MatchLiveEvent();
-    public static event MatchLiveUpdate onMatchLiveUpdate;
-    public static event MatchLiveEnter onStateEnter;
+    public static event MatchLiveEvent onMatchLiveUpdate;
+    public static event MatchLiveEvent onStateEnter;
     public static event MatchLiveEvent onStateExit;
     public static MatchLiveEvent onGamePaused;
     public static MatchLiveEvent onGameResume;
     public static MatchLiveEvent onZeroTime;
     private GameSystem gameSystem;
     
-    private void PauseGame(object sender, EventArgs e)
+    private void PauseGame()
     {
         Debug.Log("GamePaused");
         onGamePaused?.Invoke();
     }
-    private void ResumeGame(object sender, EventArgs e)
+    private void ResumeGame()
     {
         Debug.Log("GameResumed");
         onGameResume?.Invoke();

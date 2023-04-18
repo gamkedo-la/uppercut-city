@@ -7,7 +7,7 @@ public class UIInputHandling : MonoBehaviour
 {
     private PlayerController playerController;
     public static event InputChooseSides onSideSelection;
-    public static EventHandler onReturnPressed;
+    public static PlayerController.PlaterControllerEvent onReturnPressed;
     private float sideSelectionAxis;
     public delegate void InputChooseSides(SO_PlayerConfig config, float sideSelectionAxis);
     private void Awake()
@@ -25,6 +25,6 @@ public class UIInputHandling : MonoBehaviour
     public void HandleReturn(InputAction.CallbackContext context)
     {
         Debug.Log("return pressed");
-        onReturnPressed?.Invoke(this, EventArgs.Empty);
+        onReturnPressed?.Invoke();
     }
 }

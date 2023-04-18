@@ -15,4 +15,4 @@ MonoBehaviour:
   numberOfRounds: 10
   currentRound: 0
   roundTime: 180
-  restTime: 30
+  restTime: 20

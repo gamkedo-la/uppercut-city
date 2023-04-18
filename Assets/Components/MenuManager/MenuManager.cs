@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
     public GameObject btn_CharacterAccept;
     public static EventHandler setupMatch;
     public static GameSystem.GameSystemEvent acceptCharacters;
-    public static Smb_MatchLive.MatchLiveUpdate resumeGame;
+    public static Smb_MatchLive.MatchLiveEvent resumeGame;
     public static GameSystem.GameSystemEvent rematch;
     public static GameSystem.GameSystemEvent gameSessionEnd;
     private void Awake() {
@@ -137,8 +137,8 @@ public class MenuManager : MonoBehaviour
     private void HandleGamePaused()
     {
         CloseAllMenus();
-        FocusControllersOnButton(btn_Resume);
         pauseMenu.SetActive(true);
+        FocusControllersOnButton(btn_Resume);
     }
     private void HandleGameResume()
     {

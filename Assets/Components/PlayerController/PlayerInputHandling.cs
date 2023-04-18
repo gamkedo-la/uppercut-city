@@ -5,21 +5,18 @@ public class PlayerInputHandling : MonoBehaviour
 {
     private SO_FighterConfig fighterConfig; // the fighter we are mapped to
     private PlayerController controller;
-    private SO_FighterControlData so_fighterInput;
-    private Camera mainCamera;
     private Vector2 movementInput;
     private Vector2 rightAnalogInput;
     private Vector2 punchInput;
     private double mousePunchAxis;
     private FighterBehaviors fighterBehaviors;
-    public static EventHandler onMenuPressed;
+    public static PlayerController.PlaterControllerEvent onMenuPressed;
     // connect this object to a fighter
     // input logic goes in here
     // behaviours are handled in FighterBehaviors
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
-        mainCamera = Camera.main;
         Smb_MatchLive.onStateEnter += LinkToFighter;
         PlayerController.newPlayerJoined += LinkToFighter;
         MenuManager.resumeGame += LinkToFighter;
@@ -67,7 +64,6 @@ public class PlayerInputHandling : MonoBehaviour
     public void HandleLeanModifier(InputAction.CallbackContext context)
     {
         fighterBehaviors?.SetLeanModifier(context.ReadValue<float>() > 0);
-        // so_fighterInput.leanModifier 
     }
     public void HandleBlockModifier(InputAction.CallbackContext context)
     {
@@ -75,8 +71,8 @@ public class PlayerInputHandling : MonoBehaviour
     }
     public void HandleMenu(InputAction.CallbackContext context)
     {
-        controller.playerConfig.playerInput.SwitchCurrentActionMap("UI");
-        onMenuPressed?.Invoke(this, EventArgs.Empty);
+        Debug.Log($"Request menu");
+        onMenuPressed?.Invoke();
     }
     public void InputMovement(InputAction.CallbackContext context)
     {
