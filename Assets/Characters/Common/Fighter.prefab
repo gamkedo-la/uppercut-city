@@ -892,7 +892,7 @@ MonoBehaviour:
   fighterAnimator: {fileID: 7044280961304890794}
   sfxHitLight: {fileID: 11400000, guid: ae2e9a10a3ccd594aa30d67ef9290543, type: 2}
   sfxHitHard: {fileID: 11400000, guid: 46453f71555815d409075d50906e2d66, type: 2}
-  vfxPermanentDamage: {fileID: 0}
+  vfxPermanentDamage: {fileID: 11400000, guid: 73a10323a7eba044cb21d29f73fd06cd, type: 2}
   hitPrefab: {fileID: 6453615851998867442, guid: 84818f6e0730a8d4199ebaf5f43e85ae, type: 3}
   audioSource: {fileID: 5682705722063060679}
 --- !u!82 &5682705722063060679
@@ -1274,7 +1274,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   fighterAnimator: {fileID: 7044280961304890794}
   sfxHitLight: {fileID: 11400000, guid: ae2e9a10a3ccd594aa30d67ef9290543, type: 2}
   sfxHitHard: {fileID: 11400000, guid: 46453f71555815d409075d50906e2d66, type: 2}
-  vfxPermanentDamage: {fileID: 0}
+  vfxPermanentDamage: {fileID: 11400000, guid: 73a10323a7eba044cb21d29f73fd06cd, type: 2}
   hitPrefab: {fileID: 6453615851998867442, guid: 84818f6e0730a8d4199ebaf5f43e85ae, type: 3}
   audioSource: {fileID: 8359620997753414464}
 --- !u!82 &8359620997753414464
@@ -2114,7 +2114,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
