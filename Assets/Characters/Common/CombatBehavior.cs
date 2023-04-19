@@ -151,12 +151,12 @@ public class CombatBehavior : MonoBehaviour
             // rules for taking a power punch
             fighterConfig.staminaMax -= damage / 3;
             fighterConfig.healthCurrent -= damage / 3;
-            fighterConfig.staminaCurrent -= damage / 3;
+            fighterConfig.staminaCurrent -= damage;
         }
         else
         {
             fighterConfig.healthCurrent -= damage / 2;
-            fighterConfig.staminaCurrent -= damage / 2;
+            fighterConfig.staminaCurrent -= damage * 0.8f;
         }
         
         animator.SetFloat("HealthCurrent", fighterConfig.healthCurrent);
@@ -169,7 +169,7 @@ public class CombatBehavior : MonoBehaviour
         if(damage >= SO_FighterConfig.tempDamageLimit)
         {
             // rules for taking a power punch
-            fighterConfig.healthMax -= damage * 0.2f;
+            fighterConfig.healthMax -= damage / 2;
             fighterConfig.healthCurrent -= damage * 0.8f;
         }
         else
