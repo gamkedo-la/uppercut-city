@@ -3,9 +3,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public delegate void PlaterControllerEvent();
-    [SerializeField] public SO_ControllerIconGroup inputIcons;
+    public SO_ControllerIconGroup inputIcons;
     public static event PlaterControllerEvent newPlayerJoined;
     public SO_PlayerConfig playerConfig;
+    private PlayerController[] inputsAll;
+    private bool redIsOpen;
+    private bool blueIsOpen;
     private void Awake()
     {
         playerConfig = ScriptableObject.CreateInstance<SO_PlayerConfig>();
@@ -61,17 +64,25 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        switch (FindObjectsOfType<PlayerInput>().Length)
+        inputsAll = FindObjectsOfType<PlayerController>();
+        redIsOpen = true;
+        blueIsOpen = true;
+        foreach (PlayerController player in inputsAll)
         {
-            case 1:
-                playerConfig.allegiance = SO_PlayerConfig.Allegiance.red;
-                break;
-            case 2:
-                playerConfig.allegiance = SO_PlayerConfig.Allegiance.blue;
-                break;
-            default:
-                playerConfig.allegiance = SO_PlayerConfig.Allegiance.neutral;
-                break;
+            if(player.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red) {redIsOpen = false;}
+            if(player.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue) {blueIsOpen = false;}
+        }
+        if(redIsOpen)
+        {
+            playerConfig.allegiance = SO_PlayerConfig.Allegiance.red;
+        }
+        else if(blueIsOpen)
+        {
+            playerConfig.allegiance = SO_PlayerConfig.Allegiance.blue;
+        }
+        else
+        {
+            playerConfig.allegiance = SO_PlayerConfig.Allegiance.neutral;
         }
         Debug.Log($"New Player: {playerConfig.playerInput.currentControlScheme}");
         newPlayerJoined?.Invoke();

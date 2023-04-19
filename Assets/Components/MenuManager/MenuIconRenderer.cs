@@ -99,9 +99,9 @@ public class MenuIconRenderer : MonoBehaviour
             if(inputs[i].playerConfig.allegiance == SO_PlayerConfig.Allegiance.red) {redHasController = true;}
             if(inputs[i].playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue) {blueHasController = true;}
                 
-            inputMenuSprites[i].gameObject.SetActive(true);
-            inputMenuSprites[i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
-            // set the icon type
+            inputMenuSprites[(inputs.Length-1) - i].gameObject.SetActive(true);
+            inputMenuSprites[(inputs.Length-1) - i].GetComponentsInChildren<RawImage>()[1].texture = inputs[i].playerConfig.controllerIcon;
+            // (inputs.Length-1) - i
         }
     }
     private void MoveMenuIcons()
@@ -113,22 +113,22 @@ public class MenuIconRenderer : MonoBehaviour
             switch (inputs[i].playerConfig.allegiance)
             {
                 case SO_PlayerConfig.Allegiance.red:
-                    inputMenuSprites[i].transform.position = Vector3.MoveTowards(
-                        inputMenuSprites[i].transform.position, // current
+                    inputMenuSprites[(inputs.Length-1) - i].transform.position = Vector3.MoveTowards(
+                        inputMenuSprites[(inputs.Length-1) - i].transform.position, // current
                         redCornerSlot.transform.position, // target
                         iconSpeed*menuTimeProvider.deltaTime // max displacement
                     );
                     break;
                 case SO_PlayerConfig.Allegiance.blue:
-                    inputMenuSprites[i].transform.position = Vector3.MoveTowards(
-                        inputMenuSprites[i].transform.position, // current
+                    inputMenuSprites[(inputs.Length-1) - i].transform.position = Vector3.MoveTowards(
+                        inputMenuSprites[(inputs.Length-1) - i].transform.position, // current
                         blueCornerSlot.transform.position, // target
                         iconSpeed*menuTimeProvider.deltaTime // max displacement
                     );
                     break;
                 case SO_PlayerConfig.Allegiance.neutral:
-                    inputMenuSprites[i].transform.position = Vector3.MoveTowards(
-                        inputMenuSprites[i].transform.position, // current
+                    inputMenuSprites[(inputs.Length-1) - i].transform.position = Vector3.MoveTowards(
+                        inputMenuSprites[(inputs.Length-1) - i].transform.position, // current
                         neutralSlots[neutralPlayerCount].transform.position, // target
                         iconSpeed*menuTimeProvider.deltaTime // max displacement
                     );
