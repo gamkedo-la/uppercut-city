@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
         playerConfig.playerInput = GetComponent<PlayerInput>();
         playerConfig.playerInputHandling = GetComponent<PlayerInputHandling>();
         playerConfig.UiInputHandling = GetComponent<UIInputHandling>();
+        playerConfig.allegiance = SO_PlayerConfig.Allegiance.neutral;
         switch (playerConfig.playerInput.currentControlScheme)
         {
             case "Keyboard&Mouse":
@@ -69,20 +70,17 @@ public class PlayerController : MonoBehaviour
         blueIsOpen = true;
         foreach (PlayerController player in inputsAll)
         {
+            if(player == this){break;}
             if(player.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red) {redIsOpen = false;}
             if(player.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue) {blueIsOpen = false;}
+        }
+        if(blueIsOpen)
+        {
+            playerConfig.allegiance = SO_PlayerConfig.Allegiance.blue;
         }
         if(redIsOpen)
         {
             playerConfig.allegiance = SO_PlayerConfig.Allegiance.red;
-        }
-        else if(blueIsOpen)
-        {
-            playerConfig.allegiance = SO_PlayerConfig.Allegiance.blue;
-        }
-        else
-        {
-            playerConfig.allegiance = SO_PlayerConfig.Allegiance.neutral;
         }
         Debug.Log($"New Player: {playerConfig.playerInput.currentControlScheme}");
         newPlayerJoined?.Invoke();
