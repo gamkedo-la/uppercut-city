@@ -19,7 +19,7 @@ public class BlockCollider : MonoBehaviour
         if(collision.gameObject.transform.root == transform.root) {return;}
 
         collisionPoint = collision.GetContact(0);
-        if (vfxBlockLight) Instantiate(vfxBlockLight,collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));
+        if (vfxBlockLight) Instantiate(vfxBlockLight.GetRandomVfx(),collisionPoint.point, Quaternion.LookRotation(collisionPoint.normal));
         onBlockedPunch?.Invoke(sfxBlockLight.GetRandomSfx());
         // trigger opponent's 'PunchBlocked' handler
         // play the blocked VFX
