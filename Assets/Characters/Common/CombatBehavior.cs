@@ -14,6 +14,7 @@ public class CombatBehavior : MonoBehaviour
     public SO_FighterConfig fighterConfig;
     public FighterBehaviors fighterBehaviors;
     private Animator animator;
+    private AudioSource audioSource;
     [HideInInspector] public float punchCooldown;
     private float punchCooldownTimer;
     [HideInInspector] public float stunDuration;
@@ -66,6 +67,7 @@ public class CombatBehavior : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         fighterConfig.onKnockedOut += KnockedOut;
         rightHandCollider = rightHand.GetComponent<Collider>();
         rightAttackProperties = rightHand.GetComponent<AttackProperties>();
@@ -233,9 +235,9 @@ public class CombatBehavior : MonoBehaviour
         StartCoroutine(Stunned());
         // duration is based on on punch power
     }
-    public void BlockedPunch()
+    public void BlockedPunch(AudioClip sound)
     {
-        // blockage
+        audioSource.PlayOneShot(sound);
         animator.SetTrigger("SuccessfulBlock");
     }
     public void PunchFinished()
@@ -334,15 +336,12 @@ public class CombatBehavior : MonoBehaviour
     
     private void maybeBlinkEyes() {
         blinkDelay -= timeProvider.fixedDeltaTime;
-        if (blinkDelay <= 0f) {        
+        if (blinkDelay <= 0f) {     
             if (blinking) {
-
-                Debug.Log(gameObject.name + "'s eyes open");
                 blinkDelay = UnityEngine.Random.Range(blinkMinDelay,blinkMaxDelay);
                 blinking = false;
 
                 if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
-                    Debug.Log("previous face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
                     
                     // this should work but doesn't
                     // changeMyMaterial.materials[faceMaterialSlot] = faceMaterial;
@@ -352,21 +351,15 @@ public class CombatBehavior : MonoBehaviour
                     Material[] mats = changeMyMaterial.materials;
                     mats[faceMaterialSlot] = faceMaterial;
                     changeMyMaterial.materials = mats;
-
-                    Debug.Log("current face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
-                    Debug.Log("it should be: "+faceMaterial.name); 
                 } else {
                     Debug.Log("missing head material slot " + faceMaterialSlot);
                 }
 
             } else {
-
-                Debug.Log(gameObject.name + "'s eyes close");
                 blinkDelay = blinkTimespan;
                 blinking = true;
 
                 if (changeMyMaterial && changeMyMaterial.materials.Length >= faceMaterialSlot) {
-                    Debug.Log("previous face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
 
                     // this should work but doesn't
                     // changeMyMaterial.materials[faceMaterialSlot] = blinkMaterial;
@@ -376,10 +369,6 @@ public class CombatBehavior : MonoBehaviour
                     Material[] mats = changeMyMaterial.materials;
                     mats[faceMaterialSlot] = blinkMaterial;
                     changeMyMaterial.materials = mats;
-
-                    Debug.Log("current face material "+faceMaterialSlot+": "+changeMyMaterial.materials[faceMaterialSlot].name);
-                    Debug.Log("it should be: "+blinkMaterial.name);
-
                 } else {
                     Debug.Log("missing head material slot " + faceMaterialSlot);
                 }

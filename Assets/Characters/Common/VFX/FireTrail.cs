@@ -7,7 +7,6 @@ public class FireTrail : MonoBehaviour
     private void Awake()
     {
         vfxParts = GetComponentsInChildren<ParticleSystem>();
-        Debug.Log($"vfx Components {vfxParts}");
     }
     public void EmitParticles()
     {
@@ -19,7 +18,6 @@ public class FireTrail : MonoBehaviour
     }
     public void StopEmission()
     {
-        Debug.Log($"vfx Components {vfxParts}");
         foreach (ParticleSystem p in vfxParts)
         {
             p.Stop();
