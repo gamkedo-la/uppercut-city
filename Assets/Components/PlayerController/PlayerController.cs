@@ -70,19 +70,19 @@ public class PlayerController : MonoBehaviour
         blueIsOpen = true;
         foreach (PlayerController player in inputsAll)
         {
-            if(player == this){break;}
+            if(player.transform.root == transform.root){continue;}
             if(player.playerConfig.allegiance == SO_PlayerConfig.Allegiance.red) {redIsOpen = false;}
             if(player.playerConfig.allegiance == SO_PlayerConfig.Allegiance.blue) {blueIsOpen = false;}
-        }
-        if(blueIsOpen)
-        {
-            playerConfig.allegiance = SO_PlayerConfig.Allegiance.blue;
-            blueIsOpen = false;
         }
         if(redIsOpen)
         {
             playerConfig.allegiance = SO_PlayerConfig.Allegiance.red;
             redIsOpen = false;
+        }
+        else if(blueIsOpen)
+        {
+            playerConfig.allegiance = SO_PlayerConfig.Allegiance.blue;
+            blueIsOpen = false;
         }
         Debug.Log($"New Player: {playerConfig.playerInput.currentControlScheme}");
         newPlayerJoined?.Invoke();

@@ -23,7 +23,7 @@ public class FightCameraBehaviors : MonoBehaviour
     }
     private void SetFollowOffset()
     {
-        vCamTransposer.m_FollowOffset.x = Mathf.Clamp((fighters[1].transform.position - fighters[0].transform.position).magnitude * 1.5f, 3, 15);
+        vCamTransposer.m_FollowOffset.x = -Mathf.Clamp((fighters[1].transform.position - fighters[0].transform.position).magnitude * 1.5f, 3, 15);
         vCamTransposer.m_FollowOffset.z = (fighters[1].transform.position - fighters[0].transform.position).magnitude / 2;
     }
     private void FixedUpdate() {
