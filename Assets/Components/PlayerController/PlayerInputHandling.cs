@@ -22,13 +22,14 @@ public class PlayerInputHandling : MonoBehaviour
         MenuManager.resumeGame += LinkToFighter;
         MenuManager.acceptCharacters += LinkToFighter;
     }
-    private void GetFighterBehaviors(SO_FighterConfig.Corner corner)
+    private void GetFighterComponents(SO_FighterConfig.Corner corner)
     {
-        foreach (FighterBehaviors fb in FindObjectsOfType<FighterBehaviors>())
+        foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
         {
-            if(fb.fighterConfig.corner == corner)
+            if(fs.fighterConfig.corner == corner)
             {
-                fighterBehaviors = fb;
+                fighterConfig = fs.fighterConfig;
+                fighterBehaviors = fs.GetComponent<FighterBehaviors>();
             }
         }
     }
@@ -41,24 +42,13 @@ public class PlayerInputHandling : MonoBehaviour
                 fighterBehaviors = null;
                 break;
             case SO_PlayerConfig.Allegiance.red:
-                GetFighterBehaviors(SO_FighterConfig.Corner.red);
+                GetFighterComponents(SO_FighterConfig.Corner.red);
                 break;
             case SO_PlayerConfig.Allegiance.blue:
-                GetFighterBehaviors(SO_FighterConfig.Corner.blue);
+                GetFighterComponents(SO_FighterConfig.Corner.blue);
                 break;
             default:
                 break;
-        }
-        foreach (FighterSetup fs in FindObjectsOfType<FighterSetup>())
-        {
-            if(fs.fighterConfig.corner == SO_FighterConfig.Corner.red)
-            {
-                fighterConfig = fs.fighterConfig;
-            }
-            else
-            {
-                fighterConfig.opponentConfig = fs.fighterConfig;
-            }
         }
     }
     public void HandleLeanModifier(InputAction.CallbackContext context)
@@ -79,24 +69,19 @@ public class PlayerInputHandling : MonoBehaviour
         movementInput = context.ReadValue<Vector2>();
         fighterBehaviors?.SetMovementVector(movementInput);
     }
-    public void HandlePunchInput(InputAction.CallbackContext context){
+    public void HandlePunchInput(InputAction.CallbackContext context)
+    {
         punchInput = context.ReadValue<Vector2>();
         fighterBehaviors?.HandlePunch(punchInput);
     }
-    public void InputMousePunch(InputAction.CallbackContext context){
+    public void InputMousePunch(InputAction.CallbackContext context)
+    {
         punchInput.x = context.ReadValue<float>();
         punchInput.y = 0;
         fighterBehaviors?.HandlePunch(punchInput);
     }
-    public void HandleBlockRightInput(InputAction.CallbackContext context)
+    private void Start()
     {
-        fighterBehaviors?.HandleBlock(FighterBehaviors.BlockType.right, context.ReadValue<float>() > 0);
-    }
-    public void HandleBlockLeftInput(InputAction.CallbackContext context)
-    {
-        fighterBehaviors?.HandleBlock(FighterBehaviors.BlockType.left, context.ReadValue<float>() > 0);
-    }
-    private void Start() {
         LinkToFighter();
     }
 }

@@ -77,10 +77,12 @@ public class PlayerController : MonoBehaviour
         if(blueIsOpen)
         {
             playerConfig.allegiance = SO_PlayerConfig.Allegiance.blue;
+            blueIsOpen = false;
         }
         if(redIsOpen)
         {
             playerConfig.allegiance = SO_PlayerConfig.Allegiance.red;
+            redIsOpen = false;
         }
         Debug.Log($"New Player: {playerConfig.playerInput.currentControlScheme}");
         newPlayerJoined?.Invoke();

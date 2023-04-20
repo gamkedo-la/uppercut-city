@@ -28,12 +28,12 @@ public class MenuManager : MonoBehaviour
     public GameObject btn_Resume;
     [Header("Character Setup Items")]
     public GameObject btn_CharacterAccept;
-    public static EventHandler setupMatch;
     public static GameSystem.GameSystemEvent acceptCharacters;
     public static Smb_MatchLive.MatchLiveEvent resumeGame;
     public static GameSystem.GameSystemEvent rematch;
     public static GameSystem.GameSystemEvent gameSessionEnd;
-    private void Awake() {
+    private void Awake()
+    {
         defaultMenuFocus = btn_MatchSetup;
         PlayerController.newPlayerJoined += SetDefaultMenuFocus;
         StateGameSetup.onStateEnter += GoToMainMenu;
@@ -44,7 +44,8 @@ public class MenuManager : MonoBehaviour
         Smb_Gs_Knockdown.onStateEnter += KnockdownUI;
         Smb_Gs_EndOfMatch.onStateMachineEnter += EndOfMatchMenu;
     }
-    public void CloseAllMenus(){
+    public void CloseAllMenus()
+    {
         mainMenu.SetActive(false);
         homeMenu.SetActive(false);
         creditsMenu.SetActive(false);
@@ -144,12 +145,5 @@ public class MenuManager : MonoBehaviour
     {
         CloseAllMenus();
         inGameHud.SetActive(true);
-    }
-    private void HandleZeroHealth(object sender, System.EventArgs e)
-    {
-        CloseAllMenus();
-        displayMessageText.text = "knockout!!";
-        inGameHud.SetActive(true);
-        displayMessage.SetActive(true);
     }
 }
