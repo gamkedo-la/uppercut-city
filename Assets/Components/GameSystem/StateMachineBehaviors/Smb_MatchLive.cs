@@ -13,13 +13,11 @@ public class Smb_MatchLive : StateMachineBehaviour
     {
         Debug.Log("GamePaused");
         onGamePaused?.Invoke();
-        PlayerInputHandling.onMenuPressed -= PauseGame;
     }
     private void ResumeGame()
     {
         Debug.Log("GameResumed");
         onGameResume?.Invoke();
-        PlayerInputHandling.onMenuPressed += PauseGame;
     }
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
