@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private AudioSource audioSource;
+    public SO_AudioGroup menuMusic;
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioSource.PlayOneShot(menuMusic.GetRandomClip());
+        audioSource.loop = true;
     }
 }

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f1326c3633cc4bb219b144af49d2f, type: 3}
   m_Name: SfxCrowdNormal
   m_EditorClassIdentifier: 
-  sfx: []
+  sfx:
+  - {fileID: 8300000, guid: ac1d556ad86dc734fae1aaee4dc25374, type: 3}
+  - {fileID: 8300000, guid: 9106b652814b0054daafc9492d185789, type: 3}
+  - {fileID: 8300000, guid: 0f1876b0ff61f6d488e5e730ab9f6078, type: 3}
+  - {fileID: 8300000, guid: 086c6457c61b71148babd02646a83604, type: 3}
